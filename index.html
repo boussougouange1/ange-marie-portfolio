@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ange-Marie Boussougou Ahouansou | Technicien IT N1/N2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f172a',
+                        accent: '#3b82f6',
+                        secondary: '#64748b',
+                        surface: '#f8fafc',
+                    },
+                    animation: {
+                        'gradient': 'gradient 8s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        gradient: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hover-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-line {
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+        }
+        
+        .cert-badge {
+            transition: all 0.3s ease;
+        }
+        
+        .cert-badge:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+        
+        .parallax-bg {
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        }
+
+        .linkedin-btn {
+            background: #0077b5;
+            transition: all 0.3s ease;
+        }
+        
+        .linkedin-btn:hover {
+            background: #005885;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(0, 119, 181, 0.3);
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            font-family: 'Space Grotesk', sans-serif;
+            box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.5);
+            border: 4px solid white;
+            margin: 0 auto 1.5rem;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .coursera-badge {
+            background: linear-gradient(135deg, #0056d2 0%, #003d91 100%);
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect border-b border-slate-200/50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                        AB
+                    </div>
+                    <span class="font-display font-bold text-xl text-slate-800">Ange-Marie BA</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#accueil" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Accueil</a>
+                    <a href="#competences" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Compétences</a>
+                    <a href="#experience" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Expérience</a>
+                    <a href="#certifications" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Certifications</a>
+                    <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="linkedin-btn px-6 py-2 text-white rounded-full font-medium flex items-center gap-2">
+                        <i class="fab fa-linkedin"></i>
+                        LinkedIn
+                    </a>
+                </div>
+
+                <button class="md:hidden text-slate-600 hover:text-slate-900" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-effect border-t border-slate-200">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#accueil" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium">Accueil</a>
+                <a href="#competences" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium">Compétences</a>
+                <a href="#experience" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium">Expérience</a>
+                <a href="#certifications" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium">Certifications</a>
+                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="block px-3 py-2 text-blue-600 font-medium flex items-center gap-2">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="relative min-h-screen flex items-center justify-center parallax-bg pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8 animate-slide-up">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-medium text-sm">
+                        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                        Disponible pour de nouvelles opportunités
+                    </div>
+                    
+                    <h1 class="font-display text-5xl lg:text-7xl font-bold leading-tight text-slate-900">
+                        Technicien <span class="text-gradient">Support IT</span><br>
+                        N1/N2 & Microsoft 365
+                    </h1>
+                    
+                    <p class="text-xl text-slate-600 leading-relaxed max-w-lg">
+                        7 ans d'expertise en support utilisateurs, administration systèmes et réseaux multi-sites. 
+                        Spécialisé dans les environnements Windows, Microsoft 365, Active Directory, Entra ID et solutions PaperCut.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4">
+                        <a href="mailto:ahouansouange@live.fr" class="px-8 py-4 bg-slate-900 text-white rounded-full font-semibold hover:bg-slate-800 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
+                            <i class="fas fa-paper-plane"></i>
+                            Me contacter
+                        </a>
+                        <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="linkedin-btn px-8 py-4 text-white rounded-full font-semibold flex items-center gap-2 transform hover:scale-105 shadow-lg">
+                            <i class="fab fa-linkedin text-xl"></i>
+                            Voir mon LinkedIn
+                        </a>
+                    </div>
+
+                    <div class="flex items-center gap-6 pt-4 text-slate-500">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-map-marker-alt text-blue-500"></i>
+                            <span>Montréal, QC</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-language text-blue-500"></i>
+                            <span>FR Professionnel / EN Technique</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte de profil avec AB -->
+                <div class="relative flex justify-center lg:justify-end">
+                    <div class="profile-card rounded-3xl p-8 w-full max-w-md text-center relative overflow-hidden">
+                        <!-- Background decoration -->
+                        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-br from-blue-500/10 to-purple-600/10"></div>
+                        
+                        <!-- Avatar AB -->
+                        <div class="relative z-10">
+                            <div class="profile-avatar">AB</div>
+                            
+                            <h2 class="font-display text-2xl font-bold text-slate-900 mb-1">Ange-Marie Boussougou</h2>
+                            <p class="text-slate-500 font-medium mb-6">Technicien IT Senior</p>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="stat-card">
+                                    <div class="text-3xl font-bold text-blue-600 mb-1">7+</div>
+                                    <div class="text-sm text-slate-500 font-medium">Années d'exp.</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="text-3xl font-bold text-purple-600 mb-1">15+</div>
+                                    <div class="text-sm text-slate-500 font-medium">Certifications</div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 pt-6 border-t border-slate-200">
+                                <div class="flex justify-center gap-4">
+                                    <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-[#0077b5] hover:text-white transition-all">
+                                        <i class="fab fa-linkedin text-xl"></i>
+                                    </a>
+                                    <a href="mailto:ahouansouange@live.fr" class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-red-500 hover:text-white transition-all">
+                                        <i class="fas fa-envelope text-xl"></i>
+                                    </a>
+                                    <a href="tel:+14162688673" class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-green-500 hover:text-white transition-all">
+                                        <i class="fas fa-phone text-xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating elements -->
+                    <div class="absolute -bottom-4 -left-4 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 hidden lg:block">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="text-sm font-semibold text-slate-700">Disponible<br>immédiatement</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-slate-400 text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="competences" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl font-bold text-slate-900 mb-4">Compétences Clés</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Expertise technique confirmée en support utilisateurs, administration systèmes et réseaux.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Support IT -->
+                <div class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100">
+                    <div class="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 text-2xl mb-6">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-slate-900 mb-4">IT Support & Helpdesk</h3>
+                    <ul class="space-y-3 text-slate-600 text-sm">
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-blue-500 mt-1"></i> Support utilisateurs N1/N2</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-blue-500 mt-1"></i> Gestion de tickets (GLPI)</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-blue-500 mt-1"></i> Escalade niveau 2/3</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-blue-500 mt-1"></i> Support sur site et à distance (TeamViewer, AnyDesk)</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-blue-500 mt-1"></i> VoIP</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-blue-500 mt-1"></i> Diagnostic matériel et logiciel</li>
+                    </ul>
+                </div>
+
+                <!-- Microsoft & Cloud -->
+                <div class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100">
+                    <div class="w-14 h-14 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600 text-2xl mb-6">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-slate-900 mb-4">Microsoft 365 & Cloud</h3>
+                    <ul class="space-y-3 text-slate-600 text-sm">
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-purple-500 mt-1"></i> Microsoft Entra ID</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-purple-500 mt-1"></i> Microsoft 365 Ecosystem</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-purple-500 mt-1"></i> Enterprise Mobility Suite</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-purple-500 mt-1"></i> Microsoft Intune</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-purple-500 mt-1"></i> Azure Fundamentals (préparation)</li>
+                    </ul>
+                </div>
+
+                <!-- Systèmes & Serveurs -->
+                <div class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100">
+                    <div class="w-14 h-14 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600 text-2xl mb-6">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-slate-900 mb-4">Systèmes & Serveur</h3>
+                    <ul class="space-y-3 text-slate-600 text-sm">
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-indigo-500 mt-1"></i> Windows Server</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-indigo-500 mt-1"></i> Active Directory & GPO</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-indigo-500 mt-1"></i> DNS, DHCP</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-indigo-500 mt-1"></i> Linux (Samba, BIND)</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-indigo-500 mt-1"></i> Hyper-V</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-indigo-500 mt-1"></i> DFS & Réplication des données</li>
+                    </ul>
+                </div>
+
+                <!-- Réseaux -->
+                <div class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100">
+                    <div class="w-14 h-14 rounded-xl bg-green-100 flex items-center justify-center text-green-600 text-2xl mb-6">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-slate-900 mb-4">Réseaux</h3>
+                    <ul class="space-y-3 text-slate-600 text-sm">
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> LAN/WAN/WLAN</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> TCP/IP</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> Configuration switch (Cisco, Ubiquiti, TP-Link)</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> Patch panel</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> Brassage Cat6/Cat6a/Cat7</li>
+                    </ul>
+                </div>
+
+                <!-- PaperCut -->
+                <div class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100">
+                    <div class="w-14 h-14 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 text-2xl mb-6">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-slate-900 mb-4">Impression & Gestion Documentaire</h3>
+                    <ul class="space-y-3 text-slate-600 text-sm">
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-orange-500 mt-1"></i> PaperCut MF</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-orange-500 mt-1"></i> PaperCut Hive (Cloud)</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-orange-500 mt-1"></i> Gestion des imprimantes réseau</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-orange-500 mt-1"></i> Quotas et sécurité des impressions</li>
+                    </ul>
+                </div>
+
+                <!-- Sécurité -->
+                <div class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100">
+                    <div class="w-14 h-14 rounded-xl bg-red-100 flex items-center justify-center text-red-600 text-2xl mb-6">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-slate-900 mb-4">Cybersécurité</h3>
+                    <ul class="space-y-3 text-slate-600 text-sm">
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-red-500 mt-1"></i> Fortinet Certified</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-red-500 mt-1"></i> Gestion des accès</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-red-500 mt-1"></i> Protection des données</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-red-500 mt-1"></i> CCTV IP & Vidéosurveillance</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-red-500 mt-1"></i> Sauvegardes RAID</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience" class="py-24 bg-slate-50 relative overflow-hidden">
+        <div class="absolute inset-0 parallax-bg opacity-50"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl font-bold text-slate-900 mb-4">Expérience Professionnelle</h2>
+                <p class="text-slate-600">Parcours complet en support IT et administration systèmes.</p>
+            </div>
+
+            <div class="relative">
+                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 timeline-line rounded-full"></div>
+
+                <!-- HIGH-TECH 241 -->
+                <div class="relative mb-12 md:mb-0">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
+                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
+                                <span class="text-blue-600 font-semibold text-sm">Novembre 2023 – Septembre 2024</span>
+                                <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Senior IT Support & Systems Technician</h3>
+                                <p class="text-slate-500 font-medium mb-3">HIGH-TECH 241 – Libreville, Gabon</p>
+                                <ul class="text-slate-600 text-sm space-y-2">
+                                    <li>• Support utilisateurs avancé et résolution d'incidents complexes</li>
+                                    <li>• Mentorat technique et support aux collègues IT</li>
+                                    <li>• Conception et proposition de solutions techniques en réponse aux appels d'offres</li>
+                                    <li>• Implémentation de PaperCut MF chez Orabank (réduction de 30% des impressions)</li>
+                                    <li>• Déploiement d'infrastructures réseaux et VoIP pour SAFRIMAT</li>
+                                    <li>• Gestion de projets CCTV IP de la conception à la mise en production</li>
+                                    <li>• Administration et réhabilitation de serveurs (RAID, messagerie)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                        <div class="md:w-5/12 md:pl-8 hidden md:block"></div>
+                    </div>
+                </div>
+
+                <!-- ANVA -->
+                <div class="relative mb-12 md:mb-0 md:mt-12">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 hidden md:block"></div>
+                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                        <div class="md:w-5/12 md:pl-8 mb-4 md:mb-0">
+                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
+                                <span class="text-purple-600 font-semibold text-sm">Mai 2021 – Septembre 2023</span>
+                                <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Senior IT Support IT et Systèmes d'Information</h3>
+                                <p class="text-slate-500 font-medium mb-3">Autorité Nationale de Vérification d'Audit – Libreville, Gabon</p>
+                                <ul class="text-slate-600 text-sm space-y-2">
+                                    <li>• Coordination d'une équipe IT de 3 personnes</li>
+                                    <li>• Support et gestion de 70 postes, 5 imprimantes réseau et 3 serveurs</li>
+                                    <li>• Administration de Google Workspace (comptes, accès, collaboration)</li>
+                                    <li>• Mise en place d'un service DFS de réplication des données</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SAFRIMAT -->
+                <div class="relative mb-12 md:mb-0 md:mt-12">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
+                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
+                                <span class="text-green-600 font-semibold text-sm">Septembre 2020 – Mars 2021</span>
+                                <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Senior IT Support IT et Maintenance</h3>
+                                <p class="text-slate-500 font-medium mb-3">SAFRIMAT – Libreville, Gabon</p>
+                                <ul class="text-slate-600 text-sm space-y-2">
+                                    <li>• Support utilisateurs avancé et résolution d'incidents complexes</li>
+                                    <li>• Administration serveur, Déploiement d'infrastructures réseaux et VoIP</li>
+                                    <li>• Mise en place d'un système de vidéosurveillance (32 caméras)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                        <div class="md:w-5/12 md:pl-8 hidden md:block"></div>
+                    </div>
+                </div>
+
+                <!-- Centre de Dialyse -->
+                <div class="relative mb-12 md:mb-0 md:mt-12">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 hidden md:block"></div>
+                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-orange-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                        <div class="md:w-5/12 md:pl-8 mb-4 md:mb-0">
+                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
+                                <span class="text-orange-600 font-semibold text-sm">Avril 2019 – Mars 2020</span>
+                                <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Technicien support informatique</h3>
+                                <p class="text-slate-500 font-medium mb-3">Centre de Dialyse de Libreville – Gabon</p>
+                                <ul class="text-slate-600 text-sm space-y-2">
+                                    <li>• Sécurisation des infrastructures IT et protection des données patients</li>
+                                    <li>• Administration systèmes et réseaux</li>
+                                    <li>• Maintenance du parc informatique et support utilisateurs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SYSTEMESCOMS -->
+                <div class="relative mb-12 md:mb-0 md:mt-12">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
+                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
+                                <span class="text-indigo-600 font-semibold text-sm">Janvier 2016 – Novembre 2019</span>
+                                <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Consultant IT & Technicien support</h3>
+                                <p class="text-slate-500 font-medium mb-3">SYSTEMESCOMS – Libreville, Gabon</p>
+                                <ul class="text-slate-600 text-sm space-y-2">
+                                    <li>• Prestations IT pour ONG, hôpitaux et cabinets comptables</li>
+                                    <li>• Conseil en transformation numérique</li>
+                                    <li>• Déploiement de réseaux, solutions de vidéosurveillance et maintenance IT</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-indigo-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                        <div class="md:w-5/12 md:pl-8 hidden md:block"></div>
+                    </div>
+                </div>
+
+                <!-- DAVUM-GABON -->
+                <div class="relative mb-12 md:mb-0 md:mt-12">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 hidden md:block"></div>
+                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-pink-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                        <div class="md:w-5/12 md:pl-8 mb-4 md:mb-0">
+                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
+                                <span class="text-pink-600 font-semibold text-sm">Août 2015 – Décembre 2015</span>
+                                <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Technicien support informatique</h3>
+                                <p class="text-slate-500 font-medium mb-3">DAVUM-GABON – Libreville, Gabon</p>
+                                <ul class="text-slate-600 text-sm space-y-2">
+                                    <li>• Administration Windows Server et réseaux</li>
+                                    <li>• Support utilisateurs et maintenance informatique</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage Intégral Technologies -->
+                <div class="relative md:mt-12">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
+                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
+                                <span class="text-teal-600 font-semibold text-sm">Septembre 2014 – Décembre 2014</span>
+                                <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Technicien support informatique (stagiaire)</h3>
+                                <p class="text-slate-500 font-medium mb-3">Intégral Technologies – Libreville, Gabon</p>
+                                <ul class="text-slate-600 text-sm space-y-2">
+                                    <li>• Support niveau 1</li>
+                                    <li>• Maintenance des postes et périphériques</li>
+                                    <li>• Installation et administration de systèmes serveurs</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-teal-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                        <div class="md:w-5/12 md:pl-8 hidden md:block"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl font-bold text-slate-900 mb-4">Certifications</h2>
+                <p class="text-slate-600">Formations continues et certifications professionnelles</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Coursera Microsoft 365 -->
+                <div class="cert-badge coursera-badge text-white p-6 rounded-2xl border border-blue-400 shadow-lg">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center text-white text-2xl backdrop-blur">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-lg">Coursera & Microsoft</h3>
+                            <p class="text-blue-100 text-sm">Février 2026</p>
+                        </div>
+                    </div>
+                    <h4 class="font-semibold text-lg mb-2">The Microsoft 365 Ecosystem</h4>
+                    <p class="text-blue-100 text-sm mb-3">Cours en ligne autorisé par Microsoft</p>
+                    <a href="https://coursera.org/verify/82E6416UE9O6" target="_blank" class="inline-flex items-center gap-2 text-sm font-medium hover:underline">
+                        <i class="fas fa-external-link-alt"></i>
+                        Vérifier le certificat
+                    </a>
+                </div>
+
+                <!-- Microsoft -->
+                <div class="cert-badge bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl border border-blue-200">
+                    <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white text-xl mb-4 shadow-lg">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 mb-2">Microsoft</h3>
+                    <ul class="text-sm text-slate-700 space-y-1">
+                        <li>• Prise en main des identités et de l'accès (Microsoft Entra ID)</li>
+                        <li>• Administrer Active Directory Domain Services</li>
+                        <li>• Azure Fundamentals (AZ-900) - en préparation</li>
+                    </ul>
+                </div>
+
+                <!-- LinkedIn Learning -->
+                <div class="cert-badge bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl border border-blue-200">
+                    <div class="w-12 h-12 bg-[#0077b5] rounded-lg flex items-center justify-center text-white text-xl mb-4 shadow-lg">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 mb-2">LinkedIn Learning</h3>
+                    <ul class="text-sm text-slate-700 space-y-1">
+                        <li>• Azure : Configurer et gérer Microsoft Entra ID</li>
+                        <li>• Enterprise Mobility Suite</li>
+                        <li>• Essentiels de Microsoft Security</li>
+                        <li>• Collaborer grâce à Microsoft 365</li>
+                    </ul>
+                </div>
+
+                <!-- Cisco -->
+                <div class="cert-badge bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-2xl border border-orange-200">
+                    <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center text-white text-xl mb-4 shadow-lg">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 mb-2">Cisco Networking Academy</h3>
+                    <ul class="text-sm text-slate-700 space-y-1">
+                        <li>• Operating Systems</li>
+                        <li>• Computer Hardware Basics</li>
+                        <li>• IT Customer Support Basics</li>
+                        <li>• Introduction to Cybersecurity</li>
+                    </ul>
+                </div>
+
+                <!-- PaperCut -->
+                <div class="cert-badge bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl border border-green-200">
+                    <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center text-white text-xl mb-4 shadow-lg">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 mb-2">PaperCut</h3>
+                    <ul class="text-sm text-slate-700 space-y-1">
+                        <li>• Certification PaperCut MF</li>
+                        <li>• PaperCut Hive (Cloud)</li>
+                    </ul>
+                </div>
+
+                <!-- Fortinet -->
+                <div class="cert-badge bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-2xl border border-red-200">
+                    <div class="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center text-white text-xl mb-4 shadow-lg">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 mb-2">Fortinet</h3>
+                    <ul class="text-sm text-slate-700 space-y-1">
+                        <li>• Certified Associate in Cybersecurity</li>
+                        <li>• Certified Fundamentals in Cybersecurity</li>
+                        <li>• Introduction to the Threat Landscape 3.0</li>
+                        <li>• Getting Started in Cybersecurity 3.0</li>
+                        <li>• FortiGate 7.6 Operator Self-Paced</li>
+                    </ul>
+                </div>
+
+                <!-- Sage -->
+                <div class="cert-badge bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-2xl border border-purple-200 md:col-span-2 lg:col-span-1">
+                    <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center text-white text-xl mb-4 shadow-lg">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 mb-2">Sage</h3>
+                    <ul class="text-sm text-slate-700 space-y-1">
+                        <li>• Safe gestion Commercial</li>
+                        <li>• Easy Tech - Gabon Libreville (2019)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 bg-slate-50 rounded-2xl p-8 border border-slate-200">
+                <h3 class="font-display text-2xl font-bold text-slate-900 mb-6 text-center">Formation Académique</h3>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                    <div class="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center text-white text-2xl">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="text-center md:text-left">
+                        <h4 class="font-bold text-xl text-slate-900">Bachelor en Télécommunications & Réseaux</h4>
+                        <p class="text-slate-600">Institut CERCO, Cotonou-Bénin (2014)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl font-bold mb-4">Contact</h2>
+                <p class="text-slate-400">Basé à Montréal, disponible pour des postes sur site ou à distance.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <a href="mailto:ahouansouange@live.fr" class="group bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-blue-500 transition-all text-center">
+                    <div class="w-14 h-14 bg-slate-700 rounded-full flex items-center justify-center text-blue-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Email</h3>
+                    <p class="text-slate-400 text-sm">ahouansouange@live.fr</p>
+                </a>
+
+                <a href="tel:+14162688673" class="group bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-green-500 transition-all text-center">
+                    <div class="w-14 h-14 bg-slate-700 rounded-full flex items-center justify-center text-green-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Téléphone</h3>
+                    <p class="text-slate-400 text-sm">+1 (416) 268-8673</p>
+                </a>
+
+                <div class="group bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-purple-500 transition-all text-center">
+                    <div class="w-14 h-14 bg-slate-700 rounded-full flex items-center justify-center text-purple-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Adresse</h3>
+                    <p class="text-slate-400 text-sm">7045 Rue Notre Dame E<br>Montréal, QC H1N 2G3</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center gap-6 mb-12">
+                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="w-14 h-14 bg-[#0077b5] rounded-full flex items-center justify-center text-white hover:bg-[#005885] transition-all transform hover:scale-110 shadow-lg">
+                    <i class="fab fa-linkedin-in text-2xl"></i>
+                </a>
+                <a href="#" class="w-14 h-14 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:bg-blue-500 hover:text-white transition-all transform hover:scale-110">
+                    <i class="fab fa-microsoft text-xl"></i>
+                </a>
+                <a href="mailto:ahouansouange@live.fr" class="w-14 h-14 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:bg-red-500 hover:text-white transition-all transform hover:scale-110">
+                    <i class="fas fa-envelope text-xl"></i>
+                </a>
+            </div>
+
+            <div class="text-center">
+                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-[#0077b5] hover:bg-[#005885] text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-blue-500/25">
+                    <i class="fab fa-linkedin text-2xl"></i>
+                    <span>Connectons-nous sur LinkedIn</span>
+                    <i class="fas fa-external-link-alt text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+                    AB
+                </div>
+                <span class="font-display font-bold text-slate-200">Ange-Marie BA</span>
+            </div>
+            <p class="text-sm">© 2024 - Portfolio professionnel</p>
+            <div class="flex gap-4 text-sm">
+                <span>Français: Professionnel</span>
+                <span>•</span>
+                <span>Anglais: Technique et fonctionnel</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.replace('h-20', 'h-16');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.replace('h-16', 'h-20');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.hover-card').forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = `all 0.6s ease-out ${index * 0.1}s`;
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
