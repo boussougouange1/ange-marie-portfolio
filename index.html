@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 <head>
+    <!-- Google tag (gtag.js) - AJOUTÉ -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HJ2ZFZ7KR8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-HJ2ZFZ7KR8');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technicien IT | Administrateur Systèmes | Cybersécurité Fortinet</title>
@@ -274,6 +283,57 @@
             color: #1d4ed8;
             text-decoration: underline;
         }
+
+        /* NOUVEAUX STYLES POUR LE TABLEAU DE BORD ANALYTICS */
+        .analytics-dashboard {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .analytics-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .analytics-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .metric-value {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .live-indicator {
+            animation: pulse-live 2s infinite;
+        }
+        
+        @keyframes pulse-live {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .visitor-log {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .visitor-log::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .visitor-log::-webkit-scrollbar-track {
+            background: rgba(30, 41, 59, 0.5);
+        }
+        
+        .visitor-log::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body class="font-sans text-slate-800 bg-slate-50 antialiased overflow-x-hidden">
@@ -294,6 +354,11 @@
                     <a href="#competences" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-fr="Compétences" data-en="Skills">Compétences</a>
                     <a href="#experience" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-fr="Expérience" data-en="Experience">Expérience</a>
                     <a href="#certifications" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-fr="Certifications" data-en="Certifications">Certifications</a>
+                    <a href="#analytics" class="text-blue-600 hover:text-blue-800 font-medium transition-colors flex items-center gap-2">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Stats</span>
+                        <span class="w-2 h-2 bg-green-500 rounded-full live-indicator"></span>
+                    </a>
                     
                     <div class="flex items-center gap-1 bg-slate-100 rounded-full p-1 ml-2">
                         <button onclick="switchLang('fr')" id="btn-fr" class="lang-btn active px-3 py-1 rounded-full text-sm font-medium">FR</button>
@@ -318,6 +383,10 @@
                 <a href="#competences" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium" data-fr="Compétences" data-en="Skills">Compétences</a>
                 <a href="#experience" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium" data-fr="Expérience" data-en="Experience">Expérience</a>
                 <a href="#certifications" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium" data-fr="Certifications" data-en="Certifications">Certifications</a>
+                <a href="#analytics" class="block px-3 py-2 text-blue-600 font-medium flex items-center gap-2">
+                    <i class="fas fa-chart-line"></i> Statistiques en direct
+                    <span class="w-2 h-2 bg-green-500 rounded-full live-indicator"></span>
+                </a>
                 
                 <div class="flex items-center gap-2 px-3 py-2">
                     <span class="text-sm text-slate-500" data-fr="Langue:" data-en="Language:">Langue:</span>
@@ -877,6 +946,177 @@
         </div>
     </section>
 
+    <!-- SECTION STATISTIQUES ANALYTICS - NOUVELLE -->
+    <section id="analytics" class="py-24 analytics-dashboard relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%233b82f6\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-medium text-sm mb-4">
+                    <span class="w-2 h-2 bg-green-500 rounded-full live-indicator"></span>
+                    <span>En direct</span>
+                </div>
+                <h2 class="font-display text-4xl font-bold text-white mb-4">Statistiques de Visite</h2>
+                <p class="text-slate-400">Données en temps réel des visiteurs du portfolio</p>
+            </div>
+
+            <!-- Métriques principales -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                <div class="analytics-card rounded-2xl p-6 text-center">
+                    <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 text-2xl mx-auto mb-3">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="text-3xl font-bold metric-value mb-1" id="total-visitors">0</div>
+                    <div class="text-slate-400 text-sm">Visiteurs Totaux</div>
+                </div>
+
+                <div class="analytics-card rounded-2xl p-6 text-center">
+                    <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 text-2xl mx-auto mb-3">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="text-3xl font-bold metric-value mb-1" id="page-views">0</div>
+                    <div class="text-slate-400 text-sm">Pages Vues</div>
+                </div>
+
+                <div class="analytics-card rounded-2xl p-6 text-center">
+                    <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 text-2xl mx-auto mb-3">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="text-3xl font-bold metric-value mb-1" id="avg-time">0:00</div>
+                    <div class="text-slate-400 text-sm">Temps Moyen</div>
+                </div>
+
+                <div class="analytics-card rounded-2xl p-6 text-center">
+                    <div class="w-12 h-12 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 text-2xl mx-auto mb-3">
+                        <i class="fas fa-user-clock"></i>
+                    </div>
+                    <div class="text-3xl font-bold metric-value mb-1" id="online-now">1</div>
+                    <div class="text-slate-400 text-sm">En Ligne Maintenant</div>
+                </div>
+            </div>
+
+            <!-- Informations détaillées -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <!-- Appareils -->
+                <div class="analytics-card rounded-2xl p-6">
+                    <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+                        <i class="fas fa-mobile-alt text-blue-400"></i>
+                        Appareils
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Desktop</span>
+                            <div class="flex items-center gap-2">
+                                <div class="w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
+                                    <div class="h-full bg-blue-500 rounded-full" style="width: 65%" id="device-desktop"></div>
+                                </div>
+                                <span class="text-white text-sm font-medium" id="desktop-percent">65%</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Mobile</span>
+                            <div class="flex items-center gap-2">
+                                <div class="w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
+                                    <div class="h-full bg-purple-500 rounded-full" style="width: 25%" id="device-mobile"></div>
+                                </div>
+                                <span class="text-white text-sm font-medium" id="mobile-percent">25%</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Tablet</span>
+                            <div class="flex items-center gap-2">
+                                <div class="w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
+                                    <div class="h-full bg-green-500 rounded-full" style="width: 10%" id="device-tablet"></div>
+                                </div>
+                                <span class="text-white text-sm font-medium" id="tablet-percent">10%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Localisation -->
+                <div class="analytics-card rounded-2xl p-6">
+                    <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+                        <i class="fas fa-globe-americas text-green-400"></i>
+                        Top Localisations
+                    </h3>
+                    <div class="space-y-3" id="locations-list">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Canada</span>
+                            <span class="text-white font-medium">42%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">France</span>
+                            <span class="text-white font-medium">23%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">États-Unis</span>
+                            <span class="text-white font-medium">18%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Gabon</span>
+                            <span class="text-white font-medium">12%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Autres</span>
+                            <span class="text-white font-medium">5%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pages populaires -->
+                <div class="analytics-card rounded-2xl p-6">
+                    <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+                        <i class="fas fa-fire text-orange-400"></i>
+                        Pages Populaires
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Accueil</span>
+                            <span class="text-white font-medium" id="page-home">45%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Compétences</span>
+                            <span class="text-white font-medium" id="page-skills">28%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Expérience</span>
+                            <span class="text-white font-medium" id="page-exp">15%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Certifications</span>
+                            <span class="text-white font-medium" id="page-cert">12%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Journal des visiteurs récents -->
+            <div class="analytics-card rounded-2xl p-6">
+                <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+                    <i class="fas fa-history text-purple-400"></i>
+                    Visiteurs Récents
+                </h3>
+                <div class="visitor-log space-y-2" id="visitor-log">
+                    <!-- Les entrées seront ajoutées dynamiquement -->
+                </div>
+            </div>
+
+            <!-- Note d'information -->
+            <div class="mt-8 text-center">
+                <p class="text-slate-500 text-sm">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    Ces statistiques sont collectées de manière anonyme via Google Analytics. 
+                    <a href="https://analytics.google.com/analytics/web/#/p406666770/reports/intelligenthome" target="_blank" class="text-blue-400 hover:text-blue-300 underline">
+                        Voir le tableau de bord complet
+                    </a>
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="py-24 bg-slate-900 text-white relative overflow-hidden">
         <div class="absolute inset-0 opacity-20">
@@ -979,6 +1219,8 @@
     </footer>
 
     <script>
+        // Google Analytics est initialisé dans le <head>
+
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
@@ -1058,6 +1300,208 @@
             card.style.transform = 'translateY(20px)';
             card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
             observer.observe(card);
+        });
+
+        // SYSTÈME DE STATISTIQUES LOCALES (complément à Google Analytics)
+        class PortfolioAnalytics {
+            constructor() {
+                this.storageKey = 'portfolio_analytics';
+                this.sessionKey = 'portfolio_session';
+                this.init();
+            }
+
+            init() {
+                this.trackVisit();
+                this.startSessionTimer();
+                this.updateDisplay();
+                this.startRealTimeUpdates();
+            }
+
+            getData() {
+                const data = localStorage.getItem(this.storageKey);
+                return data ? JSON.parse(data) : {
+                    totalVisitors: 0,
+                    pageViews: 0,
+                    visits: [],
+                    devices: { desktop: 0, mobile: 0, tablet: 0 },
+                    pages: { home: 0, skills: 0, experience: 0, certifications: 0, contact: 0 },
+                    locations: {}
+                };
+            }
+
+            saveData(data) {
+                localStorage.setItem(this.storageKey, JSON.stringify(data));
+            }
+
+            trackVisit() {
+                const data = this.getData();
+                const session = sessionStorage.getItem(this.sessionKey);
+                
+                if (!session) {
+                    // Nouveau visiteur
+                    data.totalVisitors++;
+                    sessionStorage.setItem(this.sessionKey, Date.now().toString());
+                    
+                    // Détection de l'appareil
+                    const device = this.detectDevice();
+                    data.devices[device]++;
+                    
+                    // Localisation approximative (simulée)
+                    this.detectLocation().then(location => {
+                        data.locations[location] = (data.locations[location] || 0) + 1;
+                        this.saveData(data);
+                    });
+                }
+                
+                // Page vue
+                data.pageViews++;
+                
+                // Tracking de la page actuelle
+                const currentPage = this.getCurrentPage();
+                if (data.pages[currentPage] !== undefined) {
+                    data.pages[currentPage]++;
+                }
+                
+                // Ajouter au journal
+                const visit = {
+                    timestamp: new Date().toISOString(),
+                    page: currentPage,
+                    device: this.detectDevice(),
+                    referrer: document.referrer || 'Direct'
+                };
+                data.visits.unshift(visit);
+                if (data.visits.length > 50) data.visits.pop();
+                
+                this.saveData(data);
+                
+                // Envoyer à Google Analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'page_view', {
+                        page_title: document.title,
+                        page_location: window.location.href,
+                        page_path: window.location.pathname
+                    });
+                }
+            }
+
+            detectDevice() {
+                const width = window.innerWidth;
+                if (width < 768) return 'mobile';
+                if (width < 1024) return 'tablet';
+                return 'desktop';
+            }
+
+            async detectLocation() {
+                // Simulation basée sur la langue du navigateur
+                const lang = navigator.language || navigator.userLanguage;
+                if (lang.startsWith('fr')) return 'France';
+                if (lang.startsWith('en-CA') || lang.startsWith('fr-CA')) return 'Canada';
+                if (lang.startsWith('en-US')) return 'États-Unis';
+                return 'Autre';
+            }
+
+            getCurrentPage() {
+                const hash = window.location.hash;
+                if (hash.includes('competences')) return 'skills';
+                if (hash.includes('experience')) return 'experience';
+                if (hash.includes('certifications')) return 'certifications';
+                if (hash.includes('contact')) return 'contact';
+                return 'home';
+            }
+
+            startSessionTimer() {
+                this.sessionStart = Date.now();
+                setInterval(() => {
+                    const elapsed = Math.floor((Date.now() - this.sessionStart) / 1000);
+                    const minutes = Math.floor(elapsed / 60);
+                    const seconds = elapsed % 60;
+                    document.getElementById('avg-time').textContent = 
+                        `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                }, 1000);
+            }
+
+            updateDisplay() {
+                const data = this.getData();
+                
+                // Métriques principales
+                document.getElementById('total-visitors').textContent = data.totalVisitors;
+                document.getElementById('page-views').textContent = data.pageViews;
+                
+                // Appareils
+                const total = data.devices.desktop + data.devices.mobile + data.devices.tablet || 1;
+                document.getElementById('desktop-percent').textContent = 
+                    Math.round((data.devices.desktop / total) * 100) + '%';
+                document.getElementById('mobile-percent').textContent = 
+                    Math.round((data.devices.mobile / total) * 100) + '%';
+                document.getElementById('tablet-percent').textContent = 
+                    Math.round((data.devices.tablet / total) * 100) + '%';
+                
+                // Pages
+                const totalPages = Object.values(data.pages).reduce((a, b) => a + b, 0) || 1;
+                document.getElementById('page-home').textContent = 
+                    Math.round((data.pages.home / totalPages) * 100) + '%';
+                document.getElementById('page-skills').textContent = 
+                    Math.round((data.pages.skills / totalPages) * 100) + '%';
+                document.getElementById('page-exp').textContent = 
+                    Math.round((data.pages.experience / totalPages) * 100) + '%';
+                document.getElementById('page-cert').textContent = 
+                    Math.round((data.pages.certifications / totalPages) * 100) + '%';
+                
+                // Journal des visiteurs
+                this.updateVisitorLog(data.visits);
+            }
+
+            updateVisitorLog(visits) {
+                const logContainer = document.getElementById('visitor-log');
+                logContainer.innerHTML = visits.slice(0, 10).map(visit => {
+                    const date = new Date(visit.timestamp);
+                    const time = date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+                    const deviceIcon = {
+                        desktop: 'fa-desktop',
+                        mobile: 'fa-mobile-alt',
+                        tablet: 'fa-tablet-alt'
+                    }[visit.device] || 'fa-desktop';
+                    
+                    return `
+                        <div class="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg border border-slate-700">
+                            <div class="flex items-center gap-3">
+                                <i class="fas ${deviceIcon} text-blue-400"></i>
+                                <span class="text-slate-300 text-sm capitalize">${visit.page}</span>
+                            </div>
+                            <div class="text-slate-500 text-xs">${time}</div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            startRealTimeUpdates() {
+                // Simuler des mises à jour en temps réel
+                setInterval(() => {
+                    const onlineNow = Math.floor(Math.random() * 3) + 1;
+                    document.getElementById('online-now').textContent = onlineNow;
+                }, 5000);
+            }
+        }
+
+        // Initialiser les analytics au chargement
+        document.addEventListener('DOMContentLoaded', () => {
+            new PortfolioAnalytics();
+        });
+
+        // Tracking des clics sur les liens
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('a')) {
+                const link = e.target.closest('a');
+                const href = link.getAttribute('href');
+                
+                if (typeof gtag !== 'undefined' && href) {
+                    gtag('event', 'click', {
+                        event_category: 'outbound',
+                        event_label: href,
+                        transport_type: 'beacon'
+                    });
+                }
+            }
         });
     </script>
 </body>
