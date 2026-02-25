@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +22,7 @@
                         'gradient': 'gradient 8s linear infinite',
                         'float': 'float 6s ease-in-out infinite',
                         'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
                     keyframes: {
                         gradient: {
@@ -190,6 +191,89 @@
             color: white;
             border-color: #3b82f6;
         }
+
+        .cert-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: white;
+            padding: 4px;
+        }
+
+        .cert-icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .skill-tag {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .experience-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .experience-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .tech-icon {
+            transition: all 0.3s ease;
+        }
+
+        .tech-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        .cert-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #3b82f6;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .cert-link:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body class="font-sans text-slate-800 bg-slate-50 antialiased overflow-x-hidden">
@@ -206,12 +290,11 @@
                 </div>
                 
                 <div class="hidden md:flex space-x-4 items-center">
-                    <a href="#accueil" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Accueil</a>
-                    <a href="#competences" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Compétences</a>
-                    <a href="#experience" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Expérience</a>
-                    <a href="#certifications" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Certifications</a>
+                    <a href="#accueil" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-fr="Accueil" data-en="Home">Accueil</a>
+                    <a href="#competences" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-fr="Compétences" data-en="Skills">Compétences</a>
+                    <a href="#experience" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-fr="Expérience" data-en="Experience">Expérience</a>
+                    <a href="#certifications" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-fr="Certifications" data-en="Certifications">Certifications</a>
                     
-                    <!-- Language Switcher -->
                     <div class="flex items-center gap-1 bg-slate-100 rounded-full p-1 ml-2">
                         <button onclick="switchLang('fr')" id="btn-fr" class="lang-btn active px-3 py-1 rounded-full text-sm font-medium">FR</button>
                         <button onclick="switchLang('en')" id="btn-en" class="lang-btn px-3 py-1 rounded-full text-sm font-medium">EN</button>
@@ -229,17 +312,15 @@
             </div>
         </div>
         
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden glass-effect border-t border-slate-200">
             <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#accueil" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium">Accueil</a>
-                <a href="#competences" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium">Compétences</a>
-                <a href="#experience" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium">Expérience</a>
-                <a href="#certifications" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium">Certifications</a>
+                <a href="#accueil" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium" data-fr="Accueil" data-en="Home">Accueil</a>
+                <a href="#competences" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium" data-fr="Compétences" data-en="Skills">Compétences</a>
+                <a href="#experience" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium" data-fr="Expérience" data-en="Experience">Expérience</a>
+                <a href="#certifications" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium" data-fr="Certifications" data-en="Certifications">Certifications</a>
                 
-                <!-- Language Switcher Mobile -->
                 <div class="flex items-center gap-2 px-3 py-2">
-                    <span class="text-sm text-slate-500">Langue:</span>
+                    <span class="text-sm text-slate-500" data-fr="Langue:" data-en="Language:">Langue:</span>
                     <button onclick="switchLang('fr')" class="lang-btn active px-3 py-1 rounded-full text-sm font-medium">FR</button>
                     <button onclick="switchLang('en')" class="lang-btn px-3 py-1 rounded-full text-sm font-medium">EN</button>
                 </div>
@@ -277,6 +358,21 @@
                         Spécialisé dans les environnements Windows, Microsoft 365, Active Directory, Entra ID et solutions PaperCut.
                     </p>
 
+                    <div class="flex flex-wrap gap-4 text-sm">
+                        <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-slate-200">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span data-fr="7+ ans d'expérience" data-en="7+ years experience">7+ ans d'expérience</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-slate-200">
+                            <i class="fas fa-certificate text-blue-500"></i>
+                            <span data-fr="15+ Certifications" data-en="15+ Certifications">15+ Certifications</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-slate-200">
+                            <i class="fas fa-globe text-purple-500"></i>
+                            <span data-fr="Bilingue FR/EN" data-en="Bilingual FR/EN">Bilingue FR/EN</span>
+                        </div>
+                    </div>
+
                     <div class="flex flex-wrap gap-4">
                         <a href="mailto:ahouansouange@live.fr" class="px-8 py-4 bg-slate-900 text-white rounded-full font-semibold hover:bg-slate-800 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
                             <i class="fas fa-paper-plane"></i>
@@ -300,16 +396,13 @@
                     </div>
                 </div>
 
-                <!-- Carte de profil avec photo -->
                 <div class="relative flex justify-center lg:justify-end">
                     <div class="profile-card rounded-3xl p-8 w-full max-w-md text-center relative overflow-hidden">
-                        <!-- Background decoration -->
                         <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-br from-blue-500/10 to-purple-600/10"></div>
                         
-                        <!-- Photo de profil avec badge AB -->
                         <div class="relative z-10 mb-6">
                             <div class="avatar-badge">
-                                <img src="photo.jpg"
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" 
                                      alt="Ange-Marie Boussougou Ahouansou" 
                                      class="profile-image mx-auto"
                                      id="profile-photo">
@@ -317,7 +410,7 @@
                         </div>
                         
                         <h2 class="font-display text-2xl font-bold text-slate-900 mb-1">Ange-Marie Boussougou</h2>
-                        <p class="text-slate-500 font-medium mb-6" data-fr="Technicien IT Senior" data-en="Senior IT Technician">Technicien IT Senior</p>
+                        <p class="text-slate-500 font-medium mb-6" data-fr="Technicien IT Senior / Administrateur Systèmes" data-en="Senior IT Technician / Systems Administrator">Technicien IT Senior / Administrateur Systèmes</p>
                         
                         <div class="grid grid-cols-2 gap-4">
                             <div class="stat-card">
@@ -345,8 +438,7 @@
                         </div>
                     </div>
 
-                    <!-- Floating elements -->
-                    <div class="absolute -bottom-4 -left-4 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 hidden lg:block">
+                    <div class="absolute -bottom-4 -left-4 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 hidden lg:block animate-float">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
                                 <i class="fas fa-check"></i>
@@ -358,7 +450,7 @@
             </div>
         </div>
 
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
             <i class="fas fa-chevron-down text-slate-400 text-2xl"></i>
         </div>
     </section>
@@ -372,9 +464,8 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Support IT -->
                 <div class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100">
-                    <div class="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 text-2xl mb-6">
+                    <div class="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 text-2xl mb-6 tech-icon">
                         <i class="fas fa-headset"></i>
                     </div>
                     <h3 class="font-display text-xl font-bold text-slate-900 mb-4" data-fr="IT Support & Helpdesk" data-en="IT Support & Helpdesk">IT Support & Helpdesk</h3>
@@ -388,9 +479,8 @@
                     </ul>
                 </div>
 
-                <!-- Microsoft 365 & Cloud -->
                 <div class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100">
-                    <div class="w-14 h-14 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600 text-2xl mb-6">
+                    <div class="w-14 h-14 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600 text-2xl mb-6 tech-icon">
                         <i class="fab fa-microsoft"></i>
                     </div>
                     <h3 class="font-display text-xl font-bold text-slate-900 mb-4">Microsoft 365 & Cloud</h3>
@@ -403,9 +493,8 @@
                     </ul>
                 </div>
 
-                <!-- Systèmes & Serveurs -->
                 <div class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100">
-                    <div class="w-14 h-14 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600 text-2xl mb-6">
+                    <div class="w-14 h-14 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600 text-2xl mb-6 tech-icon">
                         <i class="fas fa-server"></i>
                     </div>
                     <h3 class="font-display text-xl font-bold text-slate-900 mb-4" data-fr="Systèmes & Serveur" data-en="Systems & Server">Systèmes & Serveur</h3>
@@ -419,9 +508,8 @@
                     </ul>
                 </div>
 
-                <!-- Réseaux -->
                 <div class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100">
-                    <div class="w-14 h-14 rounded-xl bg-green-100 flex items-center justify-center text-green-600 text-2xl mb-6">
+                    <div class="w-14 h-14 rounded-xl bg-green-100 flex items-center justify-center text-green-600 text-2xl mb-6 tech-icon">
                         <i class="fas fa-network-wired"></i>
                     </div>
                     <h3 class="font-display text-xl font-bold text-slate-900 mb-4" data-fr="Réseaux" data-en="Networks">Réseaux</h3>
@@ -434,9 +522,8 @@
                     </ul>
                 </div>
 
-                <!-- PaperCut -->
                 <div class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100">
-                    <div class="w-14 h-14 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 text-2xl mb-6">
+                    <div class="w-14 h-14 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 text-2xl mb-6 tech-icon">
                         <i class="fas fa-print"></i>
                     </div>
                     <h3 class="font-display text-xl font-bold text-slate-900 mb-4" data-fr="Impression & Gestion Documentaire" data-en="Printing & Document Management">Impression & Gestion Documentaire</h3>
@@ -448,9 +535,8 @@
                     </ul>
                 </div>
 
-                <!-- Sécurité -->
                 <div class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100">
-                    <div class="w-14 h-14 rounded-xl bg-red-100 flex items-center justify-center text-red-600 text-2xl mb-6">
+                    <div class="w-14 h-14 rounded-xl bg-red-100 flex items-center justify-center text-red-600 text-2xl mb-6 tech-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3 class="font-display text-xl font-bold text-slate-900 mb-4" data-fr="Cybersécurité" data-en="Cybersecurity">Cybersécurité</h3>
@@ -461,6 +547,22 @@
                         <li class="flex items-start gap-2"><i class="fas fa-check text-red-500 mt-1"></i> <span data-fr="CCTV IP & Vidéosurveillance" data-en="CCTV IP & Video surveillance">CCTV IP & Vidéosurveillance</span></li>
                         <li class="flex items-start gap-2"><i class="fas fa-check text-red-500 mt-1"></i> <span data-fr="Sauvegardes RAID" data-en="RAID backups">Sauvegardes RAID</span></li>
                     </ul>
+                </div>
+            </div>
+
+            <div class="mt-16">
+                <h3 class="text-center text-lg font-semibold text-slate-700 mb-6" data-fr="Stack Technique" data-en="Technical Stack">Stack Technique</h3>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span class="skill-tag px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Windows Server</span>
+                    <span class="skill-tag px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Microsoft 365</span>
+                    <span class="skill-tag px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">Active Directory</span>
+                    <span class="skill-tag px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Entra ID</span>
+                    <span class="skill-tag px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-medium">PaperCut</span>
+                    <span class="skill-tag px-4 py-2 bg-red-100 text-red-700 rounded-full text-sm font-medium">Fortinet</span>
+                    <span class="skill-tag px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-medium">Cisco</span>
+                    <span class="skill-tag px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">VoIP</span>
+                    <span class="skill-tag px-4 py-2 bg-teal-100 text-teal-700 rounded-full text-sm font-medium">Hyper-V</span>
+                    <span class="skill-tag px-4 py-2 bg-pink-100 text-pink-700 rounded-full text-sm font-medium">Intune</span>
                 </div>
             </div>
         </div>
@@ -479,11 +581,10 @@
             <div class="relative">
                 <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 timeline-line rounded-full"></div>
 
-                <!-- HIGH-TECH 241 -->
                 <div class="relative mb-12 md:mb-0">
                     <div class="md:flex items-center justify-between">
                         <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
-                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
+                            <div class="experience-card bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
                                 <span class="text-blue-600 font-semibold text-sm">Novembre 2023 – Septembre 2024</span>
                                 <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Senior IT Support & Systems Technician</h3>
                                 <p class="text-slate-500 font-medium mb-3">HIGH-TECH 241 – Libreville, Gabon</p>
@@ -503,13 +604,12 @@
                     </div>
                 </div>
 
-                <!-- ANVA -->
                 <div class="relative mb-12 md:mb-0 md:mt-12">
                     <div class="md:flex items-center justify-between">
                         <div class="md:w-5/12 hidden md:block"></div>
                         <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg z-10"></div>
                         <div class="md:w-5/12 md:pl-8 mb-4 md:mb-0">
-                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
+                            <div class="experience-card bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
                                 <span class="text-purple-600 font-semibold text-sm">Mai 2021 – Septembre 2023</span>
                                 <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Senior IT Support IT et Systèmes d'Information</h3>
                                 <p class="text-slate-500 font-medium mb-3">Autorité Nationale de Vérification d'Audit – Libreville, Gabon</p>
@@ -524,11 +624,10 @@
                     </div>
                 </div>
 
-                <!-- SAFRIMAT -->
                 <div class="relative mb-12 md:mb-0 md:mt-12">
                     <div class="md:flex items-center justify-between">
                         <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
-                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
+                            <div class="experience-card bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
                                 <span class="text-green-600 font-semibold text-sm">Septembre 2020 – Mars 2021</span>
                                 <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Senior IT Support IT et Maintenance</h3>
                                 <p class="text-slate-500 font-medium mb-3">SAFRIMAT – Libreville, Gabon</p>
@@ -544,13 +643,12 @@
                     </div>
                 </div>
 
-                <!-- Centre de Dialyse -->
                 <div class="relative mb-12 md:mb-0 md:mt-12">
                     <div class="md:flex items-center justify-between">
                         <div class="md:w-5/12 hidden md:block"></div>
                         <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-orange-500 rounded-full border-4 border-white shadow-lg z-10"></div>
                         <div class="md:w-5/12 md:pl-8 mb-4 md:mb-0">
-                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
+                            <div class="experience-card bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
                                 <span class="text-orange-600 font-semibold text-sm">Avril 2019 – Mars 2020</span>
                                 <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Technicien support informatique</h3>
                                 <p class="text-slate-500 font-medium mb-3">Centre de Dialyse de Libreville – Gabon</p>
@@ -564,11 +662,10 @@
                     </div>
                 </div>
 
-                <!-- SYSTEMESCOMS -->
                 <div class="relative mb-12 md:mb-0 md:mt-12">
                     <div class="md:flex items-center justify-between">
                         <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
-                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
+                            <div class="experience-card bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
                                 <span class="text-indigo-600 font-semibold text-sm">Janvier 2016 – Novembre 2019</span>
                                 <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Consultant IT & Technicien support</h3>
                                 <p class="text-slate-500 font-medium mb-3">SYSTEMESCOMS – Libreville, Gabon</p>
@@ -584,13 +681,12 @@
                     </div>
                 </div>
 
-                <!-- DAVUM-GABON -->
                 <div class="relative mb-12 md:mb-0 md:mt-12">
                     <div class="md:flex items-center justify-between">
                         <div class="md:w-5/12 hidden md:block"></div>
                         <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-pink-500 rounded-full border-4 border-white shadow-lg z-10"></div>
                         <div class="md:w-5/12 md:pl-8 mb-4 md:mb-0">
-                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
+                            <div class="experience-card bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
                                 <span class="text-pink-600 font-semibold text-sm">Août 2015 – Décembre 2015</span>
                                 <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Technicien support informatique</h3>
                                 <p class="text-slate-500 font-medium mb-3">DAVUM-GABON – Libreville, Gabon</p>
@@ -603,11 +699,10 @@
                     </div>
                 </div>
 
-                <!-- Stage Intégral Technologies -->
                 <div class="relative md:mt-12">
                     <div class="md:flex items-center justify-between">
                         <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
-                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
+                            <div class="experience-card bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
                                 <span class="text-teal-600 font-semibold text-sm">Septembre 2014 – Décembre 2014</span>
                                 <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Technicien support informatique (stagiaire)</h3>
                                 <p class="text-slate-500 font-medium mb-3">Intégral Technologies – Libreville, Gabon</p>
@@ -656,23 +751,48 @@
 
                 <!-- Microsoft -->
                 <div class="cert-badge bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl border border-blue-200">
-                    <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white text-xl mb-4 shadow-lg">
-                        <i class="fab fa-microsoft"></i>
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" class="cert-logo">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-slate-900">Microsoft</h3>
+                        </div>
                     </div>
-                    <h3 class="font-bold text-slate-900 mb-2">Microsoft</h3>
-                    <ul class="text-sm text-slate-700 space-y-1">
-                        <li>• <span data-fr="Prise en main des identités et de l'accès (Microsoft Entra ID)" data-en="Managing identities and access (Microsoft Entra ID)">Prise en main des identités et de l'accès (Microsoft Entra ID)</span></li>
-                        <li>• <span data-fr="Administrer Active Directory Domain Services" data-en="Administer Active Directory Domain Services">Administrer Active Directory Domain Services</span></li>
-                        <li>• <span data-fr="Azure Fundamentals (AZ-900) - en préparation" data-en="Azure Fundamentals (AZ-900) - in preparation">Azure Fundamentals (AZ-900) - en préparation</span></li>
+                    <ul class="text-sm text-slate-700 space-y-2">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-blue-500 mt-1 text-xs"></i>
+                            <div>
+                                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials/c929434037b4e87?ref=https%3A%2F%2Fwww.linkedin.com%2F" target="_blank" class="cert-link">
+                                    <span data-fr="Prise en main des identités et de l'accès (Microsoft Entra ID)" data-en="Managing identities and access (Microsoft Entra ID)">Prise en main des identités et de l'accès (Microsoft Entra ID)</span>
+                                    <i class="fas fa-external-link-alt text-xs"></i>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-blue-500 mt-1 text-xs"></i>
+                            <div>
+                                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials/9916e2bb6d34eab6?ref=https%3A%2F%2Fwww.linkedin.com%2F" target="_blank" class="cert-link">
+                                    <span data-fr="Administrer Active Directory Domain Services" data-en="Administer Active Directory Domain Services">Administrer Active Directory Domain Services</span>
+                                    <i class="fas fa-external-link-alt text-xs"></i>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-clock text-blue-400 mt-1 text-xs"></i>
+                            <span data-fr="Azure Fundamentals (AZ-900) - en préparation" data-en="Azure Fundamentals (AZ-900) - in preparation">Azure Fundamentals (AZ-900) - en préparation</span>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- LinkedIn Learning -->
                 <div class="cert-badge bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl border border-blue-200">
-                    <div class="w-12 h-12 bg-[#0077b5] rounded-lg flex items-center justify-center text-white text-xl mb-4 shadow-lg">
-                        <i class="fab fa-linkedin"></i>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="cert-icon-box bg-[#0077b5]">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-slate-900">LinkedIn Learning</h3>
+                        </div>
                     </div>
-                    <h3 class="font-bold text-slate-900 mb-2">LinkedIn Learning</h3>
                     <ul class="text-sm text-slate-700 space-y-1">
                         <li>• <span data-fr="Azure : Configurer et gérer Microsoft Entra ID" data-en="Azure: Configure and manage Microsoft Entra ID">Azure : Configurer et gérer Microsoft Entra ID</span></li>
                         <li>• Enterprise Mobility Suite</li>
@@ -683,10 +803,12 @@
 
                 <!-- Cisco -->
                 <div class="cert-badge bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-2xl border border-orange-200">
-                    <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center text-white text-xl mb-4 shadow-lg">
-                        <i class="fas fa-network-wired"></i>
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Cisco_logo.svg" alt="Cisco" class="cert-logo">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-slate-900">Cisco Networking Academy</h3>
+                        </div>
                     </div>
-                    <h3 class="font-bold text-slate-900 mb-2">Cisco Networking Academy</h3>
                     <ul class="text-sm text-slate-700 space-y-1">
                         <li>• Operating Systems</li>
                         <li>• Computer Hardware Basics</li>
@@ -697,10 +819,12 @@
 
                 <!-- PaperCut -->
                 <div class="cert-badge bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl border border-green-200">
-                    <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center text-white text-xl mb-4 shadow-lg">
-                        <i class="fas fa-print"></i>
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="https://boussougouange1.github.io/ange-marie-portfolio/images/papercut.png" alt="PaperCut" class="cert-logo">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-slate-900">PaperCut</h3>
+                        </div>
                     </div>
-                    <h3 class="font-bold text-slate-900 mb-2">PaperCut</h3>
                     <ul class="text-sm text-slate-700 space-y-1">
                         <li>• <span data-fr="Certification PaperCut MF" data-en="PaperCut MF Certification">Certification PaperCut MF</span></li>
                         <li>• PaperCut Hive (Cloud)</li>
@@ -709,10 +833,12 @@
 
                 <!-- Fortinet -->
                 <div class="cert-badge bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-2xl border border-red-200">
-                    <div class="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center text-white text-xl mb-4 shadow-lg">
-                        <i class="fas fa-shield-alt"></i>
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="https://boussougouange1.github.io/ange-marie-portfolio/images/fortinet.png" alt="Fortinet" class="cert-logo">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-slate-900">Fortinet</h3>
+                        </div>
                     </div>
-                    <h3 class="font-bold text-slate-900 mb-2">Fortinet</h3>
                     <ul class="text-sm text-slate-700 space-y-1">
                         <li>• Certified Associate in Cybersecurity</li>
                         <li>• Certified Fundamentals in Cybersecurity</li>
@@ -722,12 +848,14 @@
                     </ul>
                 </div>
 
-                <!-- Sage - MODIFIÉ -->
-                <div class="cert-badge bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-2xl border border-purple-200 md:col-span-2 lg:col-span-1">
-                    <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center text-white text-xl mb-4 shadow-lg">
-                        <i class="fas fa-calculator"></i>
+                <!-- Sage -->
+                <div class="cert-badge bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl border border-green-200 md:col-span-2 lg:col-span-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="https://boussougouange1.github.io/ange-marie-portfolio/images/sage.png" alt="Sage" class="cert-logo">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-slate-900">Sage</h3>
+                        </div>
                     </div>
-                    <h3 class="font-bold text-slate-900 mb-2">Sage</h3>
                     <ul class="text-sm text-slate-700 space-y-1">
                         <li>• <span data-fr="Safe gestion Commercial" data-en="Safe Commercial Management">Safe gestion Commercial</span></li>
                     </ul>
@@ -752,7 +880,7 @@
     <!-- Contact Section -->
     <section id="contact" class="py-24 bg-slate-900 text-white relative overflow-hidden">
         <div class="absolute inset-0 opacity-20">
-            <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg \'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+            <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
         </div>
 
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -787,7 +915,6 @@
                 </div>
             </div>
 
-            <!-- Boutons Microsoft Learn et Credly -->
             <div class="grid md:grid-cols-2 gap-6 mb-12 max-w-2xl mx-auto">
                 <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank" class="microsoft-btn px-8 py-4 text-white rounded-full font-semibold flex items-center justify-center gap-3 transform hover:scale-105 shadow-lg">
                     <i class="fab fa-microsoft text-2xl"></i>
@@ -852,32 +979,23 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
 
-        // Language switcher
         let currentLang = 'fr';
         
         function switchLang(lang) {
             currentLang = lang;
-            
-            // Update buttons
             document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-            
-            // Update all elements with data-fr and data-en attributes
             document.querySelectorAll('[data-fr][data-en]').forEach(el => {
                 el.textContent = el.getAttribute('data-' + lang);
             });
-            
-            // Update HTML lang attribute
             document.documentElement.lang = lang;
         }
 
-        // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
@@ -889,27 +1007,18 @@
             }
         });
 
-        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     document.getElementById('mobile-menu').classList.add('hidden');
                 }
             });
         });
 
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -919,12 +1028,11 @@
             });
         }, observerOptions);
 
-        // Observe all cards
-        document.querySelectorAll('.hover-card').forEach((el, index) => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = `all 0.6s ease-out ${index * 0.1}s`;
-            observer.observe(el);
+        document.querySelectorAll('.hover-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
         });
     </script>
 </body>
