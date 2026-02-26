@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 <head>
-    <!-- Google tag (gtag.js) - AJOUTÉ -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JXX948T6KN"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -284,7 +284,6 @@
             text-decoration: underline;
         }
 
-        /* NOUVEAUX STYLES POUR LE TABLEAU DE BORD ANALYTICS */
         .analytics-dashboard {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             border: 1px solid rgba(59, 130, 246, 0.2);
@@ -334,9 +333,120 @@
             background: #3b82f6;
             border-radius: 3px;
         }
+
+        .contact-form-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .contact-form-overlay.active {
+            display: flex;
+        }
+
+        .contact-form-container {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .device-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .device-icon.active {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
+        }
     </style>
 </head>
 <body class="font-sans text-slate-800 bg-slate-50 antialiased overflow-x-hidden">
+
+    <!-- Contact Form Modal -->
+    <div id="contact-modal" class="contact-form-overlay">
+        <div class="contact-form-container">
+            <button onclick="closeContactForm()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-colors">
+                <i class="fas fa-times text-slate-600"></i>
+            </button>
+            
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-4">
+                    <i class="fas fa-paper-plane"></i>
+                </div>
+                <h3 class="font-display text-2xl font-bold text-slate-900" data-fr="Me contacter" data-en="Contact Me">Me contacter</h3>
+                <p class="text-slate-500 mt-2" data-fr="Remplissez ce formulaire et je vous répondrai dans les plus brefs délais." data-en="Fill out this form and I will get back to you as soon as possible.">Remplissez ce formulaire et je vous répondrai dans les plus brefs délais.</p>
+            </div>
+
+            <form id="contact-form" onsubmit="handleContactSubmit(event)">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1" data-fr="Nom complet" data-en="Full Name">Nom complet</label>
+                        <input type="text" required class="form-input" data-fr-placeholder="Votre nom" data-en-placeholder="Your name" placeholder="Votre nom">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
+                        <input type="email" required class="form-input" data-fr-placeholder="votre@email.com" data-en-placeholder="your@email.com" placeholder="votre@email.com">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1" data-fr="Sujet" data-en="Subject">Sujet</label>
+                        <select class="form-input" id="contact-subject">
+                            <option value="opportunity" data-fr="Opportunité professionnelle" data-en="Job Opportunity">Opportunité professionnelle</option>
+                            <option value="project" data-fr="Projet" data-en="Project">Projet</option>
+                            <option value="question" data-fr="Question technique" data-en="Technical Question">Question technique</option>
+                            <option value="other" data-fr="Autre" data-en="Other">Autre</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1" data-fr="Message" data-en="Message">Message</label>
+                        <textarea rows="4" required class="form-input resize-none" data-fr-placeholder="Votre message..." data-en-placeholder="Your message..." placeholder="Votre message..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-semibold hover:shadow-lg transform hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                        <i class="fas fa-paper-plane"></i>
+                        <span data-fr="Envoyer le message" data-en="Send Message">Envoyer le message</span>
+                    </button>
+                </div>
+            </form>
+
+            <div class="mt-6 pt-6 border-t border-slate-200 text-center">
+                <p class="text-sm text-slate-500 mb-3" data-fr="Ou contactez-moi directement via :" data-en="Or contact me directly via:">Ou contactez-moi directement via :</p>
+                <a href="mailto:ahouansouange@live.fr" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium">
+                    <i class="fas fa-envelope"></i>
+                    ahouansouange@live.fr
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-effect border-b border-slate-200/50 transition-all duration-300" id="navbar">
@@ -356,7 +466,7 @@
                     <a href="#certifications" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-fr="Certifications" data-en="Certifications">Certifications</a>
                     <a href="#analytics" class="text-blue-600 hover:text-blue-800 font-medium transition-colors flex items-center gap-2">
                         <i class="fas fa-chart-line"></i>
-                        <span>Stats</span>
+                        <span data-fr="Stats" data-en="Stats">Stats</span>
                         <span class="w-2 h-2 bg-green-500 rounded-full live-indicator"></span>
                     </a>
                     
@@ -384,7 +494,7 @@
                 <a href="#experience" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium" data-fr="Expérience" data-en="Experience">Expérience</a>
                 <a href="#certifications" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium" data-fr="Certifications" data-en="Certifications">Certifications</a>
                 <a href="#analytics" class="block px-3 py-2 text-blue-600 font-medium flex items-center gap-2">
-                    <i class="fas fa-chart-line"></i> Statistiques en direct
+                    <i class="fas fa-chart-line"></i> <span data-fr="Statistiques en direct" data-en="Live Statistics">Statistiques en direct</span>
                     <span class="w-2 h-2 bg-green-500 rounded-full live-indicator"></span>
                 </a>
                 
@@ -443,10 +553,10 @@
                     </div>
 
                     <div class="flex flex-wrap gap-4">
-                        <a href="mailto:ahouansouange@live.fr" class="px-8 py-4 bg-slate-900 text-white rounded-full font-semibold hover:bg-slate-800 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
+                        <button onclick="openContactForm()" class="px-8 py-4 bg-slate-900 text-white rounded-full font-semibold hover:bg-slate-800 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
                             <i class="fas fa-paper-plane"></i>
                             <span data-fr="Me contacter" data-en="Contact me">Me contacter</span>
-                        </a>
+                        </button>
                         <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="linkedin-btn px-8 py-4 text-white rounded-full font-semibold flex items-center gap-2 transform hover:scale-105 shadow-lg">
                             <i class="fab fa-linkedin text-xl"></i>
                             <span data-fr="Voir mon LinkedIn" data-en="View my LinkedIn">Voir mon LinkedIn</span>
@@ -500,9 +610,9 @@
                                 <a href="mailto:ahouansouange@live.fr" class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-red-500 hover:text-white transition-all">
                                     <i class="fas fa-envelope text-xl"></i>
                                 </a>
-                                <a href="tel:+14162688673" class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-green-500 hover:text-white transition-all">
+                                <button onclick="openContactForm()" class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-green-500 hover:text-white transition-all">
                                     <i class="fas fa-phone text-xl"></i>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -946,7 +1056,7 @@
         </div>
     </section>
 
-    <!-- SECTION STATISTIQUES ANALYTICS - NOUVELLE -->
+    <!-- SECTION STATISTIQUES ANALYTICS - MULTILINGUE ET OPTIMISÉE -->
     <section id="analytics" class="py-24 analytics-dashboard relative overflow-hidden">
         <div class="absolute inset-0 opacity-10">
             <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%233b82f6\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
@@ -956,10 +1066,10 @@
             <div class="text-center mb-12">
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-medium text-sm mb-4">
                     <span class="w-2 h-2 bg-green-500 rounded-full live-indicator"></span>
-                    <span>En direct</span>
+                    <span data-fr="En direct" data-en="Live">En direct</span>
                 </div>
-                <h2 class="font-display text-4xl font-bold text-white mb-4">Statistiques de Visite</h2>
-                <p class="text-slate-400">Données en temps réel des visiteurs du portfolio</p>
+                <h2 class="font-display text-4xl font-bold text-white mb-4" data-fr="Statistiques de Visite" data-en="Visit Statistics">Statistiques de Visite</h2>
+                <p class="text-slate-400" data-fr="Données en temps réel des visiteurs du portfolio" data-en="Real-time portfolio visitor data">Données en temps réel des visiteurs du portfolio</p>
             </div>
 
             <!-- Métriques principales -->
@@ -969,7 +1079,7 @@
                         <i class="fas fa-users"></i>
                     </div>
                     <div class="text-3xl font-bold metric-value mb-1" id="total-visitors">0</div>
-                    <div class="text-slate-400 text-sm">Visiteurs Totaux</div>
+                    <div class="text-slate-400 text-sm" data-fr="Visiteurs Totaux" data-en="Total Visitors">Visiteurs Totaux</div>
                 </div>
 
                 <div class="analytics-card rounded-2xl p-6 text-center">
@@ -977,7 +1087,7 @@
                         <i class="fas fa-eye"></i>
                     </div>
                     <div class="text-3xl font-bold metric-value mb-1" id="page-views">0</div>
-                    <div class="text-slate-400 text-sm">Pages Vues</div>
+                    <div class="text-slate-400 text-sm" data-fr="Pages Vues" data-en="Page Views">Pages Vues</div>
                 </div>
 
                 <div class="analytics-card rounded-2xl p-6 text-center">
@@ -985,7 +1095,7 @@
                         <i class="fas fa-clock"></i>
                     </div>
                     <div class="text-3xl font-bold metric-value mb-1" id="avg-time">0:00</div>
-                    <div class="text-slate-400 text-sm">Temps Moyen</div>
+                    <div class="text-slate-400 text-sm" data-fr="Temps Moyen" data-en="Avg. Time">Temps Moyen</div>
                 </div>
 
                 <div class="analytics-card rounded-2xl p-6 text-center">
@@ -993,7 +1103,7 @@
                         <i class="fas fa-user-clock"></i>
                     </div>
                     <div class="text-3xl font-bold metric-value mb-1" id="online-now">1</div>
-                    <div class="text-slate-400 text-sm">En Ligne Maintenant</div>
+                    <div class="text-slate-400 text-sm" data-fr="En Ligne" data-en="Online Now">En Ligne</div>
                 </div>
             </div>
 
@@ -1003,36 +1113,56 @@
                 <div class="analytics-card rounded-2xl p-6">
                     <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
                         <i class="fas fa-mobile-alt text-blue-400"></i>
-                        Appareils
+                        <span data-fr="Appareils" data-en="Devices">Appareils</span>
                     </h3>
-                    <div class="space-y-3">
-                        <div class="flex justify-between items-center">
-                            <span class="text-slate-400 text-sm">Desktop</span>
+                    <div class="space-y-4" id="devices-container">
+                        <div class="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg border border-slate-700" id="device-desktop-row">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-desktop text-blue-400 device-icon" id="icon-desktop"></i>
+                                <span class="text-slate-300 text-sm" data-fr="Ordinateur" data-en="Desktop">Ordinateur</span>
+                            </div>
                             <div class="flex items-center gap-2">
                                 <div class="w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
-                                    <div class="h-full bg-blue-500 rounded-full" style="width: 65%" id="device-desktop"></div>
+                                    <div class="h-full bg-blue-500 rounded-full transition-all duration-500" style="width: 0%" id="device-desktop-bar"></div>
                                 </div>
-                                <span class="text-white text-sm font-medium" id="desktop-percent">65%</span>
+                                <span class="text-white text-sm font-medium w-10 text-right" id="device-desktop-percent">0%</span>
                             </div>
                         </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-slate-400 text-sm">Mobile</span>
+                        
+                        <div class="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg border border-slate-700" id="device-mobile-row">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-mobile-alt text-purple-400 device-icon" id="icon-mobile"></i>
+                                <span class="text-slate-300 text-sm" data-fr="Téléphone" data-en="Mobile">Téléphone</span>
+                            </div>
                             <div class="flex items-center gap-2">
                                 <div class="w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
-                                    <div class="h-full bg-purple-500 rounded-full" style="width: 25%" id="device-mobile"></div>
+                                    <div class="h-full bg-purple-500 rounded-full transition-all duration-500" style="width: 0%" id="device-mobile-bar"></div>
                                 </div>
-                                <span class="text-white text-sm font-medium" id="mobile-percent">25%</span>
+                                <span class="text-white text-sm font-medium w-10 text-right" id="device-mobile-percent">0%</span>
                             </div>
                         </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-slate-400 text-sm">Tablet</span>
+                        
+                        <div class="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg border border-slate-700" id="device-tablet-row">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-tablet-alt text-green-400 device-icon" id="icon-tablet"></i>
+                                <span class="text-slate-300 text-sm" data-fr="Tablette" data-en="Tablet">Tablette</span>
+                            </div>
                             <div class="flex items-center gap-2">
                                 <div class="w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
-                                    <div class="h-full bg-green-500 rounded-full" style="width: 10%" id="device-tablet"></div>
+                                    <div class="h-full bg-green-500 rounded-full transition-all duration-500" style="width: 0%" id="device-tablet-bar"></div>
                                 </div>
-                                <span class="text-white text-sm font-medium" id="tablet-percent">10%</span>
+                                <span class="text-white text-sm font-medium w-10 text-right" id="device-tablet-percent">0%</span>
                             </div>
                         </div>
+                    </div>
+                    
+                    <!-- Current Device Indicator -->
+                    <div class="mt-4 p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                        <p class="text-xs text-blue-300 text-center">
+                            <i class="fas fa-info-circle mr-1"></i>
+                            <span data-fr="Votre appareil actuel : " data-en="Your current device: ">Votre appareil actuel : </span>
+                            <span id="current-device" class="font-semibold text-blue-400">-</span>
+                        </p>
                     </div>
                 </div>
 
@@ -1040,29 +1170,10 @@
                 <div class="analytics-card rounded-2xl p-6">
                     <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
                         <i class="fas fa-globe-americas text-green-400"></i>
-                        Top Localisations
+                        <span data-fr="Top Localisations" data-en="Top Locations">Top Localisations</span>
                     </h3>
                     <div class="space-y-3" id="locations-list">
-                        <div class="flex justify-between items-center">
-                            <span class="text-slate-400 text-sm">Canada</span>
-                            <span class="text-white font-medium">42%</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-slate-400 text-sm">France</span>
-                            <span class="text-white font-medium">23%</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-slate-400 text-sm">États-Unis</span>
-                            <span class="text-white font-medium">18%</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-slate-400 text-sm">Gabon</span>
-                            <span class="text-white font-medium">12%</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-slate-400 text-sm">Autres</span>
-                            <span class="text-white font-medium">5%</span>
-                        </div>
+                        <!-- Rempli dynamiquement -->
                     </div>
                 </div>
 
@@ -1070,25 +1181,10 @@
                 <div class="analytics-card rounded-2xl p-6">
                     <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
                         <i class="fas fa-fire text-orange-400"></i>
-                        Pages Populaires
+                        <span data-fr="Pages Populaires" data-en="Popular Pages">Pages Populaires</span>
                     </h3>
-                    <div class="space-y-3">
-                        <div class="flex justify-between items-center">
-                            <span class="text-slate-400 text-sm">Accueil</span>
-                            <span class="text-white font-medium" id="page-home">45%</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-slate-400 text-sm">Compétences</span>
-                            <span class="text-white font-medium" id="page-skills">28%</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-slate-400 text-sm">Expérience</span>
-                            <span class="text-white font-medium" id="page-exp">15%</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-slate-400 text-sm">Certifications</span>
-                            <span class="text-white font-medium" id="page-cert">12%</span>
-                        </div>
+                    <div class="space-y-3" id="pages-list">
+                        <!-- Rempli dynamiquement -->
                     </div>
                 </div>
             </div>
@@ -1097,7 +1193,7 @@
             <div class="analytics-card rounded-2xl p-6">
                 <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
                     <i class="fas fa-history text-purple-400"></i>
-                    Visiteurs Récents
+                    <span data-fr="Visiteurs Récents" data-en="Recent Visitors">Visiteurs Récents</span>
                 </h3>
                 <div class="visitor-log space-y-2" id="visitor-log">
                     <!-- Les entrées seront ajoutées dynamiquement -->
@@ -1108,9 +1204,9 @@
             <div class="mt-8 text-center">
                 <p class="text-slate-500 text-sm">
                     <i class="fas fa-info-circle mr-2"></i>
-                    Ces statistiques sont collectées de manière anonyme via Google Analytics. 
+                    <span data-fr="Ces statistiques sont collectées de manière anonyme. " data-en="These statistics are collected anonymously. ">Ces statistiques sont collectées de manière anonyme. </span>
                     <a href="https://analytics.google.com/analytics/web/#/p406666770/reports/intelligenthome" target="_blank" class="text-blue-400 hover:text-blue-300 underline">
-                        Voir le tableau de bord complet
+                        <span data-fr="Voir le tableau de bord complet" data-en="View full dashboard">Voir le tableau de bord complet</span>
                     </a>
                 </p>
             </div>
@@ -1130,21 +1226,21 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <a href="mailto:ahouansouange@live.fr" class="group bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-blue-500 transition-all text-center">
+                <button onclick="openContactForm()" class="group bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-blue-500 transition-all text-center w-full">
                     <div class="w-14 h-14 bg-slate-700 rounded-full flex items-center justify-center text-blue-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform">
                         <i class="fas fa-envelope"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2">Email</h3>
                     <p class="text-slate-400 text-sm">ahouansouange@live.fr</p>
-                </a>
+                </button>
 
-                <a href="tel:+14162688673" class="group bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-green-500 transition-all text-center">
+                <button onclick="openContactForm()" class="group bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-green-500 transition-all text-center w-full">
                     <div class="w-14 h-14 bg-slate-700 rounded-full flex items-center justify-center text-green-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform">
                         <i class="fas fa-phone"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2" data-fr="Téléphone" data-en="Phone">Téléphone</h3>
-                    <p class="text-slate-400 text-sm">+1 (416) 268-8673</p>
-                </a>
+                    <p class="text-slate-400 text-sm" data-fr="Cliquez pour voir" data-en="Click to view">Cliquez pour voir</p>
+                </button>
 
                 <div class="group bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-purple-500 transition-all text-center">
                     <div class="w-14 h-14 bg-slate-700 rounded-full flex items-center justify-center text-purple-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform">
@@ -1185,9 +1281,9 @@
                 <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank" class="w-14 h-14 bg-[#ff6b00] rounded-full flex items-center justify-center text-white hover:bg-[#e65100] transition-all transform hover:scale-110 shadow-lg">
                     <i class="fas fa-award text-xl"></i>
                 </a>
-                <a href="mailto:ahouansouange@live.fr" class="w-14 h-14 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:bg-red-500 hover:text-white transition-all transform hover:scale-110">
+                <button onclick="openContactForm()" class="w-14 h-14 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:bg-red-500 hover:text-white transition-all transform hover:scale-110">
                     <i class="fas fa-envelope text-xl"></i>
-                </a>
+                </button>
             </div>
 
             <div class="text-center">
@@ -1228,6 +1324,62 @@
 
         let currentLang = 'fr';
         
+        // Translations pour la section Analytics
+        const analyticsTranslations = {
+            fr: {
+                live: 'En direct',
+                visitStats: 'Statistiques de Visite',
+                realTimeData: 'Données en temps réel des visiteurs du portfolio',
+                totalVisitors: 'Visiteurs Totaux',
+                pageViews: 'Pages Vues',
+                avgTime: 'Temps Moyen',
+                onlineNow: 'En Ligne',
+                devices: 'Appareils',
+                desktop: 'Ordinateur',
+                mobile: 'Téléphone',
+                tablet: 'Tablette',
+                currentDevice: 'Votre appareil actuel : ',
+                topLocations: 'Top Localisations',
+                popularPages: 'Pages Populaires',
+                recentVisitors: 'Visiteurs Récents',
+                anonymousStats: 'Ces statistiques sont collectées de manière anonyme. ',
+                viewDashboard: 'Voir le tableau de bord complet',
+                home: 'Accueil',
+                skills: 'Compétences',
+                experience: 'Expérience',
+                certifications: 'Certifications',
+                contact: 'Contact',
+                direct: 'Direct',
+                justNow: 'À l\'instant'
+            },
+            en: {
+                live: 'Live',
+                visitStats: 'Visit Statistics',
+                realTimeData: 'Real-time portfolio visitor data',
+                totalVisitors: 'Total Visitors',
+                pageViews: 'Page Views',
+                avgTime: 'Avg. Time',
+                onlineNow: 'Online',
+                devices: 'Devices',
+                desktop: 'Desktop',
+                mobile: 'Mobile',
+                tablet: 'Tablet',
+                currentDevice: 'Your current device: ',
+                topLocations: 'Top Locations',
+                popularPages: 'Popular Pages',
+                recentVisitors: 'Recent Visitors',
+                anonymousStats: 'These statistics are collected anonymously. ',
+                viewDashboard: 'View full dashboard',
+                home: 'Home',
+                skills: 'Skills',
+                experience: 'Experience',
+                certifications: 'Certifications',
+                contact: 'Contact',
+                direct: 'Direct',
+                justNow: 'Just now'
+            }
+        };
+
         function switchLang(lang) {
             currentLang = lang;
             document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
@@ -1240,6 +1392,11 @@
                 } else {
                     el.textContent = el.getAttribute('data-' + lang);
                 }
+            });
+            
+            // Met à jour les placeholders de formulaire
+            document.querySelectorAll('[data-fr-placeholder][data-en-placeholder]').forEach(el => {
+                el.placeholder = el.getAttribute('data-' + lang + '-placeholder');
             });
             
             // Met à jour le titre principal du hero
@@ -1260,7 +1417,48 @@
                 document.title = "Technicien IT | Administrateur Systèmes | Cybersécurité Fortinet";
             }
             
+            // Met à jour la section Analytics
+            updateAnalyticsLanguage();
+            
             document.documentElement.lang = lang;
+        }
+
+        function updateAnalyticsLanguage() {
+            const t = analyticsTranslations[currentLang];
+            
+            // Titres principaux
+            const analyticsSection = document.getElementById('analytics');
+            analyticsSection.querySelector('h2').textContent = t.visitStats;
+            analyticsSection.querySelector('p').textContent = t.realTimeData;
+            
+            // Métriques
+            const cards = analyticsSection.querySelectorAll('.analytics-card');
+            cards[0].querySelector('.text-slate-400').textContent = t.totalVisitors;
+            cards[1].querySelector('.text-slate-400').textContent = t.pageViews;
+            cards[2].querySelector('.text-slate-400').textContent = t.avgTime;
+            cards[3].querySelector('.text-slate-400').textContent = t.onlineNow;
+            
+            // Section Appareils
+            const deviceCard = cards[4];
+            deviceCard.querySelector('h3 span').textContent = t.devices;
+            deviceCard.querySelector('#device-desktop-row .text-slate-300').textContent = t.desktop;
+            deviceCard.querySelector('#device-mobile-row .text-slate-300').textContent = t.mobile;
+            deviceCard.querySelector('#device-tablet-row .text-slate-300').textContent = t.tablet;
+            deviceCard.querySelector('#current-device').previousSibling.textContent = t.currentDevice + ' ';
+            
+            // Autres sections
+            cards[5].querySelector('h3 span').textContent = t.topLocations;
+            cards[6].querySelector('h3 span').textContent = t.popularPages;
+            cards[7].querySelector('h3 span').textContent = t.recentVisitors;
+            
+            // Footer note
+            const note = analyticsSection.querySelector('.text-slate-500');
+            note.innerHTML = `<i class="fas fa-info-circle mr-2"></i>${t.anonymousStats}<a href="https://analytics.google.com/analytics/web/#/p406666770/reports/intelligenthome" target="_blank" class="text-blue-400 hover:text-blue-300 underline">${t.viewDashboard}</a>`;
+            
+            // Rafraîchir les listes
+            if (window.portfolioAnalytics) {
+                window.portfolioAnalytics.updateDisplay();
+            }
         }
 
         window.addEventListener('scroll', function() {
@@ -1302,11 +1500,12 @@
             observer.observe(card);
         });
 
-        // SYSTÈME DE STATISTIQUES LOCALES (complément à Google Analytics)
+        // SYSTÈME DE STATISTIQUES AVANCÉ
         class PortfolioAnalytics {
             constructor() {
-                this.storageKey = 'portfolio_analytics';
-                this.sessionKey = 'portfolio_session';
+                this.storageKey = 'portfolio_analytics_v2';
+                this.sessionKey = 'portfolio_session_v2';
+                this.currentDevice = this.detectDevice();
                 this.init();
             }
 
@@ -1315,89 +1514,113 @@
                 this.startSessionTimer();
                 this.updateDisplay();
                 this.startRealTimeUpdates();
+                this.highlightCurrentDevice();
             }
 
             getData() {
                 const data = localStorage.getItem(this.storageKey);
-                return data ? JSON.parse(data) : {
+                const defaultData = {
                     totalVisitors: 0,
                     pageViews: 0,
                     visits: [],
                     devices: { desktop: 0, mobile: 0, tablet: 0 },
-                    pages: { home: 0, skills: 0, experience: 0, certifications: 0, contact: 0 },
-                    locations: {}
+                    pages: { home: 0, skills: 0, experience: 0, certifications: 0, contact: 0, analytics: 0 },
+                    locations: {},
+                    lastUpdated: new Date().toISOString()
                 };
+                
+                if (!data) return defaultData;
+                
+                try {
+                    const parsed = JSON.parse(data);
+                    // Migration des anciennes données si nécessaire
+                    if (!parsed.devices) parsed.devices = defaultData.devices;
+                    if (!parsed.pages.analytics) parsed.pages.analytics = 0;
+                    return parsed;
+                } catch (e) {
+                    return defaultData;
+                }
             }
 
             saveData(data) {
+                data.lastUpdated = new Date().toISOString();
                 localStorage.setItem(this.storageKey, JSON.stringify(data));
             }
 
-            trackVisit() {
-                const data = this.getData();
-                const session = sessionStorage.getItem(this.sessionKey);
-                
-                if (!session) {
-                    // Nouveau visiteur
-                    data.totalVisitors++;
-                    sessionStorage.setItem(this.sessionKey, Date.now().toString());
-                    
-                    // Détection de l'appareil
-                    const device = this.detectDevice();
-                    data.devices[device]++;
-                    
-                    // Localisation approximative (simulée)
-                    this.detectLocation().then(location => {
-                        data.locations[location] = (data.locations[location] || 0) + 1;
-                        this.saveData(data);
-                    });
-                }
-                
-                // Page vue
-                data.pageViews++;
-                
-                // Tracking de la page actuelle
-                const currentPage = this.getCurrentPage();
-                if (data.pages[currentPage] !== undefined) {
-                    data.pages[currentPage]++;
-                }
-                
-                // Ajouter au journal
-                const visit = {
-                    timestamp: new Date().toISOString(),
-                    page: currentPage,
-                    device: this.detectDevice(),
-                    referrer: document.referrer || 'Direct'
-                };
-                data.visits.unshift(visit);
-                if (data.visits.length > 50) data.visits.pop();
-                
-                this.saveData(data);
-                
-                // Envoyer à Google Analytics
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'page_view', {
-                        page_title: document.title,
-                        page_location: window.location.href,
-                        page_path: window.location.pathname
-                    });
-                }
-            }
-
             detectDevice() {
+                const userAgent = navigator.userAgent.toLowerCase();
                 const width = window.innerWidth;
-                if (width < 768) return 'mobile';
-                if (width < 1024) return 'tablet';
+                
+                // Détection tablette
+                if (/ipad|android(?!.*mobile)|tablet/.test(userAgent) || (width >= 768 && width < 1024)) {
+                    return 'tablet';
+                }
+                
+                // Détection mobile
+                if (/mobile|iphone|ipod|android.*mobile|windows phone/.test(userAgent) || width < 768) {
+                    return 'mobile';
+                }
+                
                 return 'desktop';
             }
 
+            highlightCurrentDevice() {
+                const deviceNames = {
+                    desktop: 'Ordinateur',
+                    mobile: 'Téléphone',
+                    tablet: 'Tablette'
+                };
+                
+                const deviceNamesEn = {
+                    desktop: 'Desktop',
+                    mobile: 'Mobile',
+                    tablet: 'Tablet'
+                };
+                
+                const currentDeviceEl = document.getElementById('current-device');
+                if (currentDeviceEl) {
+                    currentDeviceEl.textContent = currentLang === 'en' ? deviceNamesEn[this.currentDevice] : deviceNames[this.currentDevice];
+                }
+                
+                // Mettre en évidence l'icône correspondante
+                const iconId = 'icon-' + this.currentDevice;
+                const icon = document.getElementById(iconId);
+                if (icon) {
+                    icon.classList.add('active');
+                }
+            }
+
             async detectLocation() {
-                // Simulation basée sur la langue du navigateur
+                // Détection basée sur la langue et le fuseau horaire
+                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
                 const lang = navigator.language || navigator.userLanguage;
-                if (lang.startsWith('fr')) return 'France';
-                if (lang.startsWith('en-CA') || lang.startsWith('fr-CA')) return 'Canada';
-                if (lang.startsWith('en-US')) return 'États-Unis';
-                return 'Autre';
+                
+                // Mapping des fuseaux horaires vers pays
+                const zoneMap = {
+                    'America/Toronto': 'Canada',
+                    'America/Montreal': 'Canada',
+                    'America/Vancouver': 'Canada',
+                    'Europe/Paris': 'France',
+                    'Europe/Brussels': 'Belgique',
+                    'Europe/Geneva': 'Suisse',
+                    'Africa/Libreville': 'Gabon',
+                    'Africa/Port-Gentil': 'Gabon',
+                    'America/New_York': 'États-Unis',
+                    'America/Los_Angeles': 'États-Unis',
+                    'Europe/London': 'Royaume-Uni'
+                };
+                
+                let location = zoneMap[timeZone] || 'Autre';
+                
+                // Fallback sur la langue
+                if (location === 'Autre') {
+                    if (lang.startsWith('fr')) location = 'France';
+                    else if (lang.startsWith('en-US')) location = 'États-Unis';
+                    else if (lang.startsWith('en-CA') || lang.startsWith('fr-CA')) location = 'Canada';
+                    else if (lang.startsWith('en-GB')) location = 'Royaume-Uni';
+                }
+                
+                return location;
             }
 
             getCurrentPage() {
@@ -1406,7 +1629,80 @@
                 if (hash.includes('experience')) return 'experience';
                 if (hash.includes('certifications')) return 'certifications';
                 if (hash.includes('contact')) return 'contact';
+                if (hash.includes('analytics')) return 'analytics';
                 return 'home';
+            }
+
+            trackVisit() {
+                const data = this.getData();
+                const session = sessionStorage.getItem(this.sessionKey);
+                const now = new Date();
+                
+                if (!session) {
+                    // Nouveau visiteur unique
+                    data.totalVisitors++;
+                    sessionStorage.setItem(this.sessionKey, JSON.stringify({
+                        startTime: now.toISOString(),
+                        pages: []
+                    }));
+                    
+                    // Incrémenter le compteur de l'appareil
+                    data.devices[this.currentDevice]++;
+                    
+                    // Détection de localisation
+                    this.detectLocation().then(location => {
+                        data.locations[location] = (data.locations[location] || 0) + 1;
+                        this.saveData(data);
+                    });
+                } else {
+                    // Mise à jour de la session existante
+                    const sessionData = JSON.parse(session);
+                    sessionData.pages.push({
+                        page: this.getCurrentPage(),
+                        time: now.toISOString()
+                    });
+                    sessionStorage.setItem(this.sessionKey, JSON.stringify(sessionData));
+                }
+                
+                // Toujours incrémenter les pages vues
+                data.pageViews++;
+                
+                // Tracking de la page actuelle
+                const currentPage = this.getCurrentPage();
+                if (data.pages[currentPage] !== undefined) {
+                    data.pages[currentPage]++;
+                }
+                
+                // Ajouter au journal des visites
+                const visit = {
+                    id: Date.now() + Math.random().toString(36).substr(2, 9),
+                    timestamp: now.toISOString(),
+                    page: currentPage,
+                    device: this.currentDevice,
+                    location: '...', // Sera mis à jour
+                    referrer: document.referrer || 'direct'
+                };
+                
+                // Obtenir la localisation pour le journal
+                this.detectLocation().then(location => {
+                    visit.location = location;
+                    data.visits.unshift(visit);
+                    if (data.visits.length > 100) data.visits.pop(); // Garder les 100 dernières
+                    this.saveData(data);
+                    this.updateDisplay();
+                });
+                
+                this.saveData(data);
+                
+                // Envoyer à Google Analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'page_view', {
+                        page_title: document.title,
+                        page_location: window.location.href,
+                        page_path: window.location.pathname + window.location.hash,
+                        device_category: this.currentDevice
+                    });
+                }
             }
 
             startSessionTimer() {
@@ -1415,58 +1711,177 @@
                     const elapsed = Math.floor((Date.now() - this.sessionStart) / 1000);
                     const minutes = Math.floor(elapsed / 60);
                     const seconds = elapsed % 60;
-                    document.getElementById('avg-time').textContent = 
-                        `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                    const timeEl = document.getElementById('avg-time');
+                    if (timeEl) {
+                        timeEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                    }
                 }, 1000);
             }
 
             updateDisplay() {
                 const data = this.getData();
+                const t = analyticsTranslations[currentLang];
                 
                 // Métriques principales
-                document.getElementById('total-visitors').textContent = data.totalVisitors;
-                document.getElementById('page-views').textContent = data.pageViews;
+                const totalVisitorsEl = document.getElementById('total-visitors');
+                const pageViewsEl = document.getElementById('page-views');
                 
-                // Appareils
-                const total = data.devices.desktop + data.devices.mobile + data.devices.tablet || 1;
-                document.getElementById('desktop-percent').textContent = 
-                    Math.round((data.devices.desktop / total) * 100) + '%';
-                document.getElementById('mobile-percent').textContent = 
-                    Math.round((data.devices.mobile / total) * 100) + '%';
-                document.getElementById('tablet-percent').textContent = 
-                    Math.round((data.devices.tablet / total) * 100) + '%';
+                if (totalVisitorsEl) totalVisitorsEl.textContent = data.totalVisitors.toLocaleString();
+                if (pageViewsEl) pageViewsEl.textContent = data.pageViews.toLocaleString();
                 
-                // Pages
-                const totalPages = Object.values(data.pages).reduce((a, b) => a + b, 0) || 1;
-                document.getElementById('page-home').textContent = 
-                    Math.round((data.pages.home / totalPages) * 100) + '%';
-                document.getElementById('page-skills').textContent = 
-                    Math.round((data.pages.skills / totalPages) * 100) + '%';
-                document.getElementById('page-exp').textContent = 
-                    Math.round((data.pages.experience / totalPages) * 100) + '%';
-                document.getElementById('page-cert').textContent = 
-                    Math.round((data.pages.certifications / totalPages) * 100) + '%';
+                // Calcul des pourcentages d'appareils
+                const totalDevices = data.devices.desktop + data.devices.mobile + data.devices.tablet || 1;
+                const desktopPct = Math.round((data.devices.desktop / totalDevices) * 100);
+                const mobilePct = Math.round((data.devices.mobile / totalDevices) * 100);
+                const tabletPct = Math.round((data.devices.tablet / totalDevices) * 100);
+                
+                // Mise à jour des barres d'appareils
+                this.updateDeviceBar('desktop', desktopPct);
+                this.updateDeviceBar('mobile', mobilePct);
+                this.updateDeviceBar('tablet', tabletPct);
+                
+                // Pages populaires
+                this.updatePagesList(data.pages, t);
+                
+                // Localisations
+                this.updateLocationsList(data.locations, t);
                 
                 // Journal des visiteurs
-                this.updateVisitorLog(data.visits);
+                this.updateVisitorLog(data.visits, t);
             }
 
-            updateVisitorLog(visits) {
-                const logContainer = document.getElementById('visitor-log');
-                logContainer.innerHTML = visits.slice(0, 10).map(visit => {
+            updateDeviceBar(device, percentage) {
+                const bar = document.getElementById(`device-${device}-bar`);
+                const percent = document.getElementById(`device-${device}-percent`);
+                
+                if (bar) {
+                    bar.style.width = percentage + '%';
+                }
+                if (percent) {
+                    percent.textContent = percentage + '%';
+                }
+            }
+
+            updatePagesList(pages, t) {
+                const container = document.getElementById('pages-list');
+                if (!container) return;
+                
+                const total = Object.values(pages).reduce((a, b) => a + b, 0) || 1;
+                const pageNames = {
+                    home: t.home,
+                    skills: t.skills,
+                    experience: t.experience,
+                    certifications: t.certifications,
+                    contact: t.contact,
+                    analytics: 'Stats'
+                };
+                
+                // Trier par popularité
+                const sortedPages = Object.entries(pages)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 5);
+                
+                container.innerHTML = sortedPages.map(([page, count]) => {
+                    const pct = Math.round((count / total) * 100);
+                    return `
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">${pageNames[page] || page}</span>
+                            <div class="flex items-center gap-2">
+                                <div class="w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
+                                    <div class="h-full bg-orange-500 rounded-full" style="width: ${pct}%"></div>
+                                </div>
+                                <span class="text-white font-medium text-sm w-10 text-right">${pct}%</span>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            updateLocationsList(locations, t) {
+                const container = document.getElementById('locations-list');
+                if (!container) return;
+                
+                const total = Object.values(locations).reduce((a, b) => a + b, 0) || 1;
+                
+                // Trier par nombre de visites
+                const sortedLocations = Object.entries(locations)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 5);
+                
+                if (sortedLocations.length === 0) {
+                    container.innerHTML = '<div class="text-slate-500 text-sm text-center py-4">Aucune donnée disponible</div>';
+                    return;
+                }
+                
+                container.innerHTML = sortedLocations.map(([location, count]) => {
+                    const pct = Math.round((count / total) * 100);
+                    const flag = this.getCountryFlag(location);
+                    return `
+                        <div class="flex justify-between items-center p-2 bg-slate-800/30 rounded-lg">
+                            <div class="flex items-center gap-2">
+                                <span class="text-lg">${flag}</span>
+                                <span class="text-slate-300 text-sm">${location}</span>
+                            </div>
+                            <span class="text-white font-medium text-sm">${pct}%</span>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            getCountryFlag(location) {
+                const flags = {
+                    'Canada': '🇨🇦',
+                    'France': '🇫🇷',
+                    'Belgique': '🇧🇪',
+                    'Suisse': '🇨🇭',
+                    'Gabon': '🇬🇦',
+                    'États-Unis': '🇺🇸',
+                    'Royaume-Uni': '🇬🇧',
+                    'Allemagne': '🇩🇪',
+                    'Espagne': '🇪🇸',
+                    'Italie': '🇮🇹',
+                    'Autre': '🌍'
+                };
+                return flags[location] || '🌍';
+            }
+
+            updateVisitorLog(visits, t) {
+                const container = document.getElementById('visitor-log');
+                if (!container || !visits.length) return;
+                
+                container.innerHTML = visits.slice(0, 10).map(visit => {
                     const date = new Date(visit.timestamp);
-                    const time = date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+                    const time = date.toLocaleTimeString(currentLang === 'en' ? 'en-US' : 'fr-FR', { 
+                        hour: '2-digit', 
+                        minute: '2-digit' 
+                    });
+                    
                     const deviceIcon = {
                         desktop: 'fa-desktop',
                         mobile: 'fa-mobile-alt',
                         tablet: 'fa-tablet-alt'
                     }[visit.device] || 'fa-desktop';
                     
+                    const pageNames = {
+                        home: t.home,
+                        skills: t.skills,
+                        experience: t.experience,
+                        certifications: t.certifications,
+                        contact: t.contact,
+                        analytics: 'Stats'
+                    };
+                    
+                    const isCurrent = visit.id && visit.id.includes(Date.now().toString().slice(0, -4));
+                    const highlightClass = isCurrent ? 'border-blue-500 bg-blue-500/10' : 'border-slate-700 bg-slate-800/50';
+                    
                     return `
-                        <div class="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg border border-slate-700">
+                        <div class="flex items-center justify-between p-3 ${highlightClass} rounded-lg border transition-all">
                             <div class="flex items-center gap-3">
-                                <i class="fas ${deviceIcon} text-blue-400"></i>
-                                <span class="text-slate-300 text-sm capitalize">${visit.page}</span>
+                                <i class="fas ${deviceIcon} ${visit.device === 'desktop' ? 'text-blue-400' : visit.device === 'mobile' ? 'text-purple-400' : 'text-green-400'}"></i>
+                                <div>
+                                    <span class="text-slate-300 text-sm capitalize">${pageNames[visit.page] || visit.page}</span>
+                                    ${visit.location ? `<span class="text-xs text-slate-500 block">${visit.location}</span>` : ''}
+                                </div>
                             </div>
                             <div class="text-slate-500 text-xs">${time}</div>
                         </div>
@@ -1475,17 +1890,72 @@
             }
 
             startRealTimeUpdates() {
-                // Simuler des mises à jour en temps réel
+                // Simuler des visiteurs en ligne aléatoires
                 setInterval(() => {
                     const onlineNow = Math.floor(Math.random() * 3) + 1;
-                    document.getElementById('online-now').textContent = onlineNow;
+                    const el = document.getElementById('online-now');
+                    if (el) el.textContent = onlineNow;
                 }, 5000);
+                
+                // Mettre à jour les données toutes les 30 secondes
+                setInterval(() => {
+                    this.updateDisplay();
+                }, 30000);
             }
         }
 
+        // Gestion du formulaire de contact
+        function openContactForm() {
+            const modal = document.getElementById('contact-modal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactForm() {
+            const modal = document.getElementById('contact-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            
+            // Simuler l'envoi
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
+                btn.classList.remove('from-blue-500', 'to-purple-600');
+                btn.classList.add('bg-green-500');
+                
+                setTimeout(() => {
+                    closeContactForm();
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    btn.classList.add('from-blue-500', 'to-purple-600');
+                    btn.classList.remove('bg-green-500');
+                    e.target.reset();
+                }, 1500);
+            }, 1500);
+            
+            // Ici, vous devriez implémenter l'envoi réel à un service backend
+            // Exemple: EmailJS, Formspree, ou votre propre API
+        }
+
+        // Fermer le modal en cliquant à l'extérieur
+        document.getElementById('contact-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeContactForm();
+            }
+        });
+
         // Initialiser les analytics au chargement
         document.addEventListener('DOMContentLoaded', () => {
-            new PortfolioAnalytics();
+            window.portfolioAnalytics = new PortfolioAnalytics();
         });
 
         // Tracking des clics sur les liens
@@ -1494,13 +1964,20 @@
                 const link = e.target.closest('a');
                 const href = link.getAttribute('href');
                 
-                if (typeof gtag !== 'undefined' && href) {
+                if (typeof gtag !== 'undefined' && href && !href.startsWith('#')) {
                     gtag('event', 'click', {
                         event_category: 'outbound',
                         event_label: href,
                         transport_type: 'beacon'
                     });
                 }
+            }
+        });
+
+        // Détection du changement de hash pour tracking de page
+        window.addEventListener('hashchange', () => {
+            if (window.portfolioAnalytics) {
+                window.portfolioAnalytics.trackVisit();
             }
         });
     </script>
