@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JXX948T6KN"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -13,6 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technicien IT | Administrateur Systèmes | Cybersécurité Fortinet</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -24,36 +25,6 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         display: ['Space Grotesk', 'sans-serif'],
-                    },
-                    animation: {
-                        'gradient': 'gradient 8s linear infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                        'slide-up': 'slideUp 0.8s ease-out forwards',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'bounce-slight': 'bounceSlight 2s infinite',
-                        'typing': 'typing 1.5s infinite',
-                    },
-                    keyframes: {
-                        gradient: {
-                            '0%, 100%': { backgroundPosition: '0% 50%' },
-                            '50%': { backgroundPosition: '100% 50%' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(30px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' },
-                        },
-                        bounceSlight: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-5px)' },
-                        },
-                        typing: {
-                            '0%, 100%': { opacity: 1 },
-                            '50%': { opacity: 0.3 },
-                        }
                     }
                 }
             }
@@ -67,281 +38,6 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        .text-gradient {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hover-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .hover-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .timeline-line {
-            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
-        }
-        
-        .cert-badge {
-            transition: all 0.3s ease;
-        }
-        
-        .cert-badge:hover {
-            transform: scale(1.05) rotate(2deg);
-        }
-        
-        .parallax-bg {
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
-        }
-
-        .linkedin-btn {
-            background: #0077b5;
-            transition: all 0.3s ease;
-        }
-        
-        .linkedin-btn:hover {
-            background: #005885;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px rgba(0, 119, 181, 0.3);
-        }
-
-        .microsoft-btn {
-            background: #00a4ef;
-            transition: all 0.3s ease;
-        }
-        
-        .microsoft-btn:hover {
-            background: #0078d4;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px rgba(0, 164, 239, 0.3);
-        }
-
-        .credly-btn {
-            background: #ff6b00;
-            transition: all 0.3s ease;
-        }
-        
-        .credly-btn:hover {
-            background: #e65100;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px rgba(255, 107, 0, 0.3);
-        }
-
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            object-position: center top;
-            border: 4px solid white;
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
-        }
-
-        .profile-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        .coursera-badge {
-            background: linear-gradient(135deg, #0056d2 0%, #003d91 100%);
-        }
-
-        .avatar-badge {
-            position: relative;
-            display: inline-block;
-        }
-
-        .avatar-badge::after {
-            content: 'AB';
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
-            border: 3px solid white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        .lang-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .lang-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .lang-btn.active {
-            background: #3b82f6;
-            color: white;
-            border-color: #3b82f6;
-        }
-
-        .cert-logo {
-            width: 48px;
-            height: 48px;
-            object-fit: contain;
-            border-radius: 8px;
-            background: white;
-            padding: 4px;
-        }
-
-        .cert-icon-box {
-            width: 48px;
-            height: 48px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: white;
-        }
-
-        .skill-tag {
-            transition: all 0.3s ease;
-        }
-        
-        .skill-tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-        }
-
-        .experience-card {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .experience-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
-            transform: scaleY(0);
-            transition: transform 0.3s ease;
-        }
-
-        .experience-card:hover::before {
-            transform: scaleY(1);
-        }
-
-        .tech-icon {
-            transition: all 0.3s ease;
-        }
-
-        .tech-icon:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .scroll-indicator {
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
-        }
-
-        .cert-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            color: #3b82f6;
-            text-decoration: none;
-            font-size: 0.875rem;
-            transition: all 0.2s;
-        }
-
-        .cert-link:hover {
-            color: #1d4ed8;
-            text-decoration: underline;
-        }
-
-        .analytics-dashboard {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-        }
-        
-        .analytics-card {
-            background: rgba(30, 41, 59, 0.8);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .analytics-card:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            transform: translateY(-2px);
-        }
-        
-        .metric-value {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .live-indicator {
-            animation: pulse-live 2s infinite;
-        }
-        
-        @keyframes pulse-live {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        .visitor-log {
-            max-height: 300px;
-            overflow-y: auto;
-        }
-        
-        .visitor-log::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        .visitor-log::-webkit-scrollbar-track {
-            background: rgba(30, 41, 59, 0.5);
-        }
-        
-        .visitor-log::-webkit-scrollbar-thumb {
-            background: #3b82f6;
-            border-radius: 3px;
-        }
-
         .contact-form-overlay {
             position: fixed;
             inset: 0;
@@ -370,6 +66,11 @@
             animation: slideUp 0.3s ease-out;
         }
 
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
         .form-input {
             width: 100%;
             padding: 0.75rem 1rem;
@@ -385,484 +86,41 @@
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
-        .device-icon {
-            transition: all 0.3s ease;
+        .analytics-dashboard {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
         }
         
-        .device-icon.active {
-            transform: scale(1.1);
-            filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
+        .analytics-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.2);
         }
-
-        /* ASSISTANT VIRTUEL - CHAT WIDGET */
-        .chat-widget {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 9999;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .chat-button {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
+        
+        .metric-value {
             background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 10px 30px -5px rgba(59, 130, 246, 0.5);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .live-indicator {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
-        .chat-button:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 15px 40px -5px rgba(59, 130, 246, 0.6);
-        }
-
-        .chat-button.active {
-            transform: scale(0.9);
-            background: #ef4444;
-        }
-
-        .chat-button i {
-            color: white;
-            font-size: 28px;
-            transition: all 0.3s;
-        }
-
-        .chat-button.active i {
-            transform: rotate(45deg);
-        }
-
-        .chat-notification {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            width: 24px;
-            height: 24px;
-            background: #ef4444;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-            animation: bounce-slight 2s infinite;
-            border: 3px solid white;
-        }
-
-        .chat-container {
-            position: absolute;
-            bottom: 90px;
-            right: 0;
-            width: 380px;
-            max-width: calc(100vw - 40px);
-            height: 550px;
-            max-height: calc(100vh - 150px);
-            background: white;
-            border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            opacity: 0;
-            transform: scale(0.8) translateY(20px);
-            pointer-events: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .chat-container.active {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-            pointer-events: all;
-        }
-
-        .chat-header {
+        .text-gradient {
             background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            padding: 20px;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .chat-header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .chat-header-content {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .chat-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 3px solid rgba(255,255,255,0.3);
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #3b82f6;
-            font-size: 20px;
-        }
-
-        .chat-status {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 13px;
-            opacity: 0.9;
-            margin-top: 4px;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: #4ade80;
-            border-radius: 50%;
-            animation: pulse-live 2s infinite;
-        }
-
-        .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-            background: #f8fafc;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .chat-messages::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .chat-messages::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .chat-messages::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 3px;
-        }
-
-        .message {
-            max-width: 85%;
-            animation: slideIn 0.3s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .message-bot {
-            align-self: flex-start;
-        }
-
-        .message-user {
-            align-self: flex-end;
-        }
-
-        .message-bubble {
-            padding: 12px 16px;
-            border-radius: 18px;
-            font-size: 14px;
-            line-height: 1.5;
-            word-wrap: break-word;
-        }
-
-        .message-bot .message-bubble {
-            background: white;
-            color: #1e293b;
-            border-bottom-left-radius: 4px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border: 1px solid #e2e8f0;
-        }
-
-        .message-user .message-bubble {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            color: white;
-            border-bottom-right-radius: 4px;
-        }
-
-        .message-time {
-            font-size: 11px;
-            color: #94a3b8;
-            margin-top: 4px;
-            text-align: right;
-        }
-
-        .typing-indicator {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            padding: 12px 16px;
-            background: white;
-            border-radius: 18px;
-            border-bottom-left-radius: 4px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border: 1px solid #e2e8f0;
-            width: fit-content;
-        }
-
-        .typing-dot {
-            width: 8px;
-            height: 8px;
-            background: #cbd5e1;
-            border-radius: 50%;
-            animation: typing 1.4s infinite;
-        }
-
-        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-
-        .chat-options {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .chat-option-btn {
-            background: white;
-            border: 2px solid #e2e8f0;
-            padding: 10px 16px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 14px;
-            text-align: left;
-            color: #1e293b;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .chat-option-btn:hover {
-            border-color: #3b82f6;
-            background: #eff6ff;
-            transform: translateX(5px);
-        }
-
-        .chat-option-btn i {
-            color: #3b82f6;
-        }
-
-        .chat-input-area {
-            padding: 20px;
-            background: white;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .chat-input-container {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .chat-input {
-            flex: 1;
-            padding: 12px 16px;
-            border: 2px solid #e2e8f0;
-            border-radius: 25px;
-            outline: none;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-
-        .chat-input:focus {
-            border-color: #3b82f6;
-        }
-
-        .chat-send-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            border: none;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
-
-        .chat-send-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
-        }
-
-        .chat-send-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .google-chat-notice {
-            background: linear-gradient(135deg, #f3e8ff 0%, #e0e7ff 100%);
-            padding: 12px;
-            border-radius: 12px;
-            margin-top: 10px;
-            font-size: 12px;
-            color: #5b21b6;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid #ddd6fe;
-        }
-
-        .quick-reactions {
-            display: flex;
-            gap: 8px;
-            padding: 10px 20px;
-            background: #f8fafc;
-            border-top: 1px solid #e2e8f0;
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
-
-        .quick-reactions::-webkit-scrollbar {
-            display: none;
-        }
-
-        .reaction-btn {
-            background: white;
-            border: 1px solid #e2e8f0;
-            padding: 6px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 13px;
-            transition: all 0.2s;
-            white-space: nowrap;
-        }
-
-        .reaction-btn:hover {
-            background: #eff6ff;
-            border-color: #3b82f6;
-            transform: scale(1.05);
-        }
-
-        @media (max-width: 480px) {
-            .chat-widget {
-                bottom: 20px;
-                right: 20px;
-            }
-            
-            .chat-button {
-                width: 60px;
-                height: 60px;
-            }
-            
-            .chat-container {
-                width: calc(100vw - 40px);
-                height: calc(100vh - 100px);
-                right: -10px;
-            }
-        }
-
-        /* Animation d'entrée du widget */
-        .chat-widget-enter {
-            animation: widgetEnter 0.5s ease-out 2s both;
-        }
-
-        @keyframes widgetEnter {
-            from {
-                opacity: 0;
-                transform: scale(0) rotate(-180deg);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) rotate(0);
-            }
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
     </style>
 </head>
-<body class="font-sans text-slate-800 bg-slate-50 antialiased overflow-x-hidden">
+<body class="font-sans text-slate-800 bg-slate-50 antialiased">
 
-    <!-- ASSISTANT VIRTUEL - CHAT WIDGET -->
-    <div class="chat-widget chat-widget-enter" id="chatWidget">
-        <div class="chat-container" id="chatContainer">
-            <div class="chat-header">
-                <div class="chat-header-content">
-                    <div class="chat-avatar">AB</div>
-                    <div>
-                        <div class="font-bold text-lg">Ange-Marie</div>
-                        <div class="chat-status">
-                            <span class="status-dot"></span>
-                            <span id="chatStatusText">En ligne</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="chat-messages" id="chatMessages">
-                <!-- Les messages seront ajoutés ici dynamiquement -->
-            </div>
-
-            <div class="quick-reactions" id="quickReactions">
-                <button class="reaction-btn" onclick="sendQuickMessage('Bonjour !')">👋 Bonjour</button>
-                <button class="reaction-btn" onclick="sendQuickMessage('J\'ai une question sur votre expérience')">💼 Expérience</button>
-                <button class="reaction-btn" onclick="sendQuickMessage('Parlons de vos compétences')">🛠️ Compétences</button>
-                <button class="reaction-btn" onclick="sendQuickMessage('J\'ai une opportunité à vous proposer')">🚀 Opportunité</button>
-            </div>
-
-            <div class="chat-input-area">
-                <div class="chat-input-container">
-                    <input type="text" 
-                           class="chat-input" 
-                           id="chatInput" 
-                           placeholder="Écrivez votre message..." 
-                           maxlength="500"
-                           onkeypress="handleChatKeyPress(event)">
-                    <button class="chat-send-btn" id="sendBtn" onclick="sendChatMessage()">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
-                <div class="google-chat-notice">
-                    <i class="fas fa-shield-alt"></i>
-                    <span id="googleChatNotice">Messages envoyés via Google Chat sécurisé</span>
-                </div>
-            </div>
-        </div>
-
-        <button class="chat-button" id="chatButton" onclick="toggleChat()">
-            <i class="fas fa-comment-dots" id="chatIcon"></i>
-            <span class="chat-notification" id="chatNotification">1</span>
-        </button>
-    </div>
-
-    <!-- Contact Form Modal -->
+    <!-- MODAL DE CONTACT - VOTRE FORMULAIRE FORMSPREE -->
     <div id="contact-modal" class="contact-form-overlay">
         <div class="contact-form-container">
             <button onclick="closeContactForm()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-colors">
@@ -874,49 +132,73 @@
                     <i class="fas fa-paper-plane"></i>
                 </div>
                 <h3 class="font-display text-2xl font-bold text-slate-900" data-fr="Me contacter" data-en="Contact Me">Me contacter</h3>
-                <p class="text-slate-500 mt-2" data-fr="Remplissez ce formulaire et je vous répondrai dans les plus brefs délais." data-en="Fill out this form and I will get back to you as soon as possible.">Remplissez ce formulaire et je vous répondrai dans les plus brefs délais.</p>
+                <p class="text-slate-500 mt-2" data-fr="Remplissez ce formulaire et je vous répondrai rapidement." data-en="Fill out this form and I will reply quickly.">Remplissez ce formulaire et je vous répondrai rapidement.</p>
             </div>
 
-            <form id="contact-form" onsubmit="handleContactSubmit(event)">
+            <!-- ⬇️⬇️⬇️ VOTRE URL FORMSPREE ICI ⬇️⬇️⬇️ -->
+            <form id="contact-form" action="https://formspree.io/f/mpqzjbjnp" method="POST">
+                <!-- Anti-spam honeypot (invisible) -->
+                <input type="text" name="_gotcha" style="display:none">
+                
+                <!-- Redirection après succès (optionnel) -->
+                <input type="hidden" name="_next" value="https://boussougouange1.github.io/ange-marie-portfolio/merci.html">
+                
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-1" data-fr="Nom complet" data-en="Full Name">Nom complet</label>
-                        <input type="text" required class="form-input" data-fr-placeholder="Votre nom" data-en-placeholder="Your name" placeholder="Votre nom">
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Nom complet *</label>
+                        <input type="text" name="name" required class="form-input" placeholder="Jean Dupont">
                     </div>
                     
                     <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                        <input type="email" required class="form-input" data-fr-placeholder="votre@email.com" data-en-placeholder="your@email.com" placeholder="votre@email.com">
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Email *</label>
+                        <input type="email" name="email" required class="form-input" placeholder="jean@exemple.com">
                     </div>
                     
                     <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-1" data-fr="Sujet" data-en="Subject">Sujet</label>
-                        <select class="form-input" id="contact-subject">
-                            <option value="opportunity" data-fr="Opportunité professionnelle" data-en="Job Opportunity">Opportunité professionnelle</option>
-                            <option value="project" data-fr="Projet" data-en="Project">Projet</option>
-                            <option value="question" data-fr="Question technique" data-en="Technical Question">Question technique</option>
-                            <option value="other" data-fr="Autre" data-en="Other">Autre</option>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Téléphone (optionnel)</label>
+                        <input type="tel" name="phone" class="form-input" placeholder="+1 (555) 000-0000">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Sujet *</label>
+                        <select name="subject" required class="form-input bg-white">
+                            <option value="">Sélectionnez...</option>
+                            <option value="opportunity">💼 Opportunité professionnelle</option>
+                            <option value="project">🚀 Projet IT</option>
+                            <option value="consulting">💡 Conseil / Consulting</option>
+                            <option value="other">📝 Autre demande</option>
                         </select>
                     </div>
                     
                     <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-1" data-fr="Message" data-en="Message">Message</label>
-                        <textarea rows="4" required class="form-input resize-none" data-fr-placeholder="Votre message..." data-en-placeholder="Your message..." placeholder="Votre message..."></textarea>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Message *</label>
+                        <textarea name="message" rows="4" required class="form-input resize-none" placeholder="Décrivez votre demande en détail..."></textarea>
                     </div>
 
-                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-semibold hover:shadow-lg transform hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                    <!-- Champs cachés pour analytics -->
+                    <input type="hidden" name="language" id="form-language" value="fr">
+                    <input type="hidden" name="device" id="form-device" value="desktop">
+                    <input type="hidden" name="page_url" id="form-url">
+
+                    <button type="submit" id="submit-btn" class="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-semibold hover:shadow-lg transform hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
                         <i class="fas fa-paper-plane"></i>
-                        <span data-fr="Envoyer le message" data-en="Send Message">Envoyer le message</span>
+                        <span>Envoyer le message</span>
                     </button>
                 </div>
             </form>
 
             <div class="mt-6 pt-6 border-t border-slate-200 text-center">
-                <p class="text-sm text-slate-500 mb-3" data-fr="Ou contactez-moi directement via :" data-en="Or contact me directly via:">Ou contactez-moi directement via :</p>
-                <a href="mailto:ahouansouange@live.fr" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium">
-                    <i class="fas fa-envelope"></i>
-                    ahouansouange@live.fr
-                </a>
+                <p class="text-sm text-slate-500 mb-3">Préférez-vous un autre moyen ?</p>
+                <div class="flex justify-center gap-4">
+                    <a href="mailto:ahouansouange@live.fr" class="flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-lg hover:bg-slate-200 transition-colors text-sm">
+                        <i class="fas fa-envelope text-red-500"></i>
+                        Email direct
+                    </a>
+                    <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-[#0077b5] text-white rounded-lg hover:bg-[#005885] transition-colors text-sm">
+                        <i class="fab fa-linkedin"></i>
+                        LinkedIn
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -933,22 +215,22 @@
                 </div>
                 
                 <div class="hidden md:flex space-x-4 items-center">
-                    <a href="#accueil" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-fr="Accueil" data-en="Home">Accueil</a>
-                    <a href="#competences" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-fr="Compétences" data-en="Skills">Compétences</a>
-                    <a href="#experience" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-fr="Expérience" data-en="Experience">Expérience</a>
-                    <a href="#certifications" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-fr="Certifications" data-en="Certifications">Certifications</a>
+                    <a href="#accueil" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Accueil</a>
+                    <a href="#competences" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Compétences</a>
+                    <a href="#experience" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Expérience</a>
+                    <a href="#certifications" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Certifications</a>
                     <a href="#analytics" class="text-blue-600 hover:text-blue-800 font-medium transition-colors flex items-center gap-2">
                         <i class="fas fa-chart-line"></i>
-                        <span data-fr="Stats" data-en="Stats">Stats</span>
+                        <span>Stats</span>
                         <span class="w-2 h-2 bg-green-500 rounded-full live-indicator"></span>
                     </a>
                     
                     <div class="flex items-center gap-1 bg-slate-100 rounded-full p-1 ml-2">
-                        <button onclick="switchLang('fr')" id="btn-fr" class="lang-btn active px-3 py-1 rounded-full text-sm font-medium">FR</button>
+                        <button onclick="switchLang('fr')" id="btn-fr" class="lang-btn active px-3 py-1 rounded-full text-sm font-medium bg-blue-500 text-white">FR</button>
                         <button onclick="switchLang('en')" id="btn-en" class="lang-btn px-3 py-1 rounded-full text-sm font-medium">EN</button>
                     </div>
 
-                    <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="linkedin-btn px-4 py-2 text-white rounded-full font-medium flex items-center gap-2 text-sm">
+                    <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="bg-[#0077b5] hover:bg-[#005885] px-4 py-2 text-white rounded-full font-medium flex items-center gap-2 text-sm transition-all">
                         <i class="fab fa-linkedin"></i>
                         LinkedIn
                     </a>
@@ -962,18 +244,18 @@
         
         <div id="mobile-menu" class="hidden md:hidden glass-effect border-t border-slate-200">
             <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#accueil" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium" data-fr="Accueil" data-en="Home">Accueil</a>
-                <a href="#competences" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium" data-fr="Compétences" data-en="Skills">Compétences</a>
-                <a href="#experience" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium" data-fr="Expérience" data-en="Experience">Expérience</a>
-                <a href="#certifications" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium" data-fr="Certifications" data-en="Certifications">Certifications</a>
+                <a href="#accueil" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium">Accueil</a>
+                <a href="#competences" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium">Compétences</a>
+                <a href="#experience" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium">Expérience</a>
+                <a href="#certifications" class="block px-3 py-2 text-slate-600 hover:text-blue-600 font-medium">Certifications</a>
                 <a href="#analytics" class="block px-3 py-2 text-blue-600 font-medium flex items-center gap-2">
-                    <i class="fas fa-chart-line"></i> <span data-fr="Statistiques en direct" data-en="Live Statistics">Statistiques en direct</span>
+                    <i class="fas fa-chart-line"></i> Statistiques en direct
                     <span class="w-2 h-2 bg-green-500 rounded-full live-indicator"></span>
                 </a>
                 
                 <div class="flex items-center gap-2 px-3 py-2">
-                    <span class="text-sm text-slate-500" data-fr="Langue:" data-en="Language:">Langue:</span>
-                    <button onclick="switchLang('fr')" class="lang-btn active px-3 py-1 rounded-full text-sm font-medium">FR</button>
+                    <span class="text-sm text-slate-500">Langue:</span>
+                    <button onclick="switchLang('fr')" class="lang-btn active px-3 py-1 rounded-full text-sm font-medium bg-blue-500 text-white">FR</button>
                     <button onclick="switchLang('en')" class="lang-btn px-3 py-1 rounded-full text-sm font-medium">EN</button>
                 </div>
 
@@ -985,27 +267,27 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="accueil" class="relative min-h-screen flex items-center justify-center parallax-bg pt-20 overflow-hidden">
+    <section id="accueil" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50">
         <div class="absolute inset-0 z-0">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl animate-float"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
+            <div class="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8 animate-slide-up">
+                <div class="space-y-8">
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-medium text-sm">
                         <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                        <span data-fr="Disponible pour de nouvelles opportunités" data-en="Available for new opportunities">Disponible pour de nouvelles opportunités</span>
+                        <span>Disponible pour de nouvelles opportunités</span>
                     </div>
                     
-                    <h1 class="font-display text-4xl lg:text-6xl font-bold leading-tight text-slate-900" id="hero-title">
+                    <h1 class="font-display text-4xl lg:text-6xl font-bold leading-tight text-slate-900">
                         Technicien IT <br>
                         <span class="text-gradient">Administrateur Systèmes</span><br>
                         <span class="text-3xl lg:text-5xl text-slate-600">Cybersécurité Fortinet</span>
                     </h1>
                     
-                    <p class="text-xl text-slate-600 leading-relaxed max-w-lg" data-fr="7 ans d'expertise en support utilisateurs, administration systèmes et réseaux multi-sites. Spécialisé dans les environnements Windows, Microsoft 365, Active Directory, Entra ID et solutions PaperCut." data-en="7 years of expertise in user support, systems administration and multi-site networks. Specialized in Windows environments, Microsoft 365, Active Directory, Entra ID and PaperCut solutions.">
+                    <p class="text-xl text-slate-600 leading-relaxed max-w-lg">
                         7 ans d'expertise en support utilisateurs, administration systèmes et réseaux multi-sites. 
                         Spécialisé dans les environnements Windows, Microsoft 365, Active Directory, Entra ID et solutions PaperCut.
                     </p>
@@ -1013,26 +295,26 @@
                     <div class="flex flex-wrap gap-4 text-sm">
                         <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-slate-200">
                             <i class="fas fa-check-circle text-green-500"></i>
-                            <span data-fr="7+ ans d'expérience" data-en="7+ years experience">7+ ans d'expérience</span>
+                            <span>7+ ans d'expérience</span>
                         </div>
                         <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-slate-200">
                             <i class="fas fa-certificate text-blue-500"></i>
-                            <span data-fr="15+ Certifications" data-en="15+ Certifications">15+ Certifications</span>
+                            <span>15+ Certifications</span>
                         </div>
                         <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-slate-200">
                             <i class="fas fa-globe text-purple-500"></i>
-                            <span data-fr="Bilingue FR/EN" data-en="Bilingual FR/EN">Bilingue FR/EN</span>
+                            <span>Bilingue FR/EN</span>
                         </div>
                     </div>
 
                     <div class="flex flex-wrap gap-4">
                         <button onclick="openContactForm()" class="px-8 py-4 bg-slate-900 text-white rounded-full font-semibold hover:bg-slate-800 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
                             <i class="fas fa-paper-plane"></i>
-                            <span data-fr="Me contacter" data-en="Contact me">Me contacter</span>
+                            <span>Me contacter</span>
                         </button>
-                        <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="linkedin-btn px-8 py-4 text-white rounded-full font-semibold flex items-center gap-2 transform hover:scale-105 shadow-lg">
+                        <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="bg-[#0077b5] hover:bg-[#005885] px-8 py-4 text-white rounded-full font-semibold flex items-center gap-2 transform hover:scale-105 shadow-lg transition-all">
                             <i class="fab fa-linkedin text-xl"></i>
-                            <span data-fr="Voir mon LinkedIn" data-en="View my LinkedIn">Voir mon LinkedIn</span>
+                            <span>Voir mon LinkedIn</span>
                         </a>
                     </div>
 
@@ -1043,35 +325,36 @@
                         </div>
                         <div class="flex items-center gap-2">
                             <i class="fas fa-language text-blue-500"></i>
-                            <span data-fr="FR Professionnel / EN Technique" data-en="FR Professional / EN Technical">FR Professionnel / EN Technique</span>
+                            <span>FR Professionnel / EN Technique</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="relative flex justify-center lg:justify-end">
-                    <div class="profile-card rounded-3xl p-8 w-full max-w-md text-center relative overflow-hidden">
+                    <div class="bg-white/90 backdrop-blur-xl rounded-3xl p-8 w-full max-w-md text-center relative overflow-hidden shadow-2xl border border-white/50">
                         <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-br from-blue-500/10 to-purple-600/10"></div>
                         
                         <div class="relative z-10 mb-6">
-                            <div class="avatar-badge">
-                                <img src="photo.jpg" 
-                                     alt="Ange-Marie Boussougou Ahouansou" 
-                                     class="profile-image mx-auto"
-                                     id="profile-photo">
+                            <div class="relative inline-block">
+                                <img src="photo.jpg" alt="Ange-Marie Boussougou Ahouansou" 
+                                     class="w-48 h-48 rounded-full mx-auto object-cover border-4 border-white shadow-xl">
+                                <div class="absolute bottom-2 right-2 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold border-3 border-white shadow-lg">
+                                    AB
+                                </div>
                             </div>
                         </div>
                         
                         <h2 class="font-display text-2xl font-bold text-slate-900 mb-1">Ange-Marie Boussougou</h2>
-                        <p class="text-slate-500 font-medium mb-6" id="profile-subtitle" data-fr="Technicien IT | Administrateur Systèmes | Cybersécurité Fortinet" data-en="IT Technician | Systems Administrator | Fortinet Cybersecurity">Technicien IT | Administrateur Systèmes | Cybersécurité Fortinet</p>
+                        <p class="text-slate-500 font-medium mb-6">Technicien IT | Administrateur Systèmes | Cybersécurité Fortinet</p>
                         
                         <div class="grid grid-cols-2 gap-4">
-                            <div class="stat-card">
+                            <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100">
                                 <div class="text-3xl font-bold text-blue-600 mb-1">7+</div>
-                                <div class="text-sm text-slate-500 font-medium" data-fr="Années d'exp." data-en="Years exp.">Années d'exp.</div>
+                                <div class="text-sm text-slate-500 font-medium">Années d'exp.</div>
                             </div>
-                            <div class="stat-card">
+                            <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100">
                                 <div class="text-3xl font-bold text-purple-600 mb-1">15+</div>
-                                <div class="text-sm text-slate-500 font-medium" data-fr="Certifications" data-en="Certifications">Certifications</div>
+                                <div class="text-sm text-slate-500 font-medium">Certifications</div>
                             </div>
                         </div>
 
@@ -1090,469 +373,38 @@
                         </div>
                     </div>
 
-                    <div class="absolute -bottom-4 -left-4 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 hidden lg:block animate-float">
+                    <div class="absolute -bottom-4 -left-4 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 hidden lg:block animate-bounce">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
                                 <i class="fas fa-check"></i>
                             </div>
-                            <div class="text-sm font-semibold text-slate-700" data-fr="Disponible immédiatement" data-en="Available immediately">Disponible<br>immédiatement</div>
+                            <div class="text-sm font-semibold text-slate-700">Disponible<br>immédiatement</div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
-            <i class="fas fa-chevron-down text-slate-400 text-2xl"></i>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="competences" class="py-24 bg-white relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-4xl font-bold text-slate-900 mb-4" data-fr="Compétences Clés" data-en="Key Skills">Compétences Clés</h2>
-                <p class="text-slate-600 max-w-2xl mx-auto" data-fr="Expertise technique confirmée en support utilisateurs, administration systèmes et réseaux." data-en="Confirmed technical expertise in user support, systems administration and networks.">Expertise technique confirmée en support utilisateurs, administration systèmes et réseaux.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100">
-                    <div class="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 text-2xl mb-6 tech-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3 class="font-display text-xl font-bold text-slate-900 mb-4" data-fr="IT Support & Helpdesk" data-en="IT Support & Helpdesk">IT Support & Helpdesk</h3>
-                    <ul class="space-y-3 text-slate-600 text-sm">
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-blue-500 mt-1"></i> <span data-fr="Support utilisateurs N1/N2" data-en="N1/N2 user support">Support utilisateurs N1/N2</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-blue-500 mt-1"></i> <span data-fr="Gestion de tickets (GLPI)" data-en="Ticket management (GLPI)">Gestion de tickets (GLPI)</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-blue-500 mt-1"></i> <span data-fr="Escalade niveau 2/3" data-en="Level 2/3 escalation">Escalade niveau 2/3</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-blue-500 mt-1"></i> <span data-fr="Support sur site et à distance (TeamViewer, AnyDesk)" data-en="On-site and remote support (TeamViewer, AnyDesk)">Support sur site et à distance (TeamViewer, AnyDesk)</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-blue-500 mt-1"></i> VoIP</li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-blue-500 mt-1"></i> <span data-fr="Diagnostic matériel et logiciel" data-en="Hardware and software troubleshooting">Diagnostic matériel et logiciel</span></li>
-                    </ul>
-                </div>
-
-                <div class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100">
-                    <div class="w-14 h-14 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600 text-2xl mb-6 tech-icon">
-                        <i class="fab fa-microsoft"></i>
-                    </div>
-                    <h3 class="font-display text-xl font-bold text-slate-900 mb-4">Microsoft 365 & Cloud</h3>
-                    <ul class="space-y-3 text-slate-600 text-sm">
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-purple-500 mt-1"></i> Microsoft Entra ID</li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-purple-500 mt-1"></i> <span data-fr="Microsoft 365 Ecosystem" data-en="Microsoft 365 Ecosystem">Microsoft 365 Ecosystem</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-purple-500 mt-1"></i> <span data-fr="Enterprise Mobility Suite" data-en="Enterprise Mobility Suite">Enterprise Mobility Suite</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-purple-500 mt-1"></i> Microsoft Intune</li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-purple-500 mt-1"></i> <span data-fr="Azure Fundamentals (en cours)" data-en="Azure Fundamentals (in progress)">Azure Fundamentals (en cours)</span></li>
-                    </ul>
-                </div>
-
-                <div class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100">
-                    <div class="w-14 h-14 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600 text-2xl mb-6 tech-icon">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <h3 class="font-display text-xl font-bold text-slate-900 mb-4" data-fr="Systèmes & Serveur" data-en="Systems & Server">Systèmes & Serveur</h3>
-                    <ul class="space-y-3 text-slate-600 text-sm">
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-indigo-500 mt-1"></i> Windows Server</li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-indigo-500 mt-1"></i> Active Directory & GPO</li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-indigo-500 mt-1"></i> DNS, DHCP</li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-indigo-500 mt-1"></i> Linux (Samba, BIND)</li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-indigo-500 mt-1"></i> Hyper-V</li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-indigo-500 mt-1"></i> <span data-fr="DFS & Réplication des données" data-en="DFS & Data Replication">DFS & Réplication des données</span></li>
-                    </ul>
-                </div>
-
-                <div class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100">
-                    <div class="w-14 h-14 rounded-xl bg-green-100 flex items-center justify-center text-green-600 text-2xl mb-6 tech-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3 class="font-display text-xl font-bold text-slate-900 mb-4" data-fr="Réseaux" data-en="Networks">Réseaux</h3>
-                    <ul class="space-y-3 text-slate-600 text-sm">
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> LAN/WAN/WLAN</li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> TCP/IP</li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span data-fr="Configuration switch (Cisco, Ubiquiti, TP-Link)" data-en="Switch configuration (Cisco, Ubiquiti, TP-Link)">Configuration switch (Cisco, Ubiquiti, TP-Link)</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span data-fr="Patch panel" data-en="Patch panel">Patch panel</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span data-fr="Brassage Cat6/Cat6a/Cat7" data-en="Cat6/Cat6a/Cat7 cabling">Brassage Cat6/Cat6a/Cat7</span></li>
-                    </ul>
-                </div>
-
-                <div class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100">
-                    <div class="w-14 h-14 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 text-2xl mb-6 tech-icon">
-                        <i class="fas fa-print"></i>
-                    </div>
-                    <h3 class="font-display text-xl font-bold text-slate-900 mb-4" data-fr="Impression & Gestion Documentaire" data-en="Printing & Document Management">Impression & Gestion Documentaire</h3>
-                    <ul class="space-y-3 text-slate-600 text-sm">
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-orange-500 mt-1"></i> PaperCut MF</li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-orange-500 mt-1"></i> PaperCut Hive (Cloud)</li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-orange-500 mt-1"></i> <span data-fr="Gestion des imprimantes réseau" data-en="Network printer management">Gestion des imprimantes réseau</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-orange-500 mt-1"></i> <span data-fr="Quotas et sécurité des impressions" data-en="Print quotas and security">Quotas et sécurité des impressions</span></li>
-                    </ul>
-                </div>
-
-                <div class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100">
-                    <div class="w-14 h-14 rounded-xl bg-red-100 flex items-center justify-center text-red-600 text-2xl mb-6 tech-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="font-display text-xl font-bold text-slate-900 mb-4" data-fr="Cybersécurité" data-en="Cybersecurity">Cybersécurité</h3>
-                    <ul class="space-y-3 text-slate-600 text-sm">
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-red-500 mt-1"></i> <span data-fr="Fortinet Certified" data-en="Fortinet Certified">Fortinet Certified</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-red-500 mt-1"></i> <span data-fr="Gestion des accès" data-en="Access management">Gestion des accès</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-red-500 mt-1"></i> <span data-fr="Protection des données" data-en="Data protection">Protection des données</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-red-500 mt-1"></i> <span data-fr="CCTV IP & Vidéosurveillance" data-en="CCTV IP & Video surveillance">CCTV IP & Vidéosurveillance</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-red-500 mt-1"></i> <span data-fr="Sauvegardes RAID" data-en="RAID backups">Sauvegardes RAID</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="mt-16">
-                <h3 class="text-center text-lg font-semibold text-slate-700 mb-6" data-fr="Stack Technique" data-en="Technical Stack">Stack Technique</h3>
-                <div class="flex flex-wrap justify-center gap-3">
-                    <span class="skill-tag px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Windows Server</span>
-                    <span class="skill-tag px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Microsoft 365</span>
-                    <span class="skill-tag px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">Active Directory</span>
-                    <span class="skill-tag px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Entra ID</span>
-                    <span class="skill-tag px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-medium">PaperCut</span>
-                    <span class="skill-tag px-4 py-2 bg-red-100 text-red-700 rounded-full text-sm font-medium">Fortinet</span>
-                    <span class="skill-tag px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-medium">Cisco</span>
-                    <span class="skill-tag px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">VoIP</span>
-                    <span class="skill-tag px-4 py-2 bg-teal-100 text-teal-700 rounded-full text-sm font-medium">Hyper-V</span>
-                    <span class="skill-tag px-4 py-2 bg-pink-100 text-pink-700 rounded-full text-sm font-medium">Intune</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Timeline -->
-    <section id="experience" class="py-24 bg-slate-50 relative overflow-hidden">
-        <div class="absolute inset-0 parallax-bg opacity-50"></div>
-        
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-4xl font-bold text-slate-900 mb-4" data-fr="Expérience Professionnelle" data-en="Professional Experience">Expérience Professionnelle</h2>
-                <p class="text-slate-600" data-fr="Parcours complet en support IT et administration systèmes." data-en="Complete career in IT support and systems administration.">Parcours complet en support IT et administration systèmes.</p>
-            </div>
-
-            <div class="relative">
-                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 timeline-line rounded-full"></div>
-
-                <div class="relative mb-12 md:mb-0">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
-                            <div class="experience-card bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
-                                <span class="text-blue-600 font-semibold text-sm">Novembre 2023 – Septembre 2024</span>
-                                <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Senior IT Support & Systems Technician</h3>
-                                <p class="text-slate-500 font-medium mb-3">HIGH-TECH 241 – Libreville, Gabon</p>
-                                <ul class="text-slate-600 text-sm space-y-2">
-                                    <li>• <span data-fr="Support utilisateurs avancé et résolution d'incidents complexes" data-en="Advanced user support and complex incident resolution">Support utilisateurs avancé et résolution d'incidents complexes</span></li>
-                                    <li>• <span data-fr="Mentorat technique et support aux collègues IT" data-en="Technical mentoring and IT colleague support">Mentorat technique et support aux collègues IT</span></li>
-                                    <li>• <span data-fr="Conception et proposition de solutions techniques en réponse aux appels d'offres" data-en="Design and proposal of technical solutions in response to tenders">Conception et proposition de solutions techniques en réponse aux appels d'offres</span></li>
-                                    <li>• <span data-fr="Implémentation de PaperCut MF chez Orabank (réduction de 30% des impressions)" data-en="Implementation of PaperCut MF at Orabank (30% reduction in printing)">Implémentation de PaperCut MF chez Orabank (réduction de 30% des impressions)</span></li>
-                                    <li>• <span data-fr="Déploiement d'infrastructures réseaux et VoIP pour SAFRIMAT" data-en="Deployment of network and VoIP infrastructures for SAFRIMAT">Déploiement d'infrastructures réseaux et VoIP pour SAFRIMAT</span></li>
-                                    <li>• <span data-fr="Gestion de projets CCTV IP de la conception à la mise en production" data-en="CCTV IP project management from design to production">Gestion de projets CCTV IP de la conception à la mise en production</span></li>
-                                    <li>• <span data-fr="Administration et réhabilitation de serveurs (RAID, messagerie)" data-en="Server administration and rehabilitation (RAID, messaging)">Administration et réhabilitation de serveurs (RAID, messagerie)</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full border-4 border-white shadow-lg z-10"></div>
-                        <div class="md:w-5/12 md:pl-8 hidden md:block"></div>
-                    </div>
-                </div>
-
-                <div class="relative mb-12 md:mb-0 md:mt-12">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 hidden md:block"></div>
-                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg z-10"></div>
-                        <div class="md:w-5/12 md:pl-8 mb-4 md:mb-0">
-                            <div class="experience-card bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
-                                <span class="text-purple-600 font-semibold text-sm">Mai 2021 – Septembre 2023</span>
-                                <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Senior IT Support IT et Systèmes d'Information</h3>
-                                <p class="text-slate-500 font-medium mb-3">Autorité Nationale de Vérification d'Audit – Libreville, Gabon</p>
-                                <ul class="text-slate-600 text-sm space-y-2">
-                                    <li>• <span data-fr="Coordination d'une équipe IT de 3 personnes" data-en="Coordination of a 3-person IT team">Coordination d'une équipe IT de 3 personnes</span></li>
-                                    <li>• <span data-fr="Support et gestion de 70 postes, 5 imprimantes réseau et 3 serveurs" data-en="Support and management of 70 workstations, 5 network printers and 3 servers">Support et gestion de 70 postes, 5 imprimantes réseau et 3 serveurs</span></li>
-                                    <li>• <span data-fr="Administration de Google Workspace (comptes, accès, collaboration)" data-en="Google Workspace administration (accounts, access, collaboration)">Administration de Google Workspace (comptes, accès, collaboration)</span></li>
-                                    <li>• <span data-fr="Mise en place d'un service DFS de réplication des données" data-en="Implementation of a DFS data replication service">Mise en place d'un service DFS de réplication des données</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative mb-12 md:mb-0 md:mt-12">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
-                            <div class="experience-card bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
-                                <span class="text-green-600 font-semibold text-sm">Septembre 2020 – Mars 2021</span>
-                                <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Senior IT Support IT et Maintenance</h3>
-                                <p class="text-slate-500 font-medium mb-3">SAFRIMAT – Libreville, Gabon</p>
-                                <ul class="text-slate-600 text-sm space-y-2">
-                                    <li>• <span data-fr="Support utilisateurs avancé et résolution d'incidents complexes" data-en="Advanced user support and complex incident resolution">Support utilisateurs avancé et résolution d'incidents complexes</span></li>
-                                    <li>• <span data-fr="Administration serveur, Déploiement d'infrastructures réseaux et VoIP" data-en="Server administration, Deployment of network and VoIP infrastructures">Administration serveur, Déploiement d'infrastructures réseaux et VoIP</span></li>
-                                    <li>• <span data-fr="Mise en place d'un système de vidéosurveillance (32 caméras)" data-en="Implementation of a video surveillance system (32 cameras)">Mise en place d'un système de vidéosurveillance (32 caméras)</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full border-4 border-white shadow-lg z-10"></div>
-                        <div class="md:w-5/12 md:pl-8 hidden md:block"></div>
-                    </div>
-                </div>
-
-                <div class="relative mb-12 md:mb-0 md:mt-12">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 hidden md:block"></div>
-                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-orange-500 rounded-full border-4 border-white shadow-lg z-10"></div>
-                        <div class="md:w-5/12 md:pl-8 mb-4 md:mb-0">
-                            <div class="experience-card bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
-                                <span class="text-orange-600 font-semibold text-sm">Avril 2019 – Mars 2020</span>
-                                <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Technicien support informatique</h3>
-                                <p class="text-slate-500 font-medium mb-3">Centre de Dialyse de Libreville – Gabon</p>
-                                <ul class="text-slate-600 text-sm space-y-2">
-                                    <li>• <span data-fr="Sécurisation des infrastructures IT et protection des données patients" data-en="Securing IT infrastructures and patient data protection">Sécurisation des infrastructures IT et protection des données patients</span></li>
-                                    <li>• <span data-fr="Administration systèmes et réseaux" data-en="Systems and networks administration">Administration systèmes et réseaux</span></li>
-                                    <li>• <span data-fr="Maintenance du parc informatique et support utilisateurs" data-en="IT fleet maintenance and user support">Maintenance du parc informatique et support utilisateurs</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative mb-12 md:mb-0 md:mt-12">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
-                            <div class="experience-card bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
-                                <span class="text-indigo-600 font-semibold text-sm">Janvier 2016 – Novembre 2019</span>
-                                <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Consultant IT & Technicien support</h3>
-                                <p class="text-slate-500 font-medium mb-3">SYSTEMESCOMS – Libreville, Gabon</p>
-                                <ul class="text-slate-600 text-sm space-y-2">
-                                    <li>• <span data-fr="Prestations IT pour ONG, hôpitaux et cabinets comptables" data-en="IT services for NGOs, hospitals and accounting firms">Prestations IT pour ONG, hôpitaux et cabinets comptables</span></li>
-                                    <li>• <span data-fr="Conseil en transformation numérique" data-en="Digital transformation consulting">Conseil en transformation numérique</span></li>
-                                    <li>• <span data-fr="Déploiement de réseaux, solutions de vidéosurveillance et maintenance IT" data-en="Network deployment, video surveillance solutions and IT maintenance">Déploiement de réseaux, solutions de vidéosurveillance et maintenance IT</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-indigo-500 rounded-full border-4 border-white shadow-lg z-10"></div>
-                        <div class="md:w-5/12 md:pl-8 hidden md:block"></div>
-                    </div>
-                </div>
-
-                <div class="relative mb-12 md:mb-0 md:mt-12">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 hidden md:block"></div>
-                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-pink-500 rounded-full border-4 border-white shadow-lg z-10"></div>
-                        <div class="md:w-5/12 md:pl-8 mb-4 md:mb-0">
-                            <div class="experience-card bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
-                                <span class="text-pink-600 font-semibold text-sm">Août 2015 – Décembre 2015</span>
-                                <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Technicien support informatique</h3>
-                                <p class="text-slate-500 font-medium mb-3">DAVUM-GABON – Libreville, Gabon</p>
-                                <ul class="text-slate-600 text-sm space-y-2">
-                                    <li>• <span data-fr="Administration Windows Server et réseaux" data-en="Windows Server and network administration">Administration Windows Server et réseaux</span></li>
-                                    <li>• <span data-fr="Support utilisateurs et maintenance informatique" data-en="User support and IT maintenance">Support utilisateurs et maintenance informatique</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative md:mt-12">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
-                            <div class="experience-card bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover-card">
-                                <span class="text-teal-600 font-semibold text-sm">Septembre 2014 – Décembre 2014</span>
-                                <h3 class="font-display text-xl font-bold text-slate-900 mt-2">Technicien support informatique (stagiaire)</h3>
-                                <p class="text-slate-500 font-medium mb-3">Intégral Technologies – Libreville, Gabon</p>
-                                <ul class="text-slate-600 text-sm space-y-2">
-                                    <li>• <span data-fr="Support niveau 1" data-en="Level 1 support">Support niveau 1</span></li>
-                                    <li>• <span data-fr="Maintenance des postes et périphériques" data-en="Workstation and peripheral maintenance">Maintenance des postes et périphériques</span></li>
-                                    <li>• <span data-fr="Installation et administration de systèmes serveurs" data-en="Server systems installation and administration">Installation et administration de systèmes serveurs</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-teal-500 rounded-full border-4 border-white shadow-lg z-10"></div>
-                        <div class="md:w-5/12 md:pl-8 hidden md:block"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Certifications -->
-    <section id="certifications" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-4xl font-bold text-slate-900 mb-4" data-fr="Certifications" data-en="Certifications">Certifications</h2>
-                <p class="text-slate-600" data-fr="Formations continues et certifications professionnelles" data-en="Continuous training and professional certifications">Formations continues et certifications professionnelles</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Coursera Microsoft 365 -->
-                <div class="cert-badge coursera-badge text-white p-6 rounded-2xl border border-blue-400 shadow-lg">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center text-white text-2xl backdrop-blur">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg">Coursera & Microsoft</h3>
-                            <p class="text-blue-100 text-sm">Février 2026</p>
-                        </div>
-                    </div>
-                    <h4 class="font-semibold text-lg mb-2">The Microsoft 365 Ecosystem</h4>
-                    <p class="text-blue-100 text-sm mb-3" data-fr="Cours en ligne autorisé par Microsoft" data-en="Microsoft authorized online course">Cours en ligne autorisé par Microsoft</p>
-                    <a href="https://coursera.org/verify/82E6416UE9O6" target="_blank" class="inline-flex items-center gap-2 text-sm font-medium hover:underline">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span data-fr="Vérifier le certificat" data-en="Verify certificate">Vérifier le certificat</span>
-                    </a>
-                </div>
-
-                <!-- Microsoft -->
-                <div class="cert-badge bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl border border-blue-200">
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" class="cert-logo">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-slate-900">Microsoft</h3>
-                        </div>
-                    </div>
-                    <ul class="text-sm text-slate-700 space-y-2">
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-check text-blue-500 mt-1 text-xs"></i>
-                            <div>
-                                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials/c929434037b4e87?ref=https%3A%2F%2Fwww.linkedin.com%2F" target="_blank" class="cert-link">
-                                    <span data-fr="Prise en main des identités et de l'accès (Microsoft Entra ID)" data-en="Managing identities and access (Microsoft Entra ID)">Prise en main des identités et de l'accès (Microsoft Entra ID)</span>
-                                    <i class="fas fa-external-link-alt text-xs"></i>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-check text-blue-500 mt-1 text-xs"></i>
-                            <div>
-                                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials/9916e2bb6d34eab6?ref=https%3A%2F%2Fwww.linkedin.com%2F" target="_blank" class="cert-link">
-                                    <span data-fr="Administrer Active Directory Domain Services" data-en="Administer Active Directory Domain Services">Administrer Active Directory Domain Services</span>
-                                    <i class="fas fa-external-link-alt text-xs"></i>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-clock text-blue-400 mt-1 text-xs"></i>
-                            <span data-fr="Azure Fundamentals (AZ-900) - en préparation" data-en="Azure Fundamentals (AZ-900) - in preparation">Azure Fundamentals (AZ-900) - en préparation</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- LinkedIn Learning -->
-                <div class="cert-badge bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl border border-blue-200">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="cert-icon-box bg-[#0077b5]">
-                            <i class="fab fa-linkedin"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-slate-900">LinkedIn Learning</h3>
-                        </div>
-                    </div>
-                    <ul class="text-sm text-slate-700 space-y-1">
-                        <li>• <span data-fr="Azure : Configurer et gérer Microsoft Entra ID" data-en="Azure: Configure and manage Microsoft Entra ID">Azure : Configurer et gérer Microsoft Entra ID</span></li>
-                        <li>• Enterprise Mobility Suite</li>
-                        <li>• <span data-fr="Essentiels de Microsoft Security" data-en="Microsoft Security Essentials">Essentiels de Microsoft Security</span></li>
-                        <li>• <span data-fr="Collaborer grâce à Microsoft 365" data-en="Collaborate with Microsoft 365">Collaborer grâce à Microsoft 365</span></li>
-                    </ul>
-                </div>
-
-                <!-- Cisco -->
-                <div class="cert-badge bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-2xl border border-orange-200">
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Cisco_logo.svg" alt="Cisco" class="cert-logo">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-slate-900">Cisco Networking Academy</h3>
-                        </div>
-                    </div>
-                    <ul class="text-sm text-slate-700 space-y-1">
-                        <li>• Operating Systems</li>
-                        <li>• Computer Hardware Basics</li>
-                        <li>• IT Customer Support Basics</li>
-                        <li>• Introduction to Cybersecurity</li>
-                    </ul>
-                </div>
-
-                <!-- PaperCut -->
-                <div class="cert-badge bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl border border-green-200">
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="https://boussougouange1.github.io/ange-marie-portfolio/images/papercut.png" alt="PaperCut" class="cert-logo">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-slate-900">PaperCut</h3>
-                        </div>
-                    </div>
-                    <ul class="text-sm text-slate-700 space-y-1">
-                        <li>• <span data-fr="Certification PaperCut MF" data-en="PaperCut MF Certification">Certification PaperCut MF</span></li>
-                        <li>• PaperCut Hive (Cloud)</li>
-                    </ul>
-                </div>
-
-                <!-- Fortinet -->
-                <div class="cert-badge bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-2xl border border-red-200">
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="https://boussougouange1.github.io/ange-marie-portfolio/images/fortinet.png" alt="Fortinet" class="cert-logo">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-slate-900">Fortinet</h3>
-                        </div>
-                    </div>
-                    <ul class="text-sm text-slate-700 space-y-1">
-                        <li>• Certified Associate in Cybersecurity</li>
-                        <li>• Certified Fundamentals in Cybersecurity</li>
-                        <li>• Introduction to the Threat Landscape 3.0</li>
-                        <li>• Getting Started in Cybersecurity 3.0</li>
-                        <li>• FortiGate 7.6 Operator Self-Paced</li>
-                    </ul>
-                </div>
-
-                <!-- Sage -->
-                <div class="cert-badge bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl border border-green-200 md:col-span-2 lg:col-span-1">
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="https://boussougouange1.github.io/ange-marie-portfolio/images/sage.png" alt="Sage" class="cert-logo">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-slate-900">Sage</h3>
-                        </div>
-                    </div>
-                    <ul class="text-sm text-slate-700 space-y-1">
-                        <li>• <span data-fr="Safe gestion Commercial" data-en="Safe Commercial Management">Safe gestion Commercial</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="mt-12 bg-slate-50 rounded-2xl p-8 border border-slate-200">
-                <h3 class="font-display text-2xl font-bold text-slate-900 mb-6 text-center" data-fr="Formation Académique" data-en="Academic Background">Formation Académique</h3>
-                <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-                    <div class="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center text-white text-2xl">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <div class="text-center md:text-left">
-                        <h4 class="font-bold text-xl text-slate-900" data-fr="Bachelor en Télécommunications & Réseaux" data-en="Bachelor in Telecommunications & Networks">Bachelor en Télécommunications & Réseaux</h4>
-                        <p class="text-slate-600">Institut CERCO, Cotonou-Bénin (2014)</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION STATISTIQUES ANALYTICS - MULTILINGUE ET OPTIMISÉE -->
+    <!-- Section Analytics -->
     <section id="analytics" class="py-24 analytics-dashboard relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%233b82f6\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
-        </div>
-
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-12">
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-medium text-sm mb-4">
                     <span class="w-2 h-2 bg-green-500 rounded-full live-indicator"></span>
-                    <span data-fr="En direct" data-en="Live">En direct</span>
+                    <span>En direct</span>
                 </div>
-                <h2 class="font-display text-4xl font-bold text-white mb-4" data-fr="Statistiques de Visite" data-en="Visit Statistics">Statistiques de Visite</h2>
-                <p class="text-slate-400" data-fr="Données en temps réel des visiteurs du portfolio" data-en="Real-time portfolio visitor data">Données en temps réel des visiteurs du portfolio</p>
+                <h2 class="font-display text-4xl font-bold text-white mb-4">Statistiques de Visite</h2>
+                <p class="text-slate-400">Données en temps réel des visiteurs du portfolio</p>
             </div>
 
-            <!-- Métriques principales -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
                 <div class="analytics-card rounded-2xl p-6 text-center">
                     <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 text-2xl mx-auto mb-3">
                         <i class="fas fa-users"></i>
                     </div>
                     <div class="text-3xl font-bold metric-value mb-1" id="total-visitors">0</div>
-                    <div class="text-slate-400 text-sm" data-fr="Visiteurs Totaux" data-en="Total Visitors">Visiteurs Totaux</div>
+                    <div class="text-slate-400 text-sm">Visiteurs Totaux</div>
                 </div>
 
                 <div class="analytics-card rounded-2xl p-6 text-center">
@@ -1560,7 +412,7 @@
                         <i class="fas fa-eye"></i>
                     </div>
                     <div class="text-3xl font-bold metric-value mb-1" id="page-views">0</div>
-                    <div class="text-slate-400 text-sm" data-fr="Pages Vues" data-en="Page Views">Pages Vues</div>
+                    <div class="text-slate-400 text-sm">Pages Vues</div>
                 </div>
 
                 <div class="analytics-card rounded-2xl p-6 text-center">
@@ -1568,7 +420,7 @@
                         <i class="fas fa-clock"></i>
                     </div>
                     <div class="text-3xl font-bold metric-value mb-1" id="avg-time">0:00</div>
-                    <div class="text-slate-400 text-sm" data-fr="Temps Moyen" data-en="Avg. Time">Temps Moyen</div>
+                    <div class="text-slate-400 text-sm">Temps Moyen</div>
                 </div>
 
                 <div class="analytics-card rounded-2xl p-6 text-center">
@@ -1576,126 +428,76 @@
                         <i class="fas fa-user-clock"></i>
                     </div>
                     <div class="text-3xl font-bold metric-value mb-1" id="online-now">1</div>
-                    <div class="text-slate-400 text-sm" data-fr="En Ligne" data-en="Online">En Ligne</div>
+                    <div class="text-slate-400 text-sm">En Ligne</div>
                 </div>
             </div>
 
-            <!-- Informations détaillées -->
-            <div class="grid md:grid-cols-3 gap-6 mb-12">
-                <!-- Appareils -->
+            <div class="grid md:grid-cols-3 gap-6">
                 <div class="analytics-card rounded-2xl p-6">
                     <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
                         <i class="fas fa-mobile-alt text-blue-400"></i>
-                        <span data-fr="Appareils" data-en="Devices">Appareils</span>
+                        Appareils
                     </h3>
-                    <div class="space-y-4" id="devices-container">
-                        <div class="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg border border-slate-700" id="device-desktop-row">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg border border-slate-700">
                             <div class="flex items-center gap-3">
-                                <i class="fas fa-desktop text-blue-400 device-icon" id="icon-desktop"></i>
-                                <span class="text-slate-300 text-sm" data-fr="Ordinateur" data-en="Desktop">Ordinateur</span>
+                                <i class="fas fa-desktop text-blue-400"></i>
+                                <span class="text-slate-300 text-sm">Ordinateur</span>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
-                                    <div class="h-full bg-blue-500 rounded-full transition-all duration-500" style="width: 0%" id="device-desktop-bar"></div>
-                                </div>
-                                <span class="text-white text-sm font-medium w-10 text-right" id="device-desktop-percent">0%</span>
-                            </div>
+                            <span class="text-white text-sm font-medium" id="device-desktop">0%</span>
                         </div>
-                        
-                        <div class="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg border border-slate-700" id="device-mobile-row">
+                        <div class="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg border border-slate-700">
                             <div class="flex items-center gap-3">
-                                <i class="fas fa-mobile-alt text-purple-400 device-icon" id="icon-mobile"></i>
-                                <span class="text-slate-300 text-sm" data-fr="Téléphone" data-en="Mobile">Téléphone</span>
+                                <i class="fas fa-mobile-alt text-purple-400"></i>
+                                <span class="text-slate-300 text-sm">Téléphone</span>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
-                                    <div class="h-full bg-purple-500 rounded-full transition-all duration-500" style="width: 0%" id="device-mobile-bar"></div>
-                                </div>
-                                <span class="text-white text-sm font-medium w-10 text-right" id="device-mobile-percent">0%</span>
-                            </div>
+                            <span class="text-white text-sm font-medium" id="device-mobile">0%</span>
                         </div>
-                        
-                        <div class="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg border border-slate-700" id="device-tablet-row">
+                        <div class="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg border border-slate-700">
                             <div class="flex items-center gap-3">
-                                <i class="fas fa-tablet-alt text-green-400 device-icon" id="icon-tablet"></i>
-                                <span class="text-slate-300 text-sm" data-fr="Tablette" data-en="Tablet">Tablette</span>
+                                <i class="fas fa-tablet-alt text-green-400"></i>
+                                <span class="text-slate-300 text-sm">Tablette</span>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
-                                    <div class="h-full bg-green-500 rounded-full transition-all duration-500" style="width: 0%" id="device-tablet-bar"></div>
-                                </div>
-                                <span class="text-white text-sm font-medium w-10 text-right" id="device-tablet-percent">0%</span>
-                            </div>
+                            <span class="text-white text-sm font-medium" id="device-tablet">0%</span>
                         </div>
                     </div>
-                    
-                    <!-- Current Device Indicator -->
                     <div class="mt-4 p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
                         <p class="text-xs text-blue-300 text-center">
                             <i class="fas fa-info-circle mr-1"></i>
-                            <span data-fr="Votre appareil actuel : " data-en="Your current device: ">Votre appareil actuel : </span>
-                            <span id="current-device" class="font-semibold text-blue-400">-</span>
+                            Votre appareil actuel : <span id="current-device" class="font-semibold">-</span>
                         </p>
                     </div>
                 </div>
 
-                <!-- Localisation -->
                 <div class="analytics-card rounded-2xl p-6">
                     <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
                         <i class="fas fa-globe-americas text-green-400"></i>
-                        <span data-fr="Top Localisations" data-en="Top Locations">Top Localisations</span>
+                        Top Localisations
                     </h3>
                     <div class="space-y-3" id="locations-list">
-                        <!-- Rempli dynamiquement -->
+                        <div class="text-slate-500 text-sm text-center py-4">Chargement...</div>
                     </div>
                 </div>
 
-                <!-- Pages populaires -->
                 <div class="analytics-card rounded-2xl p-6">
                     <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
                         <i class="fas fa-fire text-orange-400"></i>
-                        <span data-fr="Pages Populaires" data-en="Popular Pages">Pages Populaires</span>
+                        Pages Populaires
                     </h3>
                     <div class="space-y-3" id="pages-list">
-                        <!-- Rempli dynamiquement -->
+                        <div class="text-slate-500 text-sm text-center py-4">Chargement...</div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Journal des visiteurs récents -->
-            <div class="analytics-card rounded-2xl p-6">
-                <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
-                    <i class="fas fa-history text-purple-400"></i>
-                    <span data-fr="Visiteurs Récents" data-en="Recent Visitors">Visiteurs Récents</span>
-                </h3>
-                <div class="visitor-log space-y-2" id="visitor-log">
-                    <!-- Les entrées seront ajoutées dynamiquement -->
-                </div>
-            </div>
-
-            <!-- Note d'information -->
-            <div class="mt-8 text-center">
-                <p class="text-slate-500 text-sm">
-                    <i class="fas fa-info-circle mr-2"></i>
-                    <span data-fr="Ces statistiques sont collectées de manière anonyme. " data-en="These statistics are collected anonymously. ">Ces statistiques sont collectées de manière anonyme. </span>
-                    <a href="https://analytics.google.com/analytics/web/#/p406666770/reports/intelligenthome" target="_blank" class="text-blue-400 hover:text-blue-300 underline">
-                        <span data-fr="Voir le tableau de bord complet" data-en="View full dashboard">Voir le tableau de bord complet</span>
-                    </a>
-                </p>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="py-24 bg-slate-900 text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-20">
-            <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
-        </div>
-
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="font-display text-4xl font-bold mb-4" data-fr="Contact" data-en="Contact">Contact</h2>
-                <p class="text-slate-400" data-fr="Basé à Montréal, disponible pour des postes sur site ou à distance." data-en="Based in Montreal, available for on-site or remote positions.">Basé à Montréal, disponible pour des postes sur site ou à distance.</p>
+                <h2 class="font-display text-4xl font-bold mb-4">Contact</h2>
+                <p class="text-slate-400">Basé à Montréal, disponible pour des postes sur site ou à distance.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 mb-12">
@@ -1711,311 +513,62 @@
                     <div class="w-14 h-14 bg-slate-700 rounded-full flex items-center justify-center text-green-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform">
                         <i class="fas fa-phone"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-2" data-fr="Téléphone" data-en="Phone">Téléphone</h3>
-                    <p class="text-slate-400 text-sm" data-fr="Cliquez pour voir" data-en="Click to view">Cliquez pour voir</p>
+                    <h3 class="font-bold text-lg mb-2">Téléphone</h3>
+                    <p class="text-slate-400 text-sm">Cliquez pour voir</p>
                 </button>
 
                 <div class="group bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-purple-500 transition-all text-center">
                     <div class="w-14 h-14 bg-slate-700 rounded-full flex items-center justify-center text-purple-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-2" data-fr="Localisation" data-en="Location">Localisation</h3>
+                    <h3 class="font-bold text-lg mb-2">Localisation</h3>
                     <p class="text-slate-400 text-sm">Montréal et Périphériques<br>Québec, Canada</p>
                 </div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-6 mb-12 max-w-2xl mx-auto">
-                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank" class="microsoft-btn px-8 py-4 text-white rounded-full font-semibold flex items-center justify-center gap-3 transform hover:scale-105 shadow-lg">
-                    <i class="fab fa-microsoft text-2xl"></i>
-                    <div class="text-left">
-                        <div class="text-xs opacity-80" data-fr="Voir mon profil" data-en="View my profile">Voir mon profil</div>
-                        <div class="font-bold">Microsoft Learn</div>
-                    </div>
-                    <i class="fas fa-external-link-alt ml-2"></i>
-                </a>
-
-                <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank" class="credly-btn px-8 py-4 text-white rounded-full font-semibold flex items-center justify-center gap-3 transform hover:scale-105 shadow-lg">
-                    <i class="fas fa-certificate text-2xl"></i>
-                    <div class="text-left">
-                        <div class="text-xs opacity-80" data-fr="Voir mes badges" data-en="View my badges">Voir mes badges</div>
-                        <div class="font-bold">Credly</div>
-                    </div>
-                    <i class="fas fa-external-link-alt ml-2"></i>
-                </a>
-            </div>
-
-            <div class="flex justify-center gap-6 mb-12">
-                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="w-14 h-14 bg-[#0077b5] rounded-full flex items-center justify-center text-white hover:bg-[#005885] transition-all transform hover:scale-110 shadow-lg">
-                    <i class="fab fa-linkedin-in text-2xl"></i>
-                </a>
-                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank" class="w-14 h-14 bg-[#00a4ef] rounded-full flex items-center justify-center text-white hover:bg-[#0078d4] transition-all transform hover:scale-110 shadow-lg">
-                    <i class="fab fa-microsoft text-xl"></i>
-                </a>
-                <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank" class="w-14 h-14 bg-[#ff6b00] rounded-full flex items-center justify-center text-white hover:bg-[#e65100] transition-all transform hover:scale-110 shadow-lg">
-                    <i class="fas fa-award text-xl"></i>
-                </a>
-                <button onclick="openContactForm()" class="w-14 h-14 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:bg-red-500 hover:text-white transition-all transform hover:scale-110">
-                    <i class="fas fa-envelope text-xl"></i>
-                </button>
-            </div>
-
-            <div class="text-center">
-                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-[#0077b5] hover:bg-[#005885] text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-blue-500/25">
-                    <i class="fab fa-linkedin text-2xl"></i>
-                    <span data-fr="Connectons-nous sur LinkedIn" data-en="Let's connect on LinkedIn">Connectons-nous sur LinkedIn</span>
-                    <i class="fas fa-external-link-alt text-sm"></i>
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-950 text-slate-400 py-8 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
-                    AB
-                </div>
-                <span class="font-display font-bold text-slate-200">Ange-Marie BA</span>
-            </div>
-            <p class="text-sm">© 2024 - Portfolio professionnel</p>
-            <div class="flex gap-4 text-sm">
-                <span data-fr="Français: Professionnel" data-en="French: Professional">Français: Professionnel</span>
-                <span>•</span>
-                <span data-fr="Anglais: Technique et fonctionnel" data-en="English: Technical and functional">Anglais: Technique et fonctionnel</span>
-            </div>
-        </div>
-    </footer>
-
     <script>
-        // Google Analytics est initialisé dans le <head>
-
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+        // Gestion du formulaire
+        function openContactForm() {
+            document.getElementById('contact-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Mettre à jour les champs cachés
+            document.getElementById('form-language').value = currentLang;
+            if (window.portfolioAnalytics) {
+                document.getElementById('form-device').value = window.portfolioAnalytics.currentDevice;
+            }
+            document.getElementById('form-url').value = window.location.href;
         }
 
+        function closeContactForm() {
+            document.getElementById('contact-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('contact-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeContactForm();
+        });
+
+        // Gestion de la langue
         let currentLang = 'fr';
         
-        // Translations pour la section Analytics
-        const analyticsTranslations = {
-            fr: {
-                live: 'En direct',
-                visitStats: 'Statistiques de Visite',
-                realTimeData: 'Données en temps réel des visiteurs du portfolio',
-                totalVisitors: 'Visiteurs Totaux',
-                pageViews: 'Pages Vues',
-                avgTime: 'Temps Moyen',
-                onlineNow: 'En Ligne',
-                devices: 'Appareils',
-                desktop: 'Ordinateur',
-                mobile: 'Téléphone',
-                tablet: 'Tablette',
-                currentDevice: 'Votre appareil actuel : ',
-                topLocations: 'Top Localisations',
-                popularPages: 'Pages Populaires',
-                recentVisitors: 'Visiteurs Récents',
-                anonymousStats: 'Ces statistiques sont collectées de manière anonyme. ',
-                viewDashboard: 'Voir le tableau de bord complet',
-                home: 'Accueil',
-                skills: 'Compétences',
-                experience: 'Expérience',
-                certifications: 'Certifications',
-                contact: 'Contact',
-                direct: 'Direct',
-                justNow: 'À l\'instant'
-            },
-            en: {
-                live: 'Live',
-                visitStats: 'Visit Statistics',
-                realTimeData: 'Real-time portfolio visitor data',
-                totalVisitors: 'Total Visitors',
-                pageViews: 'Page Views',
-                avgTime: 'Avg. Time',
-                onlineNow: 'Online',
-                devices: 'Devices',
-                desktop: 'Desktop',
-                mobile: 'Mobile',
-                tablet: 'Tablet',
-                currentDevice: 'Your current device: ',
-                topLocations: 'Top Locations',
-                popularPages: 'Popular Pages',
-                recentVisitors: 'Recent Visitors',
-                anonymousStats: 'These statistics are collected anonymously. ',
-                viewDashboard: 'View full dashboard',
-                home: 'Home',
-                skills: 'Skills',
-                experience: 'Experience',
-                certifications: 'Certifications',
-                contact: 'Contact',
-                direct: 'Direct',
-                justNow: 'Just now'
-            }
-        };
-
-        // Chat Widget Translations
-        const chatTranslations = {
-            fr: {
-                online: 'En ligne',
-                offline: 'Hors ligne',
-                placeholder: 'Écrivez votre message...',
-                send: 'Envoyer',
-                googleChatNotice: 'Messages envoyés via Google Chat sécurisé',
-                welcomeMessage: 'Bonjour ! 👋 Je suis Ange-Marie. Comment puis-je vous aider aujourd\'hui ?',
-                quickReactions: ['👋 Bonjour', '💼 Expérience', '🛠️ Compétences', '🚀 Opportunité']
-            },
-            en: {
-                online: 'Online',
-                offline: 'Offline',
-                placeholder: 'Type your message...',
-                send: 'Send',
-                googleChatNotice: 'Messages sent via secure Google Chat',
-                welcomeMessage: 'Hello! 👋 I\'m Ange-Marie. How can I help you today?',
-                quickReactions: ['👋 Hello', '💼 Experience', '🛠️ Skills', '🚀 Opportunity']
-            }
-        };
-
         function switchLang(lang) {
             currentLang = lang;
             document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+            document.getElementById('btn-fr').classList.toggle('bg-blue-500', lang === 'fr');
+            document.getElementById('btn-fr').classList.toggle('text-white', lang === 'fr');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-            
-            // Met à jour tous les éléments avec data-fr/data-en
-            document.querySelectorAll('[data-fr][data-en]').forEach(el => {
-                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                    el.placeholder = el.getAttribute('data-' + lang);
-                } else {
-                    el.textContent = el.getAttribute('data-' + lang);
-                }
-            });
-            
-            // Met à jour les placeholders de formulaire
-            document.querySelectorAll('[data-fr-placeholder][data-en-placeholder]').forEach(el => {
-                el.placeholder = el.getAttribute('data-' + lang + '-placeholder');
-            });
-            
-            // Met à jour le titre principal du hero
-            const heroTitle = document.getElementById('hero-title');
-            const profileSubtitle = document.getElementById('profile-subtitle');
-            
-            if (lang === 'en') {
-                heroTitle.innerHTML = `IT Technician<br>
-                        <span class="text-gradient">Systems Administrator</span><br>
-                        <span class="text-3xl lg:text-5xl text-slate-600">Fortinet Cybersecurity</span>`;
-                if (profileSubtitle) profileSubtitle.textContent = "IT Technician | Systems Administrator | Fortinet Cybersecurity";
-                document.title = "IT Technician | Systems Administrator | Fortinet Cybersecurity";
-            } else {
-                heroTitle.innerHTML = `Technicien IT <br>
-                        <span class="text-gradient">Administrateur Systèmes</span><br>
-                        <span class="text-3xl lg:text-5xl text-slate-600">Cybersécurité Fortinet</span>`;
-                if (profileSubtitle) profileSubtitle.textContent = "Technicien IT | Administrateur Systèmes | Cybersécurité Fortinet";
-                document.title = "Technicien IT | Administrateur Systèmes | Cybersécurité Fortinet";
-            }
-            
-            // Met à jour la section Analytics
-            updateAnalyticsLanguage();
-            
-            // Met à jour le chat
-            updateChatLanguage();
-            
+            document.getElementById('btn-en').classList.toggle('bg-blue-500', lang === 'en');
+            document.getElementById('btn-en').classList.toggle('text-white', lang === 'en');
             document.documentElement.lang = lang;
         }
 
-        function updateAnalyticsLanguage() {
-            const t = analyticsTranslations[currentLang];
-            
-            // Titres principaux
-            const analyticsSection = document.getElementById('analytics');
-            analyticsSection.querySelector('h2').textContent = t.visitStats;
-            analyticsSection.querySelector('p').textContent = t.realTimeData;
-            
-            // Métriques
-            const cards = analyticsSection.querySelectorAll('.analytics-card');
-            cards[0].querySelector('.text-slate-400').textContent = t.totalVisitors;
-            cards[1].querySelector('.text-slate-400').textContent = t.pageViews;
-            cards[2].querySelector('.text-slate-400').textContent = t.avgTime;
-            cards[3].querySelector('.text-slate-400').textContent = t.onlineNow;
-            
-            // Section Appareils
-            const deviceCard = cards[4];
-            deviceCard.querySelector('h3 span').textContent = t.devices;
-            deviceCard.querySelector('#device-desktop-row .text-slate-300').textContent = t.desktop;
-            deviceCard.querySelector('#device-mobile-row .text-slate-300').textContent = t.mobile;
-            deviceCard.querySelector('#device-tablet-row .text-slate-300').textContent = t.tablet;
-            deviceCard.querySelector('#current-device').previousSibling.textContent = t.currentDevice + ' ';
-            
-            // Autres sections
-            cards[5].querySelector('h3 span').textContent = t.topLocations;
-            cards[6].querySelector('h3 span').textContent = t.popularPages;
-            cards[7].querySelector('h3 span').textContent = t.recentVisitors;
-            
-            // Footer note
-            const note = analyticsSection.querySelector('.text-slate-500');
-            note.innerHTML = `<i class="fas fa-info-circle mr-2"></i>${t.anonymousStats}<a href="https://analytics.google.com/analytics/web/#/p406666770/reports/intelligenthome" target="_blank" class="text-blue-400 hover:text-blue-300 underline">${t.viewDashboard}</a>`;
-            
-            // Rafraîchir les listes
-            if (window.portfolioAnalytics) {
-                window.portfolioAnalytics.updateDisplay();
-            }
-        }
-
-        function updateChatLanguage() {
-            const t = chatTranslations[currentLang];
-            document.getElementById('chatStatusText').textContent = t.online;
-            document.getElementById('chatInput').placeholder = t.placeholder;
-            document.getElementById('googleChatNotice').textContent = t.googleChatNotice;
-            
-            // Mettre à jour les réactions rapides
-            const reactions = document.querySelectorAll('.reaction-btn');
-            t.quickReactions.forEach((text, index) => {
-                if (reactions[index]) reactions[index].textContent = text;
-            });
-        }
-
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-md');
-                navbar.classList.replace('h-20', 'h-16');
-            } else {
-                navbar.classList.remove('shadow-md');
-                navbar.classList.replace('h-16', 'h-20');
-            }
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    document.getElementById('mobile-menu').classList.add('hidden');
-                }
-            });
-        });
-
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.hover-card').forEach((card, index) => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-            observer.observe(card);
-        });
-
-        // SYSTÈME DE STATISTIQUES AVANCÉ
+        // Analytics
         class PortfolioAnalytics {
             constructor() {
                 this.storageKey = 'portfolio_analytics_v2';
-                this.sessionKey = 'portfolio_session_v2';
                 this.currentDevice = this.detectDevice();
                 this.init();
             }
@@ -2024,798 +577,123 @@
                 this.trackVisit();
                 this.startSessionTimer();
                 this.updateDisplay();
-                this.startRealTimeUpdates();
                 this.highlightCurrentDevice();
             }
 
-            getData() {
-                const data = localStorage.getItem(this.storageKey);
-                const defaultData = {
-                    totalVisitors: 0,
-                    pageViews: 0,
-                    visits: [],
-                    devices: { desktop: 0, mobile: 0, tablet: 0 },
-                    pages: { home: 0, skills: 0, experience: 0, certifications: 0, contact: 0, analytics: 0 },
-                    locations: {},
-                    lastUpdated: new Date().toISOString()
-                };
-                
-                if (!data) return defaultData;
-                
-                try {
-                    const parsed = JSON.parse(data);
-                    // Migration des anciennes données si nécessaire
-                    if (!parsed.devices) parsed.devices = defaultData.devices;
-                    if (!parsed.pages.analytics) parsed.pages.analytics = 0;
-                    return parsed;
-                } catch (e) {
-                    return defaultData;
-                }
-            }
-
-            saveData(data) {
-                data.lastUpdated = new Date().toISOString();
-                localStorage.setItem(this.storageKey, JSON.stringify(data));
-            }
-
             detectDevice() {
-                const userAgent = navigator.userAgent.toLowerCase();
+                const ua = navigator.userAgent.toLowerCase();
                 const width = window.innerWidth;
-                
-                // Détection tablette
-                if (/ipad|android(?!.*mobile)|tablet/.test(userAgent) || (width >= 768 && width < 1024)) {
-                    return 'tablet';
-                }
-                
-                // Détection mobile
-                if (/mobile|iphone|ipod|android.*mobile|windows phone/.test(userAgent) || width < 768) {
-                    return 'mobile';
-                }
-                
+                if (/ipad|android(?!.*mobile)|tablet/.test(ua) || (width >= 768 && width < 1024)) return 'tablet';
+                if (/mobile|iphone|ipod|android.*mobile|windows phone/.test(ua) || width < 768) return 'mobile';
                 return 'desktop';
             }
 
             highlightCurrentDevice() {
-                const deviceNames = {
-                    desktop: 'Ordinateur',
-                    mobile: 'Téléphone',
-                    tablet: 'Tablette'
-                };
-                
-                const deviceNamesEn = {
-                    desktop: 'Desktop',
-                    mobile: 'Mobile',
-                    tablet: 'Tablet'
-                };
-                
-                const currentDeviceEl = document.getElementById('current-device');
-                if (currentDeviceEl) {
-                    currentDeviceEl.textContent = currentLang === 'en' ? deviceNamesEn[this.currentDevice] : deviceNames[this.currentDevice];
-                }
-                
-                // Mettre en évidence l'icône correspondante
-                const iconId = 'icon-' + this.currentDevice;
-                const icon = document.getElementById(iconId);
-                if (icon) {
-                    icon.classList.add('active');
-                }
+                const names = { desktop: 'Ordinateur', mobile: 'Téléphone', tablet: 'Tablette' };
+                document.getElementById('current-device').textContent = names[this.currentDevice];
             }
 
-            async detectLocation() {
-                // Détection basée sur la langue et le fuseau horaire
-                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                const lang = navigator.language || navigator.userLanguage;
-                
-                // Mapping des fuseaux horaires vers pays
-                const zoneMap = {
-                    'America/Toronto': 'Canada',
-                    'America/Montreal': 'Canada',
-                    'America/Vancouver': 'Canada',
-                    'Europe/Paris': 'France',
-                    'Europe/Brussels': 'Belgique',
-                    'Europe/Geneva': 'Suisse',
-                    'Africa/Libreville': 'Gabon',
-                    'Africa/Port-Gentil': 'Gabon',
-                    'America/New_York': 'États-Unis',
-                    'America/Los_Angeles': 'États-Unis',
-                    'Europe/London': 'Royaume-Uni'
+            getData() {
+                const data = localStorage.getItem(this.storageKey);
+                return data ? JSON.parse(data) : {
+                    totalVisitors: 0, pageViews: 0, visits: [],
+                    devices: { desktop: 0, mobile: 0, tablet: 0 },
+                    pages: { home: 0, skills: 0, experience: 0, certifications: 0, contact: 0, analytics: 0 },
+                    locations: {}
                 };
-                
-                let location = zoneMap[timeZone] || 'Autre';
-                
-                // Fallback sur la langue
-                if (location === 'Autre') {
-                    if (lang.startsWith('fr')) location = 'France';
-                    else if (lang.startsWith('en-US')) location = 'États-Unis';
-                    else if (lang.startsWith('en-CA') || lang.startsWith('fr-CA')) location = 'Canada';
-                    else if (lang.startsWith('en-GB')) location = 'Royaume-Uni';
-                }
-                
-                return location;
             }
 
-            getCurrentPage() {
-                const hash = window.location.hash;
-                if (hash.includes('competences')) return 'skills';
-                if (hash.includes('experience')) return 'experience';
-                if (hash.includes('certifications')) return 'certifications';
-                if (hash.includes('contact')) return 'contact';
-                if (hash.includes('analytics')) return 'analytics';
-                return 'home';
+            saveData(data) {
+                localStorage.setItem(this.storageKey, JSON.stringify(data));
             }
 
             trackVisit() {
                 const data = this.getData();
-                const session = sessionStorage.getItem(this.sessionKey);
-                const now = new Date();
+                const session = sessionStorage.getItem('portfolio_session');
                 
                 if (!session) {
-                    // Nouveau visiteur unique
                     data.totalVisitors++;
-                    sessionStorage.setItem(this.sessionKey, JSON.stringify({
-                        startTime: now.toISOString(),
-                        pages: []
-                    }));
-                    
-                    // Incrémenter le compteur de l'appareil
+                    sessionStorage.setItem('portfolio_session', '1');
                     data.devices[this.currentDevice]++;
                     
-                    // Détection de localisation
-                    this.detectLocation().then(location => {
-                        data.locations[location] = (data.locations[location] || 0) + 1;
-                        this.saveData(data);
-                    });
-                } else {
-                    // Mise à jour de la session existante
-                    const sessionData = JSON.parse(session);
-                    sessionData.pages.push({
-                        page: this.getCurrentPage(),
-                        time: now.toISOString()
-                    });
-                    sessionStorage.setItem(this.sessionKey, JSON.stringify(sessionData));
+                    // Détection localisation simple
+                    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                    const loc = tz.includes('Toronto') || tz.includes('Montreal') ? 'Canada' :
+                               tz.includes('Paris') ? 'France' : 
+                               tz.includes('London') ? 'Royaume-Uni' :
+                               tz.includes('Libreville') ? 'Gabon' : 'Autre';
+                    data.locations[loc] = (data.locations[loc] || 0) + 1;
                 }
                 
-                // Toujours incrémenter les pages vues
                 data.pageViews++;
-                
-                // Tracking de la page actuelle
-                const currentPage = this.getCurrentPage();
-                if (data.pages[currentPage] !== undefined) {
-                    data.pages[currentPage]++;
-                }
-                
-                // Ajouter au journal des visites
-                const visit = {
-                    id: Date.now() + Math.random().toString(36).substr(2, 9),
-                    timestamp: now.toISOString(),
-                    page: currentPage,
-                    device: this.currentDevice,
-                    location: '...', // Sera mis à jour
-                    referrer: document.referrer || 'direct'
-                };
-                
-                // Obtenir la localisation pour le journal
-                this.detectLocation().then(location => {
-                    visit.location = location;
-                    data.visits.unshift(visit);
-                    if (data.visits.length > 100) data.visits.pop(); // Garder les 100 dernières
-                    this.saveData(data);
-                    this.updateDisplay();
-                });
+                const page = window.location.hash.includes('analytics') ? 'analytics' : 'home';
+                data.pages[page]++;
                 
                 this.saveData(data);
                 
-                // Envoyer à Google Analytics
                 if (typeof gtag !== 'undefined') {
-                    gtag('event', 'page_view', {
-                        page_title: document.title,
-                        page_location: window.location.href,
-                        page_path: window.location.pathname + window.location.hash,
-                        device_category: this.currentDevice
-                    });
+                    gtag('event', 'page_view', { page_title: document.title, device_category: this.currentDevice });
                 }
             }
 
             startSessionTimer() {
-                this.sessionStart = Date.now();
+                const start = Date.now();
                 setInterval(() => {
-                    const elapsed = Math.floor((Date.now() - this.sessionStart) / 1000);
-                    const minutes = Math.floor(elapsed / 60);
-                    const seconds = elapsed % 60;
-                    const timeEl = document.getElementById('avg-time');
-                    if (timeEl) {
-                        timeEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-                    }
+                    const elapsed = Math.floor((Date.now() - start) / 1000);
+                    const m = Math.floor(elapsed / 60), s = elapsed % 60;
+                    document.getElementById('avg-time').textContent = `${m}:${s.toString().padStart(2, '0')}`;
                 }, 1000);
             }
 
             updateDisplay() {
                 const data = this.getData();
-                const t = analyticsTranslations[currentLang];
                 
-                // Métriques principales
-                const totalVisitorsEl = document.getElementById('total-visitors');
-                const pageViewsEl = document.getElementById('page-views');
+                document.getElementById('total-visitors').textContent = data.totalVisitors;
+                document.getElementById('page-views').textContent = data.pageViews;
                 
-                if (totalVisitorsEl) totalVisitorsEl.textContent = data.totalVisitors.toLocaleString();
-                if (pageViewsEl) pageViewsEl.textContent = data.pageViews.toLocaleString();
+                const total = Object.values(data.devices).reduce((a, b) => a + b, 1);
+                document.getElementById('device-desktop').textContent = Math.round((data.devices.desktop / total) * 100) + '%';
+                document.getElementById('device-mobile').textContent = Math.round((data.devices.mobile / total) * 100) + '%';
+                document.getElementById('device-tablet').textContent = Math.round((data.devices.tablet / total) * 100) + '%';
                 
-                // Calcul des pourcentages d'appareils
-                const totalDevices = data.devices.desktop + data.devices.mobile + data.devices.tablet || 1;
-                const desktopPct = Math.round((data.devices.desktop / totalDevices) * 100);
-                const mobilePct = Math.round((data.devices.mobile / totalDevices) * 100);
-                const tabletPct = Math.round((data.devices.tablet / totalDevices) * 100);
+                // Locations
+                const locContainer = document.getElementById('locations-list');
+                const locTotal = Object.values(data.locations).reduce((a, b) => a + b, 1);
+                const sortedLoc = Object.entries(data.locations).sort((a, b) => b[1] - a[1]).slice(0, 5);
+                const flags = { 'Canada': '🇨🇦', 'France': '🇫🇷', 'Royaume-Uni': '🇬🇧', 'Gabon': '🇬🇦', 'Autre': '🌍' };
                 
-                // Mise à jour des barres d'appareils
-                this.updateDeviceBar('desktop', desktopPct);
-                this.updateDeviceBar('mobile', mobilePct);
-                this.updateDeviceBar('tablet', tabletPct);
+                locContainer.innerHTML = sortedLoc.map(([loc, count]) => {
+                    const pct = Math.round((count / locTotal) * 100);
+                    return `<div class="flex justify-between items-center p-2 bg-slate-800/30 rounded-lg">
+                        <div class="flex items-center gap-2"><span>${flags[loc] || '🌍'}</span><span class="text-slate-300 text-sm">${loc}</span></div>
+                        <span class="text-white font-medium text-sm">${pct}%</span>
+                    </div>`;
+                }).join('') || '<div class="text-slate-500 text-sm">Aucune donnée</div>';
                 
-                // Pages populaires
-                this.updatePagesList(data.pages, t);
+                // Pages
+                const pageContainer = document.getElementById('pages-list');
+                const pageTotal = Object.values(data.pages).reduce((a, b) => a + b, 1);
+                const sortedPages = Object.entries(data.pages).sort((a, b) => b[1] - a[1]).slice(0, 5);
+                const pageNames = { home: 'Accueil', skills: 'Compétences', experience: 'Expérience', certifications: 'Certifications', analytics: 'Stats', contact: 'Contact' };
                 
-                // Localisations
-                this.updateLocationsList(data.locations, t);
-                
-                // Journal des visiteurs
-                this.updateVisitorLog(data.visits, t);
-            }
-
-            updateDeviceBar(device, percentage) {
-                const bar = document.getElementById(`device-${device}-bar`);
-                const percent = document.getElementById(`device-${device}-percent`);
-                
-                if (bar) {
-                    bar.style.width = percentage + '%';
-                }
-                if (percent) {
-                    percent.textContent = percentage + '%';
-                }
-            }
-
-            updatePagesList(pages, t) {
-                const container = document.getElementById('pages-list');
-                if (!container) return;
-                
-                const total = Object.values(pages).reduce((a, b) => a + b, 0) || 1;
-                const pageNames = {
-                    home: t.home,
-                    skills: t.skills,
-                    experience: t.experience,
-                    certifications: t.certifications,
-                    contact: t.contact,
-                    analytics: 'Stats'
-                };
-                
-                // Trier par popularité
-                const sortedPages = Object.entries(pages)
-                    .sort((a, b) => b[1] - a[1])
-                    .slice(0, 5);
-                
-                container.innerHTML = sortedPages.map(([page, count]) => {
-                    const pct = Math.round((count / total) * 100);
-                    return `
-                        <div class="flex justify-between items-center">
-                            <span class="text-slate-400 text-sm">${pageNames[page] || page}</span>
-                            <div class="flex items-center gap-2">
-                                <div class="w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
-                                    <div class="h-full bg-orange-500 rounded-full" style="width: ${pct}%"></div>
-                                </div>
-                                <span class="text-white font-medium text-sm w-10 text-right">${pct}%</span>
-                            </div>
-                        </div>
-                    `;
+                pageContainer.innerHTML = sortedPages.map(([page, count]) => {
+                    const pct = Math.round((count / pageTotal) * 100);
+                    return `<div class="flex justify-between items-center">
+                        <span class="text-slate-400 text-sm">${pageNames[page] || page}</span>
+                        <span class="text-white font-medium text-sm">${pct}%</span>
+                    </div>`;
                 }).join('');
             }
-
-            updateLocationsList(locations, t) {
-                const container = document.getElementById('locations-list');
-                if (!container) return;
-                
-                const total = Object.values(locations).reduce((a, b) => a + b, 0) || 1;
-                
-                // Trier par nombre de visites
-                const sortedLocations = Object.entries(locations)
-                    .sort((a, b) => b[1] - a[1])
-                    .slice(0, 5);
-                
-                if (sortedLocations.length === 0) {
-                    container.innerHTML = '<div class="text-slate-500 text-sm text-center py-4">Aucune donnée disponible</div>';
-                    return;
-                }
-                
-                container.innerHTML = sortedLocations.map(([location, count]) => {
-                    const pct = Math.round((count / total) * 100);
-                    const flag = this.getCountryFlag(location);
-                    return `
-                        <div class="flex justify-between items-center p-2 bg-slate-800/30 rounded-lg">
-                            <div class="flex items-center gap-2">
-                                <span class="text-lg">${flag}</span>
-                                <span class="text-slate-300 text-sm">${location}</span>
-                            </div>
-                            <span class="text-white font-medium text-sm">${pct}%</span>
-                        </div>
-                    `;
-                }).join('');
-            }
-
-            getCountryFlag(location) {
-                const flags = {
-                    'Canada': '🇨🇦',
-                    'France': '🇫🇷',
-                    'Belgique': '🇧🇪',
-                    'Suisse': '🇨🇭',
-                    'Gabon': '🇬🇦',
-                    'États-Unis': '🇺🇸',
-                    'Royaume-Uni': '🇬🇧',
-                    'Allemagne': '🇩🇪',
-                    'Espagne': '🇪🇸',
-                    'Italie': '🇮🇹',
-                    'Autre': '🌍'
-                };
-                return flags[location] || '🌍';
-            }
-
-            updateVisitorLog(visits, t) {
-                const container = document.getElementById('visitor-log');
-                if (!container || !visits.length) return;
-                
-                container.innerHTML = visits.slice(0, 10).map(visit => {
-                    const date = new Date(visit.timestamp);
-                    const time = date.toLocaleTimeString(currentLang === 'en' ? 'en-US' : 'fr-FR', { 
-                        hour: '2-digit', 
-                        minute: '2-digit' 
-                    });
-                    
-                    const deviceIcon = {
-                        desktop: 'fa-desktop',
-                        mobile: 'fa-mobile-alt',
-                        tablet: 'fa-tablet-alt'
-                    }[visit.device] || 'fa-desktop';
-                    
-                    const pageNames = {
-                        home: t.home,
-                        skills: t.skills,
-                        experience: t.experience,
-                        certifications: t.certifications,
-                        contact: t.contact,
-                        analytics: 'Stats'
-                    };
-                    
-                    const isCurrent = visit.id && visit.id.includes(Date.now().toString().slice(0, -4));
-                    const highlightClass = isCurrent ? 'border-blue-500 bg-blue-500/10' : 'border-slate-700 bg-slate-800/50';
-                    
-                    return `
-                        <div class="flex items-center justify-between p-3 ${highlightClass} rounded-lg border transition-all">
-                            <div class="flex items-center gap-3">
-                                <i class="fas ${deviceIcon} ${visit.device === 'desktop' ? 'text-blue-400' : visit.device === 'mobile' ? 'text-purple-400' : 'text-green-400'}"></i>
-                                <div>
-                                    <span class="text-slate-300 text-sm capitalize">${pageNames[visit.page] || visit.page}</span>
-                                    ${visit.location ? `<span class="text-xs text-slate-500 block">${visit.location}</span>` : ''}
-                                </div>
-                            </div>
-                            <div class="text-slate-500 text-xs">${time}</div>
-                        </div>
-                    `;
-                }).join('');
-            }
-
-            startRealTimeUpdates() {
-                // Simuler des visiteurs en ligne aléatoires
-                setInterval(() => {
-                    const onlineNow = Math.floor(Math.random() * 3) + 1;
-                    const el = document.getElementById('online-now');
-                    if (el) el.textContent = onlineNow;
-                }, 5000);
-                
-                // Mettre à jour les données toutes les 30 secondes
-                setInterval(() => {
-                    this.updateDisplay();
-                }, 30000);
-            }
         }
 
-        // SYSTÈME DE CHAT - ASSISTANT VIRTUEL
-        class ChatSystem {
-            constructor() {
-                this.isOpen = false;
-                this.messages = [];
-                this.googleChatEmail = 'boussougouange1@gmail.com';
-                this.init();
-            }
-
-            init() {
-                this.loadMessages();
-                this.showWelcomeMessage();
-                
-                // Ouvrir automatiquement après 10 secondes si c'est la première visite
-                const hasVisited = localStorage.getItem('chat_visited');
-                if (!hasVisited) {
-                    setTimeout(() => {
-                        this.open();
-                        localStorage.setItem('chat_visited', 'true');
-                    }, 10000);
-                }
-            }
-
-            toggle() {
-                if (this.isOpen) {
-                    this.close();
-                } else {
-                    this.open();
-                }
-            }
-
-            open() {
-                this.isOpen = true;
-                document.getElementById('chatContainer').classList.add('active');
-                document.getElementById('chatButton').classList.add('active');
-                document.getElementById('chatNotification').style.display = 'none';
-                this.scrollToBottom();
-            }
-
-            close() {
-                this.isOpen = false;
-                document.getElementById('chatContainer').classList.remove('active');
-                document.getElementById('chatButton').classList.remove('active');
-            }
-
-            showWelcomeMessage() {
-                const t = chatTranslations[currentLang];
-                const hour = new Date().getHours();
-                let greeting = t.welcomeMessage;
-                
-                if (hour < 12) {
-                    greeting = currentLang === 'fr' ? 'Bonjour ! ☀️ Comment puis-je vous aider ce matin ?' : 'Good morning! ☀️ How can I help you today?';
-                } else if (hour < 18) {
-                    greeting = currentLang === 'fr' ? 'Bonjour ! 👋 Comment puis-je vous aider cet après-midi ?' : 'Good afternoon! 👋 How can I help you today?';
-                } else {
-                    greeting = currentLang === 'fr' ? 'Bonsoir ! 🌙 Comment puis-je vous aider ce soir ?' : 'Good evening! 🌙 How can I help you tonight?';
-                }
-                
-                this.addBotMessage(greeting);
-                
-                // Ajouter les options après un délai
-                setTimeout(() => {
-                    this.showOptions();
-                }, 1000);
-            }
-
-            showOptions() {
-                const options = [
-                    { icon: '💼', text: currentLang === 'fr' ? 'Discuter d\'une opportunité' : 'Discuss an opportunity', action: 'opportunity' },
-                    { icon: '❓', text: currentLang === 'fr' ? 'Poser une question' : 'Ask a question', action: 'question' },
-                    { icon: '📄', text: currentLang === 'fr' ? 'Demander mon CV' : 'Request my resume', action: 'cv' }
-                ];
-
-                const html = `
-                    <div class="chat-options">
-                        ${options.map(opt => `
-                            <button class="chat-option-btn" onclick="chat.handleOption('${opt.action}')">
-                                <span>${opt.icon}</span>
-                                <span>${opt.text}</span>
-                            </button>
-                        `).join('')}
-                    </div>
-                `;
-                
-                this.addHTMLMessage(html);
-            }
-
-            handleOption(action) {
-                switch(action) {
-                    case 'opportunity':
-                        this.addUserMessage(currentLang === 'fr' ? 'Je souhaite discuter d\'une opportunité professionnelle' : 'I would like to discuss a job opportunity');
-                        setTimeout(() => {
-                            this.addBotMessage(currentLang === 'fr' ? 
-                                'Parfait ! 💼 Je suis toujours ouvert aux nouvelles opportunités. Pouvez-vous me donner plus de détails sur le poste ? (Entreprise, localisation, type de contrat)' : 
-                                'Great! 💼 I\'m always open to new opportunities. Can you give me more details about the position? (Company, location, contract type)');
-                        }, 500);
-                        break;
-                    case 'question':
-                        this.addUserMessage(currentLang === 'fr' ? 'J\'ai une question' : 'I have a question');
-                        setTimeout(() => {
-                            this.addBotMessage(currentLang === 'fr' ? 
-                                'Bien sûr ! ❓ Je suis là pour répondre à vos questions sur mon expérience, mes compétences ou mes projets. Qu\'aimeriez-vous savoir ?' : 
-                                'Of course! ❓ I\'m here to answer your questions about my experience, skills, or projects. What would you like to know?');
-                        }, 500);
-                        break;
-                    case 'cv':
-                        this.addUserMessage(currentLang === 'fr' ? 'Je souhaite recevoir votre CV' : 'I would like to receive your resume');
-                        setTimeout(() => {
-                            this.addBotMessage(currentLang === 'fr' ? 
-                                'Je vais vous envoyer mon CV par email ! 📄 Quelle est votre adresse email ?' : 
-                                'I\'ll send you my resume by email! 📄 What is your email address?');
-                        }, 500);
-                        break;
-                }
-            }
-
-            addBotMessage(text) {
-                const message = {
-                    type: 'bot',
-                    text: text,
-                    time: new Date()
-                };
-                this.messages.push(message);
-                this.renderMessage(message);
-                this.saveMessages();
-            }
-
-            addUserMessage(text) {
-                const message = {
-                    type: 'user',
-                    text: text,
-                    time: new Date()
-                };
-                this.messages.push(message);
-                this.renderMessage(message);
-                this.saveMessages();
-                
-                // Envoyer à Google Chat
-                this.sendToGoogleChat(text);
-            }
-
-            addHTMLMessage(html) {
-                const container = document.getElementById('chatMessages');
-                const div = document.createElement('div');
-                div.className = 'message message-bot';
-                div.innerHTML = `<div class="message-bubble">${html}</div>`;
-                container.appendChild(div);
-                this.scrollToBottom();
-            }
-
-            renderMessage(message) {
-                const container = document.getElementById('chatMessages');
-                const div = document.createElement('div');
-                div.className = `message message-${message.type}`;
-                
-                const time = message.time.toLocaleTimeString(currentLang === 'en' ? 'en-US' : 'fr-FR', {
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
-                
-                div.innerHTML = `
-                    <div class="message-bubble">${this.escapeHtml(message.text)}</div>
-                    <div class="message-time">${time}</div>
-                `;
-                
-                container.appendChild(div);
-                this.scrollToBottom();
-            }
-
-            escapeHtml(text) {
-                const div = document.createElement('div');
-                div.textContent = text;
-                return div.innerHTML;
-            }
-
-            scrollToBottom() {
-                const container = document.getElementById('chatMessages');
-                container.scrollTop = container.scrollHeight;
-            }
-
-            sendMessage() {
-                const input = document.getElementById('chatInput');
-                const text = input.value.trim();
-                
-                if (!text) return;
-                
-                this.addUserMessage(text);
-                input.value = '';
-                
-                // Réponse automatique du bot
-                this.showTyping();
-                setTimeout(() => {
-                    this.hideTyping();
-                    this.generateBotResponse(text);
-                }, 1500);
-            }
-
-            showTyping() {
-                const container = document.getElementById('chatMessages');
-                const div = document.createElement('div');
-                div.className = 'message message-bot typing-indicator-container';
-                div.innerHTML = `
-                    <div class="typing-indicator">
-                        <div class="typing-dot"></div>
-                        <div class="typing-dot"></div>
-                        <div class="typing-dot"></div>
-                    </div>
-                `;
-                container.appendChild(div);
-                this.scrollToBottom();
-            }
-
-            hideTyping() {
-                const typing = document.querySelector('.typing-indicator-container');
-                if (typing) typing.remove();
-            }
-
-            generateBotResponse(userText) {
-                const lowerText = userText.toLowerCase();
-                let response = '';
-                
-                // Réponses intelligentes basiques
-                if (lowerText.includes('salut') || lowerText.includes('bonjour') || lowerText.includes('hello') || lowerText.includes('hi')) {
-                    response = currentLang === 'fr' ? 
-                        'Bonjour ! 👋 Ravie de vous rencontrer. Comment puis-je vous aider ?' : 
-                        'Hello! 👋 Nice to meet you. How can I help you?';
-                } else if (lowerText.includes('merci') || lowerText.includes('thank')) {
-                    response = currentLang === 'fr' ? 
-                        'Avec plaisir ! 😊 N\'hésitez pas si vous avez d\'autres questions.' : 
-                        'You\'re welcome! 😊 Feel free to ask if you have any other questions.';
-                } else if (lowerText.includes('email') || lowerText.includes('@') || lowerText.includes('contact')) {
-                    response = currentLang === 'fr' ? 
-                        'Vous pouvez m\'écrire directement sur Google Chat ou m\'envoyer un email à ahouansouange@live.fr 📧' : 
-                        'You can write to me directly on Google Chat or send an email to ahouansouange@live.fr 📧';
-                } else if (lowerText.includes('disponible') || lowerText.includes('available') || lowerText.includes('quand')) {
-                    response = currentLang === 'fr' ? 
-                        'Je suis disponible immédiatement ! 🚀 Je peux commencer dès que vous le souhaitez.' : 
-                        'I am available immediately! 🚀 I can start whenever you want.';
-                } else if (lowerText.includes('salaire') || lowerText.includes('salary') || lowerText.includes('rémunération')) {
-                    response = currentLang === 'fr' ? 
-                        'Je préfère discuter de la rémunération en entretien. Le plus important pour moi est de trouver un projet qui me passionne ! 💼' : 
-                        'I prefer to discuss compensation in an interview. The most important thing for me is to find a project that I\'m passionate about! 💼';
-                } else {
-                    response = currentLang === 'fr' ? 
-                        'Merci pour votre message ! 💬 Je vais vous répondre directement sur Google Chat. Souhaitez-vous que je vous envoie mon CV également ?' : 
-                        'Thank you for your message! 💬 I will reply to you directly on Google Chat. Would you like me to send you my resume as well?';
-                }
-                
-                this.addBotMessage(response);
-            }
-
-            sendQuickMessage(text) {
-                this.addUserMessage(text);
-                this.showTyping();
-                setTimeout(() => {
-                    this.hideTyping();
-                    this.generateBotResponse(text);
-                }, 1000);
-            }
-
-            sendToGoogleChat(message) {
-                // Ouvrir Google Chat dans un nouvel onglet avec le message pré-rempli
-                const subject = encodeURIComponent('Nouveau message de votre portfolio');
-                const body = encodeURIComponent(`Message du visiteur:\n\n${message}\n\n---\nEnvoyé depuis le chat du portfolio\nDate: ${new Date().toLocaleString()}`);
-                
-                // Utiliser Google Chat direct
-                const googleChatUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${this.googleChatEmail}&su=${subject}&body=${body}`;
-                
-                // Ouvrir dans une nouvelle fenêtre (seulement si l'utilisateur interagit)
-                // window.open(googleChatUrl, '_blank');
-                
-                // Alternative: Stocker pour envoi groupé ou utiliser une API
-                console.log('Message prêt à être envoyé à:', this.googleChatEmail);
-                
-                // Tracker l'événement
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'chat_message_sent', {
-                        event_category: 'engagement',
-                        event_label: 'portfolio_chat'
-                    });
-                }
-            }
-
-            saveMessages() {
-                // Limiter à 50 messages
-                if (this.messages.length > 50) {
-                    this.messages = this.messages.slice(-50);
-                }
-                localStorage.setItem('chat_messages', JSON.stringify(this.messages));
-            }
-
-            loadMessages() {
-                const saved = localStorage.getItem('chat_messages');
-                if (saved) {
-                    this.messages = JSON.parse(saved);
-                    // Afficher les 10 derniers messages
-                    this.messages.slice(-10).forEach(msg => {
-                        msg.time = new Date(msg.time);
-                        this.renderMessage(msg);
-                    });
-                }
-            }
-        }
-
-        // Initialiser le chat
-        let chat;
-        document.addEventListener('DOMContentLoaded', () => {
-            chat = new ChatSystem();
-        });
-
-        function toggleChat() {
-            if (chat) chat.toggle();
-        }
-
-        function sendChatMessage() {
-            if (chat) chat.sendMessage();
-        }
-
-        function sendQuickMessage(text) {
-            if (chat) chat.sendQuickMessage(text);
-        }
-
-        function handleChatKeyPress(event) {
-            if (event.key === 'Enter') {
-                sendChatMessage();
-            }
-        }
-
-        // Gestion du formulaire de contact
-        function openContactForm() {
-            const modal = document.getElementById('contact-modal');
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeContactForm() {
-            const modal = document.getElementById('contact-modal');
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function handleContactSubmit(e) {
-            e.preventDefault();
-            
-            // Simuler l'envoi
-            const btn = e.target.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
-            
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi...';
-            btn.disabled = true;
-            
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
-                btn.classList.remove('from-blue-500', 'to-purple-600');
-                btn.classList.add('bg-green-500');
-                
-                setTimeout(() => {
-                    closeContactForm();
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                    btn.classList.add('from-blue-500', 'to-purple-600');
-                    btn.classList.remove('bg-green-500');
-                    e.target.reset();
-                }, 1500);
-            }, 1500);
-        }
-
-        // Fermer le modal en cliquant à l'extérieur
-        document.getElementById('contact-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeContactForm();
-            }
-        });
-
-        // Initialiser les analytics au chargement
+        // Initialisation
         document.addEventListener('DOMContentLoaded', () => {
             window.portfolioAnalytics = new PortfolioAnalytics();
         });
 
-        // Tracking des clics sur les liens
-        document.addEventListener('click', (e) => {
-            if (e.target.closest('a')) {
-                const link = e.target.closest('a');
-                const href = link.getAttribute('href');
-                
-                if (typeof gtag !== 'undefined' && href && !href.startsWith('#')) {
-                    gtag('event', 'click', {
-                        event_category: 'outbound',
-                        event_label: href,
-                        transport_type: 'beacon'
-                    });
-                }
-            }
-        });
-
-        // Détection du changement de hash pour tracking de page
-        window.addEventListener('hashchange', () => {
-            if (window.portfolioAnalytics) {
-                window.portfolioAnalytics.trackVisit();
-            }
-        });
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
     </script>
 </body>
 </html>
