@@ -15,8 +15,6 @@
     <title>Technicien IT | Administrateur Systèmes | Cybersécurité Fortinet</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <script>
@@ -32,6 +30,8 @@
                         'float': 'float 6s ease-in-out infinite',
                         'slide-up': 'slideUp 0.8s ease-out forwards',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slight': 'bounceSlight 2s infinite',
+                        'typing': 'typing 1.5s infinite',
                     },
                     keyframes: {
                         gradient: {
@@ -45,6 +45,14 @@
                         slideUp: {
                             '0%': { transform: 'translateY(30px)', opacity: '0' },
                             '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        bounceSlight: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' },
+                        },
+                        typing: {
+                            '0%, 100%': { opacity: 1 },
+                            '50%': { opacity: 0.3 },
                         }
                     }
                 }
@@ -385,9 +393,474 @@
             transform: scale(1.1);
             filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
         }
+
+        /* ASSISTANT VIRTUEL - CHAT WIDGET */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .chat-button {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px -5px rgba(59, 130, 246, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 40px -5px rgba(59, 130, 246, 0.6);
+        }
+
+        .chat-button.active {
+            transform: scale(0.9);
+            background: #ef4444;
+        }
+
+        .chat-button i {
+            color: white;
+            font-size: 28px;
+            transition: all 0.3s;
+        }
+
+        .chat-button.active i {
+            transform: rotate(45deg);
+        }
+
+        .chat-notification {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 24px;
+            height: 24px;
+            background: #ef4444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            animation: bounce-slight 2s infinite;
+            border: 3px solid white;
+        }
+
+        .chat-container {
+            position: absolute;
+            bottom: 90px;
+            right: 0;
+            width: 380px;
+            max-width: calc(100vw - 40px);
+            height: 550px;
+            max-height: calc(100vh - 150px);
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .chat-container.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: all;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            padding: 20px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chat-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .chat-header-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .chat-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid rgba(255,255,255,0.3);
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #3b82f6;
+            font-size: 20px;
+        }
+
+        .chat-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: pulse-live 2s infinite;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+
+        .message {
+            max-width: 85%;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-bot {
+            align-self: flex-start;
+        }
+
+        .message-user {
+            align-self: flex-end;
+        }
+
+        .message-bubble {
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .message-bot .message-bubble {
+            background: white;
+            color: #1e293b;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .message-user .message-bubble {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message-time {
+            font-size: 11px;
+            color: #94a3b8;
+            margin-top: 4px;
+            text-align: right;
+        }
+
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 18px;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+            width: fit-content;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #cbd5e1;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        .chat-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .chat-option-btn {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 10px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+            text-align: left;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chat-option-btn:hover {
+            border-color: #3b82f6;
+            background: #eff6ff;
+            transform: translateX(5px);
+        }
+
+        .chat-option-btn i {
+            color: #3b82f6;
+        }
+
+        .chat-input-area {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .chat-input-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 25px;
+            outline: none;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .chat-input:focus {
+            border-color: #3b82f6;
+        }
+
+        .chat-send-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .chat-send-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .chat-send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .google-chat-notice {
+            background: linear-gradient(135deg, #f3e8ff 0%, #e0e7ff 100%);
+            padding: 12px;
+            border-radius: 12px;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #5b21b6;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #ddd6fe;
+        }
+
+        .quick-reactions {
+            display: flex;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .quick-reactions::-webkit-scrollbar {
+            display: none;
+        }
+
+        .reaction-btn {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .reaction-btn:hover {
+            background: #eff6ff;
+            border-color: #3b82f6;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 480px) {
+            .chat-widget {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .chat-button {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .chat-container {
+                width: calc(100vw - 40px);
+                height: calc(100vh - 100px);
+                right: -10px;
+            }
+        }
+
+        /* Animation d'entrée du widget */
+        .chat-widget-enter {
+            animation: widgetEnter 0.5s ease-out 2s both;
+        }
+
+        @keyframes widgetEnter {
+            from {
+                opacity: 0;
+                transform: scale(0) rotate(-180deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0);
+            }
+        }
     </style>
 </head>
 <body class="font-sans text-slate-800 bg-slate-50 antialiased overflow-x-hidden">
+
+    <!-- ASSISTANT VIRTUEL - CHAT WIDGET -->
+    <div class="chat-widget chat-widget-enter" id="chatWidget">
+        <div class="chat-container" id="chatContainer">
+            <div class="chat-header">
+                <div class="chat-header-content">
+                    <div class="chat-avatar">AB</div>
+                    <div>
+                        <div class="font-bold text-lg">Ange-Marie</div>
+                        <div class="chat-status">
+                            <span class="status-dot"></span>
+                            <span id="chatStatusText">En ligne</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <!-- Les messages seront ajoutés ici dynamiquement -->
+            </div>
+
+            <div class="quick-reactions" id="quickReactions">
+                <button class="reaction-btn" onclick="sendQuickMessage('Bonjour !')">👋 Bonjour</button>
+                <button class="reaction-btn" onclick="sendQuickMessage('J\'ai une question sur votre expérience')">💼 Expérience</button>
+                <button class="reaction-btn" onclick="sendQuickMessage('Parlons de vos compétences')">🛠️ Compétences</button>
+                <button class="reaction-btn" onclick="sendQuickMessage('J\'ai une opportunité à vous proposer')">🚀 Opportunité</button>
+            </div>
+
+            <div class="chat-input-area">
+                <div class="chat-input-container">
+                    <input type="text" 
+                           class="chat-input" 
+                           id="chatInput" 
+                           placeholder="Écrivez votre message..." 
+                           maxlength="500"
+                           onkeypress="handleChatKeyPress(event)">
+                    <button class="chat-send-btn" id="sendBtn" onclick="sendChatMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="google-chat-notice">
+                    <i class="fas fa-shield-alt"></i>
+                    <span id="googleChatNotice">Messages envoyés via Google Chat sécurisé</span>
+                </div>
+            </div>
+        </div>
+
+        <button class="chat-button" id="chatButton" onclick="toggleChat()">
+            <i class="fas fa-comment-dots" id="chatIcon"></i>
+            <span class="chat-notification" id="chatNotification">1</span>
+        </button>
+    </div>
 
     <!-- Contact Form Modal -->
     <div id="contact-modal" class="contact-form-overlay">
@@ -1103,7 +1576,7 @@
                         <i class="fas fa-user-clock"></i>
                     </div>
                     <div class="text-3xl font-bold metric-value mb-1" id="online-now">1</div>
-                    <div class="text-slate-400 text-sm" data-fr="En Ligne" data-en="Online Now">En Ligne</div>
+                    <div class="text-slate-400 text-sm" data-fr="En Ligne" data-en="Online">En Ligne</div>
                 </div>
             </div>
 
@@ -1380,6 +1853,28 @@
             }
         };
 
+        // Chat Widget Translations
+        const chatTranslations = {
+            fr: {
+                online: 'En ligne',
+                offline: 'Hors ligne',
+                placeholder: 'Écrivez votre message...',
+                send: 'Envoyer',
+                googleChatNotice: 'Messages envoyés via Google Chat sécurisé',
+                welcomeMessage: 'Bonjour ! 👋 Je suis Ange-Marie. Comment puis-je vous aider aujourd\'hui ?',
+                quickReactions: ['👋 Bonjour', '💼 Expérience', '🛠️ Compétences', '🚀 Opportunité']
+            },
+            en: {
+                online: 'Online',
+                offline: 'Offline',
+                placeholder: 'Type your message...',
+                send: 'Send',
+                googleChatNotice: 'Messages sent via secure Google Chat',
+                welcomeMessage: 'Hello! 👋 I\'m Ange-Marie. How can I help you today?',
+                quickReactions: ['👋 Hello', '💼 Experience', '🛠️ Skills', '🚀 Opportunity']
+            }
+        };
+
         function switchLang(lang) {
             currentLang = lang;
             document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
@@ -1420,6 +1915,9 @@
             // Met à jour la section Analytics
             updateAnalyticsLanguage();
             
+            // Met à jour le chat
+            updateChatLanguage();
+            
             document.documentElement.lang = lang;
         }
 
@@ -1459,6 +1957,19 @@
             if (window.portfolioAnalytics) {
                 window.portfolioAnalytics.updateDisplay();
             }
+        }
+
+        function updateChatLanguage() {
+            const t = chatTranslations[currentLang];
+            document.getElementById('chatStatusText').textContent = t.online;
+            document.getElementById('chatInput').placeholder = t.placeholder;
+            document.getElementById('googleChatNotice').textContent = t.googleChatNotice;
+            
+            // Mettre à jour les réactions rapides
+            const reactions = document.querySelectorAll('.reaction-btn');
+            t.quickReactions.forEach((text, index) => {
+                if (reactions[index]) reactions[index].textContent = text;
+            });
         }
 
         window.addEventListener('scroll', function() {
@@ -1904,6 +2415,334 @@
             }
         }
 
+        // SYSTÈME DE CHAT - ASSISTANT VIRTUEL
+        class ChatSystem {
+            constructor() {
+                this.isOpen = false;
+                this.messages = [];
+                this.googleChatEmail = 'boussougouange1@gmail.com';
+                this.init();
+            }
+
+            init() {
+                this.loadMessages();
+                this.showWelcomeMessage();
+                
+                // Ouvrir automatiquement après 10 secondes si c'est la première visite
+                const hasVisited = localStorage.getItem('chat_visited');
+                if (!hasVisited) {
+                    setTimeout(() => {
+                        this.open();
+                        localStorage.setItem('chat_visited', 'true');
+                    }, 10000);
+                }
+            }
+
+            toggle() {
+                if (this.isOpen) {
+                    this.close();
+                } else {
+                    this.open();
+                }
+            }
+
+            open() {
+                this.isOpen = true;
+                document.getElementById('chatContainer').classList.add('active');
+                document.getElementById('chatButton').classList.add('active');
+                document.getElementById('chatNotification').style.display = 'none';
+                this.scrollToBottom();
+            }
+
+            close() {
+                this.isOpen = false;
+                document.getElementById('chatContainer').classList.remove('active');
+                document.getElementById('chatButton').classList.remove('active');
+            }
+
+            showWelcomeMessage() {
+                const t = chatTranslations[currentLang];
+                const hour = new Date().getHours();
+                let greeting = t.welcomeMessage;
+                
+                if (hour < 12) {
+                    greeting = currentLang === 'fr' ? 'Bonjour ! ☀️ Comment puis-je vous aider ce matin ?' : 'Good morning! ☀️ How can I help you today?';
+                } else if (hour < 18) {
+                    greeting = currentLang === 'fr' ? 'Bonjour ! 👋 Comment puis-je vous aider cet après-midi ?' : 'Good afternoon! 👋 How can I help you today?';
+                } else {
+                    greeting = currentLang === 'fr' ? 'Bonsoir ! 🌙 Comment puis-je vous aider ce soir ?' : 'Good evening! 🌙 How can I help you tonight?';
+                }
+                
+                this.addBotMessage(greeting);
+                
+                // Ajouter les options après un délai
+                setTimeout(() => {
+                    this.showOptions();
+                }, 1000);
+            }
+
+            showOptions() {
+                const options = [
+                    { icon: '💼', text: currentLang === 'fr' ? 'Discuter d\'une opportunité' : 'Discuss an opportunity', action: 'opportunity' },
+                    { icon: '❓', text: currentLang === 'fr' ? 'Poser une question' : 'Ask a question', action: 'question' },
+                    { icon: '📄', text: currentLang === 'fr' ? 'Demander mon CV' : 'Request my resume', action: 'cv' }
+                ];
+
+                const html = `
+                    <div class="chat-options">
+                        ${options.map(opt => `
+                            <button class="chat-option-btn" onclick="chat.handleOption('${opt.action}')">
+                                <span>${opt.icon}</span>
+                                <span>${opt.text}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+                `;
+                
+                this.addHTMLMessage(html);
+            }
+
+            handleOption(action) {
+                switch(action) {
+                    case 'opportunity':
+                        this.addUserMessage(currentLang === 'fr' ? 'Je souhaite discuter d\'une opportunité professionnelle' : 'I would like to discuss a job opportunity');
+                        setTimeout(() => {
+                            this.addBotMessage(currentLang === 'fr' ? 
+                                'Parfait ! 💼 Je suis toujours ouvert aux nouvelles opportunités. Pouvez-vous me donner plus de détails sur le poste ? (Entreprise, localisation, type de contrat)' : 
+                                'Great! 💼 I\'m always open to new opportunities. Can you give me more details about the position? (Company, location, contract type)');
+                        }, 500);
+                        break;
+                    case 'question':
+                        this.addUserMessage(currentLang === 'fr' ? 'J\'ai une question' : 'I have a question');
+                        setTimeout(() => {
+                            this.addBotMessage(currentLang === 'fr' ? 
+                                'Bien sûr ! ❓ Je suis là pour répondre à vos questions sur mon expérience, mes compétences ou mes projets. Qu\'aimeriez-vous savoir ?' : 
+                                'Of course! ❓ I\'m here to answer your questions about my experience, skills, or projects. What would you like to know?');
+                        }, 500);
+                        break;
+                    case 'cv':
+                        this.addUserMessage(currentLang === 'fr' ? 'Je souhaite recevoir votre CV' : 'I would like to receive your resume');
+                        setTimeout(() => {
+                            this.addBotMessage(currentLang === 'fr' ? 
+                                'Je vais vous envoyer mon CV par email ! 📄 Quelle est votre adresse email ?' : 
+                                'I\'ll send you my resume by email! 📄 What is your email address?');
+                        }, 500);
+                        break;
+                }
+            }
+
+            addBotMessage(text) {
+                const message = {
+                    type: 'bot',
+                    text: text,
+                    time: new Date()
+                };
+                this.messages.push(message);
+                this.renderMessage(message);
+                this.saveMessages();
+            }
+
+            addUserMessage(text) {
+                const message = {
+                    type: 'user',
+                    text: text,
+                    time: new Date()
+                };
+                this.messages.push(message);
+                this.renderMessage(message);
+                this.saveMessages();
+                
+                // Envoyer à Google Chat
+                this.sendToGoogleChat(text);
+            }
+
+            addHTMLMessage(html) {
+                const container = document.getElementById('chatMessages');
+                const div = document.createElement('div');
+                div.className = 'message message-bot';
+                div.innerHTML = `<div class="message-bubble">${html}</div>`;
+                container.appendChild(div);
+                this.scrollToBottom();
+            }
+
+            renderMessage(message) {
+                const container = document.getElementById('chatMessages');
+                const div = document.createElement('div');
+                div.className = `message message-${message.type}`;
+                
+                const time = message.time.toLocaleTimeString(currentLang === 'en' ? 'en-US' : 'fr-FR', {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                
+                div.innerHTML = `
+                    <div class="message-bubble">${this.escapeHtml(message.text)}</div>
+                    <div class="message-time">${time}</div>
+                `;
+                
+                container.appendChild(div);
+                this.scrollToBottom();
+            }
+
+            escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            scrollToBottom() {
+                const container = document.getElementById('chatMessages');
+                container.scrollTop = container.scrollHeight;
+            }
+
+            sendMessage() {
+                const input = document.getElementById('chatInput');
+                const text = input.value.trim();
+                
+                if (!text) return;
+                
+                this.addUserMessage(text);
+                input.value = '';
+                
+                // Réponse automatique du bot
+                this.showTyping();
+                setTimeout(() => {
+                    this.hideTyping();
+                    this.generateBotResponse(text);
+                }, 1500);
+            }
+
+            showTyping() {
+                const container = document.getElementById('chatMessages');
+                const div = document.createElement('div');
+                div.className = 'message message-bot typing-indicator-container';
+                div.innerHTML = `
+                    <div class="typing-indicator">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                `;
+                container.appendChild(div);
+                this.scrollToBottom();
+            }
+
+            hideTyping() {
+                const typing = document.querySelector('.typing-indicator-container');
+                if (typing) typing.remove();
+            }
+
+            generateBotResponse(userText) {
+                const lowerText = userText.toLowerCase();
+                let response = '';
+                
+                // Réponses intelligentes basiques
+                if (lowerText.includes('salut') || lowerText.includes('bonjour') || lowerText.includes('hello') || lowerText.includes('hi')) {
+                    response = currentLang === 'fr' ? 
+                        'Bonjour ! 👋 Ravie de vous rencontrer. Comment puis-je vous aider ?' : 
+                        'Hello! 👋 Nice to meet you. How can I help you?';
+                } else if (lowerText.includes('merci') || lowerText.includes('thank')) {
+                    response = currentLang === 'fr' ? 
+                        'Avec plaisir ! 😊 N\'hésitez pas si vous avez d\'autres questions.' : 
+                        'You\'re welcome! 😊 Feel free to ask if you have any other questions.';
+                } else if (lowerText.includes('email') || lowerText.includes('@') || lowerText.includes('contact')) {
+                    response = currentLang === 'fr' ? 
+                        'Vous pouvez m\'écrire directement sur Google Chat ou m\'envoyer un email à ahouansouange@live.fr 📧' : 
+                        'You can write to me directly on Google Chat or send an email to ahouansouange@live.fr 📧';
+                } else if (lowerText.includes('disponible') || lowerText.includes('available') || lowerText.includes('quand')) {
+                    response = currentLang === 'fr' ? 
+                        'Je suis disponible immédiatement ! 🚀 Je peux commencer dès que vous le souhaitez.' : 
+                        'I am available immediately! 🚀 I can start whenever you want.';
+                } else if (lowerText.includes('salaire') || lowerText.includes('salary') || lowerText.includes('rémunération')) {
+                    response = currentLang === 'fr' ? 
+                        'Je préfère discuter de la rémunération en entretien. Le plus important pour moi est de trouver un projet qui me passionne ! 💼' : 
+                        'I prefer to discuss compensation in an interview. The most important thing for me is to find a project that I\'m passionate about! 💼';
+                } else {
+                    response = currentLang === 'fr' ? 
+                        'Merci pour votre message ! 💬 Je vais vous répondre directement sur Google Chat. Souhaitez-vous que je vous envoie mon CV également ?' : 
+                        'Thank you for your message! 💬 I will reply to you directly on Google Chat. Would you like me to send you my resume as well?';
+                }
+                
+                this.addBotMessage(response);
+            }
+
+            sendQuickMessage(text) {
+                this.addUserMessage(text);
+                this.showTyping();
+                setTimeout(() => {
+                    this.hideTyping();
+                    this.generateBotResponse(text);
+                }, 1000);
+            }
+
+            sendToGoogleChat(message) {
+                // Ouvrir Google Chat dans un nouvel onglet avec le message pré-rempli
+                const subject = encodeURIComponent('Nouveau message de votre portfolio');
+                const body = encodeURIComponent(`Message du visiteur:\n\n${message}\n\n---\nEnvoyé depuis le chat du portfolio\nDate: ${new Date().toLocaleString()}`);
+                
+                // Utiliser Google Chat direct
+                const googleChatUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${this.googleChatEmail}&su=${subject}&body=${body}`;
+                
+                // Ouvrir dans une nouvelle fenêtre (seulement si l'utilisateur interagit)
+                // window.open(googleChatUrl, '_blank');
+                
+                // Alternative: Stocker pour envoi groupé ou utiliser une API
+                console.log('Message prêt à être envoyé à:', this.googleChatEmail);
+                
+                // Tracker l'événement
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'chat_message_sent', {
+                        event_category: 'engagement',
+                        event_label: 'portfolio_chat'
+                    });
+                }
+            }
+
+            saveMessages() {
+                // Limiter à 50 messages
+                if (this.messages.length > 50) {
+                    this.messages = this.messages.slice(-50);
+                }
+                localStorage.setItem('chat_messages', JSON.stringify(this.messages));
+            }
+
+            loadMessages() {
+                const saved = localStorage.getItem('chat_messages');
+                if (saved) {
+                    this.messages = JSON.parse(saved);
+                    // Afficher les 10 derniers messages
+                    this.messages.slice(-10).forEach(msg => {
+                        msg.time = new Date(msg.time);
+                        this.renderMessage(msg);
+                    });
+                }
+            }
+        }
+
+        // Initialiser le chat
+        let chat;
+        document.addEventListener('DOMContentLoaded', () => {
+            chat = new ChatSystem();
+        });
+
+        function toggleChat() {
+            if (chat) chat.toggle();
+        }
+
+        function sendChatMessage() {
+            if (chat) chat.sendMessage();
+        }
+
+        function sendQuickMessage(text) {
+            if (chat) chat.sendQuickMessage(text);
+        }
+
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
         // Gestion du formulaire de contact
         function openContactForm() {
             const modal = document.getElementById('contact-modal');
@@ -1941,9 +2780,6 @@
                     e.target.reset();
                 }, 1500);
             }, 1500);
-            
-            // Ici, vous devriez implémenter l'envoi réel à un service backend
-            // Exemple: EmailJS, Formspree, ou votre propre API
         }
 
         // Fermer le modal en cliquant à l'extérieur
