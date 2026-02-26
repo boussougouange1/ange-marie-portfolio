@@ -14,6 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technicien IT | Administrateur Systèmes | Cybersécurité Fortinet</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
@@ -66,6 +68,7 @@
     </script>
     
     <style>
+        /* [Tous les styles précédents restent identiques] */
         .glass-effect {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
@@ -955,6 +958,78 @@
             border: 2px solid rgba(255, 255, 255, 0.5);
             animation: pulseRing 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
         }
+
+        /* NOUVEAU: Styles pour les notifications Email */
+        .email-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            display: none;
+            align-items: center;
+            gap: 12px;
+            z-index: 10001;
+            animation: slideInRight 0.3s ease-out;
+            max-width: 400px;
+        }
+
+        .email-notification.active {
+            display: flex;
+        }
+
+        .email-notification.success {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .email-notification.error {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+        }
+
+        .email-notification.sending {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+        }
+
+        .email-notification-icon {
+            font-size: 24px;
+        }
+
+        .email-notification-content {
+            flex: 1;
+        }
+
+        .email-notification-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .email-notification-text {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .email-notification-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .email-notification-close:hover {
+            background: rgba(255,255,255,0.3);
+        }
     </style>
 </head>
 <body class="font-sans text-slate-800 bg-slate-50 antialiased overflow-x-hidden">
@@ -969,6 +1044,20 @@
         <div class="ml-2">
             <i class="fas fa-spinner fa-spin"></i>
         </div>
+    </div>
+
+    <!-- NOUVEAU: Notification Email -->
+    <div id="emailNotification" class="email-notification">
+        <div class="email-notification-icon">
+            <i class="fas fa-envelope"></i>
+        </div>
+        <div class="email-notification-content">
+            <div class="email-notification-title" id="emailNotifTitle">Envoi en cours...</div>
+            <div class="email-notification-text" id="emailNotifText">Veuillez patienter</div>
+        </div>
+        <button class="email-notification-close" onclick="hideEmailNotification()">
+            <i class="fas fa-times"></i>
+        </button>
     </div>
 
     <!-- ASSISTANT VIRTUEL - CHAT WIDGET MICROSOFT TEAMS -->
@@ -1052,33 +1141,49 @@
             <form id="contact-form" onsubmit="handleContactSubmit(event)">
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-1" data-fr="Nom complet" data-en="Full Name">Nom complet</label>
-                        <input type="text" required class="form-input" data-fr-placeholder="Votre nom" data-en-placeholder="Your name" placeholder="Votre nom">
+                        <label class="block text-sm font-medium text-slate-700 mb-1" data-fr="Nom complet *" data-en="Full Name *">Nom complet *</label>
+                        <input type="text" name="from_name" required class="form-input" data-fr-placeholder="Votre nom" data-en-placeholder="Your name" placeholder="Votre nom">
                     </div>
                     
                     <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                        <input type="email" required class="form-input" data-fr-placeholder="votre@email.com" data-en-placeholder="your@email.com" placeholder="votre@email.com">
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Email *</label>
+                        <input type="email" name="from_email" required class="form-input" data-fr-placeholder="votre@email.com" data-en-placeholder="your@email.com" placeholder="votre@email.com">
                     </div>
                     
                     <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-1" data-fr="Sujet" data-en="Subject">Sujet</label>
-                        <select class="form-input" id="contact-subject">
-                            <option value="opportunity" data-fr="Opportunité professionnelle" data-en="Job Opportunity">Opportunité professionnelle</option>
-                            <option value="project" data-fr="Projet" data-en="Project">Projet</option>
-                            <option value="question" data-fr="Question technique" data-en="Technical Question">Question technique</option>
-                            <option value="other" data-fr="Autre" data-en="Other">Autre</option>
+                        <label class="block text-sm font-medium text-slate-700 mb-1" data-fr="Sujet *" data-en="Subject *">Sujet *</label>
+                        <select name="subject" class="form-input" id="contact-subject" required>
+                            <option value="" data-fr="Sélectionnez un sujet" data-en="Select a subject">Sélectionnez un sujet</option>
+                            <option value="opportunity" data-fr="💼 Opportunité professionnelle" data-en="💼 Job Opportunity">💼 Opportunité professionnelle</option>
+                            <option value="project" data-fr="🚀 Projet / Consultation" data-en="🚀 Project / Consulting">🚀 Projet / Consultation</option>
+                            <option value="question" data-fr="❓ Question technique" data-en="❓ Technical Question">❓ Question technique</option>
+                            <option value="partnership" data-fr="🤝 Partenariat" data-en="🤝 Partnership">🤝 Partenariat</option>
+                            <option value="other" data-fr="📝 Autre" data-en="📝 Other">📝 Autre</option>
                         </select>
                     </div>
+
+                    <!-- NOUVEAU: Champ téléphone optionnel -->
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1" data-fr="Téléphone (optionnel)" data-en="Phone (optional)">Téléphone (optionnel)</label>
+                        <input type="tel" name="phone" class="form-input" data-fr-placeholder="+1 (514) 000-0000" data-en-placeholder="+1 (514) 000-0000" placeholder="+1 (514) 000-0000">
+                    </div>
                     
                     <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-1" data-fr="Message" data-en="Message">Message</label>
-                        <textarea rows="4" required class="form-input resize-none" data-fr-placeholder="Votre message..." data-en-placeholder="Your message..." placeholder="Votre message..."></textarea>
+                        <label class="block text-sm font-medium text-slate-700 mb-1" data-fr="Message *" data-en="Message *">Message *</label>
+                        <textarea name="message" rows="4" required class="form-input resize-none" data-fr-placeholder="Décrivez votre demande en détail..." data-en-placeholder="Describe your request in detail..." placeholder="Décrivez votre demande en détail..."></textarea>
                     </div>
 
-                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-semibold hover:shadow-lg transform hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
-                        <i class="fas fa-paper-plane"></i>
-                        <span data-fr="Envoyer le message" data-en="Send Message">Envoyer le message</span>
+                    <!-- NOUVEAU: Case à cocher pour consentement -->
+                    <div class="flex items-start gap-3">
+                        <input type="checkbox" name="consent" id="consent" required class="mt-1 w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500">
+                        <label for="consent" class="text-sm text-slate-600" data-fr="J'accepte que mes informations soient utilisées pour me recontacter." data-en="I agree that my information will be used to contact me back.">
+                            J'accepte que mes informations soient utilisées pour me recontacter.
+                        </label>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-semibold hover:shadow-lg transform hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                        <i class="fas fa-paper-plane" id="submitIcon"></i>
+                        <span id="submitText" data-fr="Envoyer le message" data-en="Send Message">Envoyer le message</span>
                     </button>
                 </div>
             </form>
@@ -1976,6 +2081,206 @@
     </footer>
 
     <script>
+        // ============================================
+        // CONFIGURATION EMAILJS - À MODIFIER AVEC VOS IDENTIFIANTS
+        // ============================================
+        
+        // REMPLACEZ CES VALEURS PAR VOS IDENTIFIANTS EMAILJS
+        const EMAILJS_CONFIG = {
+            PUBLIC_KEY: 'YOUR_PUBLIC_KEY',      // Votre clé publique EmailJS
+            SERVICE_ID: 'YOUR_SERVICE_ID',      // Votre Service ID
+            TEMPLATE_ID: 'YOUR_TEMPLATE_ID'     // Votre Template ID
+        };
+
+        // Initialisation d'EmailJS (sera fait après le chargement du DOM)
+        let emailjsInitialized = false;
+
+        function initEmailJS() {
+            if (EMAILJS_CONFIG.PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+                console.warn('⚠️ EmailJS non configuré. Veuillez remplacer les identifiants dans le code.');
+                return false;
+            }
+            
+            try {
+                emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+                emailjsInitialized = true;
+                console.log('✅ EmailJS initialisé avec succès');
+                return true;
+            } catch (error) {
+                console.error('❌ Erreur lors de l\'initialisation d\'EmailJS:', error);
+                return false;
+            }
+        }
+
+        // ============================================
+        // NOTIFICATIONS EMAIL
+        // ============================================
+
+        function showEmailNotification(type, title, message, duration = 5000) {
+            const notification = document.getElementById('emailNotification');
+            const titleEl = document.getElementById('emailNotifTitle');
+            const textEl = document.getElementById('emailNotifText');
+            const iconEl = notification.querySelector('.email-notification-icon i');
+            
+            // Réinitialiser les classes
+            notification.className = 'email-notification active ' + type;
+            
+            // Mettre à jour le contenu
+            titleEl.textContent = title;
+            textEl.textContent = message;
+            
+            // Mettre à jour l'icône
+            if (type === 'success') {
+                iconEl.className = 'fas fa-check-circle';
+            } else if (type === 'error') {
+                iconEl.className = 'fas fa-exclamation-circle';
+            } else if (type === 'sending') {
+                iconEl.className = 'fas fa-spinner fa-spin';
+            }
+            
+            // Masquer automatiquement après la durée spécifiée
+            if (duration > 0) {
+                setTimeout(() => {
+                    hideEmailNotification();
+                }, duration);
+            }
+        }
+
+        function hideEmailNotification() {
+            const notification = document.getElementById('emailNotification');
+            notification.classList.remove('active');
+        }
+
+        // ============================================
+        // GESTION DU FORMULAIRE DE CONTACT
+        // ============================================
+
+        async function handleContactSubmit(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const submitBtn = document.getElementById('submitBtn');
+            const submitIcon = document.getElementById('submitIcon');
+            const submitText = document.getElementById('submitText');
+            
+            // Récupérer les valeurs du formulaire
+            const formData = {
+                from_name: form.from_name.value.trim(),
+                from_email: form.from_email.value.trim(),
+                subject: form.subject.value,
+                phone: form.phone.value.trim(),
+                message: form.message.value.trim(),
+                consent: form.consent.checked,
+                to_email: 'ahouansouange@live.fr',
+                language: currentLang,
+                page_url: window.location.href,
+                user_agent: navigator.userAgent,
+                timestamp: new Date().toLocaleString(currentLang === 'fr' ? 'fr-FR' : 'en-US')
+            };
+            
+            // Validation
+            if (!formData.from_name || !formData.from_email || !formData.subject || !formData.message) {
+                showEmailNotification('error', 
+                    currentLang === 'fr' ? 'Champs manquants' : 'Missing fields',
+                    currentLang === 'fr' ? 'Veuillez remplir tous les champs obligatoires.' : 'Please fill in all required fields.'
+                );
+                return;
+            }
+            
+            if (!formData.consent) {
+                showEmailNotification('error',
+                    currentLang === 'fr' ? 'Consentement requis' : 'Consent required',
+                    currentLang === 'fr' ? 'Veuillez accepter les conditions.' : 'Please accept the terms.'
+                );
+                return;
+            }
+            
+            // Désactiver le bouton pendant l'envoi
+            submitBtn.disabled = true;
+            submitIcon.className = 'fas fa-spinner fa-spin';
+            submitText.textContent = currentLang === 'fr' ? 'Envoi en cours...' : 'Sending...';
+            
+            showEmailNotification('sending',
+                currentLang === 'fr' ? 'Envoi en cours...' : 'Sending...',
+                currentLang === 'fr' ? 'Veuillez patienter pendant l\'envoi de votre message.' : 'Please wait while your message is being sent.',
+                0 // Ne pas masquer automatiquement
+            );
+            
+            try {
+                // Vérifier si EmailJS est configuré
+                if (!emailjsInitialized) {
+                    // Mode démo : simuler l'envoi
+                    console.log('📧 Mode démo - Données du formulaire:', formData);
+                    
+                    await new Promise(resolve => setTimeout(resolve, 2000)); // Simulation délai réseau
+                    
+                    // Simuler un succès
+                    showEmailNotification('success',
+                        currentLang === 'fr' ? 'Message envoyé !' : 'Message sent!',
+                        currentLang === 'fr' ? 'Votre message a été envoyé avec succès. Je vous répondrai dès que possible.' : 'Your message has been sent successfully. I will reply as soon as possible.'
+                    );
+                    
+                    // Réinitialiser le formulaire
+                    form.reset();
+                    
+                    // Fermer le modal après 2 secondes
+                    setTimeout(() => {
+                        closeContactForm();
+                    }, 2000);
+                    
+                } else {
+                    // Envoi réel via EmailJS
+                    const response = await emailjs.send(
+                        EMAILJS_CONFIG.SERVICE_ID,
+                        EMAILJS_CONFIG.TEMPLATE_ID,
+                        formData
+                    );
+                    
+                    console.log('✅ Email envoyé avec succès:', response);
+                    
+                    showEmailNotification('success',
+                        currentLang === 'fr' ? 'Message envoyé !' : 'Message sent!',
+                        currentLang === 'fr' ? 'Votre message a été envoyé avec succès. Je vous répondrai dès que possible.' : 'Your message has been sent successfully. I will reply as soon as possible.'
+                    );
+                    
+                    // Réinitialiser le formulaire
+                    form.reset();
+                    
+                    // Fermer le modal après 2 secondes
+                    setTimeout(() => {
+                        closeContactForm();
+                    }, 2000);
+                    
+                    // Tracker l'événement
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'contact_form_submit', {
+                            event_category: 'engagement',
+                            event_label: 'email_sent',
+                            subject: formData.subject
+                        });
+                    }
+                }
+                
+            } catch (error) {
+                console.error('❌ Erreur lors de l\'envoi:', error);
+                
+                showEmailNotification('error',
+                    currentLang === 'fr' ? 'Erreur d\'envoi' : 'Send error',
+                    currentLang === 'fr' ? 'Une erreur s\'est produite. Veuillez réessayer ou me contacter directement par email.' : 'An error occurred. Please try again or contact me directly by email.'
+                );
+                
+            } finally {
+                // Réactiver le bouton
+                submitBtn.disabled = false;
+                submitIcon.className = 'fas fa-paper-plane';
+                submitText.textContent = currentLang === 'fr' ? 'Envoyer le message' : 'Send Message';
+            }
+        }
+
+        // ============================================
+        // RESTE DU CODE (Analytics, Chat, etc.)
+        // ============================================
+
         // Google Analytics est initialisé dans le <head>
 
         function toggleMobileMenu() {
@@ -2238,7 +2543,6 @@
                 
                 try {
                     const parsed = JSON.parse(data);
-                    // Migration des anciennes données si nécessaire
                     if (!parsed.devices) parsed.devices = defaultData.devices;
                     if (!parsed.pages.analytics) parsed.pages.analytics = 0;
                     return parsed;
@@ -2256,12 +2560,10 @@
                 const userAgent = navigator.userAgent.toLowerCase();
                 const width = window.innerWidth;
                 
-                // Détection tablette
                 if (/ipad|android(?!.*mobile)|tablet/.test(userAgent) || (width >= 768 && width < 1024)) {
                     return 'tablet';
                 }
                 
-                // Détection mobile
                 if (/mobile|iphone|ipod|android.*mobile|windows phone/.test(userAgent) || width < 768) {
                     return 'mobile';
                 }
@@ -2287,7 +2589,6 @@
                     currentDeviceEl.textContent = currentLang === 'en' ? deviceNamesEn[this.currentDevice] : deviceNames[this.currentDevice];
                 }
                 
-                // Mettre en évidence l'icône correspondante
                 const iconId = 'icon-' + this.currentDevice;
                 const icon = document.getElementById(iconId);
                 if (icon) {
@@ -2296,11 +2597,9 @@
             }
 
             async detectLocation() {
-                // Détection basée sur la langue et le fuseau horaire
                 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
                 const lang = navigator.language || navigator.userLanguage;
                 
-                // Mapping des fuseaux horaires vers pays
                 const zoneMap = {
                     'America/Toronto': 'Canada',
                     'America/Montreal': 'Canada',
@@ -2317,7 +2616,6 @@
                 
                 let location = zoneMap[timeZone] || 'Autre';
                 
-                // Fallback sur la langue
                 if (location === 'Autre') {
                     if (lang.startsWith('fr')) location = 'France';
                     else if (lang.startsWith('en-US')) location = 'États-Unis';
@@ -2344,23 +2642,19 @@
                 const now = new Date();
                 
                 if (!session) {
-                    // Nouveau visiteur unique
                     data.totalVisitors++;
                     sessionStorage.setItem(this.sessionKey, JSON.stringify({
                         startTime: now.toISOString(),
                         pages: []
                     }));
                     
-                    // Incrémenter le compteur de l'appareil
                     data.devices[this.currentDevice]++;
                     
-                    // Détection de localisation
                     this.detectLocation().then(location => {
                         data.locations[location] = (data.locations[location] || 0) + 1;
                         this.saveData(data);
                     });
                 } else {
-                    // Mise à jour de la session existante
                     const sessionData = JSON.parse(session);
                     sessionData.pages.push({
                         page: this.getCurrentPage(),
@@ -2369,37 +2663,32 @@
                     sessionStorage.setItem(this.sessionKey, JSON.stringify(sessionData));
                 }
                 
-                // Toujours incrémenter les pages vues
                 data.pageViews++;
                 
-                // Tracking de la page actuelle
                 const currentPage = this.getCurrentPage();
                 if (data.pages[currentPage] !== undefined) {
                     data.pages[currentPage]++;
                 }
                 
-                // Ajouter au journal des visites
                 const visit = {
                     id: Date.now() + Math.random().toString(36).substr(2, 9),
                     timestamp: now.toISOString(),
                     page: currentPage,
                     device: this.currentDevice,
-                    location: '...', // Sera mis à jour
+                    location: '...',
                     referrer: document.referrer || 'direct'
                 };
                 
-                // Obtenir la localisation pour le journal
                 this.detectLocation().then(location => {
                     visit.location = location;
                     data.visits.unshift(visit);
-                    if (data.visits.length > 100) data.visits.pop(); // Garder les 100 dernières
+                    if (data.visits.length > 100) data.visits.pop();
                     this.saveData(data);
                     this.updateDisplay();
                 });
                 
                 this.saveData(data);
                 
-                // Envoyer à Google Analytics
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'page_view', {
                         page_title: document.title,
@@ -2427,31 +2716,23 @@
                 const data = this.getData();
                 const t = analyticsTranslations[currentLang];
                 
-                // Métriques principales
                 const totalVisitorsEl = document.getElementById('total-visitors');
                 const pageViewsEl = document.getElementById('page-views');
                 
                 if (totalVisitorsEl) totalVisitorsEl.textContent = data.totalVisitors.toLocaleString();
                 if (pageViewsEl) pageViewsEl.textContent = data.pageViews.toLocaleString();
                 
-                // Calcul des pourcentages d'appareils
                 const totalDevices = data.devices.desktop + data.devices.mobile + data.devices.tablet || 1;
                 const desktopPct = Math.round((data.devices.desktop / totalDevices) * 100);
                 const mobilePct = Math.round((data.devices.mobile / totalDevices) * 100);
                 const tabletPct = Math.round((data.devices.tablet / totalDevices) * 100);
                 
-                // Mise à jour des barres d'appareils
                 this.updateDeviceBar('desktop', desktopPct);
                 this.updateDeviceBar('mobile', mobilePct);
                 this.updateDeviceBar('tablet', tabletPct);
                 
-                // Pages populaires
                 this.updatePagesList(data.pages, t);
-                
-                // Localisations
                 this.updateLocationsList(data.locations, t);
-                
-                // Journal des visiteurs
                 this.updateVisitorLog(data.visits, t);
             }
 
@@ -2481,7 +2762,6 @@
                     analytics: 'Stats'
                 };
                 
-                // Trier par popularité
                 const sortedPages = Object.entries(pages)
                     .sort((a, b) => b[1] - a[1])
                     .slice(0, 5);
@@ -2508,7 +2788,6 @@
                 
                 const total = Object.values(locations).reduce((a, b) => a + b, 0) || 1;
                 
-                // Trier par nombre de visites
                 const sortedLocations = Object.entries(locations)
                     .sort((a, b) => b[1] - a[1])
                     .slice(0, 5);
@@ -2595,21 +2874,19 @@
             }
 
             startRealTimeUpdates() {
-                // Simuler des visiteurs en ligne aléatoires
                 setInterval(() => {
                     const onlineNow = Math.floor(Math.random() * 3) + 1;
                     const el = document.getElementById('online-now');
                     if (el) el.textContent = onlineNow;
                 }, 5000);
                 
-                // Mettre à jour les données toutes les 30 secondes
                 setInterval(() => {
                     this.updateDisplay();
                 }, 30000);
             }
         }
 
-        // NOUVEAU: SYSTÈME DE QUALIFICATION AVANCÉ AVEC OUVERTURE AUTO TEAMS
+        // SYSTÈME DE QUALIFICATION AVANCÉ AVEC OUVERTURE AUTO TEAMS
         class QualificationSystem {
             constructor(chatSystem) {
                 this.chat = chatSystem;
@@ -2713,10 +2990,8 @@
                 const step = this.qualificationSteps[this.currentStep];
                 const questionText = step.question[currentLang];
                 
-                // Afficher la question
                 this.chat.addBotMessage(questionText);
                 
-                // Afficher les options
                 const optionsHtml = `
                     <div class="chat-options">
                         ${step.options.map(opt => `
@@ -2732,18 +3007,14 @@
             }
 
             handleResponse(stepId, value) {
-                // Sauvegarder la réponse
                 this.responses[stepId] = value;
                 
-                // Afficher la réponse de l'utilisateur
                 const step = this.qualificationSteps.find(s => s.id === stepId);
                 const option = step.options.find(o => o.value === value);
                 this.chat.addUserMessage(option.label[currentLang]);
                 
-                // Passer à l'étape suivante
                 this.currentStep++;
                 
-                // Attendre un peu avant la prochaine question
                 setTimeout(() => {
                     this.askCurrentQuestion();
                 }, 500);
@@ -2755,15 +3026,12 @@
                 
                 const t = chatTranslations[currentLang];
                 
-                // Afficher le résumé
                 const summaryHtml = this.generateSummaryHTML();
                 this.chat.addHTMLMessage(summaryHtml);
                 
-                // Message de transition vers l'agent IA
                 setTimeout(() => {
                     this.chat.addBotMessage(t.qualificationComplete);
                     
-                    // Ouvrir automatiquement Teams avec le contexte complet
                     setTimeout(() => {
                         this.openTeamsWithContext();
                     }, 1500);
@@ -2811,19 +3079,18 @@
             }
 
             openTeamsWithContext() {
-                // Construire le message contextuel pour Teams
                 const contextMessage = this.buildContextMessage();
                 
-                // Afficher l'indicateur d'ouverture
                 this.showAutoOpenIndicator();
                 
-                // Construire l'URL Teams avec le message pré-rempli
                 const teamsUrl = `https://teams.microsoft.com/l/chat/0/0?users=${encodeURIComponent(this.teamsEmail)}&message=${encodeURIComponent(contextMessage)}`;
                 
-                // Ouvrir Teams dans un nouvel onglet
                 window.open(teamsUrl, '_blank');
                 
-                // Tracker l'événement
+                setTimeout(() => {
+                    this.hideAutoOpenIndicator();
+                }, 3000);
+                
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'teams_auto_open', {
                         event_category: 'engagement',
@@ -2835,12 +3102,6 @@
                     });
                 }
                 
-                // Cacher l'indicateur après 3 secondes
-                setTimeout(() => {
-                    this.hideAutoOpenIndicator();
-                }, 3000);
-                
-                // Connecter l'agent IA (simulation)
                 this.connectAIAgent();
             }
 
@@ -2885,7 +3146,6 @@
             connectAIAgent() {
                 const t = chatTranslations[currentLang];
                 
-                // Simuler la connexion à l'agent IA
                 setTimeout(() => {
                     const aiBadge = `
                         <div style="text-align: center; margin: 15px 0;">
@@ -2897,7 +3157,6 @@
                     `;
                     this.chat.addHTMLMessage(aiBadge);
                     
-                    // Message de l'agent IA
                     setTimeout(() => {
                         const aiMessage = currentLang === 'fr'
                             ? `Bonjour ! Je suis l'agent IA d'Ange-Marie. J'ai analysé votre demande et ouvert une conversation Microsoft Teams avec tout le contexte. Vous pouvez continuer la discussion directement sur Teams où Ange-Marie vous répondra personnellement.`
@@ -2905,7 +3164,6 @@
                         
                         this.chat.addBotMessage(aiMessage);
                         
-                        // Ajouter un bouton pour rouvrir Teams si besoin
                         const reopenBtn = `
                             <div style="text-align: center; margin-top: 10px;">
                                 <button class="teams-action-btn" onclick="chat.qualification.openTeamsWithContext()">
@@ -2936,7 +3194,6 @@
                 this.loadMessages();
                 this.showWelcomeMessage();
                 
-                // Ouvrir automatiquement après 10 secondes si c'est la première visite
                 const hasVisited = localStorage.getItem('chat_visited');
                 if (!hasVisited) {
                     setTimeout(() => {
@@ -2983,7 +3240,6 @@
                 
                 this.addBotMessage(greeting);
                 
-                // Ajouter les options après un délai
                 setTimeout(() => {
                     this.showInitialOptions();
                 }, 1000);
@@ -3054,13 +3310,11 @@
                         }, 500);
                         break;
                     default:
-                        // Gestion des anciennes options pour compatibilité
                         this.handleLegacyOption(action);
                 }
             }
 
             handleLegacyOption(action) {
-                // Méthode pour gérer les anciennes options si nécessaire
                 switch(action) {
                     case 'opportunity':
                         this.addUserMessage(currentLang === 'fr' ? 'Je souhaite discuter d\'une opportunité professionnelle' : 'I would like to discuss a job opportunity');
@@ -3106,7 +3360,6 @@
                 this.renderMessage(message);
                 this.saveMessages();
                 
-                // Si on n'est pas en mode qualification, ouvrir Teams automatiquement avec le message
                 if (!this.qualificationMode && !this.qualification.isQualified) {
                     this.sendToTeams(text);
                 }
@@ -3160,12 +3413,10 @@
                 this.addUserMessage(text);
                 input.value = '';
                 
-                // Si en mode qualification, ne pas traiter ici (géré par QualificationSystem)
                 if (this.qualificationMode) {
                     return;
                 }
                 
-                // Réponse automatique du bot pour messages simples
                 this.showTyping();
                 setTimeout(() => {
                     this.hideTyping();
@@ -3197,7 +3448,6 @@
                 const lowerText = userText.toLowerCase();
                 let response = '';
                 
-                // Réponses intelligentes basiques
                 if (lowerText.includes('salut') || lowerText.includes('bonjour') || lowerText.includes('hello') || lowerText.includes('hi')) {
                     response = currentLang === 'fr' ? 
                         'Bonjour ! 👋 Ravie de vous rencontrer. Souhaitez-vous démarrer une qualification complète pour que je puisse mieux vous aider ?' : 
@@ -3224,7 +3474,6 @@
                         'Merci pour votre message ! 💬 Je vais ouvrir Teams automatiquement avec votre message. Souhaitez-vous plutôt faire une qualification complète pour un suivi optimal ?' : 
                         'Thank you for your message! 💬 I will automatically open Teams with your message. Would you rather do a full qualification for optimal follow-up?';
                     
-                    // Ouvrir Teams automatiquement
                     this.sendToTeams(userText);
                 }
                 
@@ -3252,21 +3501,16 @@
             }
 
             sendToTeams(message) {
-                // Afficher l'indicateur d'ouverture auto
                 this.qualification.showAutoOpenIndicator();
                 
-                // Construire l'URL Teams avec le message
                 const teamsUrl = `https://teams.microsoft.com/l/chat/0/0?users=${encodeURIComponent(this.teamsEmail)}&message=${encodeURIComponent(message)}`;
                 
-                // Ouvrir Teams
                 window.open(teamsUrl, '_blank');
                 
-                // Cacher l'indicateur après 3 secondes
                 setTimeout(() => {
                     this.qualification.hideAutoOpenIndicator();
                 }, 3000);
                 
-                // Tracker l'événement
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'teams_auto_open', {
                         event_category: 'engagement',
@@ -3277,7 +3521,6 @@
             }
 
             saveMessages() {
-                // Limiter à 50 messages
                 if (this.messages.length > 50) {
                     this.messages = this.messages.slice(-50);
                 }
@@ -3288,7 +3531,6 @@
                 const saved = localStorage.getItem('chat_messages');
                 if (saved) {
                     this.messages = JSON.parse(saved);
-                    // Afficher les 10 derniers messages
                     this.messages.slice(-10).forEach(msg => {
                         msg.time = new Date(msg.time);
                         this.renderMessage(msg);
@@ -3300,6 +3542,10 @@
         // Initialiser le chat
         let chat;
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialiser EmailJS
+            initEmailJS();
+            
+            // Initialiser le chat
             chat = new ChatSystem();
         });
 
@@ -3332,32 +3578,6 @@
             const modal = document.getElementById('contact-modal');
             modal.classList.remove('active');
             document.body.style.overflow = '';
-        }
-
-        function handleContactSubmit(e) {
-            e.preventDefault();
-            
-            // Simuler l'envoi
-            const btn = e.target.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
-            
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi...';
-            btn.disabled = true;
-            
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
-                btn.classList.remove('from-blue-500', 'to-purple-600');
-                btn.classList.add('bg-green-500');
-                
-                setTimeout(() => {
-                    closeContactForm();
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                    btn.classList.add('from-blue-500', 'to-purple-600');
-                    btn.classList.remove('bg-green-500');
-                    e.target.reset();
-                }, 1500);
-            }, 1500);
         }
 
         // Fermer le modal en cliquant à l'extérieur
