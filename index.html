@@ -32,6 +32,7 @@
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'bounce-slight': 'bounceSlight 2s infinite',
                         'typing': 'typing 1.5s infinite',
+                        'pulse-ring': 'pulseRing 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite',
                     },
                     keyframes: {
                         gradient: {
@@ -53,6 +54,10 @@
                         typing: {
                             '0%, 100%': { opacity: 1 },
                             '50%': { opacity: 0.3 },
+                        },
+                        pulseRing: {
+                            '0%': { transform: 'scale(0.8)', opacity: 1 },
+                            '100%': { transform: 'scale(1.3)', opacity: 0 },
                         }
                     }
                 }
@@ -439,31 +444,13 @@
             transform: rotate(45deg);
         }
 
-        .chat-notification {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            width: 24px;
-            height: 24px;
-            background: #ef4444;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-            animation: bounce-slight 2s infinite;
-            border: 3px solid white;
-        }
-
         .chat-container {
             position: absolute;
             bottom: 90px;
             right: 0;
-            width: 380px;
+            width: 400px;
             max-width: calc(100vw - 40px);
-            height: 550px;
+            height: 600px;
             max-height: calc(100vh - 150px);
             background: white;
             border-radius: 24px;
@@ -570,7 +557,7 @@
         }
 
         .message {
-            max-width: 85%;
+            max-width: 90%;
             animation: slideIn 0.3s ease-out;
         }
 
@@ -836,9 +823,153 @@
         .teams-action-btn i {
             font-size: 14px;
         }
+
+        /* NOUVEAU: Styles pour le système de qualification IA */
+        .qualification-progress {
+            background: rgba(255,255,255,0.1);
+            height: 4px;
+            border-radius: 2px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .qualification-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4ade80, #22c55e);
+            transition: width 0.5s ease;
+            border-radius: 2px;
+        }
+
+        .qualification-step {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.8);
+            margin-top: 6px;
+        }
+
+        .qualification-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            background: rgba(74, 222, 128, 0.2);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            border-radius: 12px;
+            font-size: 11px;
+            color: #4ade80;
+            margin-top: 8px;
+        }
+
+        .ai-agent-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            border-radius: 20px;
+            font-size: 12px;
+            color: white;
+            font-weight: 500;
+            animation: pulse 2s infinite;
+        }
+
+        .context-summary {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #bae6fd;
+            border-radius: 12px;
+            padding: 12px;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
+        .context-summary h4 {
+            color: #0369a1;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .context-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 0;
+            color: #0c4a6e;
+        }
+
+        .context-item i {
+            color: #00a4ef;
+            font-size: 12px;
+        }
+
+        .auto-teams-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #00a4ef 0%, #0078d4 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 164, 239, 0.4);
+            display: none;
+            align-items: center;
+            gap: 10px;
+            z-index: 10000;
+            animation: slideInRight 0.3s ease-out;
+        }
+
+        .auto-teams-indicator.active {
+            display: flex;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .pulse-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid rgba(0, 164, 239, 0.5);
+            animation: pulseRing 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        .chat-button::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            animation: pulseRing 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
     </style>
 </head>
 <body class="font-sans text-slate-800 bg-slate-50 antialiased overflow-x-hidden">
+
+    <!-- NOUVEAU: Indicateur d'ouverture auto Teams -->
+    <div id="autoTeamsIndicator" class="auto-teams-indicator">
+        <i class="fab fa-microsoft text-xl"></i>
+        <div>
+            <div class="font-semibold text-sm">Ouverture de Teams...</div>
+            <div class="text-xs opacity-90">Redirection vers la conversation</div>
+        </div>
+        <div class="ml-2">
+            <i class="fas fa-spinner fa-spin"></i>
+        </div>
+    </div>
 
     <!-- ASSISTANT VIRTUEL - CHAT WIDGET MICROSOFT TEAMS -->
     <div class="chat-widget chat-widget-enter" id="chatWidget">
@@ -846,11 +977,21 @@
             <div class="chat-header">
                 <div class="chat-header-content">
                     <div class="chat-avatar">AB</div>
-                    <div>
+                    <div style="flex: 1;">
                         <div class="font-bold text-lg">Ange-Marie</div>
                         <div class="chat-status">
                             <span class="status-dot"></span>
                             <span id="chatStatusText">Disponible sur Teams</span>
+                        </div>
+                        <!-- NOUVEAU: Barre de progression qualification -->
+                        <div id="qualificationProgress" style="display: none;">
+                            <div class="qualification-progress">
+                                <div class="qualification-progress-bar" id="progressBar" style="width: 0%"></div>
+                            </div>
+                            <div class="qualification-step">
+                                <i class="fas fa-robot"></i>
+                                <span id="qualificationText">Qualification en cours...</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -881,12 +1022,13 @@
                 </div>
                 <div class="teams-notice">
                     <i class="fab fa-microsoft"></i>
-                    <span id="teamsNotice">Connecté via Microsoft Teams - ahouansouange@live.fr</span>
+                    <span id="teamsNotice">Chaque message ouvre automatiquement Teams avec le contexte</span>
                 </div>
             </div>
         </div>
 
         <button class="chat-button" id="chatButton" onclick="toggleChat()">
+            <div class="pulse-ring"></div>
             <i class="fab fa-microsoft" id="chatIcon"></i>
             <span class="chat-notification" id="chatNotification">1</span>
         </button>
@@ -1906,20 +2048,24 @@
                 offline: 'Hors ligne',
                 placeholder: 'Écrivez votre message...',
                 send: 'Envoyer',
-                teamsNotice: 'Connecté via Microsoft Teams - ahouansouange@live.fr',
+                teamsNotice: 'Chaque message ouvre automatiquement Teams avec le contexte',
                 welcomeMessage: 'Bonjour ! 👋 Je suis Ange-Marie. Comment puis-je vous aider aujourd\'hui ?',
                 quickReactions: ['👋 Bonjour', '💼 Expérience', '🛠️ Compétences', '🚀 Opportunité'],
-                continueOnTeams: 'Continuer sur Teams'
+                continueOnTeams: 'Continuer sur Teams',
+                qualificationComplete: '✅ Qualification terminée - Transfert vers l\'agent IA',
+                connectingAI: 'Connexion à l\'agent IA...'
             },
             en: {
                 online: 'Available on Teams',
                 offline: 'Offline',
                 placeholder: 'Type your message...',
                 send: 'Send',
-                teamsNotice: 'Connected via Microsoft Teams - ahouansouange@live.fr',
+                teamsNotice: 'Every message automatically opens Teams with context',
                 welcomeMessage: 'Hello! 👋 I\'m Ange-Marie. How can I help you today?',
                 quickReactions: ['👋 Hello', '💼 Experience', '🛠️ Skills', '🚀 Opportunity'],
-                continueOnTeams: 'Continue on Teams'
+                continueOnTeams: 'Continue on Teams',
+                qualificationComplete: '✅ Qualification complete - Transferring to AI agent',
+                connectingAI: 'Connecting to AI agent...'
             }
         };
 
@@ -2463,12 +2609,326 @@
             }
         }
 
-        // SYSTÈME DE CHAT - ASSISTANT VIRTUEL MICROSOFT TEAMS
+        // NOUVEAU: SYSTÈME DE QUALIFICATION AVANCÉ AVEC OUVERTURE AUTO TEAMS
+        class QualificationSystem {
+            constructor(chatSystem) {
+                this.chat = chatSystem;
+                this.teamsEmail = 'ahouansouange@live.fr';
+                this.qualificationSteps = [
+                    {
+                        id: 'objective',
+                        question: {
+                            fr: 'Quel est l\'objet de votre message ?',
+                            en: 'What is the purpose of your message?'
+                        },
+                        options: [
+                            { value: 'job', label: { fr: '💼 Opportunité d\'emploi', en: '💼 Job opportunity' }, icon: 'briefcase' },
+                            { value: 'project', label: { fr: '🚀 Projet/Consultation', en: '🚀 Project/Consulting' }, icon: 'rocket' },
+                            { value: 'question', label: { fr: '❓ Question technique', en: '❓ Technical question' }, icon: 'question-circle' },
+                            { value: 'other', label: { fr: '📝 Autre', en: '📝 Other' }, icon: 'edit' }
+                        ]
+                    },
+                    {
+                        id: 'urgency',
+                        question: {
+                            fr: 'Quelle est l\'urgence de votre demande ?',
+                            en: 'How urgent is your request?'
+                        },
+                        options: [
+                            { value: 'immediate', label: { fr: '🔴 Immédiate (cette semaine)', en: '🔴 Immediate (this week)' }, icon: 'exclamation-circle' },
+                            { value: 'short', label: { fr: '🟠 Court terme (ce mois)', en: '🟠 Short term (this month)' }, icon: 'clock' },
+                            { value: 'medium', label: { fr: '🟡 Moyen terme', en: '🟡 Medium term' }, icon: 'calendar' },
+                            { value: 'future', label: { fr: '🟢 Futur projet', en: '🟢 Future project' }, icon: 'calendar-alt' }
+                        ]
+                    },
+                    {
+                        id: 'location',
+                        question: {
+                            fr: 'Quelle est votre localisation ?',
+                            en: 'What is your location?'
+                        },
+                        options: [
+                            { value: 'montreal', label: { fr: '🏢 Montréal / Québec', en: '🏢 Montreal / Quebec' }, icon: 'building' },
+                            { value: 'canada', label: { fr: '🍁 Autre région du Canada', en: '🍁 Other region of Canada' }, icon: 'maple-leaf' },
+                            { value: 'remote', label: { fr: '🌐 International / Télétravail', en: '🌐 International / Remote' }, icon: 'globe' },
+                            { value: 'other', label: { fr: '📍 Autre', en: '📍 Other' }, icon: 'map-marker-alt' }
+                        ]
+                    },
+                    {
+                        id: 'contact',
+                        question: {
+                            fr: 'Comment préférez-vous être contacté ?',
+                            en: 'How would you prefer to be contacted?'
+                        },
+                        options: [
+                            { value: 'teams', label: { fr: '💬 Microsoft Teams (recommandé)', en: '💬 Microsoft Teams (recommended)' }, icon: 'microsoft' },
+                            { value: 'email', label: { fr: '📧 Email', en: '📧 Email' }, icon: 'envelope' },
+                            { value: 'linkedin', label: { fr: '💼 LinkedIn', en: '💼 LinkedIn' }, icon: 'linkedin' },
+                            { value: 'phone', label: { fr: '📞 Téléphone', en: '📞 Phone' }, icon: 'phone' }
+                        ]
+                    }
+                ];
+                
+                this.currentStep = 0;
+                this.responses = {};
+                this.isQualified = false;
+            }
+
+            start() {
+                this.currentStep = 0;
+                this.responses = {};
+                this.isQualified = false;
+                this.showProgressBar();
+                this.askCurrentQuestion();
+            }
+
+            showProgressBar() {
+                const progressContainer = document.getElementById('qualificationProgress');
+                const progressBar = document.getElementById('progressBar');
+                const progressText = document.getElementById('qualificationText');
+                
+                if (progressContainer) progressContainer.style.display = 'block';
+                this.updateProgress();
+            }
+
+            updateProgress() {
+                const progress = ((this.currentStep) / this.qualificationSteps.length) * 100;
+                const progressBar = document.getElementById('progressBar');
+                const progressText = document.getElementById('qualificationText');
+                
+                if (progressBar) progressBar.style.width = progress + '%';
+                if (progressText) {
+                    progressText.textContent = currentLang === 'fr' 
+                        ? `Question ${this.currentStep + 1}/${this.qualificationSteps.length}` 
+                        : `Question ${this.currentStep + 1}/${this.qualificationSteps.length}`;
+                }
+            }
+
+            askCurrentQuestion() {
+                if (this.currentStep >= this.qualificationSteps.length) {
+                    this.completeQualification();
+                    return;
+                }
+
+                const step = this.qualificationSteps[this.currentStep];
+                const questionText = step.question[currentLang];
+                
+                // Afficher la question
+                this.chat.addBotMessage(questionText);
+                
+                // Afficher les options
+                const optionsHtml = `
+                    <div class="chat-options">
+                        ${step.options.map(opt => `
+                            <button class="chat-option-btn" onclick="chat.qualification.handleResponse('${step.id}', '${opt.value}')">
+                                <span>${opt.label[currentLang]}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+                `;
+                
+                this.chat.addHTMLMessage(optionsHtml);
+                this.updateProgress();
+            }
+
+            handleResponse(stepId, value) {
+                // Sauvegarder la réponse
+                this.responses[stepId] = value;
+                
+                // Afficher la réponse de l'utilisateur
+                const step = this.qualificationSteps.find(s => s.id === stepId);
+                const option = step.options.find(o => o.value === value);
+                this.chat.addUserMessage(option.label[currentLang]);
+                
+                // Passer à l'étape suivante
+                this.currentStep++;
+                
+                // Attendre un peu avant la prochaine question
+                setTimeout(() => {
+                    this.askCurrentQuestion();
+                }, 500);
+            }
+
+            completeQualification() {
+                this.isQualified = true;
+                this.updateProgress();
+                
+                const t = chatTranslations[currentLang];
+                
+                // Afficher le résumé
+                const summaryHtml = this.generateSummaryHTML();
+                this.chat.addHTMLMessage(summaryHtml);
+                
+                // Message de transition vers l'agent IA
+                setTimeout(() => {
+                    this.chat.addBotMessage(t.qualificationComplete);
+                    
+                    // Ouvrir automatiquement Teams avec le contexte complet
+                    setTimeout(() => {
+                        this.openTeamsWithContext();
+                    }, 1500);
+                }, 1000);
+            }
+
+            generateSummaryHTML() {
+                const objectiveLabels = {
+                    job: currentLang === 'fr' ? 'Opportunité d\'emploi' : 'Job opportunity',
+                    project: currentLang === 'fr' ? 'Projet/Consultation' : 'Project/Consulting',
+                    question: currentLang === 'fr' ? 'Question technique' : 'Technical question',
+                    other: currentLang === 'fr' ? 'Autre' : 'Other'
+                };
+
+                const urgencyLabels = {
+                    immediate: currentLang === 'fr' ? 'Immédiate' : 'Immediate',
+                    short: currentLang === 'fr' ? 'Court terme' : 'Short term',
+                    medium: currentLang === 'fr' ? 'Moyen terme' : 'Medium term',
+                    future: currentLang === 'fr' ? 'Futur projet' : 'Future project'
+                };
+
+                const locationLabels = {
+                    montreal: 'Montréal / Québec',
+                    canada: currentLang === 'fr' ? 'Canada (autre)' : 'Canada (other)',
+                    remote: currentLang === 'fr' ? 'International/Télétravail' : 'International/Remote',
+                    other: currentLang === 'fr' ? 'Autre' : 'Other'
+                };
+
+                const contactLabels = {
+                    teams: 'Microsoft Teams',
+                    email: 'Email',
+                    linkedin: 'LinkedIn',
+                    phone: currentLang === 'fr' ? 'Téléphone' : 'Phone'
+                };
+
+                return `
+                    <div class="context-summary">
+                        <h4><i class="fas fa-clipboard-check"></i> ${currentLang === 'fr' ? 'Résumé de votre demande' : 'Summary of your request'}</h4>
+                        <div class="context-item"><i class="fas fa-bullseye"></i> <strong>${currentLang === 'fr' ? 'Objet:' : 'Objective:'}</strong> ${objectiveLabels[this.responses.objective]}</div>
+                        <div class="context-item"><i class="fas fa-clock"></i> <strong>${currentLang === 'fr' ? 'Urgence:' : 'Urgency:'}</strong> ${urgencyLabels[this.responses.urgency]}</div>
+                        <div class="context-item"><i class="fas fa-map-marker-alt"></i> <strong>${currentLang === 'fr' ? 'Localisation:' : 'Location:'}</strong> ${locationLabels[this.responses.location]}</div>
+                        <div class="context-item"><i class="fas fa-address-card"></i> <strong>${currentLang === 'fr' ? 'Contact préféré:' : 'Preferred contact:'}</strong> ${contactLabels[this.responses.contact]}</div>
+                    </div>
+                `;
+            }
+
+            openTeamsWithContext() {
+                // Construire le message contextuel pour Teams
+                const contextMessage = this.buildContextMessage();
+                
+                // Afficher l'indicateur d'ouverture
+                this.showAutoOpenIndicator();
+                
+                // Construire l'URL Teams avec le message pré-rempli
+                const teamsUrl = `https://teams.microsoft.com/l/chat/0/0?users=${encodeURIComponent(this.teamsEmail)}&message=${encodeURIComponent(contextMessage)}`;
+                
+                // Ouvrir Teams dans un nouvel onglet
+                window.open(teamsUrl, '_blank');
+                
+                // Tracker l'événement
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'teams_auto_open', {
+                        event_category: 'engagement',
+                        event_label: 'qualification_complete',
+                        qualification_objective: this.responses.objective,
+                        qualification_urgency: this.responses.urgency,
+                        qualification_location: this.responses.location,
+                        qualification_contact: this.responses.contact
+                    });
+                }
+                
+                // Cacher l'indicateur après 3 secondes
+                setTimeout(() => {
+                    this.hideAutoOpenIndicator();
+                }, 3000);
+                
+                // Connecter l'agent IA (simulation)
+                this.connectAIAgent();
+            }
+
+            buildContextMessage() {
+                const timestamp = new Date().toLocaleString(currentLang === 'fr' ? 'fr-FR' : 'en-US');
+                
+                let message = currentLang === 'fr' 
+                    ? `🤖 NOUVEAU LEAD QUALIFIÉ - Portfolio\n\n`
+                    : `🤖 NEW QUALIFIED LEAD - Portfolio\n\n`;
+                
+                message += currentLang === 'fr' ? `📅 Date: ${timestamp}\n` : `📅 Date: ${timestamp}\n`;
+                message += `🎯 ${currentLang === 'fr' ? 'Objet' : 'Objective'}: ${this.responses.objective}\n`;
+                message += `⏰ ${currentLang === 'fr' ? 'Urgence' : 'Urgency'}: ${this.responses.urgency}\n`;
+                message += `📍 ${currentLang === 'fr' ? 'Localisation' : 'Location'}: ${this.responses.location}\n`;
+                message += `💬 ${currentLang === 'fr' ? 'Contact préféré' : 'Preferred contact'}: ${this.responses.contact}\n\n`;
+                
+                message += currentLang === 'fr' 
+                    ? `Bonjour Ange-Marie,\n\nJe suis intéressé(e) par votre profil. Voici les détails de ma demande :\n\n`
+                    : `Hello Ange-Marie,\n\nI am interested in your profile. Here are the details of my request:\n\n`;
+                
+                message += currentLang === 'fr' 
+                    ? `Merci de me recontacter sur ce canal ou par ${this.responses.contact}.\n\nCordialement,`
+                    : `Please contact me back on this channel or via ${this.responses.contact}.\n\nBest regards,`;
+                
+                return message;
+            }
+
+            showAutoOpenIndicator() {
+                const indicator = document.getElementById('autoTeamsIndicator');
+                if (indicator) {
+                    indicator.classList.add('active');
+                }
+            }
+
+            hideAutoOpenIndicator() {
+                const indicator = document.getElementById('autoTeamsIndicator');
+                if (indicator) {
+                    indicator.classList.remove('active');
+                }
+            }
+
+            connectAIAgent() {
+                const t = chatTranslations[currentLang];
+                
+                // Simuler la connexion à l'agent IA
+                setTimeout(() => {
+                    const aiBadge = `
+                        <div style="text-align: center; margin: 15px 0;">
+                            <div class="ai-agent-badge">
+                                <i class="fas fa-robot"></i>
+                                <span>Agent IA Connecté</span>
+                            </div>
+                        </div>
+                    `;
+                    this.chat.addHTMLMessage(aiBadge);
+                    
+                    // Message de l'agent IA
+                    setTimeout(() => {
+                        const aiMessage = currentLang === 'fr'
+                            ? `Bonjour ! Je suis l'agent IA d'Ange-Marie. J'ai analysé votre demande et ouvert une conversation Microsoft Teams avec tout le contexte. Vous pouvez continuer la discussion directement sur Teams où Ange-Marie vous répondra personnellement.`
+                            : `Hello! I am Ange-Marie's AI agent. I have analyzed your request and opened a Microsoft Teams conversation with all the context. You can continue the discussion directly on Teams where Ange-Marie will respond to you personally.`;
+                        
+                        this.chat.addBotMessage(aiMessage);
+                        
+                        // Ajouter un bouton pour rouvrir Teams si besoin
+                        const reopenBtn = `
+                            <div style="text-align: center; margin-top: 10px;">
+                                <button class="teams-action-btn" onclick="chat.qualification.openTeamsWithContext()">
+                                    <i class="fab fa-microsoft"></i>
+                                    <span>${currentLang === 'fr' ? 'Ouvrir/réouvrir Teams' : 'Open/reopen Teams'}</span>
+                                </button>
+                            </div>
+                        `;
+                        this.chat.addHTMLMessage(reopenBtn);
+                        
+                    }, 1000);
+                }, 500);
+            }
+        }
+
+        // SYSTÈME DE CHAT - ASSISTANT VIRTUEL MICROSOFT TEAMS AVEC QUALIFICATION
         class ChatSystem {
             constructor() {
                 this.isOpen = false;
                 this.messages = [];
                 this.teamsEmail = 'ahouansouange@live.fr';
+                this.qualification = new QualificationSystem(this);
+                this.qualificationMode = false;
                 this.init();
             }
 
@@ -2525,26 +2985,43 @@
                 
                 // Ajouter les options après un délai
                 setTimeout(() => {
-                    this.showOptions();
+                    this.showInitialOptions();
                 }, 1000);
             }
 
-            showOptions() {
+            showInitialOptions() {
                 const t = chatTranslations[currentLang];
                 const options = [
-                    { icon: '💼', text: currentLang === 'fr' ? 'Discuter d\'une opportunité' : 'Discuss an opportunity', action: 'opportunity' },
-                    { icon: '❓', text: currentLang === 'fr' ? 'Poser une question' : 'Ask a question', action: 'question' },
-                    { icon: '📄', text: currentLang === 'fr' ? 'Demander mon CV' : 'Request my resume', action: 'cv' }
+                    { 
+                        icon: '💼', 
+                        text: currentLang === 'fr' ? 'Démarrer une qualification complète' : 'Start full qualification', 
+                        action: 'start_qualification',
+                        highlight: true
+                    },
+                    { 
+                        icon: '❓', 
+                        text: currentLang === 'fr' ? 'Poser une question rapide' : 'Ask a quick question', 
+                        action: 'quick_question' 
+                    },
+                    { 
+                        icon: '📄', 
+                        text: currentLang === 'fr' ? 'Demander mon CV' : 'Request my resume', 
+                        action: 'cv' 
+                    }
                 ];
 
                 const html = `
                     <div class="chat-options">
                         ${options.map(opt => `
-                            <button class="chat-option-btn" onclick="chat.handleOption('${opt.action}')">
+                            <button class="chat-option-btn ${opt.highlight ? 'border-blue-500 bg-blue-50' : ''}" onclick="chat.handleOption('${opt.action}')">
                                 <span>${opt.icon}</span>
                                 <span>${opt.text}</span>
+                                ${opt.highlight ? '<i class="fas fa-star text-yellow-500 ml-auto"></i>' : ''}
                             </button>
                         `).join('')}
+                    </div>
+                    <div style="margin-top: 10px; padding: 8px; background: #f0f9ff; border-radius: 8px; font-size: 12px; color: #0369a1; text-align: center;">
+                        <i class="fas fa-info-circle"></i> ${currentLang === 'fr' ? 'La qualification complète permet d\'ouvrir Teams automatiquement avec tout le contexte' : 'Full qualification automatically opens Teams with all context'}
                     </div>
                 `;
                 
@@ -2553,22 +3030,19 @@
 
             handleOption(action) {
                 switch(action) {
-                    case 'opportunity':
-                        this.addUserMessage(currentLang === 'fr' ? 'Je souhaite discuter d\'une opportunité professionnelle' : 'I would like to discuss a job opportunity');
+                    case 'start_qualification':
+                        this.qualificationMode = true;
+                        this.addUserMessage(currentLang === 'fr' ? 'Je souhaite démarrer une qualification complète' : 'I want to start a full qualification');
                         setTimeout(() => {
-                            this.addBotMessage(currentLang === 'fr' ? 
-                                'Parfait ! 💼 Je suis toujours ouvert aux nouvelles opportunités. Pouvez-vous me donner plus de détails sur le poste ? (Entreprise, localisation, type de contrat)' : 
-                                'Great! 💼 I\'m always open to new opportunities. Can you give me more details about the position? (Company, location, contract type)');
-                            this.addTeamsButton();
+                            this.qualification.start();
                         }, 500);
                         break;
-                    case 'question':
-                        this.addUserMessage(currentLang === 'fr' ? 'J\'ai une question' : 'I have a question');
+                    case 'quick_question':
+                        this.addUserMessage(currentLang === 'fr' ? 'J\'ai une question rapide' : 'I have a quick question');
                         setTimeout(() => {
                             this.addBotMessage(currentLang === 'fr' ? 
-                                'Bien sûr ! ❓ Je suis là pour répondre à vos questions sur mon expérience, mes compétences ou mes projets. Qu\'aimeriez-vous savoir ?' : 
-                                'Of course! ❓ I\'m here to answer your questions about my experience, skills, or projects. What would you like to know?');
-                            this.addTeamsButton();
+                                'Bien sûr ! ❓ Posez votre question et je vous répondrai. Si c\'est complexe, je vous redirigerai vers Teams.' : 
+                                'Of course! ❓ Ask your question and I will answer. If it\'s complex, I will redirect you to Teams.');
                         }, 500);
                         break;
                     case 'cv':
@@ -2579,30 +3053,35 @@
                                 'I\'ll send you my resume by email! 📄 What is your email address?');
                         }, 500);
                         break;
+                    default:
+                        // Gestion des anciennes options pour compatibilité
+                        this.handleLegacyOption(action);
                 }
             }
 
-            addTeamsButton() {
-                const t = chatTranslations[currentLang];
-                const html = `
-                    <button class="teams-action-btn" onclick="chat.openTeamsChat()">
-                        <i class="fab fa-microsoft"></i>
-                        <span>${t.continueOnTeams}</span>
-                    </button>
-                `;
-                this.addHTMLMessage(html);
-            }
-
-            openTeamsChat() {
-                const teamsUrl = `https://teams.microsoft.com/l/chat/0/0?users=${encodeURIComponent(this.teamsEmail)}`;
-                window.open(teamsUrl, '_blank');
-                
-                // Tracker l'événement
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'teams_chat_opened', {
-                        event_category: 'engagement',
-                        event_label: 'portfolio_teams_chat'
-                    });
+            handleLegacyOption(action) {
+                // Méthode pour gérer les anciennes options si nécessaire
+                switch(action) {
+                    case 'opportunity':
+                        this.addUserMessage(currentLang === 'fr' ? 'Je souhaite discuter d\'une opportunité professionnelle' : 'I would like to discuss a job opportunity');
+                        setTimeout(() => {
+                            this.addBotMessage(currentLang === 'fr' ? 
+                                'Parfait ! 💼 Je vous propose de démarrer une qualification rapide pour mieux comprendre votre besoin.' : 
+                                'Great! 💼 I suggest starting a quick qualification to better understand your needs.');
+                            setTimeout(() => {
+                                this.qualificationMode = true;
+                                this.qualification.start();
+                            }, 1000);
+                        }, 500);
+                        break;
+                    case 'question':
+                        this.addUserMessage(currentLang === 'fr' ? 'J\'ai une question' : 'I have a question');
+                        setTimeout(() => {
+                            this.addBotMessage(currentLang === 'fr' ? 
+                                'Bien sûr ! ❓ Je suis là pour répondre à vos questions sur mon expérience, mes compétences ou mes projets. Qu\'aimeriez-vous savoir ?' : 
+                                'Of course! ❓ I\'m here to answer your questions about my experience, skills, or projects. What would you like to know?');
+                        }, 500);
+                        break;
                 }
             }
 
@@ -2627,8 +3106,10 @@
                 this.renderMessage(message);
                 this.saveMessages();
                 
-                // Envoyer à Teams (simulation - en réalité, on ouvre Teams)
-                this.sendToTeams(text);
+                // Si on n'est pas en mode qualification, ouvrir Teams automatiquement avec le message
+                if (!this.qualificationMode && !this.qualification.isQualified) {
+                    this.sendToTeams(text);
+                }
             }
 
             addHTMLMessage(html) {
@@ -2679,7 +3160,12 @@
                 this.addUserMessage(text);
                 input.value = '';
                 
-                // Réponse automatique du bot
+                // Si en mode qualification, ne pas traiter ici (géré par QualificationSystem)
+                if (this.qualificationMode) {
+                    return;
+                }
+                
+                // Réponse automatique du bot pour messages simples
                 this.showTyping();
                 setTimeout(() => {
                     this.hideTyping();
@@ -2714,12 +3200,12 @@
                 // Réponses intelligentes basiques
                 if (lowerText.includes('salut') || lowerText.includes('bonjour') || lowerText.includes('hello') || lowerText.includes('hi')) {
                     response = currentLang === 'fr' ? 
-                        'Bonjour ! 👋 Ravie de vous rencontrer. Comment puis-je vous aider ?' : 
-                        'Hello! 👋 Nice to meet you. How can I help you?';
+                        'Bonjour ! 👋 Ravie de vous rencontrer. Souhaitez-vous démarrer une qualification complète pour que je puisse mieux vous aider ?' : 
+                        'Hello! 👋 Nice to meet you. Would you like to start a full qualification so I can better help you?';
                 } else if (lowerText.includes('merci') || lowerText.includes('thank')) {
                     response = currentLang === 'fr' ? 
-                        'Avec plaisir ! 😊 N\'hésitez pas si vous avez d\'autres questions.' : 
-                        'You\'re welcome! 😊 Feel free to ask if you have any other questions.';
+                        'Avec plaisir ! 😊 N\'hésitez pas si vous avez d\'autres questions. Je peux aussi ouvrir Teams si vous préférez.' : 
+                        'You\'re welcome! 😊 Feel free to ask if you have any other questions. I can also open Teams if you prefer.';
                 } else if (lowerText.includes('email') || lowerText.includes('@') || lowerText.includes('contact')) {
                     response = currentLang === 'fr' ? 
                         'Vous pouvez m\'écrire directement sur Microsoft Teams ou m\'envoyer un email à ahouansouange@live.fr 📧' : 
@@ -2727,20 +3213,33 @@
                     this.addTeamsButton();
                 } else if (lowerText.includes('disponible') || lowerText.includes('available') || lowerText.includes('quand')) {
                     response = currentLang === 'fr' ? 
-                        'Je suis disponible immédiatement ! 🚀 Je peux commencer dès que vous le souhaitez.' : 
-                        'I am available immediately! 🚀 I can start whenever you want.';
+                        'Je suis disponible immédiatement ! 🚀 Je peux commencer dès que vous le souhaitez. Souhaitez-vous que je vous qualifie pour ouvrir Teams ?' : 
+                        'I am available immediately! 🚀 I can start whenever you want. Would you like me to qualify you to open Teams?';
                 } else if (lowerText.includes('salaire') || lowerText.includes('salary') || lowerText.includes('rémunération')) {
                     response = currentLang === 'fr' ? 
                         'Je préfère discuter de la rémunération en entretien. Le plus important pour moi est de trouver un projet qui me passionne ! 💼' : 
                         'I prefer to discuss compensation in an interview. The most important thing for me is to find a project that I\'m passionate about! 💼';
                 } else {
                     response = currentLang === 'fr' ? 
-                        'Merci pour votre message ! 💬 Je vais vous répondre directement sur Microsoft Teams. Souhaitez-vous que je vous envoie mon CV également ?' : 
-                        'Thank you for your message! 💬 I will reply to you directly on Microsoft Teams. Would you like me to send you my resume as well?';
-                    this.addTeamsButton();
+                        'Merci pour votre message ! 💬 Je vais ouvrir Teams automatiquement avec votre message. Souhaitez-vous plutôt faire une qualification complète pour un suivi optimal ?' : 
+                        'Thank you for your message! 💬 I will automatically open Teams with your message. Would you rather do a full qualification for optimal follow-up?';
+                    
+                    // Ouvrir Teams automatiquement
+                    this.sendToTeams(userText);
                 }
                 
                 this.addBotMessage(response);
+            }
+
+            addTeamsButton() {
+                const t = chatTranslations[currentLang];
+                const html = `
+                    <button class="teams-action-btn" onclick="chat.qualification.openTeamsWithContext()">
+                        <i class="fab fa-microsoft"></i>
+                        <span>${t.continueOnTeams}</span>
+                    </button>
+                `;
+                this.addHTMLMessage(html);
             }
 
             sendQuickMessage(text) {
@@ -2753,14 +3252,26 @@
             }
 
             sendToTeams(message) {
-                // Ouvrir Microsoft Teams dans un nouvel onglet avec le message pré-rempli
+                // Afficher l'indicateur d'ouverture auto
+                this.qualification.showAutoOpenIndicator();
+                
+                // Construire l'URL Teams avec le message
                 const teamsUrl = `https://teams.microsoft.com/l/chat/0/0?users=${encodeURIComponent(this.teamsEmail)}&message=${encodeURIComponent(message)}`;
+                
+                // Ouvrir Teams
+                window.open(teamsUrl, '_blank');
+                
+                // Cacher l'indicateur après 3 secondes
+                setTimeout(() => {
+                    this.qualification.hideAutoOpenIndicator();
+                }, 3000);
                 
                 // Tracker l'événement
                 if (typeof gtag !== 'undefined') {
-                    gtag('event', 'chat_message_sent', {
+                    gtag('event', 'teams_auto_open', {
                         event_category: 'engagement',
-                        event_label: 'portfolio_teams_chat'
+                        event_label: 'quick_message',
+                        message_length: message.length
                     });
                 }
             }
