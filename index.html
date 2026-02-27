@@ -1153,71 +1153,6 @@
             scroll-behavior: smooth;
         }
 
-    
-        /* Experience Carousel Styles */
-        .experience-carousel-container {
-            position: relative;
-            width: 100%;
-        }
-
-        .experience-carousel {
-            scroll-behavior: smooth;
-            scrollbar-width: thin;
-            scrollbar-color: var(--cyan) transparent;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .experience-carousel::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .experience-carousel::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 4px;
-        }
-
-        .experience-carousel::-webkit-scrollbar-thumb {
-            background: linear-gradient(90deg, var(--cyan), var(--purple));
-            border-radius: 4px;
-        }
-
-        .experience-carousel::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(90deg, var(--cyan), var(--fortinet));
-        }
-
-        .experience-carousel .flex {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .experience-carousel .experience-card {
-            width: 90vw;
-            max-width: 1200px;
-            flex-shrink: 0;
-            opacity: 0.5;
-            transform: scale(0.95);
-            transition: all 0.5s ease;
-        }
-
-        .experience-carousel .experience-card.active {
-            opacity: 1;
-            transform: scale(1);
-            border-color: rgba(0, 212, 255, 0.5);
-            box-shadow: 0 20px 40px -15px rgba(0, 212, 255, 0.3);
-        }
-
-        @media (max-width: 768px) {
-            .experience-carousel .experience-card {
-                width: 95vw;
-            }
-        }
-
-        /* Timeline point active state */
-        .timeline-point.active .w-4 {
-            background: var(--fortinet) !important;
-            transform: scale(1.5);
-        }
-
     </style>
 <base target="_blank">
 <base target="_blank">
@@ -1782,31 +1717,16 @@
             <!-- Barre de progression décorative -->
             <div class="w-full h-3 bg-gradient-to-r from-cyan-500 via-purple-500 to-fortinet rounded-full mb-12 shadow-lg shadow-cyan-500/20"></div>
 
-            <!-- Carrousel horizontal des expériences -->
-            <div class="experience-carousel-container relative">
-                <!-- Boutons de navigation -->
-                <button onclick="scrollExperience('left')" class="absolute left-0 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-cyan-500/80 hover:bg-cyan-400 text-white flex items-center justify-center shadow-lg shadow-cyan-500/30 transition-all hover:scale-110">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button onclick="scrollExperience('right')" class="absolute right-0 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-cyan-500/80 hover:bg-cyan-400 text-white flex items-center justify-center shadow-lg shadow-cyan-500/30 transition-all hover:scale-110">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-
-                <!-- Conteneur défilable -->
-                <div class="experience-carousel overflow-x-auto overflow-y-hidden pb-4 px-16" id="experience-cards">
-                    <div class="flex gap-6" style="width: max-content;">
+            <!-- Cartes d'expérience -->
+            <div class="space-y-8" id="experience-cards">
 
                 <!-- HT241 -->
                 <div id="card-ht241" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
-                    
                     <div class="flex justify-between items-start mb-6">
                         <div>
                             <h3 class="text-3xl font-bold text-cyan-400 mb-2"><a href="https://www.ht241.com/" target="_blank" class="hover:underline inline-flex items-center gap-2">HT241 <i class="fas fa-external-link-alt text-sm"></i></a></h3>
                             <p class="text-gray-400" data-fr="Prestation de services informatique et vente de matériel" data-en="IT services and hardware sales">Prestation de services informatique et vente de matériel</p>
                         </div>
-                        <span class="px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-full text-sm font-medium border border-cyan-400/30 flex items-center gap-2">
-                            <i class="fas fa-microchip"></i> <span data-fr="Technologie" data-en="Technology">Technologie</span>
-                        </span>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-8">
@@ -1984,15 +1904,11 @@
 
                 <!-- SAFRIMAT -->
                 <div id="card-safrimat" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
-                    
                     <div class="flex justify-between items-start mb-6">
                         <div>
                             <h3 class="text-3xl font-bold text-cyan-400 mb-2"><a href="https://safrimat.com/?page=home" target="_blank" class="hover:underline inline-flex items-center gap-2">SAFRIMAT <i class="fas fa-external-link-alt text-sm"></i></a></h3>
                             <p class="text-gray-400" data-fr="Prestation et vente informatique" data-en="IT services and sales">Prestation et vente informatique</p>
                         </div>
-                        <span class="px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-full text-sm font-medium border border-cyan-400/30 flex items-center gap-2">
-                            <i class="fas fa-microchip"></i> <span data-fr="Technologie" data-en="Technology">Technologie</span>
-                        </span>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-8">
@@ -3853,146 +3769,34 @@
         });
     </script>
 <script>
-
-        // Experience Carousel Navigation
-        let currentCardIndex = 0;
-        const totalCards = 6;
-
-        function scrollExperience(direction) {
-            const carousel = document.getElementById('experience-cards');
-            const cards = carousel.querySelectorAll('.experience-card');
-
-            if (direction === 'left') {
-                currentCardIndex = Math.max(0, currentCardIndex - 1);
-            } else {
-                currentCardIndex = Math.min(totalCards - 1, currentCardIndex + 1);
-            }
-
-            goToCard(currentCardIndex);
-        }
-
-        function goToCard(index) {
-            currentCardIndex = index;
-            const carousel = document.getElementById('experience-cards');
-            const cards = carousel.querySelectorAll('.experience-card');
-
-            if (cards[index]) {
-                cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-
-                // Mettre à jour les classes active
-                cards.forEach((card, i) => {
-                    card.classList.toggle('active', i === index);
-                });
-
-                // Mettre à jour les indicateurs
-                updateIndicators(index);
-
-                // Mettre à jour la timeline
-                updateTimeline(index);
-            }
-        }
-
-        function updateIndicators(activeIndex) {
-            const indicators = document.getElementById('carousel-indicators');
-            if (indicators) {
-                const dots = indicators.querySelectorAll('button');
-                dots.forEach((dot, index) => {
-                    if (index === activeIndex) {
-                        dot.classList.remove('bg-gray-600');
-                        dot.classList.add('bg-cyan-400');
-                    } else {
-                        dot.classList.remove('bg-cyan-400');
-                        dot.classList.add('bg-gray-600');
-                    }
-                });
-            }
-        }
-
-        function updateTimeline(activeIndex) {
-            const timelinePoints = document.querySelectorAll('.timeline-point');
-            timelinePoints.forEach((point, index) => {
-                point.classList.toggle('active', index === activeIndex);
-            });
-        }
-
+        // Timeline navigation
         function showExperience(companyId) {
-            const cardMap = {
-                'ht241': 0,
-                'anavea': 1,
-                'safrimat': 2,
-                'centre-dialyse': 3,
-                'systemescoms': 4,
-                'davum': 5
-            };
-
-            const index = cardMap[companyId];
-            if (index !== undefined) {
-                goToCard(index);
-            }
-        }
-
-        // Observer pour détecter la carte visible au scroll
-        document.addEventListener('DOMContentLoaded', () => {
-            const carousel = document.getElementById('experience-cards');
-            const cards = carousel.querySelectorAll('.experience-card');
-
-            // Activer la première carte
-            if (cards.length > 0) {
-                cards[0].classList.add('active');
-                updateIndicators(0);
-                updateTimeline(0);
-            }
-
-            // Observer les intersections pour mettre à jour les indicateurs
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-                        const index = Array.from(cards).indexOf(entry.target);
-                        if (index !== -1) {
-                            updateIndicators(index);
-                            updateTimeline(index);
-                            currentCardIndex = index;
-                        }
-                    }
-                });
-            }, {
-                root: carousel,
-                threshold: 0.5
+            // Retirer la classe active de toutes les cartes
+            document.querySelectorAll('.experience-card').forEach(card => {
+                card.classList.remove('active');
             });
 
-            cards.forEach(card => observer.observe(card));
-        });
-
-        // Support du swipe sur mobile
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const carousel = document.getElementById('experience-cards');
-
-            carousel.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
-
-            carousel.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-            }, { passive: true });
-        });
-
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            const diff = touchStartX - touchEndX;
-
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    scrollExperience('right');
-                } else {
-                    scrollExperience('left');
-                }
+            // Ajouter la classe active à la carte ciblée
+            const targetCard = document.getElementById('card-' + companyId);
+            if (targetCard) {
+                targetCard.classList.add('active');
+                targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
+
+            // Mettre à jour les points de timeline
+            document.querySelectorAll('.timeline-point').forEach(point => {
+                point.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
         }
 
+        // Activer la première carte par défaut au chargement
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstCard = document.getElementById('card-ht241');
+            if (firstCard) {
+                firstCard.classList.add('active');
+            }
+        });
 </script>
 </body>
 </html>
