@@ -1,23 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JXX948T6KN"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-JXX948T6KN');
-    </script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technicien IT | Administrateur Systèmes | Cybersécurité Fortinet - Ange-Marie Boussougou</title>
+    <title>Technicien IT Senior | Administrateur Systèmes | Cybersécurité Fortinet - Ange-Marie Boussougou</title>
     <meta name="description" content="Expert en infrastructure IT, administration systèmes Windows/Linux et cybersécurité Fortinet. 7+ ans d'expérience multi-sites.">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,20 +21,16 @@
                         display: ['Space Grotesk', 'sans-serif'],
                     },
                     colors: {
-                        dark: '#0A0E27',
+                        fortinet: '#EE4C24',
                         cyan: '#00D4FF',
                         purple: '#7000FF',
-                        fortinet: '#EE4C24',
+                        dark: '#0A0E27',
                     },
                     animation: {
                         'gradient': 'gradient 8s linear infinite',
                         'float': 'float 6s ease-in-out infinite',
                         'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
                         'slide-up': 'slideUp 0.8s ease-out forwards',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'bounce-slight': 'bounceSlight 2s infinite',
-                        'typing': 'typing 1.5s infinite',
-                        'pulse-ring': 'pulseRing 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite',
                     },
                     keyframes: {
                         gradient: {
@@ -63,18 +48,6 @@
                         slideUp: {
                             '0%': { transform: 'translateY(30px)', opacity: '0' },
                             '100%': { transform: 'translateY(0)', opacity: '1' },
-                        },
-                        bounceSlight: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-5px)' },
-                        },
-                        typing: {
-                            '0%, 100%': { opacity: 1 },
-                            '50%': { opacity: 0.3 },
-                        },
-                        pulseRing: {
-                            '0%': { transform: 'scale(0.8)', opacity: 1 },
-                            '100%': { transform: 'scale(1.3)', opacity: 0 },
                         }
                     }
                 }
@@ -86,14 +59,10 @@
         :root {
             --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.18);
-            --dark: #0A0E27;
-            --cyan: #00D4FF;
-            --purple: #7000FF;
-            --fortinet: #EE4C24;
         }
         
         body {
-            background: var(--dark);
+            background: #0A0E27;
             color: #fff;
             overflow-x: hidden;
         }
@@ -112,15 +81,8 @@
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 rgba(255,255,255,0.1);
         }
         
-        .glass-cyan {
-            background: rgba(0, 212, 255, 0.1);
-            backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 rgba(255,255,255,0.1);
-        }
-        
         .text-gradient {
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 50%, var(--fortinet) 100%);
+            background: linear-gradient(135deg, #00D4FF 0%, #7000FF 50%, #EE4C24 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -183,7 +145,7 @@
         }
         
         .timeline-line {
-            background: linear-gradient(to bottom, var(--cyan), var(--purple), var(--fortinet));
+            background: linear-gradient(to bottom, #00D4FF, #7000FF, #EE4C24);
         }
         
         .linkedin-btn {
@@ -235,7 +197,7 @@
             right: 10px;
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
+            background: linear-gradient(135deg, #00D4FF 0%, #7000FF 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -243,7 +205,7 @@
             color: white;
             font-weight: bold;
             font-size: 1.2rem;
-            border: 3px solid var(--dark);
+            border: 3px solid #0A0E27;
             box-shadow: 0 4px 15px rgba(0,212,255,0.4);
         }
         
@@ -259,9 +221,9 @@
         }
         
         .lang-btn.active {
-            background: var(--cyan);
-            color: var(--dark);
-            border-color: var(--cyan);
+            background: #00D4FF;
+            color: #0A0E27;
+            border-color: #00D4FF;
             font-weight: 600;
         }
         
@@ -297,7 +259,7 @@
             left: 0;
             width: 4px;
             height: 100%;
-            background: linear-gradient(to bottom, var(--cyan), var(--purple), var(--fortinet));
+            background: linear-gradient(to bottom, #00D4FF, #7000FF, #EE4C24);
             transform: scaleY(0);
             transition: transform 0.3s ease;
         }
@@ -337,994 +299,15 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--dark);
+            background: #0A0E27;
         }
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(var(--cyan), var(--fortinet));
+            background: linear-gradient(#00D4FF, #EE4C24);
             border-radius: 4px;
         }
-
-        /* CHAT WIDGET STYLES - Cyberpunk Theme */
-        .chat-widget {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 9999;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .chat-button {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 10px 30px -5px rgba(0, 212, 255, 0.5);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .chat-button:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 15px 40px -5px rgba(0, 212, 255, 0.6);
-        }
-
-        .chat-button.active {
-            transform: scale(0.9);
-            background: var(--fortinet);
-        }
-
-        .chat-button i {
-            color: white;
-            font-size: 28px;
-            transition: all 0.3s;
-        }
-
-        .chat-button.active i {
-            transform: rotate(45deg);
-        }
-
-        .chat-container {
-            position: absolute;
-            bottom: 90px;
-            right: 0;
-            width: 400px;
-            max-width: calc(100vw - 40px);
-            height: 600px;
-            max-height: calc(100vh - 150px);
-            background: var(--dark);
-            border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            opacity: 0;
-            transform: scale(0.8) translateY(20px);
-            pointer-events: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-        }
-
-        .chat-container.active {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-            pointer-events: all;
-        }
-
-        .chat-header {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(112, 0, 255, 0.2) 100%);
-            padding: 20px;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
-        }
-
-        .chat-header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0,212,255,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .chat-header-content {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .chat-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 3px solid rgba(0,212,255,0.5);
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: white;
-            font-size: 20px;
-        }
-
-        .chat-status {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 13px;
-            opacity: 0.9;
-            margin-top: 4px;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: #4ade80;
-            border-radius: 50%;
-            animation: pulse-live 2s infinite;
-        }
-
-        .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-            background: rgba(10, 14, 39, 0.8);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .chat-messages::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .chat-messages::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .chat-messages::-webkit-scrollbar-thumb {
-            background: var(--cyan);
-            border-radius: 3px;
-        }
-
-        .message {
-            max-width: 90%;
-            animation: slideIn 0.3s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .message-bot {
-            align-self: flex-start;
-        }
-
-        .message-user {
-            align-self: flex-end;
-        }
-
-        .message-bubble {
-            padding: 12px 16px;
-            border-radius: 18px;
-            font-size: 14px;
-            line-height: 1.5;
-            word-wrap: break-word;
-        }
-
-        .message-bot .message-bubble {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border-bottom-left-radius: 4px;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        .message-user .message-bubble {
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
-            color: white;
-            border-bottom-right-radius: 4px;
-        }
-
-        .message-time {
-            font-size: 11px;
-            color: rgba(255,255,255,0.5);
-            margin-top: 4px;
-            text-align: right;
-        }
-
-        .typing-indicator {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 18px;
-            border-bottom-left-radius: 4px;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            width: fit-content;
-            backdrop-filter: blur(10px);
-        }
-
-        .typing-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--cyan);
-            border-radius: 50%;
-            animation: typing 1.4s infinite;
-        }
-
-        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-
-        .chat-options {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .chat-option-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            padding: 10px 16px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 14px;
-            text-align: left;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .chat-option-btn:hover {
-            border-color: var(--cyan);
-            background: rgba(0, 212, 255, 0.1);
-            transform: translateX(5px);
-        }
-
-        .chat-option-btn i {
-            color: var(--cyan);
-        }
-
-        .chat-input-area {
-            padding: 20px;
-            background: rgba(10, 14, 39, 0.9);
-            border-top: 1px solid rgba(0, 212, 255, 0.3);
-        }
-
-        .chat-input-container {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .chat-input {
-            flex: 1;
-            padding: 12px 16px;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 25px;
-            outline: none;
-            font-size: 14px;
-            transition: all 0.2s;
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-        }
-
-        .chat-input:focus {
-            border-color: var(--cyan);
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
-        }
-
-        .chat-input::placeholder {
-            color: rgba(255,255,255,0.4);
-        }
-
-        .chat-send-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
-            border: none;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
-
-        .chat-send-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
-        }
-
-        .chat-send-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .teams-notice {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(112, 0, 255, 0.1) 100%);
-            padding: 12px;
-            border-radius: 12px;
-            margin-top: 10px;
-            font-size: 12px;
-            color: var(--cyan);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-        }
-
-        .teams-notice i {
-            color: var(--cyan);
-        }
-
-        .quick-reactions {
-            display: flex;
-            gap: 8px;
-            padding: 10px 20px;
-            background: rgba(10, 14, 39, 0.9);
-            border-top: 1px solid rgba(0, 212, 255, 0.3);
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
-
-        .quick-reactions::-webkit-scrollbar {
-            display: none;
-        }
-
-        .reaction-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            padding: 6px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 13px;
-            transition: all 0.2s;
-            white-space: nowrap;
-            color: white;
-        }
-
-        .reaction-btn:hover {
-            background: rgba(0, 212, 255, 0.1);
-            border-color: var(--cyan);
-            transform: scale(1.05);
-        }
-
-        @media (max-width: 480px) {
-            .chat-widget {
-                bottom: 20px;
-                right: 20px;
-            }
-            
-            .chat-button {
-                width: 60px;
-                height: 60px;
-            }
-            
-            .chat-container {
-                width: calc(100vw - 40px);
-                height: calc(100vh - 100px);
-                right: -10px;
-            }
-        }
-
-        .chat-widget-enter {
-            animation: widgetEnter 0.5s ease-out 2s both;
-        }
-
-        @keyframes widgetEnter {
-            from {
-                opacity: 0;
-                transform: scale(0) rotate(-180deg);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) rotate(0);
-            }
-        }
-
-        .teams-action-btn {
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
-            color: white;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.2s;
-            margin-top: 8px;
-        }
-
-        .teams-action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
-        }
-
-        .teams-action-btn i {
-            font-size: 14px;
-        }
-
-        .qualification-progress {
-            background: rgba(255,255,255,0.1);
-            height: 4px;
-            border-radius: 2px;
-            margin-top: 10px;
-            overflow: hidden;
-        }
-
-        .qualification-progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--cyan), var(--purple));
-            transition: width 0.5s ease;
-            border-radius: 2px;
-        }
-
-        .qualification-step {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 11px;
-            color: rgba(255,255,255,0.8);
-            margin-top: 6px;
-        }
-
-        .qualification-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 4px 8px;
-            background: rgba(0, 212, 255, 0.2);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 12px;
-            font-size: 11px;
-            color: var(--cyan);
-            margin-top: 8px;
-        }
-
-        .ai-agent-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            background: linear-gradient(135deg, var(--purple) 0%, var(--fortinet) 100%);
-            border-radius: 20px;
-            font-size: 12px;
-            color: white;
-            font-weight: 500;
-            animation: pulse 2s infinite;
-        }
-
-        .context-summary {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(112, 0, 255, 0.1) 100%);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 12px;
-            padding: 12px;
-            margin-top: 10px;
-            font-size: 13px;
-            color: white;
-        }
-
-        .context-summary h4 {
-            color: var(--cyan);
-            font-weight: 600;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .context-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 4px 0;
-            color: rgba(255,255,255,0.8);
-        }
-
-        .context-item i {
-            color: var(--cyan);
-            font-size: 12px;
-        }
-
-        .auto-teams-indicator {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px -5px rgba(0, 212, 255, 0.4);
-            display: none;
-            align-items: center;
-            gap: 10px;
-            z-index: 10000;
-            animation: slideInRight 0.3s ease-out;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .auto-teams-indicator.active {
-            display: flex;
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .pulse-ring {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 2px solid rgba(0, 212, 255, 0.5);
-            animation: pulseRing 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-        }
-
-        .chat-button::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            animation: pulseRing 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-        }
-
-        .email-notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 16px 24px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
-            display: none;
-            align-items: center;
-            gap: 12px;
-            z-index: 10001;
-            animation: slideInRight 0.3s ease-out;
-            max-width: 400px;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .email-notification.active {
-            display: flex;
-        }
-
-        .email-notification.success {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-        }
-
-        .email-notification.error {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            color: white;
-        }
-
-        .email-notification.sending {
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
-            color: white;
-        }
-
-        .email-notification-icon {
-            font-size: 24px;
-        }
-
-        .email-notification-content {
-            flex: 1;
-        }
-
-        .email-notification-title {
-            font-weight: 600;
-            font-size: 14px;
-            margin-bottom: 2px;
-        }
-
-        .email-notification-text {
-            font-size: 12px;
-            opacity: 0.9;
-        }
-
-        .email-notification-close {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
-
-        .email-notification-close:hover {
-            background: rgba(255,255,255,0.3);
-        }
-
-        /* Contact Form Modal - Cyberpunk */
-        .contact-form-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(10, 14, 39, 0.9);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
-
-        .contact-form-overlay.active {
-            display: flex;
-        }
-
-        .contact-form-container {
-            background: linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(20, 25, 50, 0.95) 100%);
-            border-radius: 24px;
-            padding: 2rem;
-            max-width: 500px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            animation: slideUp 0.3s ease-out;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            color: white;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 12px;
-            transition: all 0.3s;
-            font-family: inherit;
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--cyan);
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
-        }
-
-        .form-input::placeholder {
-            color: rgba(255,255,255,0.4);
-        }
-
-        /* Analytics Dashboard - Cyberpunk */
-        .analytics-dashboard {
-            background: linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(20, 25, 50, 0.95) 100%);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-        }
-        
-        .analytics-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .analytics-card:hover {
-            border-color: rgba(0, 212, 255, 0.5);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(0, 212, 255, 0.1);
-        }
-        
-        .metric-value {
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .live-indicator {
-            animation: pulse-live 2s infinite;
-        }
-        
-        @keyframes pulse-live {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        .visitor-log {
-            max-height: 300px;
-            overflow-y: auto;
-        }
-        
-        .visitor-log::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        .visitor-log::-webkit-scrollbar-track {
-            background: rgba(0, 212, 255, 0.1);
-        }
-        
-        .visitor-log::-webkit-scrollbar-thumb {
-            background: var(--cyan);
-            border-radius: 3px;
-        }
-
-        .device-icon {
-            transition: all 0.3s ease;
-        }
-        
-        .device-icon.active {
-            transform: scale(1.1);
-            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
-        }
-
-        /* Navigation active state */
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--cyan), var(--purple));
-            transition: width 0.3s;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-    
-        /* Timeline styles */
-        .timeline-point {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .timeline-point:hover .w-4 {
-            transform: scale(1.5);
-        }
-
-        /* Experience card active state */
-        .experience-card {
-            transition: all 0.5s ease;
-            opacity: 0.6;
-            transform: scale(0.98);
-        }
-
-        .experience-card.active {
-            opacity: 1;
-            transform: scale(1);
-            border-color: rgba(0, 212, 255, 0.5);
-            box-shadow: 0 20px 40px -15px rgba(0, 212, 255, 0.3);
-        }
-
-        .experience-card:hover {
-            opacity: 1;
-            transform: scale(1.01);
-        }
-
-        /* Smooth scroll behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-
     </style>
-<base target="_blank">
-<base target="_blank">
 </head>
 <body class="font-sans bg-grid antialiased overflow-x-hidden">
-
-    <!-- NOUVEAU: Indicateur d'ouverture auto Teams -->
-    <div id="autoTeamsIndicator" class="auto-teams-indicator">
-        <i class="fab fa-microsoft text-xl"></i>
-        <div>
-            <div class="font-semibold text-sm">Ouverture de Teams...</div>
-            <div class="text-xs opacity-90">Redirection vers la conversation</div>
-        </div>
-        <div class="ml-2">
-            <i class="fas fa-spinner fa-spin"></i>
-        </div>
-    </div>
-
-    <!-- NOUVEAU: Notification Email -->
-    <div id="emailNotification" class="email-notification">
-        <div class="email-notification-icon">
-            <i class="fas fa-envelope"></i>
-        </div>
-        <div class="email-notification-content">
-            <div class="email-notification-title" id="emailNotifTitle">Envoi en cours...</div>
-            <div class="email-notification-text" id="emailNotifText">Veuillez patienter</div>
-        </div>
-        <button class="email-notification-close" onclick="hideEmailNotification()">
-            <i class="fas fa-times"></i>
-        </button>
-    </div>
-
-    <!-- ASSISTANT VIRTUEL - CHAT WIDGET -->
-    <div class="chat-widget chat-widget-enter" id="chatWidget">
-        <div class="chat-container" id="chatContainer">
-            <div class="chat-header">
-                <div class="chat-header-content">
-                    <div class="chat-avatar">AB</div>
-                    <div style="flex: 1;">
-                        <div class="font-bold text-lg">Ange-Marie</div>
-                        <div class="chat-status">
-                            <span class="status-dot"></span>
-                            <span id="chatStatusText">Disponible sur Teams</span>
-                        </div>
-                        <div id="qualificationProgress" style="display: none;">
-                            <div class="qualification-progress">
-                                <div class="qualification-progress-bar" id="progressBar" style="width: 0%"></div>
-                            </div>
-                            <div class="qualification-step">
-                                <i class="fas fa-robot"></i>
-                                <span id="qualificationText">Qualification en cours...</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="chat-messages" id="chatMessages">
-                <!-- Les messages seront ajoutés ici dynamiquement -->
-            </div>
-
-            <div class="quick-reactions" id="quickReactions">
-                <button class="reaction-btn" onclick="sendQuickMessage('Bonjour !')">👋 Bonjour</button>
-                <button class="reaction-btn" onclick="sendQuickMessage('J\'ai une question sur votre expérience')">💼 Expérience</button>
-                <button class="reaction-btn" onclick="sendQuickMessage('Parlons de vos compétences')">🛠️ Compétences</button>
-                <button class="reaction-btn" onclick="sendQuickMessage('J\'ai une opportunité à vous proposer')">🚀 Opportunité</button>
-            </div>
-
-            <div class="chat-input-area">
-                <div class="chat-input-container">
-                    <input type="text" 
-                           class="chat-input" 
-                           id="chatInput" 
-                           placeholder="Écrivez votre message..." 
-                           maxlength="500"
-                           onkeypress="handleChatKeyPress(event)">
-                    <button class="chat-send-btn" id="sendBtn" onclick="sendChatMessage()">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
-                <div class="teams-notice">
-                    <i class="fab fa-microsoft"></i>
-                    <span id="teamsNotice">Chaque message ouvre automatiquement Teams avec le contexte</span>
-                </div>
-            </div>
-        </div>
-
-        <button class="chat-button" id="chatButton" onclick="toggleChat()">
-            <div class="pulse-ring"></div>
-            <i class="fab fa-microsoft" id="chatIcon"></i>
-            <span class="chat-notification" id="chatNotification">1</span>
-        </button>
-    </div>
-
-    <!-- Contact Form Modal -->
-    <div id="contact-modal" class="contact-form-overlay">
-        <div class="contact-form-container">
-            <button onclick="closeContactForm()" class="absolute top-4 right-4 w-10 h-10 rounded-full glass hover:bg-white/10 flex items-center justify-center transition-colors">
-                <i class="fas fa-times text-white"></i>
-            </button>
-            
-            <div class="text-center mb-6">
-                <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-4 shadow-lg shadow-cyan-500/30">
-                    <i class="fas fa-paper-plane"></i>
-                </div>
-                <h3 class="font-display text-2xl font-bold text-white" data-fr="Me contacter" data-en="Contact Me">Me contacter</h3>
-                <p class="text-gray-400 mt-2" data-fr="Remplissez ce formulaire et je vous répondrai dans les plus brefs délais." data-en="Fill out this form and I will get back to you as soon as possible.">Remplissez ce formulaire et je vous répondrai dans les plus brefs délais.</p>
-            </div>
-
-            <form id="contact-form" onsubmit="handleContactSubmit(event)">
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-1" data-fr="Nom complet *" data-en="Full Name *">Nom complet *</label>
-                        <input type="text" name="from_name" required class="form-input" data-fr-placeholder="Votre nom" data-en-placeholder="Your name" placeholder="Votre nom">
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-1">Email *</label>
-                        <input type="email" name="from_email" required class="form-input" data-fr-placeholder="votre@email.com" data-en-placeholder="your@email.com" placeholder="votre@email.com">
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-1" data-fr="Sujet *" data-en="Subject *">Sujet *</label>
-                        <select name="subject" class="form-input" id="contact-subject" required>
-                            <option value="" data-fr="Sélectionnez un sujet" data-en="Select a subject">Sélectionnez un sujet</option>
-                            <option value="opportunity" data-fr="💼 Opportunité professionnelle" data-en="💼 Job Opportunity">💼 Opportunité professionnelle</option>
-                            <option value="project" data-fr="🚀 Projet / Consultation" data-en="🚀 Project / Consulting">🚀 Projet / Consultation</option>
-                            <option value="question" data-fr="❓ Question technique" data-en="❓ Technical Question">❓ Question technique</option>
-                            <option value="partnership" data-fr="🤝 Partenariat" data-en="🤝 Partnership">🤝 Partenariat</option>
-                            <option value="other" data-fr="📝 Autre" data-en="📝 Other">📝 Autre</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-1" data-fr="Téléphone (optionnel)" data-en="Phone (optional)">Téléphone (optionnel)</label>
-                        <input type="tel" name="phone" class="form-input" data-fr-placeholder="+1 (514) 000-0000" data-en-placeholder="+1 (514) 000-0000" placeholder="+1 (514) 000-0000">
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-1" data-fr="Message *" data-en="Message *">Message *</label>
-                        <textarea name="message" rows="4" required class="form-input resize-none" data-fr-placeholder="Décrivez votre demande en détail..." data-en-placeholder="Describe your request in detail..." placeholder="Décrivez votre demande en détail..."></textarea>
-                    </div>
-
-                    <div class="flex items-start gap-3">
-                        <input type="checkbox" name="consent" id="consent" required class="mt-1 w-4 h-4 text-cyan-500 rounded border-gray-600 bg-gray-700 focus:ring-cyan-500">
-                        <label for="consent" class="text-sm text-gray-400" data-fr="J'accepte que mes informations soient utilisées pour me recontacter." data-en="I agree that my information will be used to contact me back.">
-                            J'accepte que mes informations soient utilisées pour me recontacter.
-                        </label>
-                    </div>
-
-                    <button type="submit" id="submitBtn" class="w-full py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-cyan-500/30 transform hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
-                        <i class="fas fa-paper-plane" id="submitIcon"></i>
-                        <span id="submitText" data-fr="Envoyer le message" data-en="Send Message">Envoyer le message</span>
-                    </button>
-                </div>
-            </form>
-
-            <div class="mt-6 pt-6 border-t border-white/10 text-center">
-                <p class="text-sm text-gray-500 mb-3" data-fr="Ou contactez-moi directement via :" data-en="Or contact me directly via:">Ou contactez-moi directement via :</p>
-                <a href="mailto:ahouansouange@live.fr" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium">
-                    <i class="fas fa-envelope"></i>
-                    ahouansouange@live.fr
-                </a>
-                <div class="mt-3">
-                    <a href="https://teams.microsoft.com/l/chat/0/0?users=ahouansouange@live.fr" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-lg hover:shadow-lg hover:shadow-cyan-500/30 transition-all text-sm font-medium">
-                        <i class="fab fa-microsoft"></i>
-                        <span data-fr="Me contacter sur Teams" data-en="Contact me on Teams">Me contacter sur Teams</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass border-b border-white/10 transition-all duration-300" id="navbar">
@@ -1341,15 +324,10 @@
                 </div>
                 
                 <div class="hidden md:flex space-x-4 items-center">
-                    <a href="#accueil" class="nav-link text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Accueil" data-en="Home">Accueil</a>
-                    <a href="#competences" class="nav-link text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Compétences" data-en="Skills">Compétences</a>
-                    <a href="#experience" class="nav-link text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Expérience" data-en="Experience">Expérience</a>
-                    <a href="#certifications" class="nav-link text-gray-300 hover:text-fortinet font-medium transition-colors" data-fr="Certifications" data-en="Certifications">Certifications</a>
-                    <a href="#analytics" class="nav-link text-cyan-400 hover:text-cyan-300 font-medium transition-colors flex items-center gap-2">
-                        <i class="fas fa-chart-line"></i>
-                        <span data-fr="Stats" data-en="Stats">Stats</span>
-                        <span class="w-2 h-2 bg-green-500 rounded-full live-indicator"></span>
-                    </a>
+                    <a href="#accueil" class="text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Accueil" data-en="Home">Accueil</a>
+                    <a href="#competences" class="text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Compétences" data-en="Skills">Compétences</a>
+                    <a href="#experience" class="text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Expérience" data-en="Experience">Expérience</a>
+                    <a href="#certifications" class="text-gray-300 hover:text-fortinet font-medium transition-colors" data-fr="Certifications" data-en="Certifications">Certifications</a>
                     
                     <div class="flex items-center gap-1 bg-white/10 rounded-full p-1 ml-2">
                         <button onclick="switchLang('fr')" id="btn-fr" class="lang-btn active px-3 py-1 rounded-full text-sm font-medium">FR</button>
@@ -1374,13 +352,9 @@
                 <a href="#competences" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium" data-fr="Compétences" data-en="Skills">Compétences</a>
                 <a href="#experience" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium" data-fr="Expérience" data-en="Experience">Expérience</a>
                 <a href="#certifications" class="block px-3 py-2 text-gray-300 hover:text-fortinet font-medium" data-fr="Certifications" data-en="Certifications">Certifications</a>
-                <a href="#analytics" class="block px-3 py-2 text-cyan-400 font-medium flex items-center gap-2">
-                    <i class="fas fa-chart-line"></i> <span data-fr="Statistiques en direct" data-en="Live Statistics">Statistiques en direct</span>
-                    <span class="w-2 h-2 bg-green-500 rounded-full live-indicator"></span>
-                </a>
                 
                 <div class="flex items-center gap-2 px-3 py-2">
-                    <span class="text-sm text-gray-500" data-fr="Langue:" data-en="Language:">Langue:</span>
+                    <span class="text-sm text-gray-400" data-fr="Langue:" data-en="Language:">Langue:</span>
                     <button onclick="switchLang('fr')" class="lang-btn active px-3 py-1 rounded-full text-sm font-medium">FR</button>
                     <button onclick="switchLang('en')" class="lang-btn px-3 py-1 rounded-full text-sm font-medium">EN</button>
                 </div>
@@ -1409,7 +383,7 @@
                     </div>
                     
                     <h1 class="font-display text-4xl lg:text-6xl font-bold leading-tight text-white" id="hero-title">
-                        Technicien IT <br>
+                        Technicien IT Senior<br>
                         <span class="text-gradient">Administrateur Systèmes</span><br>
                         <span class="text-3xl lg:text-5xl text-gray-300">Cybersécurité Fortinet</span>
                     </h1>
@@ -1435,10 +409,10 @@
                     </div>
 
                     <div class="flex flex-wrap gap-4">
-                        <button onclick="openContactForm()" class="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-full font-semibold hover:scale-105 transition-all shadow-lg shadow-cyan-500/30 flex items-center gap-2">
+                        <a href="mailto:ahouansouange@live.fr" class="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold hover:scale-105 transition-all shadow-lg shadow-cyan-500/30 flex items-center gap-2">
                             <i class="fas fa-paper-plane"></i>
                             <span data-fr="Me contacter" data-en="Contact me">Me contacter</span>
-                        </button>
+                        </a>
                         <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="linkedin-btn px-8 py-4 text-white rounded-full font-semibold flex items-center gap-2 transform hover:scale-105 shadow-lg">
                             <i class="fab fa-linkedin text-xl"></i>
                             <span data-fr="Voir mon LinkedIn" data-en="View my LinkedIn">Voir mon LinkedIn</span>
@@ -1457,12 +431,14 @@
                     </div>
                 </div>
 
+                <!-- Profile Card avec Photo -->
                 <div class="relative flex justify-center lg:justify-end">
                     <div class="glass rounded-3xl p-8 w-full max-w-md text-center relative overflow-hidden border border-white/20">
                         <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-br from-cyan-500/20 to-purple-600/20"></div>
                         
                         <div class="relative z-10 mb-6">
                             <div class="avatar-badge">
+                                <!-- Champ Photo - Remplacez src par votre photo -->
                                 <img src="photo.jpg" 
                                      alt="Ange-Marie Boussougou Ahouansou" 
                                      class="profile-image mx-auto"
@@ -1472,7 +448,7 @@
                         </div>
                         
                         <h2 class="font-display text-2xl font-bold text-white mb-1">Ange-Marie Boussougou</h2>
-                        <p class="text-cyan-400 font-medium mb-6" id="profile-subtitle" data-fr="Technicien IT | Administrateur Systèmes | Cybersécurité Fortinet" data-en="IT Technician | Systems Administrator | Fortinet Cybersecurity">Technicien IT | Administrateur Systèmes | Cybersécurité Fortinet</p>
+                        <p class="text-cyan-400 font-medium mb-6" id="profile-subtitle" data-fr="Technicien IT Senior | Administrateur Systèmes | Cybersécurité Fortinet" data-en="Senior IT Technician | Systems Administrator | Fortinet Cybersecurity">Technicien IT Senior | Administrateur Systèmes | Cybersécurité Fortinet</p>
                         
                         <div class="grid grid-cols-2 gap-4 mb-6">
                             <div class="glass rounded-xl p-4 border border-white/10">
@@ -1485,6 +461,7 @@
                             </div>
                         </div>
 
+                        <!-- Boutons Credly & Microsoft -->
                         <div class="space-y-3">
                             <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank" class="microsoft-btn w-full px-4 py-3 text-white rounded-xl font-semibold flex items-center justify-center gap-3 text-sm">
                                 <i class="fab fa-microsoft text-xl"></i>
@@ -1513,9 +490,9 @@
                                 <a href="mailto:ahouansouange@live.fr" class="w-12 h-12 rounded-full glass flex items-center justify-center text-gray-300 hover:bg-red-500 hover:text-white transition-all border border-white/10">
                                     <i class="fas fa-envelope text-xl"></i>
                                 </a>
-                                <button onclick="openContactForm()" class="w-12 h-12 rounded-full glass flex items-center justify-center text-gray-300 hover:bg-green-500 hover:text-white transition-all border border-white/10">
+                                <a href="tel:+14162688673" class="w-12 h-12 rounded-full glass flex items-center justify-center text-gray-300 hover:bg-green-500 hover:text-white transition-all border border-white/10">
                                     <i class="fas fa-phone text-xl"></i>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -1647,548 +624,142 @@
         </div>
     </section>
 
-    
-    
-    <!-- Experience Section - Nouveau Design -->
+    <!-- Experience Timeline -->
     <section id="experience" class="py-24 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12">
-                <div class="inline-flex items-center gap-2 mb-4">
-                    <i class="fas fa-history text-purple-400 text-2xl"></i>
-                    <h2 class="font-display text-4xl font-bold text-white glow-text" data-fr="Parcours Professionnel" data-en="Professional Journey">Parcours Professionnel</h2>
-                </div>
+        
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl font-bold text-white mb-4 glow-text" data-fr="Expérience Professionnelle" data-en="Professional Experience">Expérience Professionnelle</h2>
+                <p class="text-gray-400" data-fr="Parcours complet en support IT, administration systèmes et cybersécurité." data-en="Complete career in IT support, systems administration and cybersecurity.">Parcours complet en support IT, administration systèmes et cybersécurité.</p>
             </div>
 
-            <!-- Timeline Horizontale -->
-            <div class="relative mb-12">
-                <div class="flex justify-between items-center relative">
-                    <!-- Ligne de timeline -->
-                    <div class="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-fortinet rounded-full transform -translate-y-1/2"></div>
+            <div class="relative">
+                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 timeline-line rounded-full"></div>
 
-                    <!-- Points de timeline -->
-                    <div class="relative z-10 flex justify-between w-full">
-                        <!-- HT241 -->
-                        <div class="timeline-point group cursor-pointer" onclick="showExperience('ht241')">
-                            <div class="w-4 h-4 rounded-full bg-cyan-400 border-4 border-dark shadow-lg shadow-cyan-400/50 group-hover:scale-150 transition-transform"></div>
-                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors">HT241</span>
-                        </div>
-
-                        <!-- ANAVEA -->
-                        <div class="timeline-point group cursor-pointer" onclick="showExperience('anavea')">
-                            <div class="w-4 h-4 rounded-full bg-purple-400 border-4 border-dark shadow-lg shadow-purple-400/50 group-hover:scale-150 transition-transform"></div>
-                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-purple-400 transition-colors">ANAVEA</span>
-                        </div>
-
-                        <!-- SAFRIMAT -->
-                        <div class="timeline-point group cursor-pointer" onclick="showExperience('safrimat')">
-                            <div class="w-4 h-4 rounded-full bg-cyan-400 border-4 border-dark shadow-lg shadow-cyan-400/50 group-hover:scale-150 transition-transform"></div>
-                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors">SAFRIMAT</span>
-                        </div>
-
-                        <!-- Centre Dialyse -->
-                        <div class="timeline-point group cursor-pointer" onclick="showExperience('centre-dialyse')">
-                            <div class="w-4 h-4 rounded-full bg-cyan-400 border-4 border-dark shadow-lg shadow-cyan-400/50 group-hover:scale-150 transition-transform"></div>
-                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors" data-fr="Centre Dialyse" data-en="Dialysis Center">Centre Dialyse</span>
-                        </div>
-
-                        <!-- SYSTEMESCOMS -->
-                        <div class="timeline-point group cursor-pointer" onclick="showExperience('systemescoms')">
-                            <div class="w-4 h-4 rounded-full bg-cyan-400 border-4 border-dark shadow-lg shadow-cyan-400/50 group-hover:scale-150 transition-transform"></div>
-                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors">SYSTEMESCOMS</span>
-                        </div>
-
-                        <!-- DAVUM -->
-                        <div class="timeline-point group cursor-pointer" onclick="showExperience('davum')">
-                            <div class="w-4 h-4 rounded-full bg-cyan-400 border-4 border-dark shadow-lg shadow-cyan-400/50 group-hover:scale-150 transition-transform"></div>
-                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors">DAVUM</span>
-                        </div>
-
-                        <!-- Integral Tech -->
-                        <div class="timeline-point group cursor-pointer" onclick="showExperience('integral-tech')">
-                            <div class="w-4 h-4 rounded-full bg-gray-600 border-4 border-dark shadow-lg group-hover:scale-150 transition-transform"></div>
-                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-500 whitespace-nowrap">Integral Tech</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Barre de progression décorative -->
-            <div class="w-full h-3 bg-gradient-to-r from-cyan-500 via-purple-500 to-fortinet rounded-full mb-12 shadow-lg shadow-cyan-500/20"></div>
-
-            <!-- Cartes d'expérience -->
-            <div class="space-y-8" id="experience-cards">
-
-                <!-- HT241 -->
-                <div id="card-ht241" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
-                    <div class="flex justify-between items-start mb-6">
-                        <div>
-                            <h3 class="text-3xl font-bold text-cyan-400 mb-2"><a href="https://www.ht241.com/" target="_blank" class="hover:underline inline-flex items-center gap-2">HT241 <i class="fas fa-external-link-alt text-sm"></i></a></h3>
-                            <p class="text-gray-400" data-fr="Prestation de services informatique et vente de matériel" data-en="IT services and hardware sales">Prestation de services informatique et vente de matériel</p>
-                        </div>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
-                                <i class="fas fa-tasks"></i> <span data-fr="Responsabilités clés" data-en="Key Responsibilities">Responsabilités clés</span>
-                            </h4>
-                            <ul class="space-y-3">
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Administration systèmes et réseaux" data-en="Systems and network administration">Administration systèmes et réseaux</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Administration Microsoft Entra ID et Microsoft 365" data-en="Microsoft Entra ID and Microsoft 365 administration">Administration Microsoft Entra ID et Microsoft 365</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Support informatique & maintenance réseaux" data-en="IT support & network maintenance">Support informatique & maintenance réseaux</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Déploiement ~100 caméras de surveillance" data-en="Deployment of ~100 surveillance cameras">Déploiement ~100 caméras de surveillance</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Systèmes de contrôle d'accès et temps de présence" data-en="Access control and time attendance systems">Systèmes de contrôle d'accès et temps de présence</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Interconnexion réseaux entre entreprises" data-en="Inter-company network interconnection">Interconnexion réseaux entre entreprises</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Téléphonie IP Cisco Call Manager" data-en="Cisco Call Manager IP telephony">Téléphonie IP Cisco Call Manager</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Déploiement PaperCut (gestion ressources)" data-en="PaperCut deployment (resource management)">Déploiement PaperCut (gestion ressources)</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
-                                <i class="fas fa-users"></i> <span data-fr="Clients majeurs" data-en="Major Clients">Clients majeurs</span>
-                            </h4>
-                            <div class="grid grid-cols-2 gap-3 mb-6">
-                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
-                                    <i class="fas fa-hospital text-red-400 mb-1"></i>
-                                    <p class="text-sm text-gray-300" data-fr="Hôpital militaire" data-en="Military Hospital">Hôpital militaire</p>
+                <!-- HIGH-TECH 241 -->
+                <div class="relative mb-12 md:mb-0">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
+                            <div class="experience-card glass p-6 rounded-2xl border border-white/10 hover-card">
+                                <span class="text-cyan-400 font-semibold text-sm">Nov. 2023 – Sept. 2024</span>
+                                <h3 class="font-display text-xl font-bold text-white mt-2">Senior IT Support & Systems Technician</h3>
+                                <p class="text-gray-400 font-medium mb-3">HIGH-TECH 241 – Libreville, Gabon</p>
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded border border-cyan-400/30">IT Support</span>
+                                    <span class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs rounded border border-purple-400/30">SysAdmin</span>
+                                    <span class="px-2 py-1 bg-fortinet/20 text-fortinet text-xs rounded border border-fortinet/30">Fortinet</span>
                                 </div>
-                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
-                                    <i class="fas fa-university text-blue-400 mb-1"></i>
-                                    <p class="text-sm text-gray-300">Orabank Gabon</p>
-                                </div>
-                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
-                                    <i class="fas fa-landmark text-green-400 mb-1"></i>
-                                    <p class="text-sm text-gray-300">COSUMAF</p>
-                                </div>
-                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
-                                    <i class="fas fa-building text-yellow-400 mb-1"></i>
-                                    <p class="text-sm text-gray-300">ICG Gabon</p>
-                                </div>
-                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
-                                    <i class="fas fa-theater-masks text-purple-400 mb-1"></i>
-                                    <p class="text-sm text-gray-300" data-fr="Min. Culture" data-en="Min. Culture">Min. Culture</p>
-                                </div>
-                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
-                                    <i class="fas fa-oil-can text-gray-400 mb-1"></i>
-                                    <p class="text-sm text-gray-300" data-fr="Min. Pétrole" data-en="Min. Petroleum">Min. Pétrole</p>
-                                </div>
-                            </div>
-
-                            <div class="glass p-4 rounded-xl border border-cyan-400/30 bg-cyan-400/10">
-                                <div class="text-3xl font-bold text-cyan-400">~100</div>
-                                <p class="text-gray-400 text-sm" data-fr="Utilisateurs accompagnés (estimation)" data-en="Users supported (estimate)">Utilisateurs accompagnés (estimation)</p>
+                                <ul class="text-gray-400 text-sm space-y-2">
+                                    <li>• <span data-fr="Support avancé 65+ utilisateurs, mentorat technique" data-en="Advanced support 65+ users, technical mentoring">Support avancé 65+ utilisateurs, mentorat technique</span></li>
+                                    <li>• <span data-fr="Administration FortiGate : firewall, VPN, NAT" data-en="FortiGate administration: firewall, VPN, NAT">Administration FortiGate : firewall, VPN, NAT</span></li>
+                                    <li>• <span data-fr="Windows Server, AD, DFS, réplication des données" data-en="Windows Server, AD, DFS, data replication">Windows Server, AD, DFS, réplication des données</span></li>
+                                    <li>• <span data-fr="Déploiement PaperCut MF (réduction 30% impressions)" data-en="PaperCut MF deployment (30% print reduction)">Déploiement PaperCut MF (réduction 30% impressions)</span></li>
+                                    <li>• <span data-fr="Projets CCTV IP de conception à production" data-en="CCTV IP projects from design to production">Projets CCTV IP de conception à production</span></li>
+                                </ul>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Stack technique -->
-                    <div class="mt-6 pt-6 border-t border-white/10">
-                        <h4 class="text-purple-400 font-semibold mb-3" data-fr="Stack technique" data-en="Tech Stack">Stack technique</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">HP ProLiant</span>
-                            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs border border-purple-400/30">Hyper-V Virtualisation</span>
-                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs border border-green-400/30">DFS Replication</span>
-                            <span class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs border border-orange-400/30">Cisco Call Manager</span>
-                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs border border-cyan-400/30">UniFi</span>
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">Active Directory</span>
-                            <span class="px-3 py-1 bg-indigo-500/20 text-indigo-400 rounded-full text-xs border border-indigo-400/30">Microsoft Entra ID</span>
-                            <span class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-xs border border-blue-600/30">Microsoft 365</span>
-                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-cyan-400 rounded-full border-4 border-dark shadow-lg shadow-cyan-400/50 z-10"></div>
+                        <div class="md:w-5/12 md:pl-8 hidden md:block"></div>
                     </div>
                 </div>
 
                 <!-- ANAVEA -->
-                <div id="card-anavea" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
-                    <div class="flex justify-between items-start mb-6">
-                        <div>
-                            <h3 class="text-3xl font-bold text-cyan-400 mb-2">ANAVEA</h3>
-                            <p class="text-gray-400" data-fr="Autorité Nationale de Vérification et d'Audit (Gouvernement)" data-en="National Authority for Verification and Audit (Government)">Autorité Nationale de Vérification et d'Audit (Gouvernement)</p>
-                        </div>
-                        <span class="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-sm font-medium border border-purple-400/30 flex items-center gap-2">
-                            <i class="fas fa-shield-alt"></i> <span data-fr="Secteur public" data-en="Public Sector">Secteur public</span>
-                        </span>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
-                                <i class="fas fa-tasks"></i> <span data-fr="Responsabilités clés" data-en="Key Responsibilities">Responsabilités clés</span>
-                            </h4>
-                            <ul class="space-y-3">
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Administration systèmes et réseaux" data-en="Systems and network administration">Administration systèmes et réseaux</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Support IT avancé pour vérificateurs" data-en="Advanced IT support for auditors">Support IT avancé pour vérificateurs</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Gestion des licences et conformité" data-en="License management and compliance">Gestion des licences et conformité</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Sauvegarde et protection des données" data-en="Backup and data protection">Sauvegarde et protection des données</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Administration serveurs d'applications" data-en="Application server administration">Administration serveurs d'applications</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Gestion ADDS et contrôle d'accès" data-en="ADDS management and access control">Gestion ADDS et contrôle d'accès</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Supervision infrastructure réseau" data-en="Network infrastructure monitoring">Supervision infrastructure réseau</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <div class="glass p-4 rounded-xl border border-purple-400/30 bg-purple-400/10 mb-6">
-                                <div class="text-3xl font-bold text-purple-400">~70</div>
-                                <p class="text-gray-400 text-sm" data-fr="Utilisateurs professionnels (estimation)" data-en="Professional users (estimate)">Utilisateurs professionnels (estimation)</p>
+                <div class="relative mb-12 md:mb-0 md:mt-12">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 hidden md:block"></div>
+                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-purple-400 rounded-full border-4 border-dark shadow-lg shadow-purple-400/50 z-10"></div>
+                        <div class="md:w-5/12 md:pl-8 mb-4 md:mb-0">
+                            <div class="experience-card glass p-6 rounded-2xl border border-white/10 hover-card">
+                                <span class="text-purple-400 font-semibold text-sm">Mai 2021 – Sept. 2023</span>
+                                <h3 class="font-display text-xl font-bold text-white mt-2">Senior IT Support & SI</h3>
+                                <p class="text-gray-400 font-medium mb-3">ANAVEA (Autorité Nationale de Vérification d'Audit) – Gabon</p>
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs rounded border border-purple-400/30">SysAdmin</span>
+                                    <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded border border-blue-400/30">Team Lead</span>
+                                </div>
+                                <ul class="text-gray-400 text-sm space-y-2">
+                                    <li>• <span data-fr="Coordination équipe IT 3 personnes" data-en="Coordination of 3-person IT team">Coordination équipe IT 3 personnes</span></li>
+                                    <li>• <span data-fr="Gestion 70 postes, 5 imprimantes, 3 serveurs" data-en="Management of 70 workstations, 5 printers, 3 servers">Gestion 70 postes, 5 imprimantes, 3 serveurs</span></li>
+                                    <li>• <span data-fr="Administration Google Workspace, messagerie" data-en="Google Workspace administration, messaging">Administration Google Workspace, messagerie</span></li>
+                                    <li>• <span data-fr="Mise en place DFS réplication des données" data-en="Implementation of DFS data replication">Mise en place DFS réplication des données</span></li>
+                                </ul>
                             </div>
-
-                            <h4 class="text-purple-400 font-semibold mb-3 flex items-center gap-2">
-                                <i class="fas fa-exclamation-triangle"></i> <span data-fr="Environnement critique" data-en="Critical Environment">Environnement critique</span>
-                            </h4>
-                            <p class="text-gray-400 text-sm leading-relaxed" data-fr="Infrastructure sensible nécessitant haute disponibilité et sécurité renforcée pour les opérations d'audit financier." data-en="Sensitive infrastructure requiring high availability and enhanced security for financial audit operations.">
-                                Infrastructure sensible nécessitant haute disponibilité et sécurité renforcée pour les opérations d'audit financier.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Stack technique -->
-                    <div class="mt-6 pt-6 border-t border-white/10">
-                        <h4 class="text-purple-400 font-semibold mb-3" data-fr="Stack technique" data-en="Tech Stack">Stack technique</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">HP ProLiant</span>
-                            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs border border-purple-400/30">Hyper-V Virtualisation</span>
-                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs border border-green-400/30">DFS Replication</span>
-                            <span class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs border border-orange-400/30">Cisco Call Manager</span>
-                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs border border-cyan-400/30">UniFi</span>
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">Active Directory</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- SAFRIMAT -->
-                <div id="card-safrimat" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
-                    <div class="flex justify-between items-start mb-6">
-                        <div>
-                            <h3 class="text-3xl font-bold text-cyan-400 mb-2"><a href="https://safrimat.com/?page=home" target="_blank" class="hover:underline inline-flex items-center gap-2">SAFRIMAT <i class="fas fa-external-link-alt text-sm"></i></a></h3>
-                            <p class="text-gray-400" data-fr="Prestation et vente informatique" data-en="IT services and sales">Prestation et vente informatique</p>
-                        </div>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
-                                <i class="fas fa-tasks"></i> <span data-fr="Responsabilités clés" data-en="Key Responsibilities">Responsabilités clés</span>
-                            </h4>
-                            <ul class="space-y-3">
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Administration systèmes et réseaux" data-en="Systems and network administration">Administration systèmes et réseaux</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Support informatique & maintenance réseau" data-en="IT support & network maintenance">Support informatique & maintenance réseau</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="~100 caméras de surveillance" data-en="~100 surveillance cameras">~100 caméras de surveillance</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Contrôle d'accès et temps de présence" data-en="Access control and time attendance">Contrôle d'accès et temps de présence</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Téléphonie IP Cisco" data-en="Cisco IP telephony">Téléphonie IP Cisco</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Déploiement PaperCut" data-en="PaperCut deployment">Déploiement PaperCut</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Service après-vente" data-en="After-sales service">Service après-vente</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <div class="glass p-4 rounded-xl border border-green-400/30 bg-green-400/10 mb-6">
-                                <div class="text-3xl font-bold text-green-400">~50</div>
-                                <p class="text-gray-400 text-sm" data-fr="Utilisateurs accompagnés (estimation)" data-en="Users supported (estimate)">Utilisateurs accompagnés (estimation)</p>
-                            </div>
-
-                            <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
-                                <i class="fas fa-handshake"></i> <span data-fr="Clients" data-en="Clients">Clients</span>
-                            </h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10">Taskforce</span>
-                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10">SAMADI-BTP</span>
-                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10" data-fr="Hôpital Cancérologie" data-en="Cancer Hospital">Hôpital Cancérologie</span>
-                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10">Le Patrimoine</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Stack technique -->
-                    <div class="mt-6 pt-6 border-t border-white/10">
-                        <h4 class="text-purple-400 font-semibold mb-3" data-fr="Stack technique" data-en="Tech Stack">Stack technique</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">HP ProLiant</span>
-                            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs border border-purple-400/30">Hyper-V Virtualisation</span>
-                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs border border-green-400/30">DFS Replication</span>
-                            <span class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs border border-orange-400/30">Cisco Call Manager</span>
-                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs border border-cyan-400/30">UniFi</span>
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">Active Directory</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Centre de Dialyse de Libreville -->
-                <div id="card-centre-dialyse" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
-                    <div class="flex justify-between items-start mb-6">
-                        <div>
-                            <h3 class="text-3xl font-bold text-cyan-400 mb-2"><a href="https://www.facebook.com/CDL.SMEDI.GABON.SANTE/?locale=fr_FR" target="_blank" class="hover:underline inline-flex items-center gap-2">Centre de Dialyse de Libreville <i class="fab fa-facebook text-sm"></i></a></h3>
-                            <p class="text-gray-400" data-fr="Centre hospitalier - Secteur de la santé" data-en="Hospital center - Healthcare sector">Centre hospitalier - Secteur de la santé</p>
-                        </div>
-                        <span class="px-4 py-2 bg-red-500/20 text-red-400 rounded-full text-sm font-medium border border-red-400/30 flex items-center gap-2">
-                            <i class="fas fa-heartbeat"></i> <span data-fr="Santé" data-en="Healthcare">Santé</span>
-                        </span>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
-                                <i class="fas fa-tasks"></i> <span data-fr="Responsabilités clés" data-en="Key Responsibilities">Responsabilités clés</span>
-                            </h4>
-                            <ul class="space-y-3">
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Administration systèmes et réseaux" data-en="Systems and network administration">Administration systèmes et réseaux</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Administration réseaux et systèmes" data-en="Network and systems administration">Administration réseaux et systèmes</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Contrôle de présence" data-en="Attendance control">Contrôle de présence</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Collaboration Dropbox" data-en="Dropbox collaboration">Collaboration Dropbox</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Sauvegarde données" data-en="Data backup">Sauvegarde données</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <div class="glass p-4 rounded-xl border border-red-400/30 bg-red-400/10 mb-6">
-                                <div class="text-3xl font-bold text-red-400">~30</div>
-                                <p class="text-gray-400 text-sm" data-fr="Utilisateurs accompagnés (estimation)" data-en="Users supported (estimate)">Utilisateurs accompagnés (estimation)</p>
-                            </div>
-
-                            <div class="space-y-3">
-                                <div class="flex items-center gap-3 text-gray-300">
-                                    <i class="fas fa-video text-cyan-400"></i>
-                                    <span data-fr="Caméras de surveillance" data-en="Surveillance cameras">Caméras de surveillance</span>
+                <div class="relative mb-12 md:mb-0 md:mt-12">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
+                            <div class="experience-card glass p-6 rounded-2xl border border-white/10 hover-card">
+                                <span class="text-green-400 font-semibold text-sm">Sept. 2020 – Mars 2021</span>
+                                <h3 class="font-display text-xl font-bold text-white mt-2">Senior IT Support & Maintenance</h3>
+                                <p class="text-gray-400 font-medium mb-3">SAFRIMAT – Libreville, Gabon</p>
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded border border-cyan-400/30">IT Support</span>
+                                    <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded border border-green-400/30">Réseaux</span>
                                 </div>
-                                <div class="flex items-center gap-3 text-gray-300">
-                                    <i class="fas fa-users text-cyan-400"></i>
-                                    <span data-fr="Support administratif et laboratoire" data-en="Administrative and laboratory support">Support administratif et laboratoire</span>
+                                <ul class="text-gray-400 text-sm space-y-2">
+                                    <li>• <span data-fr="Support utilisateurs avancé et incidents complexes" data-en="Advanced user support and complex incidents">Support utilisateurs avancé et incidents complexes</span></li>
+                                    <li>• <span data-fr="Déploiement infrastructures réseaux et VoIP" data-en="Deployment of network and VoIP infrastructures">Déploiement infrastructures réseaux et VoIP</span></li>
+                                    <li>• <span data-fr="Vidéosurveillance 32 caméras IP" data-en="32 IP camera video surveillance">Vidéosurveillance 32 caméras IP</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-400 rounded-full border-4 border-dark shadow-lg shadow-green-400/50 z-10"></div>
+                        <div class="md:w-5/12 md:pl-8 hidden md:block"></div>
+                    </div>
+                </div>
+
+                <!-- Autres expériences condensées -->
+                <div class="relative mb-12 md:mb-0 md:mt-12">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 hidden md:block"></div>
+                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-fortinet rounded-full border-4 border-dark shadow-lg shadow-fortinet/50 z-10"></div>
+                        <div class="md:w-5/12 md:pl-8 mb-4 md:mb-0">
+                            <div class="experience-card glass p-6 rounded-2xl border border-white/10 hover-card">
+                                <span class="text-fortinet font-semibold text-sm">Avr. 2019 – Mars 2020</span>
+                                <h3 class="font-display text-xl font-bold text-white mt-2">Technicien Support Informatique</h3>
+                                <p class="text-gray-400 font-medium mb-3">Centre de Dialyse de Libreville – Gabon</p>
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="px-2 py-1 bg-fortinet/20 text-fortinet text-xs rounded border border-fortinet/30">Sécurité</span>
+                                    <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded border border-blue-400/30">SysAdmin</span>
                                 </div>
-                                <div class="flex items-center gap-3 text-gray-300">
-                                    <i class="fas fa-file-invoice text-cyan-400"></i>
-                                    <span data-fr="Gestion factures et stock (Sage)" data-en="Invoice and stock management (Sage)">Gestion factures et stock (Sage)</span>
+                                <ul class="text-gray-400 text-sm space-y-2">
+                                    <li>• <span data-fr="Sécurisation infrastructures IT données patients" data-en="Securing IT infrastructures patient data">Sécurisation infrastructures IT données patients</span></li>
+                                    <li>• <span data-fr="Administration systèmes et réseaux" data-en="Systems and networks administration">Administration systèmes et réseaux</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative md:mt-12">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
+                            <div class="experience-card glass p-6 rounded-2xl border border-white/10 hover-card">
+                                <span class="text-indigo-400 font-semibold text-sm">2016 – 2019</span>
+                                <h3 class="font-display text-xl font-bold text-white mt-2">Consultant IT & Technicien</h3>
+                                <p class="text-gray-400 font-medium mb-3">SYSTEMESCOMS – Libreville, Gabon</p>
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded border border-cyan-400/30">Consultant</span>
+                                    <span class="px-2 py-1 bg-indigo-500/20 text-indigo-400 text-xs rounded border border-indigo-400/30">Freelance</span>
                                 </div>
+                                <ul class="text-gray-400 text-sm space-y-2">
+                                    <li>• <span data-fr="Prestations IT pour ONG, hôpitaux, cabinets" data-en="IT services for NGOs, hospitals, firms">Prestations IT pour ONG, hôpitaux, cabinets</span></li>
+                                    <li>• <span data-fr="Conseil transformation numérique" data-en="Digital transformation consulting">Conseil transformation numérique</span></li>
+                                </ul>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Stack technique -->
-                    <div class="mt-6 pt-6 border-t border-white/10">
-                        <h4 class="text-purple-400 font-semibold mb-3" data-fr="Stack technique" data-en="Tech Stack">Stack technique</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">HP ProLiant</span>
-                            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs border border-purple-400/30">Hyper-V Virtualisation</span>
-                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs border border-green-400/30">DFS Replication</span>
-                            <span class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs border border-orange-400/30">Cisco Call Manager</span>
-                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs border border-cyan-400/30">UniFi</span>
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">Active Directory</span>
-                            <span class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-xs border border-blue-600/30">Sage</span>
-                            <span class="px-3 py-1 bg-blue-400/20 text-blue-300 rounded-full text-xs border border-blue-400/30">Dropbox</span>
-                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-indigo-400 rounded-full border-4 border-dark shadow-lg shadow-indigo-400/50 z-10"></div>
+                        <div class="md:w-5/12 md:pl-8 hidden md:block"></div>
                     </div>
                 </div>
-
-                <!-- SYSTEMESCOMS -->
-                <div id="card-systemescoms" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
-                    <div class="flex justify-between items-start mb-6">
-                        <div>
-                            <h3 class="text-3xl font-bold text-cyan-400 mb-2"><a href="https://teznxadbmkxsc.ok.kimi.link/" target="_blank" class="hover:underline inline-flex items-center gap-2">SYSTEMESCOMS <i class="fas fa-external-link-alt text-sm"></i></a></h3>
-                            <p class="text-gray-400" data-fr="Entreprise personnelle créée en 2016 - Prestation de services informatique" data-en="Personal company created in 2016 - IT services">Entreprise personnelle créée en 2016 - Prestation de services informatique</p>
-                        </div>
-                        <span class="px-4 py-2 bg-green-500/20 text-green-400 rounded-full text-sm font-medium border border-green-400/30 flex items-center gap-2">
-                            <i class="fas fa-rocket"></i> <span data-fr="Entrepreneuriat" data-en="Entrepreneurship">Entrepreneuriat</span>
-                        </span>
-                    </div>
-
-                    <div class="mb-6">
-                        <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
-                            <i class="fas fa-tasks"></i> <span data-fr="Responsabilités clés" data-en="Key Responsibilities">Responsabilités clés</span>
-                        </h4>
-                        <ul class="space-y-3 mb-6">
-                            <li class="flex items-start gap-3 text-gray-300">
-                                <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                <span data-fr="Administration systèmes et réseaux" data-en="Systems and network administration">Administration systèmes et réseaux</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-gray-300">
-                                <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                <span data-fr="Prestations IT pour divers clients" data-en="IT services for various clients">Prestations IT pour divers clients</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-gray-300">
-                                <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                <span data-fr="Conseil transformation numérique" data-en="Digital transformation consulting">Conseil transformation numérique</span>
-                            </li>
-                        </ul>
-
-                        <p class="text-gray-300 mb-4" data-fr="Services IT pour divers clients :" data-en="IT services for various clients:">Services IT pour divers clients :</p>
-                        <div class="flex flex-wrap gap-3">
-                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
-                                <i class="fas fa-hospital text-red-400"></i>
-                                <span class="text-gray-300 text-sm" data-fr="Centre hospitalier cancérologie" data-en="Cancer hospital center">Centre hospitalier cancérologie</span>
-                            </div>
-                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
-                                <i class="fas fa-paw text-green-400"></i>
-                                <span class="text-gray-300 text-sm">WWF</span>
-                            </div>
-                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
-                                <i class="fas fa-tooth text-white"></i>
-                                <span class="text-gray-300-sm" data-fr="Cabinet dentaire" data-en="Dental office">Cabinet dentaire</span>
-                            </div>
-                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
-                                <i class="fas fa-print text-blue-400"></i>
-                                <span class="text-gray-300 text-sm" data-fr="Entreprise d'imprimerie" data-en="Printing company">Entreprise d'imprimerie</span>
-                            </div>
-                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
-                                <i class="fas fa-calculator text-yellow-400"></i>
-                                <span class="text-gray-300 text-sm" data-fr="Entreprise comptable" data-en="Accounting firm">Entreprise comptable</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Stack technique -->
-                    <div class="mt-6 pt-6 border-t border-white/10">
-                        <h4 class="text-purple-400 font-semibold mb-3" data-fr="Stack technique" data-en="Tech Stack">Stack technique</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">HP ProLiant</span>
-                            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs border border-purple-400/30">Hyper-V Virtualisation</span>
-                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs border border-green-400/30">DFS Replication</span>
-                            <span class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs border border-orange-400/30">Cisco Call Manager</span>
-                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs border border-cyan-400/30">UniFi</span>
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">Active Directory</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- DAVUM GABON -->
-                <div id="card-davum" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
-                    <div class="flex justify-between items-start mb-6">
-                        <div>
-                            <h3 class="text-3xl font-bold text-cyan-400 mb-2">DAVUM GABON</h3>
-                            <p class="text-gray-400" data-fr="Matériaux de construction - Secteur Industriel" data-en="Construction materials - Industrial sector">Matériaux de construction - Secteur Industriel</p>
-                        </div>
-                        <span class="px-4 py-2 bg-orange-500/20 text-orange-400 rounded-full text-sm font-medium border border-orange-400/30 flex items-center gap-2">
-                            <i class="fas fa-industry"></i> <span data-fr="Industriel" data-en="Industrial">Industriel</span>
-                        </span>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
-                                <i class="fas fa-tasks"></i> <span data-fr="Responsabilités clés" data-en="Key Responsibilities">Responsabilités clés</span>
-                            </h4>
-                            <ul class="space-y-3">
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Administration systèmes et réseaux" data-en="Systems and network administration">Administration systèmes et réseaux</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Support utilisateurs internes" data-en="Internal user support">Support utilisateurs internes</span>
-                                </li>
-                                <li class="flex items-start gap-3 text-gray-300">
-                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
-                                    <span data-fr="Supervision infrastructure IT" data-en="IT infrastructure supervision">Supervision infrastructure IT</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <div class="glass p-4 rounded-xl border border-orange-400/30 bg-orange-400/10">
-                                <div class="text-3xl font-bold text-orange-400">~15</div>
-                                <p class="text-gray-400 text-sm" data-fr="Utilisateurs accompagnés (estimation)" data-en="Users supported (estimate)">Utilisateurs accompagnés (estimation)</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Stack technique -->
-                    <div class="mt-6 pt-6 border-t border-white/10">
-                        <h4 class="text-purple-400 font-semibold mb-3" data-fr="Stack technique" data-en="Tech Stack">Stack technique</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">HP ProLiant</span>
-                            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs border border-purple-400/30">Hyper-V Virtualisation</span>
-                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs border border-green-400/30">DFS Replication</span>
-                            <span class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs border border-orange-400/30">Cisco Call Manager</span>
-                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs border border-cyan-400/30">UniFi</span>
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">Active Directory</span>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
-
 
     <!-- Certifications Section -->
     <section id="certifications" class="py-24 relative">
@@ -2197,6 +768,7 @@
                 <h2 class="font-display text-4xl font-bold text-white mb-4 glow-text" data-fr="Certifications & Badges" data-en="Certifications & Badges">Certifications & Badges</h2>
                 <p class="text-gray-400" data-fr="Formations continues et certifications professionnelles vérifiées" data-en="Continuous training and verified professional certifications">Formations continues et certifications professionnelles vérifiées</p>
                 
+                <!-- Boutons Credly & Microsoft -->
                 <div class="flex flex-wrap justify-center gap-4 mt-8">
                     <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank" class="microsoft-btn px-6 py-3 text-white rounded-full font-semibold flex items-center gap-3 transform hover:scale-105 shadow-lg">
                         <i class="fab fa-microsoft text-2xl"></i>
@@ -2293,7 +865,7 @@
                 <!-- Fortinet -->
                 <div class="cert-badge glass-fortinet p-6 rounded-2xl border border-fortinet/50 hover:border-fortinet">
                     <div class="flex items-center gap-3 mb-4">
-                        <img src="https://boussougouange1.github.io/ange-marie-portfolio/images/fortinet.png" class="cert-logo bg-white">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Fortinet_logo.svg" alt="Fortinet" class="cert-logo bg-white">
                         <div class="flex-1">
                             <h3 class="font-bold text-white">Fortinet</h3>
                         </div>
@@ -2347,7 +919,9 @@
                 <!-- PaperCut -->
                 <div class="cert-badge glass p-6 rounded-2xl border border-green-500/30 hover:border-green-500/60">
                     <div class="flex items-center gap-3 mb-4">
-                        <img src="https://boussougouange1.github.io/ange-marie-portfolio/images/papercut.png" alt="PaperCut" class="cert-logo">
+                        <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center text-white text-xl font-bold">
+                            PC
+                        </div>
                         <div class="flex-1">
                             <h3 class="font-bold text-white">PaperCut</h3>
                         </div>
@@ -2374,152 +948,6 @@
         </div>
     </section>
 
-    <!-- SECTION STATISTIQUES ANALYTICS -->
-    <section id="analytics" class="py-24 analytics-dashboard relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%2300D4FF\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-cyan-400 font-medium text-sm mb-4 border border-cyan-400/30">
-                    <span class="w-2 h-2 bg-green-500 rounded-full live-indicator"></span>
-                    <span data-fr="En direct" data-en="Live">En direct</span>
-                </div>
-                <h2 class="font-display text-4xl font-bold text-white mb-4 glow-text" data-fr="Statistiques de Visite" data-en="Visit Statistics">Statistiques de Visite</h2>
-                <p class="text-gray-400" data-fr="Données en temps réel des visiteurs du portfolio" data-en="Real-time portfolio visitor data">Données en temps réel des visiteurs du portfolio</p>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-                <div class="analytics-card rounded-2xl p-6 text-center glass border border-white/10">
-                    <div class="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 text-2xl mx-auto mb-3 border border-cyan-400/30">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="text-3xl font-bold metric-value mb-1" id="total-visitors">0</div>
-                    <div class="text-gray-400 text-sm" data-fr="Visiteurs Totaux" data-en="Total Visitors">Visiteurs Totaux</div>
-                </div>
-
-                <div class="analytics-card rounded-2xl p-6 text-center glass border border-white/10">
-                    <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 text-2xl mx-auto mb-3 border border-purple-400/30">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <div class="text-3xl font-bold metric-value mb-1" id="page-views">0</div>
-                    <div class="text-gray-400 text-sm" data-fr="Pages Vues" data-en="Page Views">Pages Vues</div>
-                </div>
-
-                <div class="analytics-card rounded-2xl p-6 text-center glass border border-white/10">
-                    <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 text-2xl mx-auto mb-3 border border-blue-400/30">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="text-3xl font-bold metric-value mb-1" id="avg-time">0:00</div>
-                    <div class="text-gray-400 text-sm" data-fr="Temps Moyen" data-en="Avg. Time">Temps Moyen</div>
-                </div>
-
-                <div class="analytics-card rounded-2xl p-6 text-center glass border border-white/10">
-                    <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 text-2xl mx-auto mb-3 border border-green-400/30">
-                        <i class="fas fa-user-clock"></i>
-                    </div>
-                    <div class="text-3xl font-bold metric-value mb-1" id="online-now">1</div>
-                    <div class="text-gray-400 text-sm" data-fr="En Ligne" data-en="Online">En Ligne</div>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6 mb-12">
-                <div class="analytics-card rounded-2xl p-6 glass border border-white/10">
-                    <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
-                        <i class="fas fa-mobile-alt text-cyan-400"></i>
-                        <span data-fr="Appareils" data-en="Devices">Appareils</span>
-                    </h3>
-                    <div class="space-y-4" id="devices-container">
-                        <div class="flex items-center justify-between p-3 glass rounded-lg border border-white/10" id="device-desktop-row">
-                            <div class="flex items-center gap-3">
-                                <i class="fas fa-desktop text-cyan-400 device-icon" id="icon-desktop"></i>
-                                <span class="text-gray-300 text-sm" data-fr="Ordinateur" data-en="Desktop">Ordinateur</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
-                                    <div class="h-full bg-cyan-400 rounded-full transition-all duration-500" style="width: 0%" id="device-desktop-bar"></div>
-                                </div>
-                                <span class="text-white text-sm font-medium w-10 text-right" id="device-desktop-percent">0%</span>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center justify-between p-3 glass rounded-lg border border-white/10" id="device-mobile-row">
-                            <div class="flex items-center gap-3">
-                                <i class="fas fa-mobile-alt text-purple-400 device-icon" id="icon-mobile"></i>
-                                <span class="text-gray-300 text-sm" data-fr="Téléphone" data-en="Mobile">Téléphone</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
-                                    <div class="h-full bg-purple-400 rounded-full transition-all duration-500" style="width: 0%" id="device-mobile-bar"></div>
-                                </div>
-                                <span class="text-white text-sm font-medium w-10 text-right" id="device-mobile-percent">0%</span>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center justify-between p-3 glass rounded-lg border border-white/10" id="device-tablet-row">
-                            <div class="flex items-center gap-3">
-                                <i class="fas fa-tablet-alt text-green-400 device-icon" id="icon-tablet"></i>
-                                <span class="text-gray-300 text-sm" data-fr="Tablette" data-en="Tablet">Tablette</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
-                                    <div class="h-full bg-green-400 rounded-full transition-all duration-500" style="width: 0%" id="device-tablet-bar"></div>
-                                </div>
-                                <span class="text-white text-sm font-medium w-10 text-right" id="device-tablet-percent">0%</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-4 p-3 glass rounded-lg border border-cyan-400/30">
-                        <p class="text-xs text-cyan-300 text-center">
-                            <i class="fas fa-info-circle mr-1"></i>
-                            <span data-fr="Votre appareil actuel : " data-en="Your current device: ">Votre appareil actuel : </span>
-                            <span id="current-device" class="font-semibold text-cyan-400">-</span>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="analytics-card rounded-2xl p-6 glass border border-white/10">
-                    <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
-                        <i class="fas fa-globe-americas text-green-400"></i>
-                        <span data-fr="Top Localisations" data-en="Top Locations">Top Localisations</span>
-                    </h3>
-                    <div class="space-y-3" id="locations-list">
-                    </div>
-                </div>
-
-                <div class="analytics-card rounded-2xl p-6 glass border border-white/10">
-                    <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
-                        <i class="fas fa-fire text-orange-400"></i>
-                        <span data-fr="Pages Populaires" data-en="Popular Pages">Pages Populaires</span>
-                    </h3>
-                    <div class="space-y-3" id="pages-list">
-                    </div>
-                </div>
-            </div>
-
-            <div class="analytics-card rounded-2xl p-6 glass border border-white/10">
-                <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
-                    <i class="fas fa-history text-purple-400"></i>
-                    <span data-fr="Visiteurs Récents" data-en="Recent Visitors">Visiteurs Récents</span>
-                </h3>
-                <div class="visitor-log space-y-2" id="visitor-log">
-                </div>
-            </div>
-
-            <div class="mt-8 text-center">
-                <p class="text-gray-500 text-sm">
-                    <i class="fas fa-info-circle mr-2"></i>
-                    <span data-fr="Ces statistiques sont collectées de manière anonyme. " data-en="These statistics are collected anonymously. ">Ces statistiques sont collectées de manière anonyme. </span>
-                    <a href="https://analytics.google.com/analytics/web/#/p406666770/reports/intelligenthome" target="_blank" class="text-cyan-400 hover:text-cyan-300 underline">
-                        <span data-fr="Voir le tableau de bord complet" data-en="View full dashboard">Voir le tableau de bord complet</span>
-                    </a>
-                </p>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact" class="py-24 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-fortinet/10 via-transparent to-cyan-500/10"></div>
@@ -2531,21 +959,21 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <button onclick="openContactForm()" class="group glass p-6 rounded-2xl border border-white/10 hover:border-cyan-400/50 transition-all text-center hover-card">
+                <a href="mailto:ahouansouange@live.fr" class="group glass p-6 rounded-2xl border border-white/10 hover:border-cyan-400/50 transition-all text-center hover-card">
                     <div class="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center text-cyan-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform border border-cyan-400/30">
                         <i class="fas fa-envelope"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2 text-white">Email</h3>
                     <p class="text-gray-400 text-sm">ahouansouange@live.fr</p>
-                </button>
+                </a>
 
-                <button onclick="openContactForm()" class="group glass p-6 rounded-2xl border border-white/10 hover:border-green-400/50 transition-all text-center hover-card">
+                <a href="tel:+14162688673" class="group glass p-6 rounded-2xl border border-white/10 hover:border-green-400/50 transition-all text-center hover-card">
                     <div class="w-14 h-14 bg-green-500/20 rounded-full flex items-center justify-center text-green-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform border border-green-400/30">
                         <i class="fas fa-phone"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2 text-white" data-fr="Téléphone" data-en="Phone">Téléphone</h3>
-                    <p class="text-gray-400 text-sm" data-fr="Cliquez pour voir" data-en="Click to view">Cliquez pour voir</p>
-                </button>
+                    <p class="text-gray-400 text-sm">+1 (416) 268-8673</p>
+                </a>
 
                 <div class="group glass p-6 rounded-2xl border border-white/10 hover:border-purple-400/50 transition-all text-center hover-card">
                     <div class="w-14 h-14 bg-purple-500/20 rounded-full flex items-center justify-center text-purple-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform border border-purple-400/30">
@@ -2556,56 +984,46 @@
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-6 mb-12 max-w-2xl mx-auto">
-                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank" class="microsoft-btn px-8 py-4 text-white rounded-full font-semibold flex items-center justify-center gap-3 transform hover:scale-105 shadow-lg">
-                    <i class="fab fa-microsoft text-2xl"></i>
-                    <div class="text-left">
-                        <div class="text-xs opacity-80" data-fr="Voir mon profil" data-en="View my profile">Voir mon profil</div>
-                        <div class="font-bold">Microsoft Learn</div>
-                    </div>
-                    <i class="fas fa-external-link-alt ml-2"></i>
-                </a>
-
-                <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank" class="credly-btn px-8 py-4 text-white rounded-full font-semibold flex items-center justify-center gap-3 transform hover:scale-105 shadow-lg">
-                    <i class="fas fa-certificate text-2xl"></i>
-                    <div class="text-left">
-                        <div class="text-xs opacity-80" data-fr="Voir mes badges" data-en="View my badges">Voir mes badges</div>
-                        <div class="font-bold">Credly</div>
-                    </div>
-                    <i class="fas fa-external-link-alt ml-2"></i>
-                </a>
-            </div>
-
             <div class="text-center mb-12">
-                <a href="https://teams.microsoft.com/l/chat/0/0?users=ahouansouange@live.fr" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/30">
-                    <i class="fab fa-microsoft text-2xl"></i>
-                    <span data-fr="Discuter sur Microsoft Teams" data-en="Chat on Microsoft Teams">Discuter sur Microsoft Teams</span>
-                    <i class="fas fa-external-link-alt text-sm"></i>
-                </a>
-                <p class="text-gray-500 text-sm mt-3">ahouansouange@live.fr</p>
-            </div>
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="w-14 h-14 bg-[#0077b5] rounded-full flex items-center justify-center text-white hover:bg-[#005885] transition-all transform hover:scale-110 shadow-lg shadow-blue-500/30">
+                        <i class="fab fa-linkedin-in text-2xl"></i>
+                    </a>
+                    <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank" class="w-14 h-14 bg-[#00a4ef] rounded-full flex items-center justify-center text-white hover:bg-[#0078d4] transition-all transform hover:scale-110 shadow-lg shadow-blue-400/30">
+                        <i class="fab fa-microsoft text-xl"></i>
+                    </a>
+                    <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank" class="w-14 h-14 bg-[#ff6b00] rounded-full flex items-center justify-center text-white hover:bg-[#e65100] transition-all transform hover:scale-110 shadow-lg shadow-orange-500/30">
+                        <i class="fas fa-award text-xl"></i>
+                    </a>
+                    <a href="mailto:ahouansouange@live.fr" class="w-14 h-14 glass rounded-full flex items-center justify-center text-gray-300 hover:bg-red-500 hover:text-white transition-all transform hover:scale-110 border border-white/20">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                </div>
 
-            <div class="flex justify-center gap-6 mb-12">
-                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="w-14 h-14 bg-[#0077b5] rounded-full flex items-center justify-center text-white hover:bg-[#005885] transition-all transform hover:scale-110 shadow-lg shadow-blue-500/30">
-                    <i class="fab fa-linkedin-in text-2xl"></i>
-                </a>
-                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank" class="w-14 h-14 bg-[#00a4ef] rounded-full flex items-center justify-center text-white hover:bg-[#0078d4] transition-all transform hover:scale-110 shadow-lg shadow-blue-400/30">
-                    <i class="fab fa-microsoft text-xl"></i>
-                </a>
-                <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank" class="w-14 h-14 bg-[#ff6b00] rounded-full flex items-center justify-center text-white hover:bg-[#e65100] transition-all transform hover:scale-110 shadow-lg shadow-orange-500/30">
-                    <i class="fas fa-award text-xl"></i>
-                </a>
-                <button onclick="openContactForm()" class="w-14 h-14 glass rounded-full flex items-center justify-center text-gray-300 hover:bg-red-500 hover:text-white transition-all transform hover:scale-110 border border-white/20">
-                    <i class="fas fa-envelope text-xl"></i>
-                </button>
-            </div>
-
-            <div class="text-center">
-                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 linkedin-btn text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30">
+                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 linkedin-btn text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg">
                     <i class="fab fa-linkedin text-2xl"></i>
                     <span data-fr="Connectons-nous sur LinkedIn" data-en="Let's connect on LinkedIn">Connectons-nous sur LinkedIn</span>
                     <i class="fas fa-external-link-alt text-sm"></i>
                 </a>
+            </div>
+
+            <!-- Résumé des 3 compétences -->
+            <div class="glass rounded-2xl p-8 border border-white/10">
+                <h3 class="text-xl font-bold mb-6 text-gray-300 text-center" data-fr="Ce que je peux apporter à votre équipe" data-en="What I can bring to your team">Ce que je peux apporter à votre équipe</h3>
+                <div class="grid md:grid-cols-3 gap-6 text-left">
+                    <div class="border-l-2 border-cyan-400 pl-4">
+                        <h4 class="font-bold text-cyan-400 mb-2">Support IT Proactif</h4>
+                        <p class="text-sm text-gray-400" data-fr="Résolution rapide des incidents, support utilisateurs de qualité, documentation rigoureuse." data-en="Fast incident resolution, quality user support, rigorous documentation.">Résolution rapide des incidents, support utilisateurs de qualité, documentation rigoureuse.</p>
+                    </div>
+                    <div class="border-l-2 border-purple-400 pl-4">
+                        <h4 class="font-bold text-purple-400 mb-2">Administration Systèmes</h4>
+                        <p class="text-sm text-gray-400" data-fr="Gestion serveurs Windows, Active Directory, virtualisation, sauvegardes et haute disponibilité." data-en="Windows server management, Active Directory, virtualization, backups and high availability.">Gestion serveurs Windows, Active Directory, virtualisation, sauvegardes et haute disponibilité.</p>
+                    </div>
+                    <div class="border-l-2 border-fortinet pl-4">
+                        <h4 class="font-bold text-fortinet mb-2">Sécurité Fortinet</h4>
+                        <p class="text-sm text-gray-400" data-fr="Protection périmètre réseau, configuration FortiGate, VPN sécurisés, conformité et audit." data-en="Network perimeter protection, FortiGate configuration, secure VPNs, compliance and audit.">Protection périmètre réseau, configuration FortiGate, VPN sécurisés, conformité et audit.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -2629,221 +1047,13 @@
     </footer>
 
     <script>
-        // ============================================
-        // CONFIGURATION EMAILJS
-        // ============================================
-        const EMAILJS_CONFIG = {
-            PUBLIC_KEY: 'cElC1HEUqBTOXYfMW',
-            SERVICE_ID: 'service_hqg5xqb',
-            TEMPLATE_ID: 'template_vbyvnrn'
-        };
-
-        let emailjsInitialized = false;
-
-        function initEmailJS() {
-            if (EMAILJS_CONFIG.PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
-                console.warn('⚠️ EmailJS non configuré.');
-                return false;
-            }
-            try {
-                emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-                emailjsInitialized = true;
-                console.log('✅ EmailJS initialisé');
-                return true;
-            } catch (error) {
-                console.error('❌ Erreur EmailJS:', error);
-                return false;
-            }
-        }
-
-        // ============================================
-        // NOTIFICATIONS EMAIL
-        // ============================================
-        function showEmailNotification(type, title, message, duration = 5000) {
-            const notification = document.getElementById('emailNotification');
-            const titleEl = document.getElementById('emailNotifTitle');
-            const textEl = document.getElementById('emailNotifText');
-            const iconEl = notification.querySelector('.email-notification-icon i');
-            
-            notification.className = 'email-notification active ' + type;
-            titleEl.textContent = title;
-            textEl.textContent = message;
-            
-            if (type === 'success') iconEl.className = 'fas fa-check-circle';
-            else if (type === 'error') iconEl.className = 'fas fa-exclamation-circle';
-            else if (type === 'sending') iconEl.className = 'fas fa-spinner fa-spin';
-            
-            if (duration > 0) {
-                setTimeout(() => hideEmailNotification(), duration);
-            }
-        }
-
-        function hideEmailNotification() {
-            document.getElementById('emailNotification').classList.remove('active');
-        }
-
-        // ============================================
-        // GESTION DU FORMULAIRE DE CONTACT
-        // ============================================
-        async function handleContactSubmit(e) {
-            e.preventDefault();
-            const form = e.target;
-            const submitBtn = document.getElementById('submitBtn');
-            const submitIcon = document.getElementById('submitIcon');
-            const submitText = document.getElementById('submitText');
-            
-            const formData = {
-                from_name: form.from_name.value.trim(),
-                from_email: form.from_email.value.trim(),
-                subject: form.subject.value,
-                phone: form.phone.value.trim(),
-                message: form.message.value.trim(),
-                consent: form.consent.checked,
-                to_email: 'ahouansouange@live.fr',
-                language: currentLang,
-                page_url: window.location.href,
-                user_agent: navigator.userAgent,
-                timestamp: new Date().toLocaleString(currentLang === 'fr' ? 'fr-FR' : 'en-US')
-            };
-            
-            if (!formData.from_name || !formData.from_email || !formData.subject || !formData.message) {
-                showEmailNotification('error', 
-                    currentLang === 'fr' ? 'Champs manquants' : 'Missing fields',
-                    currentLang === 'fr' ? 'Veuillez remplir tous les champs obligatoires.' : 'Please fill in all required fields.'
-                );
-                return;
-            }
-            
-            if (!formData.consent) {
-                showEmailNotification('error',
-                    currentLang === 'fr' ? 'Consentement requis' : 'Consent required',
-                    currentLang === 'fr' ? 'Veuillez accepter les conditions.' : 'Please accept the terms.'
-                );
-                return;
-            }
-            
-            submitBtn.disabled = true;
-            submitIcon.className = 'fas fa-spinner fa-spin';
-            submitText.textContent = currentLang === 'fr' ? 'Envoi en cours...' : 'Sending...';
-            
-            showEmailNotification('sending',
-                currentLang === 'fr' ? 'Envoi en cours...' : 'Sending...',
-                currentLang === 'fr' ? 'Veuillez patienter pendant l\'envoi de votre message.' : 'Please wait while your message is being sent.',
-                0
-            );
-            
-            try {
-                if (!emailjsInitialized) {
-                    await new Promise(resolve => setTimeout(resolve, 2000));
-                    showEmailNotification('success',
-                        currentLang === 'fr' ? 'Message envoyé !' : 'Message sent!',
-                        currentLang === 'fr' ? 'Votre message a été envoyé avec succès.' : 'Your message has been sent successfully.'
-                    );
-                    form.reset();
-                    setTimeout(() => closeContactForm(), 2000);
-                } else {
-                    const response = await emailjs.send(
-                        EMAILJS_CONFIG.SERVICE_ID,
-                        EMAILJS_CONFIG.TEMPLATE_ID,
-                        formData
-                    );
-                    showEmailNotification('success',
-                        currentLang === 'fr' ? 'Message envoyé !' : 'Message sent!',
-                        currentLang === 'fr' ? 'Votre message a été envoyé avec succès.' : 'Your message has been sent successfully.'
-                    );
-                    form.reset();
-                    setTimeout(() => closeContactForm(), 2000);
-                    
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'contact_form_submit', {
-                            event_category: 'engagement',
-                            event_label: 'email_sent',
-                            subject: formData.subject
-                        });
-                    }
-                }
-            } catch (error) {
-                showEmailNotification('error',
-                    currentLang === 'fr' ? 'Erreur d\'envoi' : 'Send error',
-                    currentLang === 'fr' ? 'Une erreur s\'est produite.' : 'An error occurred.'
-                );
-            } finally {
-                submitBtn.disabled = false;
-                submitIcon.className = 'fas fa-paper-plane';
-                submitText.textContent = currentLang === 'fr' ? 'Envoyer le message' : 'Send Message';
-            }
-        }
-
-        // ============================================
-        // NAVIGATION & UI
-        // ============================================
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
 
-        function openContactForm() {
-            document.getElementById('contact-modal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeContactForm() {
-            document.getElementById('contact-modal').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        document.getElementById('contact-modal').addEventListener('click', function(e) {
-            if (e.target === this) closeContactForm();
-        });
-
         let currentLang = 'fr';
         
-        const analyticsTranslations = {
-            fr: {
-                live: 'En direct', visitStats: 'Statistiques de Visite', realTimeData: 'Données en temps réel',
-                totalVisitors: 'Visiteurs Totaux', pageViews: 'Pages Vues', avgTime: 'Temps Moyen', onlineNow: 'En Ligne',
-                devices: 'Appareils', desktop: 'Ordinateur', mobile: 'Téléphone', tablet: 'Tablette',
-                currentDevice: 'Votre appareil actuel : ', topLocations: 'Top Localisations',
-                popularPages: 'Pages Populaires', recentVisitors: 'Visiteurs Récents',
-                anonymousStats: 'Ces statistiques sont collectées de manière anonyme. ',
-                viewDashboard: 'Voir le tableau de bord complet',
-                home: 'Accueil', skills: 'Compétences', experience: 'Expérience',
-                certifications: 'Certifications', contact: 'Contact', direct: 'Direct', justNow: 'À l\'instant'
-            },
-            en: {
-                live: 'Live', visitStats: 'Visit Statistics', realTimeData: 'Real-time portfolio visitor data',
-                totalVisitors: 'Total Visitors', pageViews: 'Page Views', avgTime: 'Avg. Time', onlineNow: 'Online',
-                devices: 'Devices', desktop: 'Desktop', mobile: 'Mobile', tablet: 'Tablet',
-                currentDevice: 'Your current device: ', topLocations: 'Top Locations',
-                popularPages: 'Popular Pages', recentVisitors: 'Recent Visitors',
-                anonymousStats: 'These statistics are collected anonymously. ',
-                viewDashboard: 'View full dashboard',
-                home: 'Home', skills: 'Skills', experience: 'Experience',
-                certifications: 'Certifications', contact: 'Contact', direct: 'Direct', justNow: 'Just now'
-            }
-        };
-
-        const chatTranslations = {
-            fr: {
-                online: 'Disponible sur Teams', offline: 'Hors ligne', placeholder: 'Écrivez votre message...',
-                send: 'Envoyer', teamsNotice: 'Chaque message ouvre automatiquement Teams avec le contexte',
-                welcomeMessage: 'Bonjour ! 👋 Je suis Ange-Marie. Comment puis-je vous aider aujourd\'hui ?',
-                quickReactions: ['👋 Bonjour', '💼 Expérience', '🛠️ Compétences', '🚀 Opportunité'],
-                continueOnTeams: 'Continuer sur Teams',
-                qualificationComplete: '✅ Qualification terminée - Transfert vers l\'agent IA',
-                connectingAI: 'Connexion à l\'agent IA...'
-            },
-            en: {
-                online: 'Available on Teams', offline: 'Offline', placeholder: 'Type your message...',
-                send: 'Send', teamsNotice: 'Every message automatically opens Teams with context',
-                welcomeMessage: 'Hello! 👋 I\'m Ange-Marie. How can I help you today?',
-                quickReactions: ['👋 Hello', '💼 Experience', '🛠️ Skills', '🚀 Opportunity'],
-                continueOnTeams: 'Continue on Teams',
-                qualificationComplete: '✅ Qualification complete - Transferring to AI agent',
-                connectingAI: 'Connecting to AI agent...'
-            }
-        };
-
         function switchLang(lang) {
             currentLang = lang;
             document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
@@ -2857,67 +1067,24 @@
                 }
             });
             
-            document.querySelectorAll('[data-fr-placeholder][data-en-placeholder]').forEach(el => {
-                el.placeholder = el.getAttribute('data-' + lang + '-placeholder');
-            });
-            
             const heroTitle = document.getElementById('hero-title');
             const profileSubtitle = document.getElementById('profile-subtitle');
             
             if (lang === 'en') {
-                heroTitle.innerHTML = `IT Technician<br><span class="text-gradient">Systems Administrator</span><br><span class="text-3xl lg:text-5xl text-gray-300">Fortinet Cybersecurity</span>`;
-                if (profileSubtitle) profileSubtitle.textContent = "IT Technician | Systems Administrator | Fortinet Cybersecurity";
-                document.title = "IT Technician | Systems Administrator | Fortinet Cybersecurity - Ange-Marie Boussougou";
+                heroTitle.innerHTML = `Senior IT Technician<br>
+                        <span class="text-gradient">Systems Administrator</span><br>
+                        <span class="text-3xl lg:text-5xl text-gray-300">Fortinet Cybersecurity</span>`;
+                if (profileSubtitle) profileSubtitle.textContent = "Senior IT Technician | Systems Administrator | Fortinet Cybersecurity";
+                document.title = "Senior IT Technician | Systems Administrator | Fortinet Cybersecurity - Ange-Marie Boussougou";
             } else {
-                heroTitle.innerHTML = `Technicien IT <br><span class="text-gradient">Administrateur Systèmes</span><br><span class="text-3xl lg:text-5xl text-gray-300">Cybersécurité Fortinet</span>`;
-                if (profileSubtitle) profileSubtitle.textContent = "Technicien IT | Administrateur Systèmes | Cybersécurité Fortinet";
-                document.title = "Technicien IT | Administrateur Systèmes | Cybersécurité Fortinet - Ange-Marie Boussougou";
+                heroTitle.innerHTML = `Technicien IT Senior<br>
+                        <span class="text-gradient">Administrateur Systèmes</span><br>
+                        <span class="text-3xl lg:text-5xl text-gray-300">Cybersécurité Fortinet</span>`;
+                if (profileSubtitle) profileSubtitle.textContent = "Technicien IT Senior | Administrateur Systèmes | Cybersécurité Fortinet";
+                document.title = "Technicien IT Senior | Administrateur Systèmes | Cybersécurité Fortinet - Ange-Marie Boussougou";
             }
             
-            updateAnalyticsLanguage();
-            updateChatLanguage();
             document.documentElement.lang = lang;
-        }
-
-        function updateAnalyticsLanguage() {
-            const t = analyticsTranslations[currentLang];
-            const analyticsSection = document.getElementById('analytics');
-            analyticsSection.querySelector('h2').textContent = t.visitStats;
-            analyticsSection.querySelector('p').textContent = t.realTimeData;
-            
-            const cards = analyticsSection.querySelectorAll('.analytics-card');
-            cards[0].querySelector('.text-gray-400').textContent = t.totalVisitors;
-            cards[1].querySelector('.text-gray-400').textContent = t.pageViews;
-            cards[2].querySelector('.text-gray-400').textContent = t.avgTime;
-            cards[3].querySelector('.text-gray-400').textContent = t.onlineNow;
-            
-            const deviceCard = cards[4];
-            deviceCard.querySelector('h3 span').textContent = t.devices;
-            deviceCard.querySelector('#device-desktop-row .text-gray-300').textContent = t.desktop;
-            deviceCard.querySelector('#device-mobile-row .text-gray-300').textContent = t.mobile;
-            deviceCard.querySelector('#device-tablet-row .text-gray-300').textContent = t.tablet;
-            deviceCard.querySelector('#current-device').previousSibling.textContent = t.currentDevice + ' ';
-            
-            cards[5].querySelector('h3 span').textContent = t.topLocations;
-            cards[6].querySelector('h3 span').textContent = t.popularPages;
-            cards[7].querySelector('h3 span').textContent = t.recentVisitors;
-            
-            const note = analyticsSection.querySelector('.text-gray-500');
-            note.innerHTML = `<i class="fas fa-info-circle mr-2"></i>${t.anonymousStats}<a href="https://analytics.google.com/analytics/web/#/p406666770/reports/intelligenthome" target="_blank" class="text-cyan-400 hover:text-cyan-300 underline">${t.viewDashboard}</a>`;
-            
-            if (window.portfolioAnalytics) window.portfolioAnalytics.updateDisplay();
-        }
-
-        function updateChatLanguage() {
-            const t = chatTranslations[currentLang];
-            document.getElementById('chatStatusText').textContent = t.online;
-            document.getElementById('chatInput').placeholder = t.placeholder;
-            document.getElementById('teamsNotice').textContent = t.teamsNotice;
-            
-            const reactions = document.querySelectorAll('.reaction-btn');
-            t.quickReactions.forEach((text, index) => {
-                if (reactions[index]) reactions[index].textContent = text;
-            });
         }
 
         window.addEventListener('scroll', function() {
@@ -2958,845 +1125,6 @@
             card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
             observer.observe(card);
         });
-
-        // ============================================
-        // ANALYTICS SYSTEM
-        // ============================================
-        class PortfolioAnalytics {
-            constructor() {
-                this.storageKey = 'portfolio_analytics_v2';
-                this.sessionKey = 'portfolio_session_v2';
-                this.currentDevice = this.detectDevice();
-                this.init();
-            }
-
-            init() {
-                this.trackVisit();
-                this.startSessionTimer();
-                this.updateDisplay();
-                this.startRealTimeUpdates();
-                this.highlightCurrentDevice();
-            }
-
-            getData() {
-                const data = localStorage.getItem(this.storageKey);
-                const defaultData = {
-                    totalVisitors: 0, pageViews: 0, visits: [],
-                    devices: { desktop: 0, mobile: 0, tablet: 0 },
-                    pages: { home: 0, skills: 0, experience: 0, certifications: 0, contact: 0, analytics: 0 },
-                    locations: {}, lastUpdated: new Date().toISOString()
-                };
-                if (!data) return defaultData;
-                try {
-                    const parsed = JSON.parse(data);
-                    if (!parsed.devices) parsed.devices = defaultData.devices;
-                    if (!parsed.pages.analytics) parsed.pages.analytics = 0;
-                    return parsed;
-                } catch (e) { return defaultData; }
-            }
-
-            saveData(data) {
-                data.lastUpdated = new Date().toISOString();
-                localStorage.setItem(this.storageKey, JSON.stringify(data));
-            }
-
-            detectDevice() {
-                const userAgent = navigator.userAgent.toLowerCase();
-                const width = window.innerWidth;
-                if (/ipad|android(?!.*mobile)|tablet/.test(userAgent) || (width >= 768 && width < 1024)) return 'tablet';
-                if (/mobile|iphone|ipod|android.*mobile|windows phone/.test(userAgent) || width < 768) return 'mobile';
-                return 'desktop';
-            }
-
-            highlightCurrentDevice() {
-                const deviceNames = {
-                    desktop: currentLang === 'en' ? 'Desktop' : 'Ordinateur',
-                    mobile: currentLang === 'en' ? 'Mobile' : 'Téléphone',
-                    tablet: currentLang === 'en' ? 'Tablet' : 'Tablette'
-                };
-                const currentDeviceEl = document.getElementById('current-device');
-                if (currentDeviceEl) currentDeviceEl.textContent = deviceNames[this.currentDevice];
-                
-                const iconId = 'icon-' + this.currentDevice;
-                const icon = document.getElementById(iconId);
-                if (icon) icon.classList.add('active');
-            }
-
-            async detectLocation() {
-                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                const lang = navigator.language || navigator.userLanguage;
-                const zoneMap = {
-                    'America/Toronto': 'Canada', 'America/Montreal': 'Canada', 'America/Vancouver': 'Canada',
-                    'Europe/Paris': 'France', 'Europe/Brussels': 'Belgique', 'Europe/Geneva': 'Suisse',
-                    'Africa/Libreville': 'Gabon', 'Africa/Port-Gentil': 'Gabon',
-                    'America/New_York': 'États-Unis', 'America/Los_Angeles': 'États-Unis', 'Europe/London': 'Royaume-Uni'
-                };
-                let location = zoneMap[timeZone] || 'Autre';
-                if (location === 'Autre') {
-                    if (lang.startsWith('fr')) location = 'France';
-                    else if (lang.startsWith('en-US')) location = 'États-Unis';
-                    else if (lang.startsWith('en-CA') || lang.startsWith('fr-CA')) location = 'Canada';
-                    else if (lang.startsWith('en-GB')) location = 'Royaume-Uni';
-                }
-                return location;
-            }
-
-            getCurrentPage() {
-                const hash = window.location.hash;
-                if (hash.includes('competences')) return 'skills';
-                if (hash.includes('experience')) return 'experience';
-                if (hash.includes('certifications')) return 'certifications';
-                if (hash.includes('contact')) return 'contact';
-                if (hash.includes('analytics')) return 'analytics';
-                return 'home';
-            }
-
-            trackVisit() {
-                const data = this.getData();
-                const session = sessionStorage.getItem(this.sessionKey);
-                const now = new Date();
-                
-                if (!session) {
-                    data.totalVisitors++;
-                    sessionStorage.setItem(this.sessionKey, JSON.stringify({ startTime: now.toISOString(), pages: [] }));
-                    data.devices[this.currentDevice]++;
-                    this.detectLocation().then(location => {
-                        data.locations[location] = (data.locations[location] || 0) + 1;
-                        this.saveData(data);
-                    });
-                } else {
-                    const sessionData = JSON.parse(session);
-                    sessionData.pages.push({ page: this.getCurrentPage(), time: now.toISOString() });
-                    sessionStorage.setItem(this.sessionKey, JSON.stringify(sessionData));
-                }
-                
-                data.pageViews++;
-                const currentPage = this.getCurrentPage();
-                if (data.pages[currentPage] !== undefined) data.pages[currentPage]++;
-                
-                const visit = {
-                    id: Date.now() + Math.random().toString(36).substr(2, 9),
-                    timestamp: now.toISOString(), page: currentPage, device: this.currentDevice,
-                    location: '...', referrer: document.referrer || 'direct'
-                };
-                
-                this.detectLocation().then(location => {
-                    visit.location = location;
-                    data.visits.unshift(visit);
-                    if (data.visits.length > 100) data.visits.pop();
-                    this.saveData(data);
-                    this.updateDisplay();
-                });
-                
-                this.saveData(data);
-                
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'page_view', {
-                        page_title: document.title, page_location: window.location.href,
-                        page_path: window.location.pathname + window.location.hash, device_category: this.currentDevice
-                    });
-                }
-            }
-
-            startSessionTimer() {
-                this.sessionStart = Date.now();
-                setInterval(() => {
-                    const elapsed = Math.floor((Date.now() - this.sessionStart) / 1000);
-                    const minutes = Math.floor(elapsed / 60);
-                    const seconds = elapsed % 60;
-                    const timeEl = document.getElementById('avg-time');
-                    if (timeEl) timeEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-                }, 1000);
-            }
-
-            updateDisplay() {
-                const data = this.getData();
-                const t = analyticsTranslations[currentLang];
-                
-                const totalVisitorsEl = document.getElementById('total-visitors');
-                const pageViewsEl = document.getElementById('page-views');
-                
-                if (totalVisitorsEl) totalVisitorsEl.textContent = data.totalVisitors.toLocaleString();
-                if (pageViewsEl) pageViewsEl.textContent = data.pageViews.toLocaleString();
-                
-                const totalDevices = data.devices.desktop + data.devices.mobile + data.devices.tablet || 1;
-                this.updateDeviceBar('desktop', Math.round((data.devices.desktop / totalDevices) * 100));
-                this.updateDeviceBar('mobile', Math.round((data.devices.mobile / totalDevices) * 100));
-                this.updateDeviceBar('tablet', Math.round((data.devices.tablet / totalDevices) * 100));
-                
-                this.updatePagesList(data.pages, t);
-                this.updateLocationsList(data.locations, t);
-                this.updateVisitorLog(data.visits, t);
-            }
-
-            updateDeviceBar(device, percentage) {
-                const bar = document.getElementById(`device-${device}-bar`);
-                const percent = document.getElementById(`device-${device}-percent`);
-                if (bar) bar.style.width = percentage + '%';
-                if (percent) percent.textContent = percentage + '%';
-            }
-
-            updatePagesList(pages, t) {
-                const container = document.getElementById('pages-list');
-                if (!container) return;
-                const total = Object.values(pages).reduce((a, b) => a + b, 0) || 1;
-                const pageNames = { home: t.home, skills: t.skills, experience: t.experience, certifications: t.certifications, contact: t.contact, analytics: 'Stats' };
-                const sortedPages = Object.entries(pages).sort((a, b) => b[1] - a[1]).slice(0, 5);
-                
-                container.innerHTML = sortedPages.map(([page, count]) => {
-                    const pct = Math.round((count / total) * 100);
-                    return `
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-400 text-sm">${pageNames[page] || page}</span>
-                            <div class="flex items-center gap-2">
-                                <div class="w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
-                                    <div class="h-full bg-orange-400 rounded-full" style="width: ${pct}%"></div>
-                                </div>
-                                <span class="text-white font-medium text-sm w-10 text-right">${pct}%</span>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-            }
-
-            updateLocationsList(locations, t) {
-                const container = document.getElementById('locations-list');
-                if (!container) return;
-                const total = Object.values(locations).reduce((a, b) => a + b, 0) || 1;
-                const sortedLocations = Object.entries(locations).sort((a, b) => b[1] - a[1]).slice(0, 5);
-                
-                if (sortedLocations.length === 0) {
-                    container.innerHTML = '<div class="text-gray-500 text-sm text-center py-4">Aucune donnée</div>';
-                    return;
-                }
-                
-                const flags = { 'Canada': '🇨🇦', 'France': '🇫🇷', 'Belgique': '🇧🇪', 'Suisse': '🇨🇭', 'Gabon': '🇬🇦', 'États-Unis': '🇺🇸', 'Royaume-Uni': '🇬🇧', 'Autre': '🌍' };
-                
-                container.innerHTML = sortedLocations.map(([location, count]) => {
-                    const pct = Math.round((count / total) * 100);
-                    return `
-                        <div class="flex justify-between items-center p-2 glass rounded-lg border border-white/10">
-                            <div class="flex items-center gap-2">
-                                <span class="text-lg">${flags[location] || '🌍'}</span>
-                                <span class="text-gray-300 text-sm">${location}</span>
-                            </div>
-                            <span class="text-white font-medium text-sm">${pct}%</span>
-                        </div>
-                    `;
-                }).join('');
-            }
-
-            updateVisitorLog(visits, t) {
-                const container = document.getElementById('visitor-log');
-                if (!container || !visits.length) return;
-                
-                const pageNames = { home: t.home, skills: t.skills, experience: t.experience, certifications: t.certifications, contact: t.contact, analytics: 'Stats' };
-                
-                container.innerHTML = visits.slice(0, 10).map(visit => {
-                    const date = new Date(visit.timestamp);
-                    const time = date.toLocaleTimeString(currentLang === 'en' ? 'en-US' : 'fr-FR', { hour: '2-digit', minute: '2-digit' });
-                    const deviceIcon = { desktop: 'fa-desktop', mobile: 'fa-mobile-alt', tablet: 'fa-tablet-alt' }[visit.device] || 'fa-desktop';
-                    const isCurrent = visit.id && visit.id.includes(Date.now().toString().slice(0, -4));
-                    const highlightClass = isCurrent ? 'border-cyan-400 bg-cyan-400/10' : 'border-white/10 bg-white/5';
-                    
-                    return `
-                        <div class="flex items-center justify-between p-3 ${highlightClass} rounded-lg border transition-all">
-                            <div class="flex items-center gap-3">
-                                <i class="fas ${deviceIcon} ${visit.device === 'desktop' ? 'text-cyan-400' : visit.device === 'mobile' ? 'text-purple-400' : 'text-green-400'}"></i>
-                                <div>
-                                    <span class="text-gray-300 text-sm capitalize">${pageNames[visit.page] || visit.page}</span>
-                                    ${visit.location ? `<span class="text-xs text-gray-500 block">${visit.location}</span>` : ''}
-                                </div>
-                            </div>
-                            <div class="text-gray-500 text-xs">${time}</div>
-                        </div>
-                    `;
-                }).join('');
-            }
-
-            startRealTimeUpdates() {
-                setInterval(() => {
-                    const onlineNow = Math.floor(Math.random() * 3) + 1;
-                    const el = document.getElementById('online-now');
-                    if (el) el.textContent = onlineNow;
-                }, 5000);
-                setInterval(() => this.updateDisplay(), 30000);
-            }
-        }
-
-        // ============================================
-        // CHAT SYSTEM WITH QUALIFICATION
-        // ============================================
-        class QualificationSystem {
-            constructor(chatSystem) {
-                this.chat = chatSystem;
-                this.teamsEmail = 'ahouansouange@live.fr';
-                this.qualificationSteps = [
-                    {
-                        id: 'objective',
-                        question: { fr: 'Quel est l\'objet de votre message ?', en: 'What is the purpose of your message?' },
-                        options: [
-                            { value: 'job', label: { fr: '💼 Opportunité d\'emploi', en: '💼 Job opportunity' }, icon: 'briefcase' },
-                            { value: 'project', label: { fr: '🚀 Projet/Consultation', en: '🚀 Project/Consulting' }, icon: 'rocket' },
-                            { value: 'question', label: { fr: '❓ Question technique', en: '❓ Technical question' }, icon: 'question-circle' },
-                            { value: 'other', label: { fr: '📝 Autre', en: '📝 Other' }, icon: 'edit' }
-                        ]
-                    },
-                    {
-                        id: 'urgency',
-                        question: { fr: 'Quelle est l\'urgence de votre demande ?', en: 'How urgent is your request?' },
-                        options: [
-                            { value: 'immediate', label: { fr: '🔴 Immédiate (cette semaine)', en: '🔴 Immediate (this week)' }, icon: 'exclamation-circle' },
-                            { value: 'short', label: { fr: '🟠 Court terme (ce mois)', en: '🟠 Short term (this month)' }, icon: 'clock' },
-                            { value: 'medium', label: { fr: '🟡 Moyen terme', en: '🟡 Medium term' }, icon: 'calendar' },
-                            { value: 'future', label: { fr: '🟢 Futur projet', en: '🟢 Future project' }, icon: 'calendar-alt' }
-                        ]
-                    },
-                    {
-                        id: 'location',
-                        question: { fr: 'Quelle est votre localisation ?', en: 'What is your location?' },
-                        options: [
-                            { value: 'montreal', label: { fr: '🏢 Montréal / Québec', en: '🏢 Montreal / Quebec' }, icon: 'building' },
-                            { value: 'canada', label: { fr: '🍁 Autre région du Canada', en: '🍁 Other region of Canada' }, icon: 'maple-leaf' },
-                            { value: 'remote', label: { fr: '🌐 International / Télétravail', en: '🌐 International / Remote' }, icon: 'globe' },
-                            { value: 'other', label: { fr: '📍 Autre', en: '📍 Other' }, icon: 'map-marker-alt' }
-                        ]
-                    },
-                    {
-                        id: 'contact',
-                        question: { fr: 'Comment préférez-vous être contacté ?', en: 'How would you prefer to be contacted?' },
-                        options: [
-                            { value: 'teams', label: { fr: '💬 Microsoft Teams (recommandé)', en: '💬 Microsoft Teams (recommended)' }, icon: 'microsoft' },
-                            { value: 'email', label: { fr: '📧 Email', en: '📧 Email' }, icon: 'envelope' },
-                            { value: 'linkedin', label: { fr: '💼 LinkedIn', en: '💼 LinkedIn' }, icon: 'linkedin' },
-                            { value: 'phone', label: { fr: '📞 Téléphone', en: '📞 Phone' }, icon: 'phone' }
-                        ]
-                    }
-                ];
-                this.currentStep = 0;
-                this.responses = {};
-                this.isQualified = false;
-            }
-
-            start() {
-                this.currentStep = 0;
-                this.responses = {};
-                this.isQualified = false;
-                this.showProgressBar();
-                this.askCurrentQuestion();
-            }
-
-            showProgressBar() {
-                const progressContainer = document.getElementById('qualificationProgress');
-                if (progressContainer) progressContainer.style.display = 'block';
-                this.updateProgress();
-            }
-
-            updateProgress() {
-                const progress = ((this.currentStep) / this.qualificationSteps.length) * 100;
-                const progressBar = document.getElementById('progressBar');
-                const progressText = document.getElementById('qualificationText');
-                if (progressBar) progressBar.style.width = progress + '%';
-                if (progressText) {
-                    progressText.textContent = currentLang === 'fr' 
-                        ? `Question ${this.currentStep + 1}/${this.qualificationSteps.length}` 
-                        : `Question ${this.currentStep + 1}/${this.qualificationSteps.length}`;
-                }
-            }
-
-            askCurrentQuestion() {
-                if (this.currentStep >= this.qualificationSteps.length) {
-                    this.completeQualification();
-                    return;
-                }
-                const step = this.qualificationSteps[this.currentStep];
-                const questionText = step.question[currentLang];
-                this.chat.addBotMessage(questionText);
-                
-                const optionsHtml = `
-                    <div class="chat-options">
-                        ${step.options.map(opt => `
-                            <button class="chat-option-btn" onclick="chat.qualification.handleResponse('${step.id}', '${opt.value}')">
-                                <span>${opt.label[currentLang]}</span>
-                            </button>
-                        `).join('')}
-                    </div>
-                `;
-                this.chat.addHTMLMessage(optionsHtml);
-                this.updateProgress();
-            }
-
-            handleResponse(stepId, value) {
-                this.responses[stepId] = value;
-                const step = this.qualificationSteps.find(s => s.id === stepId);
-                const option = step.options.find(o => o.value === value);
-                this.chat.addUserMessage(option.label[currentLang]);
-                this.currentStep++;
-                setTimeout(() => this.askCurrentQuestion(), 500);
-            }
-
-            completeQualification() {
-                this.isQualified = true;
-                this.updateProgress();
-                const summaryHtml = this.generateSummaryHTML();
-                this.chat.addHTMLMessage(summaryHtml);
-                
-                setTimeout(() => {
-                    this.chat.addBotMessage(chatTranslations[currentLang].qualificationComplete);
-                    setTimeout(() => this.openTeamsWithContext(), 1500);
-                }, 1000);
-            }
-
-            generateSummaryHTML() {
-                const objectiveLabels = {
-                    job: currentLang === 'fr' ? 'Opportunité d\'emploi' : 'Job opportunity',
-                    project: currentLang === 'fr' ? 'Projet/Consultation' : 'Project/Consulting',
-                    question: currentLang === 'fr' ? 'Question technique' : 'Technical question',
-                    other: currentLang === 'fr' ? 'Autre' : 'Other'
-                };
-                const urgencyLabels = {
-                    immediate: currentLang === 'fr' ? 'Immédiate' : 'Immediate',
-                    short: currentLang === 'fr' ? 'Court terme' : 'Short term',
-                    medium: currentLang === 'fr' ? 'Moyen terme' : 'Medium term',
-                    future: currentLang === 'fr' ? 'Futur projet' : 'Future project'
-                };
-                const locationLabels = {
-                    montreal: 'Montréal / Québec',
-                    canada: currentLang === 'fr' ? 'Canada (autre)' : 'Canada (other)',
-                    remote: currentLang === 'fr' ? 'International/Télétravail' : 'International/Remote',
-                    other: currentLang === 'fr' ? 'Autre' : 'Other'
-                };
-                const contactLabels = {
-                    teams: 'Microsoft Teams',
-                    email: 'Email',
-                    linkedin: 'LinkedIn',
-                    phone: currentLang === 'fr' ? 'Téléphone' : 'Phone'
-                };
-
-                return `
-                    <div class="context-summary">
-                        <h4><i class="fas fa-clipboard-check"></i> ${currentLang === 'fr' ? 'Résumé de votre demande' : 'Summary of your request'}</h4>
-                        <div class="context-item"><i class="fas fa-bullseye"></i> <strong>${currentLang === 'fr' ? 'Objet:' : 'Objective:'}</strong> ${objectiveLabels[this.responses.objective]}</div>
-                        <div class="context-item"><i class="fas fa-clock"></i> <strong>${currentLang === 'fr' ? 'Urgence:' : 'Urgency:'}</strong> ${urgencyLabels[this.responses.urgency]}</div>
-                        <div class="context-item"><i class="fas fa-map-marker-alt"></i> <strong>${currentLang === 'fr' ? 'Localisation:' : 'Location:'}</strong> ${locationLabels[this.responses.location]}</div>
-                        <div class="context-item"><i class="fas fa-address-card"></i> <strong>${currentLang === 'fr' ? 'Contact préféré:' : 'Preferred contact:'}</strong> ${contactLabels[this.responses.contact]}</div>
-                    </div>
-                `;
-            }
-
-            openTeamsWithContext() {
-                const contextMessage = this.buildContextMessage();
-                this.showAutoOpenIndicator();
-                const teamsUrl = `https://teams.microsoft.com/l/chat/0/0?users=${encodeURIComponent(this.teamsEmail)}&message=${encodeURIComponent(contextMessage)}`;
-                window.open(teamsUrl, '_blank');
-                
-                setTimeout(() => this.hideAutoOpenIndicator(), 3000);
-                
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'teams_auto_open', {
-                        event_category: 'engagement', event_label: 'qualification_complete',
-                        qualification_objective: this.responses.objective,
-                        qualification_urgency: this.responses.urgency,
-                        qualification_location: this.responses.location,
-                        qualification_contact: this.responses.contact
-                    });
-                }
-                this.connectAIAgent();
-            }
-
-            buildContextMessage() {
-                const timestamp = new Date().toLocaleString(currentLang === 'fr' ? 'fr-FR' : 'en-US');
-                let message = currentLang === 'fr' 
-                    ? `🤖 NOUVEAU LEAD QUALIFIÉ - Portfolio\n\n`
-                    : `🤖 NEW QUALIFIED LEAD - Portfolio\n\n`;
-                message += currentLang === 'fr' ? `📅 Date: ${timestamp}\n` : `📅 Date: ${timestamp}\n`;
-                message += `🎯 ${currentLang === 'fr' ? 'Objet' : 'Objective'}: ${this.responses.objective}\n`;
-                message += `⏰ ${currentLang === 'fr' ? 'Urgence' : 'Urgency'}: ${this.responses.urgency}\n`;
-                message += `📍 ${currentLang === 'fr' ? 'Localisation' : 'Location'}: ${this.responses.location}\n`;
-                message += `💬 ${currentLang === 'fr' ? 'Contact préféré' : 'Preferred contact'}: ${this.responses.contact}\n\n`;
-                message += currentLang === 'fr' 
-                    ? `Bonjour Ange-Marie,\n\nJe suis intéressé(e) par votre profil. Voici les détails de ma demande :\n\n`
-                    : `Hello Ange-Marie,\n\nI am interested in your profile. Here are the details of my request:\n\n`;
-                message += currentLang === 'fr' 
-                    ? `Merci de me recontacter sur ce canal ou par ${this.responses.contact}.\n\nCordialement,`
-                    : `Please contact me back on this channel or via ${this.responses.contact}.\n\nBest regards,`;
-                return message;
-            }
-
-            showAutoOpenIndicator() {
-                const indicator = document.getElementById('autoTeamsIndicator');
-                if (indicator) indicator.classList.add('active');
-            }
-
-            hideAutoOpenIndicator() {
-                const indicator = document.getElementById('autoTeamsIndicator');
-                if (indicator) indicator.classList.remove('active');
-            }
-
-            connectAIAgent() {
-                setTimeout(() => {
-                    const aiBadge = `
-                        <div style="text-align: center; margin: 15px 0;">
-                            <div class="ai-agent-badge">
-                                <i class="fas fa-robot"></i>
-                                <span>Agent IA Connecté</span>
-                            </div>
-                        </div>
-                    `;
-                    this.chat.addHTMLMessage(aiBadge);
-                    
-                    setTimeout(() => {
-                        const aiMessage = currentLang === 'fr'
-                            ? `Bonjour ! Je suis l'agent IA d'Ange-Marie. J'ai analysé votre demande et ouvert une conversation Microsoft Teams avec tout le contexte. Vous pouvez continuer la discussion directement sur Teams où Ange-Marie vous répondra personnellement.`
-                            : `Hello! I am Ange-Marie's AI agent. I have analyzed your request and opened a Microsoft Teams conversation with all the context. You can continue the discussion directly on Teams where Ange-Marie will respond to you personally.`;
-                        this.chat.addBotMessage(aiMessage);
-                        
-                        const reopenBtn = `
-                            <div style="text-align: center; margin-top: 10px;">
-                                <button class="teams-action-btn" onclick="chat.qualification.openTeamsWithContext()">
-                                    <i class="fab fa-microsoft"></i>
-                                    <span>${currentLang === 'fr' ? 'Ouvrir/réouvrir Teams' : 'Open/reopen Teams'}</span>
-                                </button>
-                            </div>
-                        `;
-                        this.chat.addHTMLMessage(reopenBtn);
-                    }, 1000);
-                }, 500);
-            }
-        }
-
-        class ChatSystem {
-            constructor() {
-                this.isOpen = false;
-                this.messages = [];
-                this.teamsEmail = 'ahouansouange@live.fr';
-                this.qualification = new QualificationSystem(this);
-                this.qualificationMode = false;
-                this.init();
-            }
-
-            init() {
-                this.loadMessages();
-                this.showWelcomeMessage();
-                const hasVisited = localStorage.getItem('chat_visited');
-                if (!hasVisited) {
-                    setTimeout(() => {
-                        this.open();
-                        localStorage.setItem('chat_visited', 'true');
-                    }, 10000);
-                }
-            }
-
-            toggle() {
-                if (this.isOpen) this.close();
-                else this.open();
-            }
-
-            open() {
-                this.isOpen = true;
-                document.getElementById('chatContainer').classList.add('active');
-                document.getElementById('chatButton').classList.add('active');
-                const notif = document.getElementById('chatNotification');
-                if (notif) notif.style.display = 'none';
-                this.scrollToBottom();
-            }
-
-            close() {
-                this.isOpen = false;
-                document.getElementById('chatContainer').classList.remove('active');
-                document.getElementById('chatButton').classList.remove('active');
-            }
-
-            showWelcomeMessage() {
-                const t = chatTranslations[currentLang];
-                const hour = new Date().getHours();
-                let greeting = t.welcomeMessage;
-                
-                if (hour < 12) greeting = currentLang === 'fr' ? 'Bonjour ! ☀️ Comment puis-je vous aider ce matin ?' : 'Good morning! ☀️ How can I help you today?';
-                else if (hour < 18) greeting = currentLang === 'fr' ? 'Bonjour ! 👋 Comment puis-je vous aider cet après-midi ?' : 'Good afternoon! 👋 How can I help you today?';
-                else greeting = currentLang === 'fr' ? 'Bonsoir ! 🌙 Comment puis-je vous aider ce soir ?' : 'Good evening! 🌙 How can I help you tonight?';
-                
-                this.addBotMessage(greeting);
-                setTimeout(() => this.showInitialOptions(), 1000);
-            }
-
-            showInitialOptions() {
-                const options = [
-                    { icon: '💼', text: currentLang === 'fr' ? 'Démarrer une qualification complète' : 'Start full qualification', action: 'start_qualification', highlight: true },
-                    { icon: '❓', text: currentLang === 'fr' ? 'Poser une question rapide' : 'Ask a quick question', action: 'quick_question' },
-                    { icon: '📄', text: currentLang === 'fr' ? 'Demander mon CV' : 'Request my resume', action: 'cv' }
-                ];
-
-                const html = `
-                    <div class="chat-options">
-                        ${options.map(opt => `
-                            <button class="chat-option-btn ${opt.highlight ? 'border-cyan-400 bg-cyan-400/10' : ''}" onclick="chat.handleOption('${opt.action}')">
-                                <span>${opt.icon}</span>
-                                <span>${opt.text}</span>
-                                ${opt.highlight ? '<i class="fas fa-star text-yellow-400 ml-auto"></i>' : ''}
-                            </button>
-                        `).join('')}
-                    </div>
-                    <div style="margin-top: 10px; padding: 8px; background: rgba(0,212,255,0.1); border-radius: 8px; font-size: 12px; color: var(--cyan); text-align: center; border: 1px solid rgba(0,212,255,0.3);">
-                        <i class="fas fa-info-circle"></i> ${currentLang === 'fr' ? 'La qualification complète permet d\'ouvrir Teams automatiquement avec tout le contexte' : 'Full qualification automatically opens Teams with all context'}
-                    </div>
-                `;
-                this.addHTMLMessage(html);
-            }
-
-            handleOption(action) {
-                switch(action) {
-                    case 'start_qualification':
-                        this.qualificationMode = true;
-                        this.addUserMessage(currentLang === 'fr' ? 'Je souhaite démarrer une qualification complète' : 'I want to start a full qualification');
-                        setTimeout(() => this.qualification.start(), 500);
-                        break;
-                    case 'quick_question':
-                        this.addUserMessage(currentLang === 'fr' ? 'J\'ai une question rapide' : 'I have a quick question');
-                        setTimeout(() => {
-                            this.addBotMessage(currentLang === 'fr' ? 
-                                'Bien sûr ! ❓ Posez votre question et je vous répondrai. Si c\'est complexe, je vous redirigerai vers Teams.' : 
-                                'Of course! ❓ Ask your question and I will answer. If it\'s complex, I will redirect you to Teams.');
-                        }, 500);
-                        break;
-                    case 'cv':
-                        this.addUserMessage(currentLang === 'fr' ? 'Je souhaite recevoir votre CV' : 'I would like to receive your resume');
-                        setTimeout(() => {
-                            this.addBotMessage(currentLang === 'fr' ? 
-                                'Je vais vous envoyer mon CV par email ! 📄 Quelle est votre adresse email ?' : 
-                                'I\'ll send you my resume by email! 📄 What is your email address?');
-                        }, 500);
-                        break;
-                }
-            }
-
-            addBotMessage(text) {
-                const message = { type: 'bot', text: text, time: new Date() };
-                this.messages.push(message);
-                this.renderMessage(message);
-                this.saveMessages();
-            }
-
-            addUserMessage(text) {
-                const message = { type: 'user', text: text, time: new Date() };
-                this.messages.push(message);
-                this.renderMessage(message);
-                this.saveMessages();
-                if (!this.qualificationMode && !this.qualification.isQualified) this.sendToTeams(text);
-            }
-
-            addHTMLMessage(html) {
-                const container = document.getElementById('chatMessages');
-                const div = document.createElement('div');
-                div.className = 'message message-bot';
-                div.innerHTML = `<div class="message-bubble">${html}</div>`;
-                container.appendChild(div);
-                this.scrollToBottom();
-            }
-
-            renderMessage(message) {
-                const container = document.getElementById('chatMessages');
-                const div = document.createElement('div');
-                div.className = `message message-${message.type}`;
-                const time = message.time.toLocaleTimeString(currentLang === 'en' ? 'en-US' : 'fr-FR', { hour: '2-digit', minute: '2-digit' });
-                div.innerHTML = `
-                    <div class="message-bubble">${this.escapeHtml(message.text)}</div>
-                    <div class="message-time">${time}</div>
-                `;
-                container.appendChild(div);
-                this.scrollToBottom();
-            }
-
-            escapeHtml(text) {
-                const div = document.createElement('div');
-                div.textContent = text;
-                return div.innerHTML;
-            }
-
-            scrollToBottom() {
-                const container = document.getElementById('chatMessages');
-                container.scrollTop = container.scrollHeight;
-            }
-
-            sendMessage() {
-                const input = document.getElementById('chatInput');
-                const text = input.value.trim();
-                if (!text) return;
-                
-                this.addUserMessage(text);
-                input.value = '';
-                
-                if (this.qualificationMode) return;
-                
-                this.showTyping();
-                setTimeout(() => {
-                    this.hideTyping();
-                    this.generateBotResponse(text);
-                }, 1500);
-            }
-
-            showTyping() {
-                const container = document.getElementById('chatMessages');
-                const div = document.createElement('div');
-                div.className = 'message message-bot typing-indicator-container';
-                div.innerHTML = `
-                    <div class="typing-indicator">
-                        <div class="typing-dot"></div>
-                        <div class="typing-dot"></div>
-                        <div class="typing-dot"></div>
-                    </div>
-                `;
-                container.appendChild(div);
-                this.scrollToBottom();
-            }
-
-            hideTyping() {
-                const typing = document.querySelector('.typing-indicator-container');
-                if (typing) typing.remove();
-            }
-
-            generateBotResponse(userText) {
-                const lowerText = userText.toLowerCase();
-                let response = '';
-                
-                if (lowerText.includes('salut') || lowerText.includes('bonjour') || lowerText.includes('hello') || lowerText.includes('hi')) {
-                    response = currentLang === 'fr' ? 
-                        'Bonjour ! 👋 Ravie de vous rencontrer. Souhaitez-vous démarrer une qualification complète pour que je puisse mieux vous aider ?' : 
-                        'Hello! 👋 Nice to meet you. Would you like to start a full qualification so I can better help you?';
-                } else if (lowerText.includes('merci') || lowerText.includes('thank')) {
-                    response = currentLang === 'fr' ? 
-                        'Avec plaisir ! 😊 N\'hésitez pas si vous avez d\'autres questions. Je peux aussi ouvrir Teams si vous préférez.' : 
-                        'You\'re welcome! 😊 Feel free to ask if you have any other questions. I can also open Teams if you prefer.';
-                } else if (lowerText.includes('email') || lowerText.includes('@') || lowerText.includes('contact')) {
-                    response = currentLang === 'fr' ? 
-                        'Vous pouvez m\'écrire directement sur Microsoft Teams ou m\'envoyer un email à ahouansouange@live.fr 📧' : 
-                        'You can write to me directly on Microsoft Teams or send an email to ahouansouange@live.fr 📧';
-                    this.addTeamsButton();
-                } else if (lowerText.includes('disponible') || lowerText.includes('available') || lowerText.includes('quand')) {
-                    response = currentLang === 'fr' ? 
-                        'Je suis disponible immédiatement ! 🚀 Je peux commencer dès que vous le souhaitez. Souhaitez-vous que je vous qualifie pour ouvrir Teams ?' : 
-                        'I am available immediately! 🚀 I can start whenever you want. Would you like me to qualify you to open Teams?';
-                } else if (lowerText.includes('salaire') || lowerText.includes('salary') || lowerText.includes('rémunération')) {
-                    response = currentLang === 'fr' ? 
-                        'Je préfère discuter de la rémunération en entretien. Le plus important pour moi est de trouver un projet qui me passionne ! 💼' : 
-                        'I prefer to discuss compensation in an interview. The most important thing for me is to find a project that I\'m passionate about! 💼';
-                } else {
-                    response = currentLang === 'fr' ? 
-                        'Merci pour votre message ! 💬 Je vais ouvrir Teams automatiquement avec votre message. Souhaitez-vous plutôt faire une qualification complète pour un suivi optimal ?' : 
-                        'Thank you for your message! 💬 I will automatically open Teams with your message. Would you rather do a full qualification for optimal follow-up?';
-                    this.sendToTeams(userText);
-                }
-                this.addBotMessage(response);
-            }
-
-            addTeamsButton() {
-                const t = chatTranslations[currentLang];
-                const html = `
-                    <button class="teams-action-btn" onclick="chat.qualification.openTeamsWithContext()">
-                        <i class="fab fa-microsoft"></i>
-                        <span>${t.continueOnTeams}</span>
-                    </button>
-                `;
-                this.addHTMLMessage(html);
-            }
-
-            sendQuickMessage(text) {
-                this.addUserMessage(text);
-                this.showTyping();
-                setTimeout(() => {
-                    this.hideTyping();
-                    this.generateBotResponse(text);
-                }, 1000);
-            }
-
-            sendToTeams(message) {
-                this.qualification.showAutoOpenIndicator();
-                const teamsUrl = `https://teams.microsoft.com/l/chat/0/0?users=${encodeURIComponent(this.teamsEmail)}&message=${encodeURIComponent(message)}`;
-                window.open(teamsUrl, '_blank');
-                setTimeout(() => this.qualification.hideAutoOpenIndicator(), 3000);
-                
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'teams_auto_open', {
-                        event_category: 'engagement', event_label: 'quick_message', message_length: message.length
-                    });
-                }
-            }
-
-            saveMessages() {
-                if (this.messages.length > 50) this.messages = this.messages.slice(-50);
-                localStorage.setItem('chat_messages', JSON.stringify(this.messages));
-            }
-
-            loadMessages() {
-                const saved = localStorage.getItem('chat_messages');
-                if (saved) {
-                    this.messages = JSON.parse(saved);
-                    this.messages.slice(-10).forEach(msg => {
-                        msg.time = new Date(msg.time);
-                        this.renderMessage(msg);
-                    });
-                }
-            }
-        }
-
-        // Initialize
-        let chat;
-        document.addEventListener('DOMContentLoaded', () => {
-            initEmailJS();
-            chat = new ChatSystem();
-            window.portfolioAnalytics = new PortfolioAnalytics();
-        });
-
-        function toggleChat() { if (chat) chat.toggle(); }
-        function sendChatMessage() { if (chat) chat.sendMessage(); }
-        function sendQuickMessage(text) { if (chat) chat.sendQuickMessage(text); }
-        function handleChatKeyPress(event) { if (event.key === 'Enter') sendChatMessage(); }
-
-        // Hash change tracking
-        window.addEventListener('hashchange', () => {
-            if (window.portfolioAnalytics) window.portfolioAnalytics.trackVisit();
-        });
-
-        // Click tracking
-        document.addEventListener('click', (e) => {
-            if (e.target.closest('a')) {
-                const link = e.target.closest('a');
-                const href = link.getAttribute('href');
-                if (typeof gtag !== 'undefined' && href && !href.startsWith('#')) {
-                    gtag('event', 'click', { event_category: 'outbound', event_label: href, transport_type: 'beacon' });
-                }
-            }
-        });
     </script>
-<script>
-        // Timeline navigation
-        function showExperience(companyId) {
-            // Retirer la classe active de toutes les cartes
-            document.querySelectorAll('.experience-card').forEach(card => {
-                card.classList.remove('active');
-            });
-
-            // Ajouter la classe active à la carte ciblée
-            const targetCard = document.getElementById('card-' + companyId);
-            if (targetCard) {
-                targetCard.classList.add('active');
-                targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-
-            // Mettre à jour les points de timeline
-            document.querySelectorAll('.timeline-point').forEach(point => {
-                point.classList.remove('active');
-            });
-            event.currentTarget.classList.add('active');
-        }
-
-        // Activer la première carte par défaut au chargement
-        document.addEventListener('DOMContentLoaded', () => {
-            const firstCard = document.getElementById('card-ht241');
-            if (firstCard) {
-                firstCard.classList.add('active');
-            }
-        });
-</script>
 </body>
 </html>
