@@ -1153,85 +1153,6 @@
             scroll-behavior: smooth;
         }
 
-    
-        /* Horizontal scroll for experience cards */
-        .experience-scroll-container {
-            display: flex;
-            gap: 2rem;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            padding: 2rem 1rem;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .experience-scroll-container::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .experience-scroll-container::-webkit-scrollbar-track {
-            background: rgba(0, 212, 255, 0.1);
-            border-radius: 4px;
-        }
-
-        .experience-scroll-container::-webkit-scrollbar-thumb {
-            background: linear-gradient(90deg, var(--cyan), var(--purple));
-            border-radius: 4px;
-        }
-
-        .experience-card-wrapper {
-            flex: 0 0 85%;
-            scroll-snap-align: center;
-        }
-
-        @media (min-width: 768px) {
-            .experience-card-wrapper {
-                flex: 0 0 70%;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .experience-card-wrapper {
-                flex: 0 0 60%;
-            }
-        }
-
-        .scroll-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(0, 212, 255, 0.2);
-            border: 1px solid rgba(0, 212, 255, 0.5);
-            color: var(--cyan);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .scroll-nav-btn:hover {
-            background: rgba(0, 212, 255, 0.4);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .scroll-nav-btn.prev {
-            left: 10px;
-        }
-
-        .scroll-nav-btn.next {
-            right: 10px;
-        }
-
-        .scroll-nav-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-
     </style>
 <base target="_blank">
 <base target="_blank">
@@ -1754,15 +1675,13 @@
                             <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors">HT241</span>
                         </div>
 
-                        </div>
-                <!-- ANAVEA -->
+                        <!-- ANAVEA -->
                         <div class="timeline-point group cursor-pointer" onclick="showExperience('anavea')">
                             <div class="w-4 h-4 rounded-full bg-purple-400 border-4 border-dark shadow-lg shadow-purple-400/50 group-hover:scale-150 transition-transform"></div>
                             <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-purple-400 transition-colors">ANAVEA</span>
                         </div>
 
-                        </div>
-                <!-- SAFRIMAT -->
+                        <!-- SAFRIMAT -->
                         <div class="timeline-point group cursor-pointer" onclick="showExperience('safrimat')">
                             <div class="w-4 h-4 rounded-full bg-cyan-400 border-4 border-dark shadow-lg shadow-cyan-400/50 group-hover:scale-150 transition-transform"></div>
                             <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors">SAFRIMAT</span>
@@ -1774,15 +1693,13 @@
                             <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors" data-fr="Centre Dialyse" data-en="Dialysis Center">Centre Dialyse</span>
                         </div>
 
-                        </div>
-                <!-- SYSTEMESCOMS -->
+                        <!-- SYSTEMESCOMS -->
                         <div class="timeline-point group cursor-pointer" onclick="showExperience('systemescoms')">
                             <div class="w-4 h-4 rounded-full bg-cyan-400 border-4 border-dark shadow-lg shadow-cyan-400/50 group-hover:scale-150 transition-transform"></div>
                             <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors">SYSTEMESCOMS</span>
                         </div>
 
-                        </div>
-                <!-- DAVUM -->
+                        <!-- DAVUM -->
                         <div class="timeline-point group cursor-pointer" onclick="showExperience('davum')">
                             <div class="w-4 h-4 rounded-full bg-cyan-400 border-4 border-dark shadow-lg shadow-cyan-400/50 group-hover:scale-150 transition-transform"></div>
                             <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors">DAVUM</span>
@@ -1801,25 +1718,15 @@
             <div class="w-full h-3 bg-gradient-to-r from-cyan-500 via-purple-500 to-fortinet rounded-full mb-12 shadow-lg shadow-cyan-500/20"></div>
 
             <!-- Cartes d'expérience -->
-            <div class="relative">
-                <button class="scroll-nav-btn prev" onclick="scrollExperience(-1)" id="scrollPrev">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="scroll-nav-btn next" onclick="scrollExperience(1)" id="scrollNext">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <div class="experience-scroll-container" id="experience-cards">
+            <div class="space-y-8" id="experience-cards">
 
                 <!-- HT241 -->
-                <div class="experience-card-wrapper"><div id="card-ht241" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
+                <div id="card-ht241" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
                     <div class="flex justify-between items-start mb-6">
                         <div>
                             <h3 class="text-3xl font-bold text-cyan-400 mb-2"><a href="https://www.ht241.com/" target="_blank" class="hover:underline inline-flex items-center gap-2">HT241 <i class="fas fa-external-link-alt text-sm"></i></a></h3>
-                            <p class="text-gray-400" data-fr="Prestation de services informatique et vente de matériel" data-en="IT services and hardware sales">Prestation de services informatique et vente de matériel</p></div>
-                        <span class="px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-full text-sm font-medium border border-cyan-400/30 flex items-center gap-2">
-                            <i class="fas fa-laptop-code"></i> <span data-fr="Technologie" data-en="Technology">Technologie</span>
-                        </span>
-                    </div>
+                            <p class="text-gray-400" data-fr="Prestation de services informatique et vente de matériel" data-en="IT services and hardware sales">Prestation de services informatique et vente de matériel</p>
+                        </div>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-8">
@@ -1913,15 +1820,12 @@
                             <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">Active Directory</span>
                             <span class="px-3 py-1 bg-indigo-500/20 text-indigo-400 rounded-full text-xs border border-indigo-400/30">Microsoft Entra ID</span>
                             <span class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-xs border border-blue-600/30">Microsoft 365</span>
-                            <span class="px-3 py-1 bg-fortinet/20 text-fortinet rounded-full text-xs border border-fortinet/30">Fortinet</span>
-                            <span class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs border border-orange-400/30">PaperCut</span>
                         </div>
                     </div>
                 </div>
 
-                </div>
                 <!-- ANAVEA -->
-                <div class="experience-card-wrapper"><div id="card-anavea" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
+                <div id="card-anavea" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
                     <div class="flex justify-between items-start mb-6">
                         <div>
                             <h3 class="text-3xl font-bold text-cyan-400 mb-2">ANAVEA</h3>
@@ -1994,22 +1898,17 @@
                             <span class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs border border-orange-400/30">Cisco Call Manager</span>
                             <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs border border-cyan-400/30">UniFi</span>
                             <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">Active Directory</span>
-                            <span class="px-3 py-1 bg-fortinet/20 text-fortinet rounded-full text-xs border border-fortinet/30">Fortinet</span>
                         </div>
                     </div>
                 </div>
 
-            </div>
                 <!-- SAFRIMAT -->
-                <div class="experience-card-wrapper"><div id="card-safrimat" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
+                <div id="card-safrimat" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
                     <div class="flex justify-between items-start mb-6">
                         <div>
                             <h3 class="text-3xl font-bold text-cyan-400 mb-2"><a href="https://safrimat.com/?page=home" target="_blank" class="hover:underline inline-flex items-center gap-2">SAFRIMAT <i class="fas fa-external-link-alt text-sm"></i></a></h3>
-                            <p class="text-gray-400" data-fr="Prestation et vente informatique" data-en="IT services and sales">Prestation et vente informatique</p></div>
-                        <span class="px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-full text-sm font-medium border border-cyan-400/30 flex items-center gap-2">
-                            <i class="fas fa-laptop-code"></i> <span data-fr="Technologie" data-en="Technology">Technologie</span>
-                        </span>
-                    </div>
+                            <p class="text-gray-400" data-fr="Prestation et vente informatique" data-en="IT services and sales">Prestation et vente informatique</p>
+                        </div>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-8">
@@ -2077,13 +1976,12 @@
                             <span class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs border border-orange-400/30">Cisco Call Manager</span>
                             <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs border border-cyan-400/30">UniFi</span>
                             <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">Active Directory</span>
-                            <span class="px-3 py-1 bg-fortinet/20 text-fortinet rounded-full text-xs border border-fortinet/30">Fortinet</span>
                         </div>
                     </div>
                 </div>
 
-            <!-- Centre de Dialyse de Libreville -->
-                <div class="experience-card-wrapper"><div id="card-centre-dialyse" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
+                <!-- Centre de Dialyse de Libreville -->
+                <div id="card-centre-dialyse" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
                     <div class="flex justify-between items-start mb-6">
                         <div>
                             <h3 class="text-3xl font-bold text-cyan-400 mb-2"><a href="https://www.facebook.com/CDL.SMEDI.GABON.SANTE/?locale=fr_FR" target="_blank" class="hover:underline inline-flex items-center gap-2">Centre de Dialyse de Libreville <i class="fab fa-facebook text-sm"></i></a></h3>
@@ -2162,9 +2060,8 @@
                     </div>
                 </div>
 
-                </div>
                 <!-- SYSTEMESCOMS -->
-                <div class="experience-card-wrapper"><div id="card-systemescoms" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
+                <div id="card-systemescoms" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
                     <div class="flex justify-between items-start mb-6">
                         <div>
                             <h3 class="text-3xl font-bold text-cyan-400 mb-2"><a href="https://teznxadbmkxsc.ok.kimi.link/" target="_blank" class="hover:underline inline-flex items-center gap-2">SYSTEMESCOMS <i class="fas fa-external-link-alt text-sm"></i></a></h3>
@@ -2234,7 +2131,7 @@
                 </div>
 
                 <!-- DAVUM GABON -->
-                <div class="experience-card-wrapper"><div id="card-davum" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
+                <div id="card-davum" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
                     <div class="flex justify-between items-start mb-6">
                         <div>
                             <h3 class="text-3xl font-bold text-cyan-400 mb-2">DAVUM GABON</h3>
@@ -2289,9 +2186,9 @@
                 </div>
 
             </div>
-            </div>
         </div>
     </section>
+
 
     <!-- Certifications Section -->
     <section id="certifications" class="py-24 relative">
@@ -3873,37 +3770,6 @@
     </script>
 <script>
         // Timeline navigation
-        
-        // Experience horizontal scroll
-        function scrollExperience(direction) {
-            const container = document.getElementById('experience-cards');
-            const cardWidth = container.querySelector('.experience-card-wrapper').offsetWidth;
-            const gap = 32; // 2rem gap
-            container.scrollBy({
-                left: direction * (cardWidth + gap),
-                behavior: 'smooth'
-            });
-            updateScrollButtons();
-        }
-
-        function updateScrollButtons() {
-            const container = document.getElementById('experience-cards');
-            const prevBtn = document.getElementById('scrollPrev');
-            const nextBtn = document.getElementById('scrollNext');
-
-            if (prevBtn) prevBtn.disabled = container.scrollLeft <= 0;
-            if (nextBtn) nextBtn.disabled = container.scrollLeft >= container.scrollWidth - container.clientWidth - 10;
-        }
-
-        // Update buttons on scroll
-        document.addEventListener('DOMContentLoaded', () => {
-            const container = document.getElementById('experience-cards');
-            if (container) {
-                container.addEventListener('scroll', updateScrollButtons);
-                updateScrollButtons();
-            }
-        });
-
         function showExperience(companyId) {
             // Retirer la classe active de toutes les cartes
             document.querySelectorAll('.experience-card').forEach(card => {
