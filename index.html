@@ -1,48 +1,564 @@
-// Système de timeline pour les expériences professionnelles
-function showExperience(companyId, index) {
-    // Masquer toutes les cartes
-    document.querySelectorAll('.experience-detail-card').forEach(card => {
-        card.classList.remove('active');
-        card.classList.add('hidden');
-    });
-    
-    // Afficher la carte sélectionnée
-    const targetCard = document.getElementById('exp-' + companyId);
-    if (targetCard) {
-        targetCard.classList.remove('hidden');
-        // Petit délai pour permettre la transition
-        setTimeout(() => {
-            targetCard.classList.add('active');
-        }, 10);
-    }
-    
-    // Mettre à jour les points de timeline
-    document.querySelectorAll('.timeline-point').forEach((point, idx) => {
-        point.classList.toggle('active', idx === index);
-        const dot = point.querySelector('.timeline-dot-inner');
-        const label = point.querySelector('span');
-        
-        if (idx === index) {
-            dot.style.background = 'var(--cyan)';
-            dot.style.borderColor = 'var(--cyan)';
-            label.style.color = 'var(--cyan)';
-            label.style.fontWeight = '600';
-        } else {
-            if (idx === 6) { // Integral Tech - dernier point gris
-                dot.style.background = 'var(--dark)';
-                dot.style.borderColor = '#4B5563';
-                label.style.color = '#6B7280';
-            } else {
-                dot.style.background = 'var(--dark)';
-                dot.style.borderColor = 'var(--cyan)';
-                label.style.color = '#9CA3AF';
-            }
-            label.style.fontWeight = '500';
-        }
-    });
-}
+<!-- Experience Section - Design Timeline Cliquable -->
+<section id="experience" class="py-24 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent"></div>
 
-// Initialiser avec HT241 actif au chargement
-document.addEventListener('DOMContentLoaded', () => {
-    showExperience('ht241', 0);
-});
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 mb-4">
+                <i class="fas fa-history text-purple-400 text-2xl"></i>
+                <h2 class="font-display text-4xl font-bold text-white glow-text" data-fr="Parcours Professionnel" data-en="Professional Journey">Parcours Professionnel</h2>
+            </div>
+        </div>
+
+        <!-- Timeline Horizontale Cliquable -->
+        <div class="relative mb-12 px-4">
+            <!-- Ligne de timeline avec dégradé -->
+            <div class="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-fortinet rounded-full transform -translate-y-1/2 mx-8"></div>
+            
+            <!-- Barre de progression bleue en dessous -->
+            <div class="h-3 bg-gradient-to-r from-cyan-500 via-purple-500 to-fortinet rounded-full mx-8 mt-8 shadow-lg shadow-cyan-500/20"></div>
+
+            <!-- Points de timeline -->
+            <div class="relative flex justify-between mx-8" style="margin-top: -22px;">
+                <!-- HT241 -->
+                <div class="timeline-point active" onclick="showExperience('ht241', 0)">
+                    <div class="w-5 h-5 rounded-full bg-cyan-400 border-4 border-dark shadow-lg shadow-cyan-400/50 cursor-pointer transition-all hover:scale-125 timeline-dot-inner"></div>
+                    <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs text-cyan-400 font-medium whitespace-nowrap">HT241</span>
+                </div>
+
+                <!-- ANAVEA -->
+                <div class="timeline-point" onclick="showExperience('anavea', 1)">
+                    <div class="w-5 h-5 rounded-full bg-dark border-4 border-cyan-400 shadow-lg cursor-pointer transition-all hover:scale-125 timeline-dot-inner"></div>
+                    <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-medium whitespace-nowrap">ANAVEA</span>
+                </div>
+
+                <!-- SAFRIMAT -->
+                <div class="timeline-point" onclick="showExperience('safrimat', 2)">
+                    <div class="w-5 h-5 rounded-full bg-dark border-4 border-cyan-400 shadow-lg cursor-pointer transition-all hover:scale-125 timeline-dot-inner"></div>
+                    <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-medium whitespace-nowrap">SAFRIMAT</span>
+                </div>
+
+                <!-- Centre Dialyse -->
+                <div class="timeline-point" onclick="showExperience('centre-dialyse', 3)">
+                    <div class="w-5 h-5 rounded-full bg-dark border-4 border-cyan-400 shadow-lg cursor-pointer transition-all hover:scale-125 timeline-dot-inner"></div>
+                    <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-medium whitespace-nowrap" data-fr="Centre Dialyse" data-en="Dialysis Center">Centre Dialyse</span>
+                </div>
+
+                <!-- SYSTEMESCOMS -->
+                <div class="timeline-point" onclick="showExperience('systemescoms', 4)">
+                    <div class="w-5 h-5 rounded-full bg-dark border-4 border-cyan-400 shadow-lg cursor-pointer transition-all hover:scale-125 timeline-dot-inner"></div>
+                    <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-medium whitespace-nowrap">SYSTEMESCOMS</span>
+                </div>
+
+                <!-- DAVUM -->
+                <div class="timeline-point" onclick="showExperience('davum', 5)">
+                    <div class="w-5 h-5 rounded-full bg-dark border-4 border-cyan-400 shadow-lg cursor-pointer transition-all hover:scale-125 timeline-dot-inner"></div>
+                    <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-medium whitespace-nowrap">DAVUM</span>
+                </div>
+
+                <!-- Integral Tech -->
+                <div class="timeline-point" onclick="showExperience('integral-tech', 6)">
+                    <div class="w-5 h-5 rounded-full bg-dark border-4 border-gray-600 shadow-lg cursor-pointer transition-all hover:scale-125 timeline-dot-inner"></div>
+                    <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-500 font-medium whitespace-nowrap">Integral Tech</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conteneur des cartes d'expérience (une seule visible à la fois) -->
+        <div class="experience-content-container relative min-h-[500px]">
+            
+            <!-- HT241 - Avec Badge Technologie -->
+            <div id="exp-ht241" class="experience-detail-card active">
+                <div class="glass rounded-3xl p-8 border border-white/10 hover-card">
+                    <div class="flex justify-between items-start mb-6 flex-wrap gap-3">
+                        <div>
+                            <h3 class="text-3xl font-bold text-cyan-400 mb-2">
+                                <a href="https://www.ht241.com/" target="_blank" class="hover:underline inline-flex items-center gap-2">
+                                    HT241 <i class="fas fa-external-link-alt text-sm"></i>
+                                </a>
+                            </h3>
+                            <p class="text-gray-400" data-fr="Entreprise de vente et prestations de services informatiques" data-en="IT services and hardware sales company">Entreprise de vente et prestations de services informatiques</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge-tech">
+                                <i class="fas fa-microchip"></i>
+                                <span data-fr="Technologie" data-en="Technology">Technologie</span>
+                            </span>
+                            <span class="px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-full text-sm font-medium border border-cyan-400/30 flex items-center gap-2">
+                                <i class="fas fa-briefcase"></i> <span data-fr="Poste actuel" data-en="Current position">Poste actuel</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
+                                <i class="fas fa-tasks"></i> <span data-fr="Responsabilités clés" data-en="Key Responsibilities">Responsabilités clés</span>
+                            </h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Support informatique & maintenance réseaux" data-en="IT support & network maintenance">Support informatique & maintenance réseaux</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Déploiement ~100 caméras de surveillance" data-en="Deployment of ~100 surveillance cameras">Déploiement ~100 caméras de surveillance</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Systèmes de contrôle d'accès et temps de présence" data-en="Access control and time attendance systems">Systèmes de contrôle d'accès et temps de présence</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Interconnexion réseaux entre entreprises" data-en="Inter-company network interconnection">Interconnexion réseaux entre entreprises</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Téléphonie IP Cisco Call Manager" data-en="Cisco Call Manager IP telephony">Téléphonie IP Cisco Call Manager</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Déploiement PaperCut (gestion ressources)" data-en="PaperCut deployment (resource management)">Déploiement PaperCut (gestion ressources)</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
+                                <i class="fas fa-users"></i> <span data-fr="Clients majeurs" data-en="Major Clients">Clients majeurs</span>
+                            </h4>
+                            <div class="grid grid-cols-2 gap-3 mb-6">
+                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
+                                    <i class="fas fa-hospital text-red-400 mb-1"></i>
+                                    <p class="text-sm text-gray-300" data-fr="Hôpital militaire" data-en="Military Hospital">Hôpital militaire</p>
+                                </div>
+                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
+                                    <i class="fas fa-university text-blue-400 mb-1"></i>
+                                    <p class="text-sm text-gray-300">Orabank Gabon</p>
+                                </div>
+                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
+                                    <i class="fas fa-landmark text-green-400 mb-1"></i>
+                                    <p class="text-sm text-gray-300">COSUMAF</p>
+                                </div>
+                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
+                                    <i class="fas fa-building text-yellow-400 mb-1"></i>
+                                    <p class="text-sm text-gray-300">ICG Gabon</p>
+                                </div>
+                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
+                                    <i class="fas fa-theater-masks text-purple-400 mb-1"></i>
+                                    <p class="text-sm text-gray-300" data-fr="Min. Culture" data-en="Min. Culture">Min. Culture</p>
+                                </div>
+                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
+                                    <i class="fas fa-oil-can text-gray-400 mb-1"></i>
+                                    <p class="text-sm text-gray-300" data-fr="Min. Pétrole" data-en="Min. Petroleum">Min. Pétrole</p>
+                                </div>
+                            </div>
+
+                            <div class="glass p-4 rounded-xl border border-cyan-400/30 bg-cyan-400/10">
+                                <div class="text-3xl font-bold text-cyan-400">~100</div>
+                                <p class="text-gray-400 text-sm" data-fr="Utilisateurs accompagnés" data-en="Users supported">Utilisateurs accompagnés</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stack technique -->
+                    <div class="mt-6 pt-6 border-t border-white/10">
+                        <h4 class="text-purple-400 font-semibold mb-3" data-fr="Stack technique" data-en="Tech Stack">Stack technique</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">HP ProLiant</span>
+                            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs border border-purple-400/30">Hyper-V</span>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs border border-green-400/30">DFS Replication</span>
+                            <span class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs border border-orange-400/30">Cisco Call Manager</span>
+                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs border border-cyan-400/30">UniFi</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">Active Directory</span>
+                            <span class="px-3 py-1 bg-indigo-500/20 text-indigo-400 rounded-full text-xs border border-indigo-400/30">Entra ID</span>
+                            <span class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-xs border border-blue-600/30">Microsoft 365</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ANAVEA -->
+            <div id="exp-anavea" class="experience-detail-card hidden">
+                <div class="glass rounded-3xl p-8 border border-white/10 hover-card">
+                    <div class="flex justify-between items-start mb-6 flex-wrap gap-3">
+                        <div>
+                            <h3 class="text-3xl font-bold text-cyan-400 mb-2">ANAVEA</h3>
+                            <p class="text-gray-400" data-fr="Autorité Nationale de Vérification et d'Audit (Gouvernement)" data-en="National Authority for Verification and Audit (Government)">Autorité Nationale de Vérification et d'Audit (Gouvernement)</p>
+                        </div>
+                        <span class="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-sm font-medium border border-purple-400/30 flex items-center gap-2">
+                            <i class="fas fa-shield-alt"></i> <span data-fr="Secteur public" data-en="Public Sector">Secteur public</span>
+                        </span>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
+                                <i class="fas fa-tasks"></i> <span data-fr="Responsabilités clés" data-en="Key Responsibilities">Responsabilités clés</span>
+                            </h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Support IT avancé pour vérificateurs" data-en="Advanced IT support for auditors">Support IT avancé pour vérificateurs</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Gestion des licences et conformité" data-en="License management and compliance">Gestion des licences et conformité</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Sauvegarde et protection des données" data-en="Backup and data protection">Sauvegarde et protection des données</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Administration serveurs d'applications" data-en="Application server administration">Administration serveurs d'applications</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Gestion ADDS et contrôle d'accès" data-en="ADDS management and access control">Gestion ADDS et contrôle d'accès</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Supervision infrastructure réseau" data-en="Network infrastructure monitoring">Supervision infrastructure réseau</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <div class="glass p-4 rounded-xl border border-purple-400/30 bg-purple-400/10 mb-6">
+                                <div class="text-3xl font-bold text-purple-400">~70</div>
+                                <p class="text-gray-400 text-sm" data-fr="Utilisateurs professionnels" data-en="Professional users">Utilisateurs professionnels</p>
+                            </div>
+
+                            <h4 class="text-purple-400 font-semibold mb-3 flex items-center gap-2">
+                                <i class="fas fa-exclamation-triangle"></i> <span data-fr="Environnement critique" data-en="Critical Environment">Environnement critique</span>
+                            </h4>
+                            <p class="text-gray-400 text-sm leading-relaxed" data-fr="Infrastructure sensible nécessitant haute disponibilité et sécurité renforcée pour les opérations d'audit financier." data-en="Sensitive infrastructure requiring high availability and enhanced security for financial audit operations.">
+                                Infrastructure sensible nécessitant haute disponibilité et sécurité renforcée pour les opérations d'audit financier.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Stack technique -->
+                    <div class="mt-6 pt-6 border-t border-white/10">
+                        <h4 class="text-purple-400 font-semibold mb-3" data-fr="Stack technique" data-en="Tech Stack">Stack technique</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">HP ProLiant</span>
+                            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs border border-purple-400/30">Virtualisation</span>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs border border-green-400/30">DFS Replication</span>
+                            <span class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs border border-orange-400/30">Cisco Call Manager</span>
+                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs border border-cyan-400/30">UniFi</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">Active Directory</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SAFRIMAT - Avec Badge Technologie -->
+            <div id="exp-safrimat" class="experience-detail-card hidden">
+                <div class="glass rounded-3xl p-8 border border-white/10 hover-card">
+                    <div class="flex justify-between items-start mb-6 flex-wrap gap-3">
+                        <div>
+                            <h3 class="text-3xl font-bold text-cyan-400 mb-2">
+                                <a href="https://safrimat.com/?page=home" target="_blank" class="hover:underline inline-flex items-center gap-2">
+                                    SAFRIMAT <i class="fas fa-external-link-alt text-sm"></i>
+                                </a>
+                            </h3>
+                            <p class="text-gray-400" data-fr="Prestation et vente informatique" data-en="IT services and sales">Prestation et vente informatique</p>
+                        </div>
+                        <span class="badge-tech">
+                            <i class="fas fa-microchip"></i>
+                            <span data-fr="Technologie" data-en="Technology">Technologie</span>
+                        </span>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
+                                <i class="fas fa-tasks"></i> <span data-fr="Responsabilités clés" data-en="Key Responsibilities">Responsabilités clés</span>
+                            </h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Support informatique & maintenance réseau" data-en="IT support & network maintenance">Support informatique & maintenance réseau</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="~100 caméras de surveillance" data-en="~100 surveillance cameras">~100 caméras de surveillance</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Contrôle d'accès et temps de présence" data-en="Access control and time attendance">Contrôle d'accès et temps de présence</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Téléphonie IP Cisco" data-en="Cisco IP telephony">Téléphonie IP Cisco</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Déploiement PaperCut" data-en="PaperCut deployment">Déploiement PaperCut</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Service après-vente" data-en="After-sales service">Service après-vente</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <div class="glass p-4 rounded-xl border border-green-400/30 bg-green-400/10 mb-6">
+                                <div class="text-3xl font-bold text-green-400">~50</div>
+                                <p class="text-gray-400 text-sm" data-fr="Utilisateurs accompagnés" data-en="Users supported">Utilisateurs accompagnés</p>
+                            </div>
+
+                            <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
+                                <i class="fas fa-handshake"></i> <span data-fr="Clients" data-en="Clients">Clients</span>
+                            </h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10">Taskforce</span>
+                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10">SAMADI-BTP</span>
+                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10" data-fr="Hôpital Cancérologie" data-en="Cancer Hospital">Hôpital Cancérologie</span>
+                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10">Le Patrimoine</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stack technique -->
+                    <div class="mt-6 pt-6 border-t border-white/10">
+                        <h4 class="text-purple-400 font-semibold mb-3" data-fr="Stack technique" data-en="Tech Stack">Stack technique</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">HP ProLiant</span>
+                            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs border border-purple-400/30">Hyper-V</span>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs border border-green-400/30">DFS Replication</span>
+                            <span class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs border border-orange-400/30">Cisco Call Manager</span>
+                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs border border-cyan-400/30">UniFi</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">Active Directory</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Centre de Dialyse de Libreville -->
+            <div id="exp-centre-dialyse" class="experience-detail-card hidden">
+                <div class="glass rounded-3xl p-8 border border-white/10 hover-card">
+                    <div class="flex justify-between items-start mb-6 flex-wrap gap-3">
+                        <div>
+                            <h3 class="text-3xl font-bold text-cyan-400 mb-2">
+                                <a href="https://www.facebook.com/CDL.SMEDI.GABON.SANTE/?locale=fr_FR" target="_blank" class="hover:underline inline-flex items-center gap-2">
+                                    Centre de Dialyse de Libreville <i class="fab fa-facebook text-sm"></i>
+                                </a>
+                            </h3>
+                            <p class="text-gray-400" data-fr="Centre hospitalier - Secteur de la santé" data-en="Hospital center - Healthcare sector">Centre hospitalier - Secteur de la santé</p>
+                        </div>
+                        <span class="px-4 py-2 bg-red-500/20 text-red-400 rounded-full text-sm font-medium border border-red-400/30 flex items-center gap-2">
+                            <i class="fas fa-heartbeat"></i> <span data-fr="Santé" data-en="Healthcare">Santé</span>
+                        </span>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
+                                <i class="fas fa-tasks"></i> <span data-fr="Responsabilités clés" data-en="Key Responsibilities">Responsabilités clés</span>
+                            </h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Administration réseaux et systèmes" data-en="Network and systems administration">Administration réseaux et systèmes</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Contrôle de présence" data-en="Attendance control">Contrôle de présence</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Collaboration Dropbox" data-en="Dropbox collaboration">Collaboration Dropbox</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Sauvegarde données" data-en="Data backup">Sauvegarde données</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <div class="glass p-4 rounded-xl border border-red-400/30 bg-red-400/10 mb-6">
+                                <div class="text-3xl font-bold text-red-400">~30</div>
+                                <p class="text-gray-400 text-sm" data-fr="Utilisateurs accompagnés" data-en="Users supported">Utilisateurs accompagnés</p>
+                            </div>
+
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3 text-gray-300">
+                                    <i class="fas fa-video text-cyan-400"></i>
+                                    <span data-fr="Caméras de surveillance" data-en="Surveillance cameras">Caméras de surveillance</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-gray-300">
+                                    <i class="fas fa-users text-cyan-400"></i>
+                                    <span data-fr="Support administratif et laboratoire" data-en="Administrative and laboratory support">Support administratif et laboratoire</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-gray-300">
+                                    <i class="fas fa-file-invoice text-cyan-400"></i>
+                                    <span data-fr="Gestion factures et stock (Sage)" data-en="Invoice and stock management (Sage)">Gestion factures et stock (Sage)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stack technique -->
+                    <div class="mt-6 pt-6 border-t border-white/10">
+                        <h4 class="text-purple-400 font-semibold mb-3" data-fr="Stack technique" data-en="Tech Stack">Stack technique</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">HP ProLiant</span>
+                            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs border border-purple-400/30">Hyper-V</span>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs border border-green-400/30">DFS Replication</span>
+                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs border border-cyan-400/30">UniFi</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">Active Directory</span>
+                            <span class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-xs border border-blue-600/30">Sage</span>
+                            <span class="px-3 py-1 bg-blue-400/20 text-blue-300 rounded-full text-xs border border-blue-400/30">Dropbox</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SYSTEMESCOMS -->
+            <div id="exp-systemescoms" class="experience-detail-card hidden">
+                <div class="glass rounded-3xl p-8 border border-white/10 hover-card">
+                    <div class="flex justify-between items-start mb-6 flex-wrap gap-3">
+                        <div>
+                            <h3 class="text-3xl font-bold text-cyan-400 mb-2">
+                                <a href="https://teznxadbmkxsc.ok.kimi.link/" target="_blank" class="hover:underline inline-flex items-center gap-2">
+                                    SYSTEMESCOMS <i class="fas fa-external-link-alt text-sm"></i>
+                                </a>
+                            </h3>
+                            <p class="text-gray-400" data-fr="Entreprise personnelle créée en 2016 - Prestation de services informatique" data-en="Personal company created in 2016 - IT services">Entreprise personnelle créée en 2016 - Prestation de services informatique</p>
+                        </div>
+                        <span class="px-4 py-2 bg-green-500/20 text-green-400 rounded-full text-sm font-medium border border-green-400/30 flex items-center gap-2">
+                            <i class="fas fa-rocket"></i> <span data-fr="Entrepreneuriat" data-en="Entrepreneurship">Entrepreneuriat</span>
+                        </span>
+                    </div>
+
+                    <div class="mb-6">
+                        <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
+                            <i class="fas fa-tasks"></i> <span data-fr="Responsabilités clés" data-en="Key Responsibilities">Responsabilités clés</span>
+                        </h4>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start gap-3 text-gray-300">
+                                <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                <span data-fr="Prestations IT pour divers clients" data-en="IT services for various clients">Prestations IT pour divers clients</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-gray-300">
+                                <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                <span data-fr="Conseil transformation numérique" data-en="Digital transformation consulting">Conseil transformation numérique</span>
+                            </li>
+                        </ul>
+
+                        <p class="text-gray-300 mb-4" data-fr="Services IT pour divers clients :" data-en="IT services for various clients:">Services IT pour divers clients :</p>
+                        <div class="flex flex-wrap gap-3">
+                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
+                                <i class="fas fa-hospital text-red-400"></i>
+                                <span class="text-gray-300 text-sm" data-fr="Centre hospitalier cancérologie" data-en="Cancer hospital center">Centre hospitalier cancérologie</span>
+                            </div>
+                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
+                                <i class="fas fa-paw text-green-400"></i>
+                                <span class="text-gray-300 text-sm">WWF</span>
+                            </div>
+                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
+                                <i class="fas fa-tooth text-white"></i>
+                                <span class="text-gray-300 text-sm" data-fr="Cabinet dentaire" data-en="Dental office">Cabinet dentaire</span>
+                            </div>
+                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
+                                <i class="fas fa-print text-blue-400"></i>
+                                <span class="text-gray-300 text-sm" data-fr="Entreprise d'imprimerie" data-en="Printing company">Entreprise d'imprimerie</span>
+                            </div>
+                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
+                                <i class="fas fa-calculator text-yellow-400"></i>
+                                <span class="text-gray-300 text-sm" data-fr="Entreprise comptable" data-en="Accounting firm">Entreprise comptable</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stack technique -->
+                    <div class="mt-6 pt-6 border-t border-white/10">
+                        <h4 class="text-purple-400 font-semibold mb-3" data-fr="Stack technique" data-en="Tech Stack">Stack technique</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">HP ProLiant</span>
+                            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs border border-purple-400/30">Hyper-V</span>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs border border-green-400/30">DFS Replication</span>
+                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs border border-cyan-400/30">UniFi</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">Active Directory</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DAVUM GABON -->
+            <div id="exp-davum" class="experience-detail-card hidden">
+                <div class="glass rounded-3xl p-8 border border-white/10 hover-card">
+                    <div class="flex justify-between items-start mb-6 flex-wrap gap-3">
+                        <div>
+                            <h3 class="text-3xl font-bold text-cyan-400 mb-2">DAVUM GABON</h3>
+                            <p class="text-gray-400" data-fr="Matériaux de construction - Secteur Industriel" data-en="Construction materials - Industrial sector">Matériaux de construction - Secteur Industriel</p>
+                        </div>
+                        <span class="px-4 py-2 bg-orange-500/20 text-orange-400 rounded-full text-sm font-medium border border-orange-400/30 flex items-center gap-2">
+                            <i class="fas fa-industry"></i> <span data-fr="Industriel" data-en="Industrial">Industriel</span>
+                        </span>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
+                                <i class="fas fa-tasks"></i> <span data-fr="Responsabilités clés" data-en="Key Responsibilities">Responsabilités clés</span>
+                            </h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Administration systèmes et réseaux" data-en="Systems and network administration">Administration systèmes et réseaux</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Support utilisateurs internes" data-en="Internal user support">Support utilisateurs internes</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span data-fr="Supervision infrastructure IT" data-en="IT infrastructure supervision">Supervision infrastructure IT</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <div class="glass p-4 rounded-xl border border-orange-400/30 bg-orange-400/10">
+                                <div class="text-3xl font-bold text-orange-400">~15</div>
+                                <p class="text-gray-400 text-sm" data-fr="Utilisateurs accompagnés" data-en="Users supported">Utilisateurs accompagnés</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stack technique -->
+                    <div class="mt-6 pt-6 border-t border-white/10">
+                        <h4 class="text-purple-400 font-semibold mb-3" data-fr="Stack technique" data-en="Tech Stack">Stack technique</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">HP ProLiant</span>
+                            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs border border-purple-400/30">Hyper-V</span>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs border border-green-400/30">DFS Replication</span>
+                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs border border-cyan-400/30">UniFi</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">Active Directory</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Integral Tech -->
+            <div id="exp-integral-tech" class="experience-detail-card hidden">
+                <div class="glass rounded-3xl p-8 border border-white/10 hover-card opacity-70">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-3xl font-bold text-gray-400 mb-2">Integral Tech</h3>
+                            <p class="text-gray-500" data-fr="Première expérience professionnelle" data-en="First professional experience">Première expérience professionnelle</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-500 italic" data-fr="Début de carrière - Formation initiale" data-en="Career start - Initial training">Début de carrière - Formation initiale</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
