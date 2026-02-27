@@ -1,1129 +1,1391 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technicien IT Senior | Administrateur Systèmes | Cybersécurité Fortinet - Ange-Marie Boussougou</title>
-    <meta name="description" content="Expert en infrastructure IT, administration systèmes Windows/Linux et cybersécurité Fortinet. 7+ ans d'expérience multi-sites.">
-    
+    <title>Ange-Marie Boussougou | IT Infrastructure Specialist</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                    },
-                    colors: {
-                        fortinet: '#EE4C24',
-                        cyan: '#00D4FF',
-                        purple: '#7000FF',
-                        dark: '#0A0E27',
-                    },
-                    animation: {
-                        'gradient': 'gradient 8s linear infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
-                        'slide-up': 'slideUp 0.8s ease-out forwards',
-                    },
-                    keyframes: {
-                        gradient: {
-                            '0%, 100%': { backgroundPosition: '0% 50%' },
-                            '50%': { backgroundPosition: '100% 50%' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        pulseGlow: {
-                            '0%, 100%': { boxShadow: '0 0 20px rgba(0, 212, 255, 0.3)' },
-                            '50%': { boxShadow: '0 0 40px rgba(0, 212, 255, 0.6)' },
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(30px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+        
         :root {
+            --cyan: #00D4FF;
+            --purple: #7000FF;
+            --magenta: #FF006E;
+            --dark: #0A0E27;
             --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-highlight: rgba(255, 255, 255, 0.25);
         }
         
         body {
-            background: #0A0E27;
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
             color: #fff;
             overflow-x: hidden;
+            cursor: none;
         }
         
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        /* Advanced Glassmorphism */
         .glass {
             background: var(--glass-bg);
             backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
             border: 1px solid var(--glass-border);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 rgba(255,255,255,0.1);
-        }
-        
-        .glass-fortinet {
-            background: rgba(238, 76, 36, 0.1);
-            backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(238, 76, 36, 0.3);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 rgba(255,255,255,0.1);
-        }
-        
-        .text-gradient {
-            background: linear-gradient(135deg, #00D4FF 0%, #7000FF 50%, #EE4C24 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .bg-grid {
-            background-image: 
-                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(rgba(238, 76, 36, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(238, 76, 36, 0.02) 1px, transparent 1px);
-            background-size: 50px 50px, 50px 50px, 100px 100px, 100px 100px;
-        }
-        
-        .hover-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .hover-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -15px rgba(0, 212, 255, 0.2);
-        }
-        
-        .profile-image {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            object-fit: cover;
-            object-position: center top;
-            border: 4px solid rgba(255,255,255,0.2);
-            box-shadow: 0 0 40px rgba(0, 212, 255, 0.3), 0 20px 40px -10px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-        }
-        
-        .profile-image:hover {
-            box-shadow: 0 0 60px rgba(0, 212, 255, 0.5), 0 20px 40px -10px rgba(0, 0, 0, 0.5);
-            transform: scale(1.02);
-        }
-        
-        .cert-badge {
-            transition: all 0.3s ease;
-        }
-        
-        .cert-badge:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
-        }
-        
-        .cert-badge.fortinet:hover {
-            box-shadow: 0 0 30px rgba(238, 76, 36, 0.3);
-        }
-        
-        .skill-tag {
-            transition: all 0.3s ease;
-        }
-        
-        .skill-tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
-        }
-        
-        .timeline-line {
-            background: linear-gradient(to bottom, #00D4FF, #7000FF, #EE4C24);
-        }
-        
-        .linkedin-btn {
-            background: #0077b5;
-            transition: all 0.3s ease;
-        }
-        
-        .linkedin-btn:hover {
-            background: #005885;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px rgba(0, 119, 181, 0.4);
-        }
-        
-        .microsoft-btn {
-            background: #00a4ef;
-            transition: all 0.3s ease;
-        }
-        
-        .microsoft-btn:hover {
-            background: #0078d4;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px rgba(0, 164, 239, 0.4);
-        }
-        
-        .credly-btn {
-            background: #ff6b00;
-            transition: all 0.3s ease;
-        }
-        
-        .credly-btn:hover {
-            background: #e65100;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px rgba(255, 107, 0, 0.4);
-        }
-        
-        .coursera-badge {
-            background: linear-gradient(135deg, #0056d2 0%, #003d91 100%);
-        }
-        
-        .avatar-badge {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .avatar-badge::after {
-            content: 'AB';
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #00D4FF 0%, #7000FF 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
-            border: 3px solid #0A0E27;
-            box-shadow: 0 4px 15px rgba(0,212,255,0.4);
-        }
-        
-        .lang-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            transition: all 0.3s ease;
-        }
-        
-        .lang-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .lang-btn.active {
-            background: #00D4FF;
-            color: #0A0E27;
-            border-color: #00D4FF;
-            font-weight: 600;
-        }
-        
-        .cert-logo {
-            width: 48px;
-            height: 48px;
-            object-fit: contain;
-            border-radius: 8px;
-            background: white;
-            padding: 4px;
-        }
-        
-        .cert-icon-box {
-            width: 48px;
-            height: 48px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: white;
-        }
-        
-        .experience-card {
+            box-shadow: 
+                0 8px 32px 0 rgba(0, 0, 0, 0.37),
+                inset 0 1px 0 var(--glass-highlight);
             position: relative;
             overflow: hidden;
         }
         
-        .experience-card::before {
+        .glass::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            width: 4px;
+            left: -100%;
+            width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, #00D4FF, #7000FF, #EE4C24);
-            transform: scaleY(0);
-            transition: transform 0.3s ease;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transition: left 0.5s;
         }
         
-        .experience-card:hover::before {
-            transform: scaleY(1);
+        .glass:hover::before {
+            left: 100%;
         }
         
-        .tech-icon {
-            transition: all 0.3s ease;
+        .glass-strong {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 
+                0 8px 32px 0 rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                0 0 20px rgba(0, 212, 255, 0.1);
         }
         
-        .tech-icon:hover {
-            transform: scale(1.1) rotate(5deg);
+        /* Grid Background */
+        .bg-grid {
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(112, 0, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(112, 0, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px, 50px 50px, 100px 100px, 100px 100px;
+            position: relative;
         }
         
-        .scroll-indicator {
-            animation: bounce 2s infinite;
+        .bg-grid::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(112, 0, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255, 0, 110, 0.03) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: -1;
         }
         
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
+        /* Cursor Glow */
+        .cursor-glow {
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.8) 0%, rgba(0, 212, 255, 0) 70%);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: screen;
+            transition: transform 0.1s ease;
         }
         
-        .glow-text {
-            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        .cursor-trail {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.15s ease;
+            mix-blend-mode: screen;
         }
         
-        .glow-text-fortinet {
-            text-shadow: 0 0 20px rgba(238, 76, 36, 0.5);
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--cyan);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            box-shadow: 0 0 10px var(--cyan), 0 0 20px var(--cyan);
         }
         
-        /* Custom scrollbar */
+        /* Glow Effects */
+        .glow-cyan { 
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), inset 0 1px 0 rgba(255,255,255,0.2); 
+        }
+        .glow-purple { 
+            box-shadow: 0 0 20px rgba(112, 0, 255, 0.3), inset 0 1px 0 rgba(255,255,255,0.2); 
+        }
+        .text-glow { 
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5), 0 0 40px rgba(0, 212, 255, 0.3); 
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.6), 0 0 60px rgba(0, 212, 255, 0.2); }
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+        .animate-slide-in { animation: slideIn 0.6s ease-out forwards; }
+        
+        /* Timeline */
+        .timeline-line {
+            background: linear-gradient(90deg, var(--cyan), var(--purple), var(--magenta));
+            height: 2px;
+            position: relative;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+        
+        .timeline-node {
+            width: 20px;
+            height: 20px;
+            background: var(--dark);
+            border: 3px solid var(--cyan);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+        
+        .timeline-node:hover {
+            transform: translateY(-50%) scale(1.3);
+            box-shadow: 0 0 30px var(--cyan), 0 0 50px var(--cyan);
+            background: var(--cyan);
+        }
+        
+        .timeline-node.active {
+            background: var(--cyan);
+            box-shadow: 0 0 30px var(--cyan), 0 0 50px var(--cyan);
+            animation: pulse-glow 2s infinite;
+        }
+        
+        /* Skill Bars */
+        .skill-bar {
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--cyan), var(--purple), var(--magenta));
+            border-radius: 4px;
+            transition: width 1.5s ease-out;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+        
+        .skill-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            100% { left: 100%; }
+        }
+        
+        /* Infrastructure Map */
+        .network-node {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 212, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+        
+        .network-node:hover {
+            transform: scale(1.2);
+            background: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 40px var(--cyan), 0 0 60px rgba(0, 212, 255, 0.4);
+        }
+        
+        .connection-line {
+            position: absolute;
+            background: linear-gradient(90deg, var(--cyan), transparent);
+            height: 2px;
+            transform-origin: left center;
+            opacity: 0.5;
+            animation: dataFlow 3s linear infinite;
+        }
+        
+        @keyframes dataFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #0A0E27;
+            background: var(--dark);
         }
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(#00D4FF, #EE4C24);
+            background: linear-gradient(var(--cyan), var(--purple));
             border-radius: 4px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline-horizontal { flex-direction: column; }
+            .network-map { height: 400px !important; }
+            body { cursor: auto; }
+            .cursor-glow, .cursor-trail, .cursor-dot { display: none; }
+        }
+        
+        /* Hover glow for interactive elements */
+        .hover-glow {
+            transition: all 0.3s ease;
+        }
+        .hover-glow:hover {
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: translateY(-2px);
         }
     </style>
 </head>
-<body class="font-sans bg-grid antialiased overflow-x-hidden">
+<body class="bg-grid min-h-screen">
+
+    <!-- Custom Cursor -->
+    <div class="cursor-glow" id="cursor-glow"></div>
+    <div class="cursor-trail" id="cursor-trail"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass border-b border-white/10 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-cyan-500/30">
-                        AB
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="font-display font-bold text-xl text-white">Ange-Marie BA</span>
-                        <span class="text-xs text-gray-400 font-mono">IT | SysAdmin | Fortinet</span>
-                    </div>
+    <nav class="fixed top-0 w-full z-50 glass border-b border-white/10">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3 hover-glow rounded-lg p-2">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center shadow-lg shadow-cyan-500/30">
+                    <i class="fas fa-server text-white text-lg"></i>
                 </div>
-                
-                <div class="hidden md:flex space-x-4 items-center">
-                    <a href="#accueil" class="text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Accueil" data-en="Home">Accueil</a>
-                    <a href="#competences" class="text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Compétences" data-en="Skills">Compétences</a>
-                    <a href="#experience" class="text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Expérience" data-en="Experience">Expérience</a>
-                    <a href="#certifications" class="text-gray-300 hover:text-fortinet font-medium transition-colors" data-fr="Certifications" data-en="Certifications">Certifications</a>
-                    
-                    <div class="flex items-center gap-1 bg-white/10 rounded-full p-1 ml-2">
-                        <button onclick="switchLang('fr')" id="btn-fr" class="lang-btn active px-3 py-1 rounded-full text-sm font-medium">FR</button>
-                        <button onclick="switchLang('en')" id="btn-en" class="lang-btn px-3 py-1 rounded-full text-sm font-medium">EN</button>
-                    </div>
-
-                    <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="linkedin-btn px-4 py-2 text-white rounded-full font-medium flex items-center gap-2 text-sm">
-                        <i class="fab fa-linkedin"></i>
-                        LinkedIn
-                    </a>
-                </div>
-
-                <button class="md:hidden text-gray-300 hover:text-white" onclick="toggleMobileMenu()">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
+                <span class="font-bold text-xl tracking-tight text-glow">A.M. Boussougou</span>
             </div>
-        </div>
-        
-        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#accueil" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium" data-fr="Accueil" data-en="Home">Accueil</a>
-                <a href="#competences" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium" data-fr="Compétences" data-en="Skills">Compétences</a>
-                <a href="#experience" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium" data-fr="Expérience" data-en="Experience">Expérience</a>
-                <a href="#certifications" class="block px-3 py-2 text-gray-300 hover:text-fortinet font-medium" data-fr="Certifications" data-en="Certifications">Certifications</a>
-                
-                <div class="flex items-center gap-2 px-3 py-2">
-                    <span class="text-sm text-gray-400" data-fr="Langue:" data-en="Language:">Langue:</span>
-                    <button onclick="switchLang('fr')" class="lang-btn active px-3 py-1 rounded-full text-sm font-medium">FR</button>
-                    <button onclick="switchLang('en')" class="lang-btn px-3 py-1 rounded-full text-sm font-medium">EN</button>
-                </div>
-
-                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="block px-3 py-2 text-cyan-400 font-medium flex items-center gap-2">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
+            <div class="hidden md:flex gap-8 text-sm font-medium">
+                <a href="#impact" class="hover:text-cyan-400 transition hover-glow px-3 py-1 rounded">Impact</a>
+                <a href="#experience" class="hover:text-cyan-400 transition hover-glow px-3 py-1 rounded">Expériences</a>
+                <a href="#skills" class="hover:text-cyan-400 transition hover-glow px-3 py-1 rounded">Compétences</a>
+                <a href="#infrastructure" class="hover:text-cyan-400 transition hover-glow px-3 py-1 rounded">Infrastructure</a>
+                <a href="#analytics" class="hover:text-cyan-400 transition hover-glow px-3 py-1 rounded">Analytics</a>
             </div>
+            <button class="glass px-4 py-2 rounded-lg text-cyan-400 hover:bg-cyan-400/10 transition text-sm hover-glow">
+                <i class="fas fa-download mr-2"></i>CV
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="accueil" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-cyan-500/20 rounded-full blur-3xl animate-float"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
-            <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-fortinet/10 rounded-full blur-3xl animate-float" style="animation-delay: 4s;"></div>
-        </div>
-
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8 animate-slide-up">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-cyan-400 font-medium text-sm border border-cyan-400/30">
-                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                        <span data-fr="Disponible pour de nouvelles opportunités" data-en="Available for new opportunities">Disponible pour de nouvelles opportunités</span>
-                    </div>
-                    
-                    <h1 class="font-display text-4xl lg:text-6xl font-bold leading-tight text-white" id="hero-title">
-                        Technicien IT Senior<br>
-                        <span class="text-gradient">Administrateur Systèmes</span><br>
-                        <span class="text-3xl lg:text-5xl text-gray-300">Cybersécurité Fortinet</span>
-                    </h1>
-                    
-                    <p class="text-xl text-gray-400 leading-relaxed max-w-lg" data-fr="7 ans d'expertise en support utilisateurs, administration systèmes et réseaux multi-sites. Spécialisé dans les environnements Windows, Microsoft 365, Active Directory, Entra ID et solutions Fortinet." data-en="7 years of expertise in user support, systems administration and multi-site networks. Specialized in Windows environments, Microsoft 365, Active Directory, Entra ID and Fortinet solutions.">
-                        7 ans d'expertise en support utilisateurs, administration systèmes et réseaux multi-sites. 
-                        Spécialisé dans les environnements Windows, Microsoft 365, Active Directory, Entra ID et solutions Fortinet.
-                    </p>
-
-                    <div class="flex flex-wrap gap-4 text-sm">
-                        <div class="flex items-center gap-2 px-4 py-2 glass rounded-full border border-white/10">
-                            <i class="fas fa-check-circle text-cyan-400"></i>
-                            <span data-fr="7+ ans d'expérience" data-en="7+ years experience">7+ ans d'expérience</span>
-                        </div>
-                        <div class="flex items-center gap-2 px-4 py-2 glass rounded-full border border-white/10">
-                            <i class="fas fa-certificate text-fortinet"></i>
-                            <span data-fr="15+ Certifications" data-en="15+ Certifications">15+ Certifications</span>
-                        </div>
-                        <div class="flex items-center gap-2 px-4 py-2 glass rounded-full border border-white/10">
-                            <i class="fas fa-globe text-purple-400"></i>
-                            <span data-fr="Bilingue FR/EN" data-en="Bilingual FR/EN">Bilingue FR/EN</span>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-wrap gap-4">
-                        <a href="mailto:ahouansouange@live.fr" class="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold hover:scale-105 transition-all shadow-lg shadow-cyan-500/30 flex items-center gap-2">
-                            <i class="fas fa-paper-plane"></i>
-                            <span data-fr="Me contacter" data-en="Contact me">Me contacter</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="linkedin-btn px-8 py-4 text-white rounded-full font-semibold flex items-center gap-2 transform hover:scale-105 shadow-lg">
-                            <i class="fab fa-linkedin text-xl"></i>
-                            <span data-fr="Voir mon LinkedIn" data-en="View my LinkedIn">Voir mon LinkedIn</span>
-                        </a>
-                    </div>
-
-                    <div class="flex items-center gap-6 pt-4 text-gray-400">
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-map-marker-alt text-cyan-400"></i>
-                            <span>Montréal et Périphériques, Québec</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-language text-purple-400"></i>
-                            <span data-fr="FR Professionnel / EN Technique" data-en="FR Professional / EN Technical">FR Professionnel / EN Technique</span>
-                        </div>
-                    </div>
+    <section class="pt-32 pb-20 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-purple-900/20 to-transparent pointer-events-none"></div>
+        
+        <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 animate-slide-in">
+                <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full text-sm text-cyan-400 hover-glow cursor-pointer">
+                    <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+                    Disponible pour opportunités
                 </div>
-
-                <!-- Profile Card avec Photo -->
-                <div class="relative flex justify-center lg:justify-end">
-                    <div class="glass rounded-3xl p-8 w-full max-w-md text-center relative overflow-hidden border border-white/20">
-                        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-br from-cyan-500/20 to-purple-600/20"></div>
-                        
-                        <div class="relative z-10 mb-6">
-                            <div class="avatar-badge">
-                                <!-- Champ Photo - Remplacez src par votre photo -->
-                                <img src="photo.jpg" 
-                                     alt="Ange-Marie Boussougou Ahouansou" 
-                                     class="profile-image mx-auto"
-                                     id="profile-photo"
-                                     onerror="this.src='https://via.placeholder.com/220x220/0A0E27/00D4FF?text=AB'">
-                            </div>
-                        </div>
-                        
-                        <h2 class="font-display text-2xl font-bold text-white mb-1">Ange-Marie Boussougou</h2>
-                        <p class="text-cyan-400 font-medium mb-6" id="profile-subtitle" data-fr="Technicien IT Senior | Administrateur Systèmes | Cybersécurité Fortinet" data-en="Senior IT Technician | Systems Administrator | Fortinet Cybersecurity">Technicien IT Senior | Administrateur Systèmes | Cybersécurité Fortinet</p>
-                        
-                        <div class="grid grid-cols-2 gap-4 mb-6">
-                            <div class="glass rounded-xl p-4 border border-white/10">
-                                <div class="text-3xl font-bold text-cyan-400 glow-text">7+</div>
-                                <div class="text-sm text-gray-400 font-medium" data-fr="Années d'exp." data-en="Years exp.">Années d'exp.</div>
-                            </div>
-                            <div class="glass rounded-xl p-4 border border-white/10">
-                                <div class="text-3xl font-bold text-fortinet glow-text-fortinet">15+</div>
-                                <div class="text-sm text-gray-400 font-medium" data-fr="Certifications" data-en="Certifications">Certifications</div>
-                            </div>
-                        </div>
-
-                        <!-- Boutons Credly & Microsoft -->
-                        <div class="space-y-3">
-                            <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank" class="microsoft-btn w-full px-4 py-3 text-white rounded-xl font-semibold flex items-center justify-center gap-3 text-sm">
-                                <i class="fab fa-microsoft text-xl"></i>
-                                <div class="text-left">
-                                    <div class="text-xs opacity-80" data-fr="Voir mon profil" data-en="View my profile">Voir mon profil</div>
-                                    <div class="font-bold">Microsoft Learn</div>
-                                </div>
-                                <i class="fas fa-external-link-alt ml-auto"></i>
-                            </a>
-                            
-                            <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank" class="credly-btn w-full px-4 py-3 text-white rounded-xl font-semibold flex items-center justify-center gap-3 text-sm">
-                                <i class="fas fa-certificate text-xl"></i>
-                                <div class="text-left">
-                                    <div class="text-xs opacity-80" data-fr="Voir mes badges" data-en="View my badges">Voir mes badges</div>
-                                    <div class="font-bold">Credly</div>
-                                </div>
-                                <i class="fas fa-external-link-alt ml-auto"></i>
-                            </a>
-                        </div>
-
-                        <div class="mt-6 pt-6 border-t border-white/10">
-                            <div class="flex justify-center gap-4">
-                                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="w-12 h-12 rounded-full glass flex items-center justify-center text-gray-300 hover:bg-[#0077b5] hover:text-white transition-all border border-white/10">
-                                    <i class="fab fa-linkedin text-xl"></i>
-                                </a>
-                                <a href="mailto:ahouansouange@live.fr" class="w-12 h-12 rounded-full glass flex items-center justify-center text-gray-300 hover:bg-red-500 hover:text-white transition-all border border-white/10">
-                                    <i class="fas fa-envelope text-xl"></i>
-                                </a>
-                                <a href="tel:+14162688673" class="w-12 h-12 rounded-full glass flex items-center justify-center text-gray-300 hover:bg-green-500 hover:text-white transition-all border border-white/10">
-                                    <i class="fas fa-phone text-xl"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="absolute -bottom-4 -left-4 glass p-4 rounded-2xl border border-white/20 hidden lg:block animate-float">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div class="text-sm font-semibold text-white" data-fr="Disponible immédiatement" data-en="Available immediately">Disponible<br>immédiatement</div>
-                        </div>
-                    </div>
+                
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+                    IT Infrastructure<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 text-glow">
+                        Specialist
+                    </span>
+                </h1>
+                
+                <p class="text-xl text-gray-400 max-w-lg">
+                    Expert en réseaux, sécurité et systèmes. 7+ ans d'expérience multi-secteurs : gouvernement, banque, santé, entreprise.
+                </p>
+                
+                <div class="flex gap-4">
+                    <button class="bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-4 rounded-lg font-semibold hover:scale-105 transition glow-cyan hover-glow">
+                        Voir les projets
+                    </button>
+                    <button class="glass px-8 py-4 rounded-lg font-semibold hover:bg-white/5 transition hover-glow">
+                        Me contacter
+                    </button>
                 </div>
             </div>
-        </div>
-
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
-            <i class="fas fa-chevron-down text-gray-400 text-2xl"></i>
+            
+            <!-- Terminal Widget -->
+            <div class="glass-strong rounded-2xl p-6 font-mono text-sm animate-float hover-glow">
+                <div class="flex items-center gap-2 mb-4 text-gray-400">
+                    <div class="w-3 h-3 rounded-full bg-red-500 shadow-lg shadow-red-500/50"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500 shadow-lg shadow-yellow-500/50"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500 shadow-lg shadow-green-500/50"></div>
+                    <span class="ml-2">ange-marie@portfolio:~</span>
+                </div>
+                <div id="terminal-text" class="space-y-2 text-green-400">
+                    <div class="typing-text">Initialisation du profil...</div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="competences" class="py-24 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-4xl font-bold text-white mb-4 glow-text" data-fr="Compétences Clés" data-en="Key Skills">Compétences Clés</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto" data-fr="Expertise technique confirmée en support utilisateurs, administration systèmes et cybersécurité." data-en="Confirmed technical expertise in user support, systems administration and cybersecurity.">Expertise technique confirmée en support utilisateurs, administration systèmes et cybersécurité.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- IT Support -->
-                <div class="hover-card glass rounded-2xl p-8 border border-white/10">
-                    <div class="w-14 h-14 rounded-xl bg-cyan-500/20 flex items-center justify-center text-cyan-400 text-2xl mb-6 tech-icon border border-cyan-400/30">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3 class="font-display text-xl font-bold text-white mb-4" data-fr="IT Support & Helpdesk" data-en="IT Support & Helpdesk">IT Support & Helpdesk</h3>
-                    <ul class="space-y-3 text-gray-400 text-sm">
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-cyan-400 mt-1"></i> <span data-fr="Support utilisateurs N1/N2/N3" data-en="N1/N2/N3 user support">Support utilisateurs N1/N2/N3</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-cyan-400 mt-1"></i> <span data-fr="Gestion de tickets (GLPI, ServiceNow)" data-en="Ticket management (GLPI, ServiceNow)">Gestion de tickets (GLPI, ServiceNow)</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-cyan-400 mt-1"></i> <span data-fr="Support sur site et à distance" data-en="On-site and remote support">Support sur site et à distance</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-cyan-400 mt-1"></i> <span data-fr="135+ utilisateurs supportés" data-en="135+ users supported">135+ utilisateurs supportés</span></li>
-                    </ul>
+    <!-- Impact Dashboard -->
+    <section id="impact" class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">
+                <i class="fas fa-chart-line text-cyan-400 mr-3"></i>
+                Impact Global
+            </h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Stat 1 -->
+                <div class="glass rounded-2xl p-6 text-center hover:glow-cyan transition duration-300 group hover-glow cursor-pointer">
+                    <div class="text-4xl font-bold text-cyan-400 mb-2 counter text-glow" data-target="200">0</div>
+                    <div class="text-gray-400 text-sm group-hover:text-white transition">Caméras installées</div>
+                    <i class="fas fa-video text-2xl mt-4 text-gray-600 group-hover:text-cyan-400 transition"></i>
                 </div>
-
-                <!-- Microsoft 365 -->
-                <div class="hover-card glass rounded-2xl p-8 border border-white/10">
-                    <div class="w-14 h-14 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 text-2xl mb-6 tech-icon border border-purple-400/30">
-                        <i class="fab fa-microsoft"></i>
-                    </div>
-                    <h3 class="font-display text-xl font-bold text-white mb-4">Microsoft 365 & Cloud</h3>
-                    <ul class="space-y-3 text-gray-400 text-sm">
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-purple-400 mt-1"></i> Microsoft Entra ID (Azure AD)</li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-purple-400 mt-1"></i> <span data-fr="Microsoft 365 Ecosystem complet" data-en="Full Microsoft 365 Ecosystem">Microsoft 365 Ecosystem complet</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-purple-400 mt-1"></i> Microsoft Intune & MDM</li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-purple-400 mt-1"></i> <span data-fr="Azure Fundamentals (en cours)" data-en="Azure Fundamentals (in progress)">Azure Fundamentals (en cours)</span></li>
-                    </ul>
+                
+                <!-- Stat 2 -->
+                <div class="glass rounded-2xl p-6 text-center hover:glow-purple transition duration-300 group hover-glow cursor-pointer">
+                    <div class="text-4xl font-bold text-purple-400 mb-2 counter text-glow" data-target="135">0</div>
+                    <div class="text-gray-400 text-sm group-hover:text-white transition">Utilisateurs supportés</div>
+                    <i class="fas fa-users text-2xl mt-4 text-gray-600 group-hover:text-purple-400 transition"></i>
                 </div>
-
-                <!-- Systèmes & Serveur -->
-                <div class="hover-card glass rounded-2xl p-8 border border-white/10">
-                    <div class="w-14 h-14 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 text-2xl mb-6 tech-icon border border-blue-400/30">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <h3 class="font-display text-xl font-bold text-white mb-4" data-fr="Systèmes & Serveur" data-en="Systems & Server">Systèmes & Serveur</h3>
-                    <ul class="space-y-3 text-gray-400 text-sm">
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-blue-400 mt-1"></i> Windows Server 2016/2019/2022</li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-blue-400 mt-1"></i> Active Directory & GPO</li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-blue-400 mt-1"></i> DNS, DHCP, DFS</li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-blue-400 mt-1"></i> Hyper-V & Virtualisation</li>
-                    </ul>
+                
+                <!-- Stat 3 -->
+                <div class="glass rounded-2xl p-6 text-center hover:glow-cyan transition duration-300 group hover-glow cursor-pointer">
+                    <div class="text-4xl font-bold text-cyan-400 mb-2 counter text-glow" data-target="7">0</div>
+                    <div class="text-gray-400 text-sm group-hover:text-white transition">Années d'expérience</div>
+                    <i class="fas fa-calendar-alt text-2xl mt-4 text-gray-600 group-hover:text-cyan-400 transition"></i>
                 </div>
-
-                <!-- Réseaux -->
-                <div class="hover-card glass rounded-2xl p-8 border border-white/10">
-                    <div class="w-14 h-14 rounded-xl bg-green-500/20 flex items-center justify-center text-green-400 text-2xl mb-6 tech-icon border border-green-400/30">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3 class="font-display text-xl font-bold text-white mb-4" data-fr="Réseaux" data-en="Networks">Réseaux</h3>
-                    <ul class="space-y-3 text-gray-400 text-sm">
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-400 mt-1"></i> LAN/WAN/WLAN & TCP/IP</li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-400 mt-1"></i> <span data-fr="Cisco, Ubiquiti, TP-Link" data-en="Cisco, Ubiquiti, TP-Link">Cisco, Ubiquiti, TP-Link</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-400 mt-1"></i> <span data-fr="Câblage structuré Cat6/Cat6a" data-en="Structured cabling Cat6/Cat6a">Câblage structuré Cat6/Cat6a</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-green-400 mt-1"></i> VoIP & Téléphonie IP</li>
-                    </ul>
-                </div>
-
-                <!-- Cybersécurité Fortinet -->
-                <div class="hover-card glass-fortinet rounded-2xl p-8 border border-fortinet/30">
-                    <div class="w-14 h-14 rounded-xl bg-fortinet/20 flex items-center justify-center text-fortinet text-2xl mb-6 tech-icon border border-fortinet/30 animate-pulse-glow">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="font-display text-xl font-bold text-white mb-4" data-fr="Cybersécurité Fortinet" data-en="Fortinet Cybersecurity">Cybersécurité Fortinet</h3>
-                    <ul class="space-y-3 text-gray-400 text-sm">
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-fortinet mt-1"></i> <span data-fr="FortiGate Firewall Configuration" data-en="FortiGate Firewall Configuration">FortiGate Firewall Configuration</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-fortinet mt-1"></i> <span data-fr="VPN IPSec/SSL & Sécurité réseau" data-en="IPSec/SSL VPN & Network Security">VPN IPSec/SSL & Sécurité réseau</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-fortinet mt-1"></i> <span data-fr="Threat Management & IPS" data-en="Threat Management & IPS">Threat Management & IPS</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-fortinet mt-1"></i> <span data-fr="Certified Associate Cybersecurity" data-en="Certified Associate Cybersecurity">Certified Associate Cybersecurity</span></li>
-                    </ul>
-                </div>
-
-                <!-- PaperCut -->
-                <div class="hover-card glass rounded-2xl p-8 border border-white/10">
-                    <div class="w-14 h-14 rounded-xl bg-orange-500/20 flex items-center justify-center text-orange-400 text-2xl mb-6 tech-icon border border-orange-400/30">
-                        <i class="fas fa-print"></i>
-                    </div>
-                    <h3 class="font-display text-xl font-bold text-white mb-4" data-fr="Gestion Documentaire" data-en="Document Management">Gestion Documentaire</h3>
-                    <ul class="space-y-3 text-gray-400 text-sm">
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-orange-400 mt-1"></i> PaperCut MF & Hive</li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-orange-400 mt-1"></i> <span data-fr="Réduction des coûts d'impression" data-en="Printing cost reduction">Réduction des coûts d'impression</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-orange-400 mt-1"></i> <span data-fr="Sécurité des flux documentaires" data-en="Document flow security">Sécurité des flux documentaires</span></li>
-                    </ul>
+                
+                <!-- Stat 4 -->
+                <div class="glass rounded-2xl p-6 text-center hover:glow-purple transition duration-300 group hover-glow cursor-pointer">
+                    <div class="text-4xl font-bold text-purple-400 mb-2 text-glow">∞</div>
+                    <div class="text-gray-400 text-sm group-hover:text-white transition">Passion IT</div>
+                    <i class="fas fa-heart text-2xl mt-4 text-gray-600 group-hover:text-purple-400 transition animate-pulse"></i>
                 </div>
             </div>
-
-            <div class="mt-16">
-                <h3 class="text-center text-lg font-semibold text-gray-300 mb-6" data-fr="Stack Technique" data-en="Technical Stack">Stack Technique</h3>
-                <div class="flex flex-wrap justify-center gap-3">
-                    <span class="skill-tag px-4 py-2 glass text-cyan-400 rounded-full text-sm font-medium border border-cyan-400/30">Windows Server</span>
-                    <span class="skill-tag px-4 py-2 glass text-purple-400 rounded-full text-sm font-medium border border-purple-400/30">Microsoft 365</span>
-                    <span class="skill-tag px-4 py-2 glass text-blue-400 rounded-full text-sm font-medium border border-blue-400/30">Active Directory</span>
-                    <span class="skill-tag px-4 py-2 glass text-fortinet rounded-full text-sm font-medium border border-fortinet/30">Fortinet</span>
-                    <span class="skill-tag px-4 py-2 glass text-green-400 rounded-full text-sm font-medium border border-green-400/30">Cisco</span>
-                    <span class="skill-tag px-4 py-2 glass text-orange-400 rounded-full text-sm font-medium border border-orange-400/30">PaperCut</span>
-                    <span class="skill-tag px-4 py-2 glass text-pink-400 rounded-full text-sm font-medium border border-pink-400/30">Intune</span>
-                    <span class="skill-tag px-4 py-2 glass text-yellow-400 rounded-full text-sm font-medium border border-yellow-400/30">Hyper-V</span>
-                    <span class="skill-tag px-4 py-2 glass text-gray-300 rounded-full text-sm font-medium border border-white/20">VoIP</span>
+            
+            <!-- Sectors -->
+            <div class="mt-12 glass rounded-2xl p-8 hover-glow">
+                <h3 class="text-xl font-semibold mb-6 text-center">Secteurs d'intervention</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="px-6 py-3 rounded-full bg-blue-500/20 border border-blue-500/50 text-blue-300 hover-glow cursor-pointer transition">
+                        <i class="fas fa-landmark mr-2"></i>Gouvernement
+                    </span>
+                    <span class="px-6 py-3 rounded-full bg-green-500/20 border border-green-500/50 text-green-300 hover-glow cursor-pointer transition">
+                        <i class="fas fa-university mr-2"></i>Banque
+                    </span>
+                    <span class="px-6 py-3 rounded-full bg-red-500/20 border border-red-500/50 text-red-300 hover-glow cursor-pointer transition">
+                        <i class="fas fa-hospital mr-2"></i>Santé
+                    </span>
+                    <span class="px-6 py-3 rounded-full bg-purple-500/20 border border-purple-500/50 text-purple-300 hover-glow cursor-pointer transition">
+                        <i class="fas fa-building mr-2"></i>Entreprise
+                    </span>
+                    <span class="px-6 py-3 rounded-full bg-yellow-500/20 border border-yellow-500/50 text-yellow-300 hover-glow cursor-pointer transition">
+                        <i class="fas fa-hard-hat mr-2"></i>BTP
+                    </span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Experience Timeline -->
-    <section id="experience" class="py-24 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent"></div>
-        
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-4xl font-bold text-white mb-4 glow-text" data-fr="Expérience Professionnelle" data-en="Professional Experience">Expérience Professionnelle</h2>
-                <p class="text-gray-400" data-fr="Parcours complet en support IT, administration systèmes et cybersécurité." data-en="Complete career in IT support, systems administration and cybersecurity.">Parcours complet en support IT, administration systèmes et cybersécurité.</p>
+    <section id="experience" class="py-20 px-6 bg-black/20">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">
+                <i class="fas fa-history text-purple-400 mr-3"></i>
+                Parcours Professionnel
+            </h2>
+            
+            <!-- Timeline Navigation -->
+            <div class="relative mb-12 overflow-x-auto pb-4">
+                <div class="timeline-line min-w-[800px]" style="top: 30px;">
+                    <div class="timeline-node active" style="left: 0%" onclick="showExperience(0)"></div>
+                    <div class="timeline-node" style="left: 16%" onclick="showExperience(1)"></div>
+                    <div class="timeline-node" style="left: 32%" onclick="showExperience(2)"></div>
+                    <div class="timeline-node" style="left: 48%" onclick="showExperience(3)"></div>
+                    <div class="timeline-node" style="left: 64%" onclick="showExperience(4)"></div>
+                    <div class="timeline-node" style="left: 80%" onclick="showExperience(5)"></div>
+                    <div class="timeline-node" style="left: 100%" onclick="showExperience(6)"></div>
+                </div>
+                <div class="flex justify-between min-w-[800px] mt-8 text-sm text-gray-400 font-mono">
+                    <span>HT241</span>
+                    <span>ANAVEA</span>
+                    <span>SAFRIMAT</span>
+                    <span>Centre Dialyse</span>
+                    <span>SYSTEMESCOMS</span>
+                    <span>DAVUM</span>
+                    <span>Integral Tech</span>
+                </div>
             </div>
-
-            <div class="relative">
-                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 timeline-line rounded-full"></div>
-
-                <!-- HIGH-TECH 241 -->
-                <div class="relative mb-12 md:mb-0">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
-                            <div class="experience-card glass p-6 rounded-2xl border border-white/10 hover-card">
-                                <span class="text-cyan-400 font-semibold text-sm">Nov. 2023 – Sept. 2024</span>
-                                <h3 class="font-display text-xl font-bold text-white mt-2">Senior IT Support & Systems Technician</h3>
-                                <p class="text-gray-400 font-medium mb-3">HIGH-TECH 241 – Libreville, Gabon</p>
-                                <div class="flex flex-wrap gap-2 mb-3">
-                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded border border-cyan-400/30">IT Support</span>
-                                    <span class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs rounded border border-purple-400/30">SysAdmin</span>
-                                    <span class="px-2 py-1 bg-fortinet/20 text-fortinet text-xs rounded border border-fortinet/30">Fortinet</span>
+            
+            <!-- Experience Cards -->
+            <div id="experience-container" class="space-y-6">
+                <!-- Card 1: HT241 -->
+                <div class="experience-card glass-strong rounded-2xl p-8 animate-slide-in hover-glow" data-index="0">
+                    <div class="flex flex-col md:flex-row justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-cyan-400 mb-2 text-glow">HT241</h3>
+                            <p class="text-gray-400">Entreprise de vente et prestations de services informatiques</p>
+                        </div>
+                        <span class="glass px-4 py-2 rounded-lg text-sm text-cyan-400 mt-4 md:mt-0 animate-pulse-glow">
+                            <i class="fas fa-briefcase mr-2"></i>Poste actuel
+                        </span>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold mb-3 text-purple-400">Responsabilités clés</h4>
+                            <ul class="space-y-2 text-gray-300">
+                                <li class="flex items-start gap-2 hover:text-cyan-400 transition cursor-default">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Support informatique & maintenance réseaux</span>
+                                </li>
+                                <li class="flex items-start gap-2 hover:text-cyan-400 transition cursor-default">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Déploiement ~100 caméras de surveillance</span>
+                                </li>
+                                <li class="flex items-start gap-2 hover:text-cyan-400 transition cursor-default">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Systèmes de contrôle d'accès et temps de présence</span>
+                                </li>
+                                <li class="flex items-start gap-2 hover:text-cyan-400 transition cursor-default">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Interconnexion réseaux entre entreprises</span>
+                                </li>
+                                <li class="flex items-start gap-2 hover:text-cyan-400 transition cursor-default">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Téléphonie IP Cisco Call Manager</span>
+                                </li>
+                                <li class="flex items-start gap-2 hover:text-cyan-400 transition cursor-default">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Déploiement PaperCut (gestion ressources)</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold mb-3 text-purple-400">Clients majeurs</h4>
+                            <div class="grid grid-cols-2 gap-3 mb-4">
+                                <div class="glass p-3 rounded-lg text-center text-sm hover-glow cursor-pointer">
+                                    <i class="fas fa-hospital text-red-400 mb-1"></i>
+                                    <div>Hôpital militaire</div>
                                 </div>
-                                <ul class="text-gray-400 text-sm space-y-2">
-                                    <li>• <span data-fr="Support avancé 65+ utilisateurs, mentorat technique" data-en="Advanced support 65+ users, technical mentoring">Support avancé 65+ utilisateurs, mentorat technique</span></li>
-                                    <li>• <span data-fr="Administration FortiGate : firewall, VPN, NAT" data-en="FortiGate administration: firewall, VPN, NAT">Administration FortiGate : firewall, VPN, NAT</span></li>
-                                    <li>• <span data-fr="Windows Server, AD, DFS, réplication des données" data-en="Windows Server, AD, DFS, data replication">Windows Server, AD, DFS, réplication des données</span></li>
-                                    <li>• <span data-fr="Déploiement PaperCut MF (réduction 30% impressions)" data-en="PaperCut MF deployment (30% print reduction)">Déploiement PaperCut MF (réduction 30% impressions)</span></li>
-                                    <li>• <span data-fr="Projets CCTV IP de conception à production" data-en="CCTV IP projects from design to production">Projets CCTV IP de conception à production</span></li>
-                                </ul>
+                                <div class="glass p-3 rounded-lg text-center text-sm hover-glow cursor-pointer">
+                                    <i class="fas fa-university text-blue-400 mb-1"></i>
+                                    <div>Orabank Gabon</div>
+                                </div>
+                                <div class="glass p-3 rounded-lg text-center text-sm hover-glow cursor-pointer">
+                                    <i class="fas fa-landmark text-green-400 mb-1"></i>
+                                    <div>COSUMAF</div>
+                                </div>
+                                <div class="glass p-3 rounded-lg text-center text-sm hover-glow cursor-pointer">
+                                    <i class="fas fa-building text-yellow-400 mb-1"></i>
+                                    <div>ICG Gabon</div>
+                                </div>
+                                <div class="glass p-3 rounded-lg text-center text-sm hover-glow cursor-pointer">
+                                    <i class="fas fa-theater-masks text-purple-400 mb-1"></i>
+                                    <div>Min. Culture</div>
+                                </div>
+                                <div class="glass p-3 rounded-lg text-center text-sm hover-glow cursor-pointer">
+                                    <i class="fas fa-oil-can text-gray-400 mb-1"></i>
+                                    <div>Min. Pétrole</div>
+                                </div>
+                            </div>
+                            
+                            <div class="glass p-4 rounded-lg border-l-4 border-cyan-400 hover-glow">
+                                <div class="text-2xl font-bold text-cyan-400 text-glow">65</div>
+                                <div class="text-sm text-gray-400">Utilisateurs accompagnés</div>
                             </div>
                         </div>
-                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-cyan-400 rounded-full border-4 border-dark shadow-lg shadow-cyan-400/50 z-10"></div>
-                        <div class="md:w-5/12 md:pl-8 hidden md:block"></div>
+                    </div>
+                    
+                    <div class="mt-6 pt-6 border-t border-white/10">
+                        <h4 class="font-semibold mb-3 text-purple-400">Stack technique</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-sm hover-glow cursor-pointer">Cisco Switch</span>
+                            <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-sm hover-glow cursor-pointer">Cisco Router</span>
+                            <span class="px-3 py-1 rounded-full bg-orange-500/20 text-orange-300 text-sm hover-glow cursor-pointer">FortiGate</span>
+                            <span class="px-3 py-1 rounded-full bg-green-500/20 text-green-300 text-sm hover-glow cursor-pointer">UniFi</span>
+                            <span class="px-3 py-1 rounded-full bg-gray-500/20 text-gray-300 text-sm hover-glow cursor-pointer">HP ProLiant</span>
+                            <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-sm hover-glow cursor-pointer">Canon/Ricoh</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- ANAVEA -->
-                <div class="relative mb-12 md:mb-0 md:mt-12">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 hidden md:block"></div>
-                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-purple-400 rounded-full border-4 border-dark shadow-lg shadow-purple-400/50 z-10"></div>
-                        <div class="md:w-5/12 md:pl-8 mb-4 md:mb-0">
-                            <div class="experience-card glass p-6 rounded-2xl border border-white/10 hover-card">
-                                <span class="text-purple-400 font-semibold text-sm">Mai 2021 – Sept. 2023</span>
-                                <h3 class="font-display text-xl font-bold text-white mt-2">Senior IT Support & SI</h3>
-                                <p class="text-gray-400 font-medium mb-3">ANAVEA (Autorité Nationale de Vérification d'Audit) – Gabon</p>
-                                <div class="flex flex-wrap gap-2 mb-3">
-                                    <span class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs rounded border border-purple-400/30">SysAdmin</span>
-                                    <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded border border-blue-400/30">Team Lead</span>
-                                </div>
-                                <ul class="text-gray-400 text-sm space-y-2">
-                                    <li>• <span data-fr="Coordination équipe IT 3 personnes" data-en="Coordination of 3-person IT team">Coordination équipe IT 3 personnes</span></li>
-                                    <li>• <span data-fr="Gestion 70 postes, 5 imprimantes, 3 serveurs" data-en="Management of 70 workstations, 5 printers, 3 servers">Gestion 70 postes, 5 imprimantes, 3 serveurs</span></li>
-                                    <li>• <span data-fr="Administration Google Workspace, messagerie" data-en="Google Workspace administration, messaging">Administration Google Workspace, messagerie</span></li>
-                                    <li>• <span data-fr="Mise en place DFS réplication des données" data-en="Implementation of DFS data replication">Mise en place DFS réplication des données</span></li>
-                                </ul>
+                <!-- Card 2: ANAVEA (Hidden by default) -->
+                <div class="experience-card glass-strong rounded-2xl p-8 hidden hover-glow" data-index="1">
+                    <div class="flex flex-col md:flex-row justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-cyan-400 mb-2 text-glow">ANAVEA</h3>
+                            <p class="text-gray-400">Autorité Nationale de Vérification et d'Audit (Gouvernement)</p>
+                        </div>
+                        <span class="glass px-4 py-2 rounded-lg text-sm text-purple-400">
+                            <i class="fas fa-shield-alt mr-2"></i>Secteur public
+                        </span>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold mb-3 text-purple-400">Responsabilités clés</h4>
+                            <ul class="space-y-2 text-gray-300">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Support IT avancé pour vérificateurs</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Gestion des licences et conformité</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Sauvegarde et protection des données</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Administration serveurs d'applications</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Gestion ADDS et contrôle d'accès</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Supervision infrastructure réseau</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <div class="glass p-4 rounded-lg border-l-4 border-purple-400 mb-4 hover-glow">
+                                <div class="text-2xl font-bold text-purple-400 text-glow">70</div>
+                                <div class="text-sm text-gray-400">Utilisateurs professionnels</div>
                             </div>
+                            
+                            <h4 class="font-semibold mb-3 text-purple-400">Environnement critique</h4>
+                            <p class="text-gray-300 text-sm mb-4">
+                                Infrastructure sensible nécessitant haute disponibilité et sécurité renforcée pour les opérations d'audit financier.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 pt-6 border-t border-white/10">
+                        <h4 class="font-semibold mb-3 text-purple-400">Stack technique</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-sm hover-glow cursor-pointer">HP ProLiant</span>
+                            <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-sm hover-glow cursor-pointer">Virtualisation</span>
+                            <span class="px-3 py-1 rounded-full bg-green-500/20 text-green-300 text-sm hover-glow cursor-pointer">DFS Replication</span>
+                            <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-sm hover-glow cursor-pointer">Cisco Call Manager</span>
+                            <span class="px-3 py-1 rounded-full bg-green-500/20 text-green-300 text-sm hover-glow cursor-pointer">UniFi</span>
+                            <span class="px-3 py-1 rounded-full bg-gray-500/20 text-gray-300 text-sm hover-glow cursor-pointer">Active Directory</span>
                         </div>
                     </div>
                 </div>
 
+                <!-- Cards 3-7 suivent le même pattern... -->
                 <!-- SAFRIMAT -->
-                <div class="relative mb-12 md:mb-0 md:mt-12">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
-                            <div class="experience-card glass p-6 rounded-2xl border border-white/10 hover-card">
-                                <span class="text-green-400 font-semibold text-sm">Sept. 2020 – Mars 2021</span>
-                                <h3 class="font-display text-xl font-bold text-white mt-2">Senior IT Support & Maintenance</h3>
-                                <p class="text-gray-400 font-medium mb-3">SAFRIMAT – Libreville, Gabon</p>
-                                <div class="flex flex-wrap gap-2 mb-3">
-                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded border border-cyan-400/30">IT Support</span>
-                                    <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded border border-green-400/30">Réseaux</span>
-                                </div>
-                                <ul class="text-gray-400 text-sm space-y-2">
-                                    <li>• <span data-fr="Support utilisateurs avancé et incidents complexes" data-en="Advanced user support and complex incidents">Support utilisateurs avancé et incidents complexes</span></li>
-                                    <li>• <span data-fr="Déploiement infrastructures réseaux et VoIP" data-en="Deployment of network and VoIP infrastructures">Déploiement infrastructures réseaux et VoIP</span></li>
-                                    <li>• <span data-fr="Vidéosurveillance 32 caméras IP" data-en="32 IP camera video surveillance">Vidéosurveillance 32 caméras IP</span></li>
-                                </ul>
-                            </div>
+                <div class="experience-card glass-strong rounded-2xl p-8 hidden hover-glow" data-index="2">
+                    <div class="flex flex-col md:flex-row justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-cyan-400 mb-2 text-glow">SAFRIMAT</h3>
+                            <p class="text-gray-400">Prestation et vente informatique</p>
                         </div>
-                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-400 rounded-full border-4 border-dark shadow-lg shadow-green-400/50 z-10"></div>
-                        <div class="md:w-5/12 md:pl-8 hidden md:block"></div>
                     </div>
-                </div>
-
-                <!-- Autres expériences condensées -->
-                <div class="relative mb-12 md:mb-0 md:mt-12">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 hidden md:block"></div>
-                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-fortinet rounded-full border-4 border-dark shadow-lg shadow-fortinet/50 z-10"></div>
-                        <div class="md:w-5/12 md:pl-8 mb-4 md:mb-0">
-                            <div class="experience-card glass p-6 rounded-2xl border border-white/10 hover-card">
-                                <span class="text-fortinet font-semibold text-sm">Avr. 2019 – Mars 2020</span>
-                                <h3 class="font-display text-xl font-bold text-white mt-2">Technicien Support Informatique</h3>
-                                <p class="text-gray-400 font-medium mb-3">Centre de Dialyse de Libreville – Gabon</p>
-                                <div class="flex flex-wrap gap-2 mb-3">
-                                    <span class="px-2 py-1 bg-fortinet/20 text-fortinet text-xs rounded border border-fortinet/30">Sécurité</span>
-                                    <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded border border-blue-400/30">SysAdmin</span>
-                                </div>
-                                <ul class="text-gray-400 text-sm space-y-2">
-                                    <li>• <span data-fr="Sécurisation infrastructures IT données patients" data-en="Securing IT infrastructures patient data">Sécurisation infrastructures IT données patients</span></li>
-                                    <li>• <span data-fr="Administration systèmes et réseaux" data-en="Systems and networks administration">Administration systèmes et réseaux</span></li>
-                                </ul>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <ul class="space-y-2 text-gray-300">
+                            <li><i class="fas fa-check-circle text-cyan-400 mr-2"></i>Support informatique & maintenance réseau</li>
+                            <li><i class="fas fa-check-circle text-cyan-400 mr-2"></i>~100 caméras de surveillance</li>
+                            <li><i class="fas fa-check-circle text-cyan-400 mr-2"></i>Contrôle d'accès et temps de présence</li>
+                            <li><i class="fas fa-check-circle text-cyan-400 mr-2"></i>Téléphonie IP Cisco</li>
+                            <li><i class="fas fa-check-circle text-cyan-400 mr-2"></i>Déploiement PaperCut</li>
+                            <li><i class="fas fa-check-circle text-cyan-400 mr-2"></i>Service après-vente</li>
+                        </ul>
+                        <div>
+                            <h4 class="font-semibold mb-3 text-purple-400">Clients</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="glass px-3 py-1 rounded text-sm hover-glow cursor-pointer">Taskforce</span>
+                                <span class="glass px-3 py-1 rounded text-sm hover-glow cursor-pointer">SAMADI-BTP</span>
+                                <span class="glass px-3 py-1 rounded text-sm hover-glow cursor-pointer">Hôpital Cancérologie</span>
+                                <span class="glass px-3 py-1 rounded text-sm hover-glow cursor-pointer">Le Patrimoine</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="relative md:mt-12">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
-                            <div class="experience-card glass p-6 rounded-2xl border border-white/10 hover-card">
-                                <span class="text-indigo-400 font-semibold text-sm">2016 – 2019</span>
-                                <h3 class="font-display text-xl font-bold text-white mt-2">Consultant IT & Technicien</h3>
-                                <p class="text-gray-400 font-medium mb-3">SYSTEMESCOMS – Libreville, Gabon</p>
-                                <div class="flex flex-wrap gap-2 mb-3">
-                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded border border-cyan-400/30">Consultant</span>
-                                    <span class="px-2 py-1 bg-indigo-500/20 text-indigo-400 text-xs rounded border border-indigo-400/30">Freelance</span>
-                                </div>
-                                <ul class="text-gray-400 text-sm space-y-2">
-                                    <li>• <span data-fr="Prestations IT pour ONG, hôpitaux, cabinets" data-en="IT services for NGOs, hospitals, firms">Prestations IT pour ONG, hôpitaux, cabinets</span></li>
-                                    <li>• <span data-fr="Conseil transformation numérique" data-en="Digital transformation consulting">Conseil transformation numérique</span></li>
-                                </ul>
+                <!-- Centre de Dialyse -->
+                <div class="experience-card glass-strong rounded-2xl p-8 hidden hover-glow" data-index="3">
+                    <h3 class="text-2xl font-bold text-cyan-400 mb-2 text-glow">Centre de Dialyse de Libreville</h3>
+                    <p class="text-gray-400 mb-4">Centre hospitalier - Administration réseaux et systèmes</p>
+                    <div class="grid md:grid-cols-2 gap-4 text-gray-300">
+                        <div class="hover:text-cyan-400 transition"><i class="fas fa-network-wired text-cyan-400 mr-2"></i>Administration réseaux et systèmes</div>
+                        <div class="hover:text-cyan-400 transition"><i class="fas fa-video text-cyan-400 mr-2"></i>Caméras de surveillance</div>
+                        <div class="hover:text-cyan-400 transition"><i class="fas fa-clock text-cyan-400 mr-2"></i>Contrôle de présence</div>
+                        <div class="hover:text-cyan-400 transition"><i class="fas fa-users-cog text-cyan-400 mr-2"></i>Support administratif et laboratoire</div>
+                        <div class="hover:text-cyan-400 transition"><i class="fas fa-cloud text-cyan-400 mr-2"></i>Collaboration Dropbox</div>
+                        <div class="hover:text-cyan-400 transition"><i class="fas fa-file-invoice text-cyan-400 mr-2"></i>Gestion factures et stock (Sage)</div>
+                        <div class="hover:text-cyan-400 transition"><i class="fas fa-save text-cyan-400 mr-2"></i>Sauvegarde données</div>
+                    </div>
+                </div>
+
+                <!-- SYSTEMESCOMS -->
+                <div class="experience-card glass-strong rounded-2xl p-8 hidden hover-glow" data-index="4">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-cyan-400 mb-2 text-glow">SYSTEMESCOMS</h3>
+                            <p class="text-gray-400">Entreprise personnelle créée en 2016</p>
+                        </div>
+                        <span class="glass px-4 py-2 rounded-lg text-sm text-green-400">
+                            <i class="fas fa-rocket mr-2"></i>Entrepreneuriat
+                        </span>
+                    </div>
+                    <p class="text-gray-300 mb-4">Services IT pour divers clients :</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="glass px-4 py-2 rounded-lg hover-glow cursor-pointer"><i class="fas fa-hospital text-red-400 mr-2"></i>Centre hospitalier cancérologie</span>
+                        <span class="glass px-4 py-2 rounded-lg hover-glow cursor-pointer"><i class="fas fa-paw text-green-400 mr-2"></i>WWF</span>
+                        <span class="glass px-4 py-2 rounded-lg hover-glow cursor-pointer"><i class="fas fa-tooth text-white mr-2"></i>Cabinet dentaire</span>
+                        <span class="glass px-4 py-2 rounded-lg hover-glow cursor-pointer"><i class="fas fa-print text-blue-400 mr-2"></i>Entreprise d'imprimerie</span>
+                        <span class="glass px-4 py-2 rounded-lg hover-glow cursor-pointer"><i class="fas fa-calculator text-yellow-400 mr-2"></i>Entreprise comptable</span>
+                    </div>
+                </div>
+
+                <!-- DAVUM -->
+                <div class="experience-card glass-strong rounded-2xl p-8 hidden hover-glow" data-index="5">
+                    <h3 class="text-2xl font-bold text-cyan-400 mb-2 text-glow">DAVUM GABON</h3>
+                    <p class="text-gray-400 mb-4">Matériaux de construction</p>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="hover:text-cyan-400 transition"><i class="fas fa-server text-cyan-400 mr-2"></i>Administration systèmes et réseaux</li>
+                        <li class="hover:text-cyan-400 transition"><i class="fas fa-headset text-cyan-400 mr-2"></i>Support utilisateurs internes</li>
+                        <li class="hover:text-cyan-400 transition"><i class="fas fa-eye text-cyan-400 mr-2"></i>Supervision infrastructure IT</li>
+                    </ul>
+                </div>
+
+                <!-- Integral Technologies -->
+                <div class="experience-card glass-strong rounded-2xl p-8 hidden hover-glow" data-index="6">
+                    <h3 class="text-2xl font-bold text-cyan-400 mb-2 text-glow">INTEGRAL TECHNOLOGIES</h3>
+                    <p class="text-gray-400 mb-4">Services informatiques</p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="hover:text-cyan-400 transition"><i class="fas fa-user-tie text-cyan-400 mr-2"></i>Support utilisateurs internes et clients</li>
+                            <li class="hover:text-cyan-400 transition"><i class="fas fa-shield-virus text-cyan-400 mr-2"></i>Déploiement Kaspersky Endpoint</li>
+                            <li class="hover:text-cyan-400 transition"><i class="fas fa-database text-cyan-400 mr-2"></i>Déploiement iDsBox (sauvegarde)</li>
+                            <li class="hover:text-cyan-400 transition"><i class="fas fa-coffee text-cyan-400 mr-2"></i>Mise en place cybercafé</li>
+                        </ul>
+                        <div class="glass p-4 rounded-lg hover-glow">
+                            <h4 class="font-semibold mb-2 text-purple-400">Équipements</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-sm glass px-2 py-1 rounded hover:bg-white/10 cursor-pointer">Serveurs</span>
+                                <span class="text-sm glass px-2 py-1 rounded hover:bg-white/10 cursor-pointer">iDsBox</span>
+                                <span class="text-sm glass px-2 py-1 rounded hover:bg-white/10 cursor-pointer">Fortinet</span>
+                                <span class="text-sm glass px-2 py-1 rounded hover:bg-white/10 cursor-pointer">Cisco</span>
                             </div>
                         </div>
-                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-indigo-400 rounded-full border-4 border-dark shadow-lg shadow-indigo-400/50 z-10"></div>
-                        <div class="md:w-5/12 md:pl-8 hidden md:block"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Certifications Section -->
-    <section id="certifications" class="py-24 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-4xl font-bold text-white mb-4 glow-text" data-fr="Certifications & Badges" data-en="Certifications & Badges">Certifications & Badges</h2>
-                <p class="text-gray-400" data-fr="Formations continues et certifications professionnelles vérifiées" data-en="Continuous training and verified professional certifications">Formations continues et certifications professionnelles vérifiées</p>
+    <!-- Skills Matrix -->
+    <section id="skills" class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">
+                <i class="fas fa-cogs text-cyan-400 mr-3"></i>
+                Matrice de Compétences
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Technical Skills -->
+                <div class="glass rounded-2xl p-8 hover-glow">
+                    <h3 class="text-xl font-semibold mb-6 text-purple-400">Compétences Techniques</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="flex items-center gap-2">
+                                    <i class="fas fa-network-wired text-cyan-400"></i>
+                                    Networking (Cisco, UniFi, Fortinet)
+                                </span>
+                                <span class="text-cyan-400 font-mono text-glow">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="width: 0%" data-width="95"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="flex items-center gap-2">
+                                    <i class="fas fa-server text-purple-400"></i>
+                                    System Administration
+                                </span>
+                                <span class="text-purple-400 font-mono text-glow">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="width: 0%" data-width="90"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="flex items-center gap-2">
+                                    <i class="fas fa-video text-green-400"></i>
+                                    Surveillance & Access Control
+                                </span>
+                                <span class="text-green-400 font-mono text-glow">92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="width: 0%" data-width="92"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="flex items-center gap-2">
+                                    <i class="fas fa-cloud text-blue-400"></i>
+                                    Virtualisation & Backup
+                                </span>
+                                <span class="text-blue-400 font-mono text-glow">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="width: 0%" data-width="85"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="flex items-center gap-2">
+                                    <i class="fas fa-headset text-yellow-400"></i>
+                                    IT Support & Optimization
+                                </span>
+                                <span class="text-yellow-400 font-mono text-glow">98%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="width: 0%" data-width="98"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
-                <!-- Boutons Credly & Microsoft -->
-                <div class="flex flex-wrap justify-center gap-4 mt-8">
-                    <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank" class="microsoft-btn px-6 py-3 text-white rounded-full font-semibold flex items-center gap-3 transform hover:scale-105 shadow-lg">
-                        <i class="fab fa-microsoft text-2xl"></i>
-                        <div class="text-left">
-                            <div class="text-xs opacity-80" data-fr="Voir toutes mes certifications" data-en="View all my certifications">Voir toutes mes certifications</div>
-                            <div class="font-bold">Microsoft Learn</div>
-                        </div>
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-
-                    <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank" class="credly-btn px-6 py-3 text-white rounded-full font-semibold flex items-center gap-3 transform hover:scale-105 shadow-lg">
-                        <i class="fas fa-certificate text-2xl"></i>
-                        <div class="text-left">
-                            <div class="text-xs opacity-80" data-fr="Voir mes badges digitaux" data-en="View my digital badges">Voir mes badges digitaux</div>
-                            <div class="font-bold">Credly</div>
-                        </div>
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
+                <!-- Radar Chart -->
+                <div class="glass rounded-2xl p-8 flex items-center justify-center hover-glow">
+                    <canvas id="skillsChart" width="400" height="400"></canvas>
                 </div>
             </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Coursera Microsoft 365 -->
-                <div class="cert-badge coursera-badge text-white p-6 rounded-2xl border border-blue-400/50 shadow-lg shadow-blue-500/20">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center text-white text-2xl backdrop-blur">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-lg">Coursera & Microsoft</h3>
-                            <p class="text-blue-200 text-sm">Février 2026</p>
-                        </div>
-                    </div>
-                    <h4 class="font-semibold text-lg mb-2">The Microsoft 365 Ecosystem</h4>
-                    <p class="text-blue-200 text-sm mb-3" data-fr="Cours en ligne autorisé par Microsoft" data-en="Microsoft authorized online course">Cours en ligne autorisé par Microsoft</p>
-                    <a href="https://coursera.org/verify/82E6416UE9O6" target="_blank" class="inline-flex items-center gap-2 text-sm font-medium hover:underline text-white">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span data-fr="Vérifier le certificat" data-en="Verify certificate">Vérifier le certificat</span>
-                    </a>
+            
+            <!-- Certifications/Technologies Grid -->
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="glass p-4 rounded-xl text-center hover:glow-cyan transition group hover-glow cursor-pointer">
+                    <i class="fab fa-cisco text-4xl text-blue-500 mb-2 group-hover:scale-110 transition"></i>
+                    <div class="text-sm font-semibold">Cisco</div>
+                    <div class="text-xs text-gray-400">Switch, Router, CUCM</div>
                 </div>
-
-                <!-- Microsoft -->
-                <div class="cert-badge glass p-6 rounded-2xl border border-blue-400/30 hover:border-blue-400/60">
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" class="cert-logo">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-white">Microsoft</h3>
-                        </div>
-                    </div>
-                    <ul class="text-sm text-gray-300 space-y-2">
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-check text-blue-400 mt-1 text-xs"></i>
-                            <div>
-                                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials/c929434037b4e87" target="_blank" class="text-cyan-400 hover:underline flex items-center gap-1">
-                                    <span data-fr="Microsoft Entra ID" data-en="Microsoft Entra ID">Microsoft Entra ID</span>
-                                    <i class="fas fa-external-link-alt text-xs"></i>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-check text-blue-400 mt-1 text-xs"></i>
-                            <div>
-                                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials/9916e2bb6d34eab6" target="_blank" class="text-cyan-400 hover:underline flex items-center gap-1">
-                                    <span data-fr="Active Directory Domain Services" data-en="Active Directory Domain Services">Active Directory Domain Services</span>
-                                    <i class="fas fa-external-link-alt text-xs"></i>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-clock text-blue-400 mt-1 text-xs"></i>
-                            <span class="text-gray-400" data-fr="Azure Fundamentals (AZ-900) - en préparation" data-en="Azure Fundamentals (AZ-900) - in preparation">Azure Fundamentals (AZ-900) - en préparation</span>
-                        </li>
-                    </ul>
+                <div class="glass p-4 rounded-xl text-center hover:glow-purple transition group hover-glow cursor-pointer">
+                    <i class="fas fa-shield-alt text-4xl text-orange-500 mb-2 group-hover:scale-110 transition"></i>
+                    <div class="text-sm font-semibold">Fortinet</div>
+                    <div class="text-xs text-gray-400">FortiGate</div>
                 </div>
-
-                <!-- LinkedIn Learning -->
-                <div class="cert-badge glass p-6 rounded-2xl border border-[#0077b5]/30 hover:border-[#0077b5]/60">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="cert-icon-box bg-[#0077b5]">
-                            <i class="fab fa-linkedin"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-white">LinkedIn Learning</h3>
-                        </div>
-                    </div>
-                    <ul class="text-sm text-gray-300 space-y-1">
-                        <li>• <span data-fr="Azure : Configurer et gérer Microsoft Entra ID" data-en="Azure: Configure and manage Microsoft Entra ID">Azure : Configurer et gérer Microsoft Entra ID</span></li>
-                        <li>• Enterprise Mobility Suite</li>
-                        <li>• <span data-fr="Essentiels de Microsoft Security" data-en="Microsoft Security Essentials">Essentiels de Microsoft Security</span></li>
-                        <li>• <span data-fr="Collaborer grâce à Microsoft 365" data-en="Collaborate with Microsoft 365">Collaborer grâce à Microsoft 365</span></li>
-                    </ul>
+                <div class="glass p-4 rounded-xl text-center hover:glow-cyan transition group hover-glow cursor-pointer">
+                    <i class="fas fa-wifi text-4xl text-green-500 mb-2 group-hover:scale-110 transition"></i>
+                    <div class="text-sm font-semibold">UniFi</div>
+                    <div class="text-xs text-gray-400">Switch & AP</div>
                 </div>
-
-                <!-- Fortinet -->
-                <div class="cert-badge glass-fortinet p-6 rounded-2xl border border-fortinet/50 hover:border-fortinet">
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Fortinet_logo.svg" alt="Fortinet" class="cert-logo bg-white">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-white">Fortinet</h3>
-                        </div>
-                    </div>
-                    <ul class="text-sm text-gray-300 space-y-1">
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-shield-alt text-fortinet"></i>
-                            Certified Associate in Cybersecurity
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-shield-alt text-fortinet"></i>
-                            Certified Fundamentals in Cybersecurity
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-shield-alt text-fortinet"></i>
-                            Introduction to the Threat Landscape 3.0
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-shield-alt text-fortinet"></i>
-                            Getting Started in Cybersecurity 3.0
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-shield-alt text-fortinet"></i>
-                            FortiGate 7.6 Operator Self-Paced
-                        </li>
-                    </ul>
-                    <div class="mt-3 pt-3 border-t border-fortinet/30">
-                        <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank" class="text-fortinet text-sm hover:underline flex items-center gap-1">
-                            <span data-fr="Voir sur Credly" data-en="View on Credly">Voir sur Credly</span>
-                            <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
-                    </div>
+                <div class="glass p-4 rounded-xl text-center hover:glow-purple transition group hover-glow cursor-pointer">
+                    <i class="fas fa-server text-4xl text-gray-400 mb-2 group-hover:scale-110 transition"></i>
+                    <div class="text-sm font-semibold">HP ProLiant</div>
+                    <div class="text-xs text-gray-400">Serveurs</div>
                 </div>
-
-                <!-- Cisco -->
-                <div class="cert-badge glass p-6 rounded-2xl border border-orange-500/30 hover:border-orange-500/60">
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Cisco_logo.svg" alt="Cisco" class="cert-logo">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-white">Cisco Networking Academy</h3>
-                        </div>
-                    </div>
-                    <ul class="text-sm text-gray-300 space-y-1">
-                        <li>• Operating Systems</li>
-                        <li>• Computer Hardware Basics</li>
-                        <li>• IT Customer Support Basics</li>
-                        <li>• Introduction to Cybersecurity</li>
-                    </ul>
+                <div class="glass p-4 rounded-xl text-center hover:glow-cyan transition group hover-glow cursor-pointer">
+                    <i class="fas fa-video text-4xl text-red-500 mb-2 group-hover:scale-110 transition"></i>
+                    <div class="text-sm font-semibold">Surveillance</div>
+                    <div class="text-xs text-gray-400">Caméras IP</div>
                 </div>
-
-                <!-- PaperCut -->
-                <div class="cert-badge glass p-6 rounded-2xl border border-green-500/30 hover:border-green-500/60">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center text-white text-xl font-bold">
-                            PC
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-white">PaperCut</h3>
-                        </div>
-                    </div>
-                    <ul class="text-sm text-gray-300 space-y-1">
-                        <li>• <span data-fr="Certification PaperCut MF" data-en="PaperCut MF Certification">Certification PaperCut MF</span></li>
-                        <li>• PaperCut Hive (Cloud)</li>
-                    </ul>
+                <div class="glass p-4 rounded-xl text-center hover:glow-purple transition group hover-glow cursor-pointer">
+                    <i class="fas fa-id-card text-4xl text-yellow-500 mb-2 group-hover:scale-110 transition"></i>
+                    <div class="text-sm font-semibold">Access Control</div>
+                    <div class="text-xs text-gray-400">Temps de présence</div>
+                </div>
+                <div class="glass p-4 rounded-xl text-center hover:glow-cyan transition group hover-glow cursor-pointer">
+                    <i class="fas fa-print text-4xl text-purple-500 mb-2 group-hover:scale-110 transition"></i>
+                    <div class="text-sm font-semibold">PaperCut</div>
+                    <div class="text-xs text-gray-400">Gestion impression</div>
+                </div>
+                <div class="glass p-4 rounded-xl text-center hover:glow-purple transition group hover-glow cursor-pointer">
+                    <i class="fas fa-windows text-4xl text-blue-400 mb-2 group-hover:scale-110 transition"></i>
+                    <div class="text-sm font-semibold">Windows Server</div>
+                    <div class="text-xs text-gray-400">AD, DFS</div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="mt-12 glass rounded-2xl p-8 border border-white/10">
-                <h3 class="font-display text-2xl font-bold text-white mb-6 text-center" data-fr="Formation Académique" data-en="Academic Background">Formation Académique</h3>
-                <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl shadow-lg shadow-cyan-500/30">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <div class="text-center md:text-left">
-                        <h4 class="font-bold text-xl text-white" data-fr="Bachelor en Télécommunications & Réseaux" data-en="Bachelor in Telecommunications & Networks">Bachelor en Télécommunications & Réseaux</h4>
-                        <p class="text-gray-400">Institut CERCO, Cotonou-Bénin (2014)</p>
+    <!-- Infrastructure Map -->
+    <section id="infrastructure" class="py-20 px-6 bg-black/20">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">
+                <i class="fas fa-project-diagram text-purple-400 mr-3"></i>
+                Infrastructure Map
+            </h2>
+            
+            <div class="glass-strong rounded-2xl p-8 relative overflow-hidden hover-glow" style="height: 500px;" id="network-map">
+                <!-- Central Node -->
+                <div class="network-node absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 border-4 border-cyan-400 bg-cyan-400/20 z-10 animate-pulse-glow">
+                    <i class="fas fa-server text-3xl text-cyan-400"></i>
+                    <div class="absolute -bottom-8 w-max text-sm font-semibold text-glow">Core Infrastructure</div>
+                </div>
+                
+                <!-- Satellite Nodes -->
+                <div class="network-node top-10 left-1/4 hover-glow" style="animation-delay: 0s;">
+                    <i class="fas fa-network-wired text-cyan-400"></i>
+                    <div class="absolute -bottom-6 w-max text-xs">Réseaux</div>
+                </div>
+                
+                <div class="network-node top-10 right-1/4 hover-glow" style="animation-delay: 0.5s;">
+                    <i class="fas fa-shield-alt text-purple-400"></i>
+                    <div class="absolute -bottom-6 w-max text-xs">Sécurité</div>
+                </div>
+                
+                <div class="network-node bottom-20 left-1/4 hover-glow" style="animation-delay: 1s;">
+                    <i class="fas fa-video text-green-400"></i>
+                    <div class="absolute -bottom-6 w-max text-xs">Surveillance</div>
+                </div>
+                
+                <div class="network-node bottom-20 right-1/4 hover-glow" style="animation-delay: 1.5s;">
+                    <i class="fas fa-phone text-yellow-400"></i>
+                    <div class="absolute -bottom-6 w-max text-xs">VoIP</div>
+                </div>
+                
+                <div class="network-node top-1/3 right-10 hover-glow" style="animation-delay: 2s;">
+                    <i class="fas fa-cloud text-blue-400"></i>
+                    <div class="absolute -bottom-6 w-max text-xs">Cloud/Backup</div>
+                </div>
+                
+                <div class="network-node bottom-1/3 left-10 hover-glow" style="animation-delay: 2.5s;">
+                    <i class="fas fa-users text-pink-400"></i>
+                    <div class="absolute -bottom-6 w-max text-xs">Support</div>
+                </div>
+                
+                <!-- Connection Lines (SVG) -->
+                <svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 1;">
+                    <line x1="50%" y1="50%" x2="25%" y2="15%" stroke="rgba(0,212,255,0.3)" stroke-width="2" stroke-dasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
+                    </line>
+                    <line x1="50%" y1="50%" x2="75%" y2="15%" stroke="rgba(112,0,255,0.3)" stroke-width="2" stroke-dasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
+                    </line>
+                    <line x1="50%" y1="50%" x2="25%" y2="85%" stroke="rgba(0,212,255,0.3)" stroke-width="2" stroke-dasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
+                    </line>
+                    <line x1="50%" y1="50%" x2="75%" y2="85%" stroke="rgba(112,0,255,0.3)" stroke-width="2" stroke-dasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
+                    </line>
+                    <line x1="50%" y1="50%" x2="90%" y2="33%" stroke="rgba(0,212,255,0.3)" stroke-width="2" stroke-dasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
+                    </line>
+                    <line x1="50%" y1="50%" x2="10%" y2="66%" stroke="rgba(112,0,255,0.3)" stroke-width="2" stroke-dasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
+                    </line>
+                </svg>
+                
+                <!-- Info Panel -->
+                <div class="absolute bottom-4 right-4 glass p-4 rounded-lg max-w-xs text-sm hover-glow">
+                    <div class="font-semibold text-cyan-400 mb-2 text-glow">Architecture IT</div>
+                    <div class="text-gray-300 space-y-1">
+                        <div>• Haute disponibilité</div>
+                        <div>• Sécurisée (FortiGate)</div>
+                        <div>• Scalable (Cisco/UniFi)</div>
+                        <div>• Monitorée 24/7</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-fortinet/10 via-transparent to-cyan-500/10"></div>
-        
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-4xl font-bold text-white mb-4 glow-text" data-fr="Contact" data-en="Contact">Contact</h2>
-                <p class="text-gray-400" data-fr="Basé à Montréal, disponible pour des postes sur site ou à distance." data-en="Based in Montreal, available for on-site or remote positions.">Basé à Montréal, disponible pour des postes sur site ou à distance.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <a href="mailto:ahouansouange@live.fr" class="group glass p-6 rounded-2xl border border-white/10 hover:border-cyan-400/50 transition-all text-center hover-card">
-                    <div class="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center text-cyan-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform border border-cyan-400/30">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2 text-white">Email</h3>
-                    <p class="text-gray-400 text-sm">ahouansouange@live.fr</p>
-                </a>
-
-                <a href="tel:+14162688673" class="group glass p-6 rounded-2xl border border-white/10 hover:border-green-400/50 transition-all text-center hover-card">
-                    <div class="w-14 h-14 bg-green-500/20 rounded-full flex items-center justify-center text-green-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform border border-green-400/30">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2 text-white" data-fr="Téléphone" data-en="Phone">Téléphone</h3>
-                    <p class="text-gray-400 text-sm">+1 (416) 268-8673</p>
-                </a>
-
-                <div class="group glass p-6 rounded-2xl border border-white/10 hover:border-purple-400/50 transition-all text-center hover-card">
-                    <div class="w-14 h-14 bg-purple-500/20 rounded-full flex items-center justify-center text-purple-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform border border-purple-400/30">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2 text-white" data-fr="Localisation" data-en="Location">Localisation</h3>
-                    <p class="text-gray-400 text-sm">Montréal et Périphériques<br>Québec, Canada</p>
+    <!-- Analytics Dashboard -->
+    <section id="analytics" class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">
+                <i class="fas fa-chart-bar text-cyan-400 mr-3"></i>
+                Analytics Dashboard
+            </h2>
+            
+            <div class="grid md:grid-cols-4 gap-6 mb-8">
+                <div class="glass rounded-xl p-6 text-center hover-glow cursor-pointer">
+                    <i class="fas fa-users text-3xl text-cyan-400 mb-2"></i>
+                    <div class="text-3xl font-bold counter text-glow" id="visitor-count" data-target="1247">0</div>
+                    <div class="text-sm text-gray-400">Visiteurs totaux</div>
+                </div>
+                <div class="glass rounded-xl p-6 text-center hover-glow cursor-pointer">
+                    <i class="fas fa-globe text-3xl text-purple-400 mb-2"></i>
+                    <div class="text-3xl font-bold text-glow" id="country-count">12</div>
+                    <div class="text-sm text-gray-400">Pays</div>
+                </div>
+                <div class="glass rounded-xl p-6 text-center hover-glow cursor-pointer">
+                    <i class="fas fa-eye text-3xl text-green-400 mb-2"></i>
+                    <div class="text-3xl font-bold counter text-glow" id="pageviews" data-target="3842">0</div>
+                    <div class="text-sm text-gray-400">Pages vues</div>
+                </div>
+                <div class="glass rounded-xl p-6 text-center hover-glow cursor-pointer">
+                    <i class="fas fa-clock text-3xl text-yellow-400 mb-2"></i>
+                    <div class="text-3xl font-bold text-glow">4m 32s</div>
+                    <div class="text-sm text-gray-400">Temps moyen</div>
                 </div>
             </div>
-
-            <div class="text-center mb-12">
-                <div class="flex flex-wrap justify-center gap-4 mb-8">
-                    <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="w-14 h-14 bg-[#0077b5] rounded-full flex items-center justify-center text-white hover:bg-[#005885] transition-all transform hover:scale-110 shadow-lg shadow-blue-500/30">
-                        <i class="fab fa-linkedin-in text-2xl"></i>
-                    </a>
-                    <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank" class="w-14 h-14 bg-[#00a4ef] rounded-full flex items-center justify-center text-white hover:bg-[#0078d4] transition-all transform hover:scale-110 shadow-lg shadow-blue-400/30">
-                        <i class="fab fa-microsoft text-xl"></i>
-                    </a>
-                    <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank" class="w-14 h-14 bg-[#ff6b00] rounded-full flex items-center justify-center text-white hover:bg-[#e65100] transition-all transform hover:scale-110 shadow-lg shadow-orange-500/30">
-                        <i class="fas fa-award text-xl"></i>
-                    </a>
-                    <a href="mailto:ahouansouange@live.fr" class="w-14 h-14 glass rounded-full flex items-center justify-center text-gray-300 hover:bg-red-500 hover:text-white transition-all transform hover:scale-110 border border-white/20">
-                        <i class="fas fa-envelope text-xl"></i>
-                    </a>
+            
+            <!-- Real-time Chart -->
+            <div class="glass rounded-2xl p-6 hover-glow">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-semibold">Visites en temps réel (dernières 24h)</h3>
+                    <span class="flex items-center gap-2 text-sm text-green-400">
+                        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                        Live
+                    </span>
                 </div>
-
-                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 linkedin-btn text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg">
-                    <i class="fab fa-linkedin text-2xl"></i>
-                    <span data-fr="Connectons-nous sur LinkedIn" data-en="Let's connect on LinkedIn">Connectons-nous sur LinkedIn</span>
-                    <i class="fas fa-external-link-alt text-sm"></i>
-                </a>
+                <canvas id="trafficChart" height="100"></canvas>
             </div>
-
-            <!-- Résumé des 3 compétences -->
-            <div class="glass rounded-2xl p-8 border border-white/10">
-                <h3 class="text-xl font-bold mb-6 text-gray-300 text-center" data-fr="Ce que je peux apporter à votre équipe" data-en="What I can bring to your team">Ce que je peux apporter à votre équipe</h3>
-                <div class="grid md:grid-cols-3 gap-6 text-left">
-                    <div class="border-l-2 border-cyan-400 pl-4">
-                        <h4 class="font-bold text-cyan-400 mb-2">Support IT Proactif</h4>
-                        <p class="text-sm text-gray-400" data-fr="Résolution rapide des incidents, support utilisateurs de qualité, documentation rigoureuse." data-en="Fast incident resolution, quality user support, rigorous documentation.">Résolution rapide des incidents, support utilisateurs de qualité, documentation rigoureuse.</p>
+            
+            <!-- Country Distribution -->
+            <div class="mt-6 grid md:grid-cols-2 gap-6">
+                <div class="glass rounded-2xl p-6 hover-glow">
+                    <h3 class="font-semibold mb-4">Top Pays</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 hover:bg-white/5 p-2 rounded transition cursor-pointer">
+                            <span class="w-8">🇨🇦</span>
+                            <div class="flex-1">
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>Canada</span>
+                                    <span>45%</span>
+                                </div>
+                                <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-red-500 to-white w-[45%] shadow-[0_0_10px_rgba(239,68,68,0.5)]"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 hover:bg-white/5 p-2 rounded transition cursor-pointer">
+                            <span class="w-8">🇫🇷</span>
+                            <div class="flex-1">
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>France</span>
+                                    <span>25%</span>
+                                </div>
+                                <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-blue-500 to-white w-[25%] shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 hover:bg-white/5 p-2 rounded transition cursor-pointer">
+                            <span class="w-8">🇬🇦</span>
+                            <div class="flex-1">
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>Gabon</span>
+                                    <span>20%</span>
+                                </div>
+                                <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-green-500 to-yellow-500 w-[20%] shadow-[0_0_10px_rgba(34,197,94,0.5)]"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="border-l-2 border-purple-400 pl-4">
-                        <h4 class="font-bold text-purple-400 mb-2">Administration Systèmes</h4>
-                        <p class="text-sm text-gray-400" data-fr="Gestion serveurs Windows, Active Directory, virtualisation, sauvegardes et haute disponibilité." data-en="Windows server management, Active Directory, virtualization, backups and high availability.">Gestion serveurs Windows, Active Directory, virtualisation, sauvegardes et haute disponibilité.</p>
-                    </div>
-                    <div class="border-l-2 border-fortinet pl-4">
-                        <h4 class="font-bold text-fortinet mb-2">Sécurité Fortinet</h4>
-                        <p class="text-sm text-gray-400" data-fr="Protection périmètre réseau, configuration FortiGate, VPN sécurisés, conformité et audit." data-en="Network perimeter protection, FortiGate configuration, secure VPNs, compliance and audit.">Protection périmètre réseau, configuration FortiGate, VPN sécurisés, conformité et audit.</p>
+                </div>
+                
+                <div class="glass rounded-2xl p-6 hover-glow">
+                    <h3 class="font-semibold mb-4">Pages populaires</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 glass rounded-lg hover-glow cursor-pointer transition">
+                            <span class="text-sm">/experience</span>
+                            <span class="text-cyan-400 font-mono text-glow">342 vues</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 glass rounded-lg hover-glow cursor-pointer transition">
+                            <span class="text-sm">/skills</span>
+                            <span class="text-cyan-400 font-mono text-glow">298 vues</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 glass rounded-lg hover-glow cursor-pointer transition">
+                            <span class="text-sm">/contact</span>
+                            <span class="text-cyan-400 font-mono text-glow">156 vues</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-dark border-t border-white/10 text-gray-400 py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-cyan-500/30">
-                    AB
-                </div>
-                <span class="font-display font-bold text-white">Ange-Marie BA</span>
-            </div>
-            <p class="text-sm">© 2024 - Portfolio professionnel</p>
-            <div class="flex gap-4 text-sm">
-                <span data-fr="Français: Professionnel" data-en="French: Professional">Français: Professionnel</span>
-                <span>•</span>
-                <span data-fr="Anglais: Technique" data-en="English: Technical">Anglais: Technique</span>
+    <!-- Contact -->
+    <section class="py-20 px-6 bg-black/20">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-3xl font-bold mb-8 text-glow">Prêt à collaborer ?</h2>
+            <p class="text-gray-400 mb-8">Disponible pour missions freelance, CDI ou projets d'infrastructure IT</p>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="mailto:contact@example.com" class="glass px-8 py-4 rounded-lg hover:glow-cyan transition flex items-center gap-3 hover-glow group">
+                    <i class="fas fa-envelope text-cyan-400 group-hover:scale-110 transition"></i>
+                    Email
+                </a>
+                <a href="#" class="glass px-8 py-4 rounded-lg hover:glow-purple transition flex items-center gap-3 hover-glow group">
+                    <i class="fab fa-linkedin text-blue-400 group-hover:scale-110 transition"></i>
+                    LinkedIn
+                </a>
+                <a href="#" class="glass px-8 py-4 rounded-lg hover:glow-cyan transition flex items-center gap-3 hover-glow group">
+                    <i class="fab fa-github text-white group-hover:scale-110 transition"></i>
+                    GitHub
+                </a>
             </div>
         </div>
-    </footer>
+    </section>
 
     <script>
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        let currentLang = 'fr';
+        // Custom Cursor
+        const cursorGlow = document.getElementById('cursor-glow');
+        const cursorTrail = document.getElementById('cursor-trail');
+        const cursorDot = document.getElementById('cursor-dot');
         
-        function switchLang(lang) {
-            currentLang = lang;
-            document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
-            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        let mouseX = 0, mouseY = 0;
+        let trailX = 0, trailY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
             
-            document.querySelectorAll('[data-fr][data-en]').forEach(el => {
-                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                    el.placeholder = el.getAttribute('data-' + lang);
+            cursorGlow.style.left = mouseX - 10 + 'px';
+            cursorGlow.style.top = mouseY - 10 + 'px';
+            
+            cursorDot.style.left = mouseX - 4 + 'px';
+            cursorDot.style.top = mouseY - 4 + 'px';
+        });
+        
+        // Smooth trail animation
+        function animateTrail() {
+            trailX += (mouseX - trailX) * 0.1;
+            trailY += (mouseY - trailY) * 0.1;
+            
+            cursorTrail.style.left = trailX - 20 + 'px';
+            cursorTrail.style.top = trailY - 20 + 'px';
+            
+            requestAnimationFrame(animateTrail);
+        }
+        animateTrail();
+        
+        // Add hover effect to interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, .hover-glow, .timeline-node, .network-node');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorGlow.style.transform = 'scale(2)';
+                cursorTrail.style.transform = 'scale(1.5)';
+                cursorTrail.style.borderColor = 'rgba(0, 212, 255, 0.8)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorGlow.style.transform = 'scale(1)';
+                cursorTrail.style.transform = 'scale(1)';
+                cursorTrail.style.borderColor = 'rgba(0, 212, 255, 0.3)';
+            });
+        });
+        
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+        
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const inc = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(animateCounters, 20);
                 } else {
-                    el.textContent = el.getAttribute('data-' + lang);
+                    counter.innerText = target;
+                }
+            });
+        };
+        
+        // Intersection Observer for counters
+        const observerOptions = {
+            threshold: 0.5
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelector('#impact').querySelectorAll('.counter').forEach(counter => {
+            observer.observe(counter.parentElement);
+        });
+        
+        // Timeline Navigation
+        function showExperience(index) {
+            // Update nodes
+            document.querySelectorAll('.timeline-node').forEach((node, i) => {
+                if (i === index) {
+                    node.classList.add('active');
+                } else {
+                    node.classList.remove('active');
                 }
             });
             
-            const heroTitle = document.getElementById('hero-title');
-            const profileSubtitle = document.getElementById('profile-subtitle');
-            
-            if (lang === 'en') {
-                heroTitle.innerHTML = `Senior IT Technician<br>
-                        <span class="text-gradient">Systems Administrator</span><br>
-                        <span class="text-3xl lg:text-5xl text-gray-300">Fortinet Cybersecurity</span>`;
-                if (profileSubtitle) profileSubtitle.textContent = "Senior IT Technician | Systems Administrator | Fortinet Cybersecurity";
-                document.title = "Senior IT Technician | Systems Administrator | Fortinet Cybersecurity - Ange-Marie Boussougou";
-            } else {
-                heroTitle.innerHTML = `Technicien IT Senior<br>
-                        <span class="text-gradient">Administrateur Systèmes</span><br>
-                        <span class="text-3xl lg:text-5xl text-gray-300">Cybersécurité Fortinet</span>`;
-                if (profileSubtitle) profileSubtitle.textContent = "Technicien IT Senior | Administrateur Systèmes | Cybersécurité Fortinet";
-                document.title = "Technicien IT Senior | Administrateur Systèmes | Cybersécurité Fortinet - Ange-Marie Boussougou";
-            }
-            
-            document.documentElement.lang = lang;
+            // Show corresponding card
+            document.querySelectorAll('.experience-card').forEach((card, i) => {
+                if (i === index) {
+                    card.classList.remove('hidden');
+                    card.classList.add('animate-slide-in');
+                } else {
+                    card.classList.add('hidden');
+                    card.classList.remove('animate-slide-in');
+                }
+            });
         }
-
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-lg', 'shadow-cyan-500/10');
-                navbar.classList.replace('h-20', 'h-16');
-            } else {
-                navbar.classList.remove('shadow-lg', 'shadow-cyan-500/10');
-                navbar.classList.replace('h-16', 'h-20');
+        
+        // Skill Bars Animation
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.skill-fill');
+                    fills.forEach(fill => {
+                        const width = fill.getAttribute('data-width');
+                        setTimeout(() => {
+                            fill.style.width = width + '%';
+                        }, 200);
+                    });
+                    skillObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        skillObserver.observe(document.querySelector('#skills'));
+        
+        // Radar Chart
+        const ctx = document.getElementById('skillsChart').getContext('2d');
+        const skillsChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Networking', 'System Admin', 'Security', 'Surveillance', 'Support', 'Cloud/Backup'],
+                datasets: [{
+                    label: 'Niveau de compétence',
+                    data: [95, 90, 85, 92, 98, 85],
+                    backgroundColor: 'rgba(0, 212, 255, 0.2)',
+                    borderColor: '#00D4FF',
+                    pointBackgroundColor: '#00D4FF',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#00D4FF',
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        pointLabels: {
+                            color: '#fff',
+                            font: {
+                                size: 12,
+                                family: 'Inter'
+                            }
+                        },
+                        ticks: {
+                            backdropColor: 'transparent',
+                            color: '#fff',
+                            stepSize: 20
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
             }
         });
-
+        
+        // Traffic Chart
+        const trafficCtx = document.getElementById('trafficChart').getContext('2d');
+        const trafficChart = new Chart(trafficCtx, {
+            type: 'line',
+            data: {
+                labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '23:59'],
+                datasets: [{
+                    label: 'Visiteurs',
+                    data: [12, 8, 45, 89, 67, 34, 23],
+                    borderColor: '#00D4FF',
+                    backgroundColor: (context) => {
+                        const ctx = context.chart.ctx;
+                        const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+                        gradient.addColorStop(0, 'rgba(0, 212, 255, 0.3)');
+                        gradient.addColorStop(1, 'rgba(0, 212, 255, 0)');
+                        return gradient;
+                    },
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 3,
+                    pointBackgroundColor: '#00D4FF',
+                    pointBorderColor: '#fff',
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        ticks: {
+                            color: '#fff'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        ticks: {
+                            color: '#fff'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+        
+        // Terminal Typewriter Effect
+        const terminalTexts = [
+            "Initialisation du profil...",
+            "Chargement des compétences réseau... [OK]",
+            "Connexion aux serveurs... [ÉTABLIE]",
+            "Déploiement caméras... [200+ INSTALLÉES]",
+            "Systèmes sécurisés... [FORTIGATE ACTIF]",
+            "Support utilisateurs... [135+ GÉRÉS]",
+            "Statut: Disponible pour missions"
+        ];
+        
+        let textIndex = 0;
+        const terminalElement = document.getElementById('terminal-text');
+        
+        function typeText() {
+            if (textIndex < terminalTexts.length) {
+                const line = document.createElement('div');
+                line.className = 'typing-text';
+                line.textContent = '> ' + terminalTexts[textIndex];
+                terminalElement.appendChild(line);
+                textIndex++;
+                setTimeout(typeText, 800);
+            }
+        }
+        
+        setTimeout(typeText, 1000);
+        
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    document.getElementById('mobile-menu').classList.add('hidden');
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
-
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
+        
+        // Parallax Effect for Network Map
+        document.getElementById('network-map').addEventListener('mousemove', (e) => {
+            const nodes = document.querySelectorAll('.network-node');
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            nodes.forEach((node, index) => {
+                const speed = (index + 1) * 0.02;
+                const xOffset = (x - rect.width / 2) * speed;
+                const yOffset = (y - rect.height / 2) * speed;
+                node.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.hover-card').forEach((card, index) => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-            observer.observe(card);
+        });
+        
+        // Add glow effect on mouse move for grid background
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            
+            document.body.style.backgroundPosition = `${x}% ${y}%`;
         });
     </script>
 </body>
