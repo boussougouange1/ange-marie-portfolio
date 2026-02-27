@@ -1115,7 +1115,46 @@
         .nav-link:hover::after {
             width: 100%;
         }
+    
+        /* Timeline styles */
+        .timeline-point {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .timeline-point:hover .w-4 {
+            transform: scale(1.5);
+        }
+
+        /* Experience card active state */
+        .experience-card {
+            transition: all 0.5s ease;
+            opacity: 0.6;
+            transform: scale(0.98);
+        }
+
+        .experience-card.active {
+            opacity: 1;
+            transform: scale(1);
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 20px 40px -15px rgba(0, 212, 255, 0.3);
+        }
+
+        .experience-card:hover {
+            opacity: 1;
+            transform: scale(1.01);
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
     </style>
+<base target="_blank">
 <base target="_blank">
 </head>
 <body class="font-sans bg-grid antialiased overflow-x-hidden">
@@ -1608,142 +1647,403 @@
         </div>
     </section>
 
-    <!-- Experience Timeline -->
+    
+    <!-- Experience Section - Nouveau Design -->
     <section id="experience" class="py-24 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent"></div>
-        
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-4xl font-bold text-white mb-4 glow-text" data-fr="Expérience Professionnelle" data-en="Professional Experience">Expérience Professionnelle</h2>
-                <p class="text-gray-400" data-fr="Parcours complet en support IT, administration systèmes et cybersécurité." data-en="Complete career in IT support, systems administration and cybersecurity.">Parcours complet en support IT, administration systèmes et cybersécurité.</p>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 mb-4">
+                    <i class="fas fa-history text-purple-400 text-2xl"></i>
+                    <h2 class="font-display text-4xl font-bold text-white glow-text">Parcours Professionnel</h2>
+                </div>
             </div>
 
-            <div class="relative">
-                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 timeline-line rounded-full"></div>
+            <!-- Timeline Horizontale -->
+            <div class="relative mb-12">
+                <div class="flex justify-between items-center relative">
+                    <!-- Ligne de timeline -->
+                    <div class="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-fortinet rounded-full transform -translate-y-1/2"></div>
 
-                <!-- HIGH-TECH 241 -->
-                <div class="relative mb-12 md:mb-0">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
-                            <div class="experience-card glass p-6 rounded-2xl border border-white/10 hover-card">
-                                <span class="text-cyan-400 font-semibold text-sm">Nov. 2023 – Sept. 2024</span>
-                                <h3 class="font-display text-xl font-bold text-white mt-2">Senior IT Support & Systems Technician</h3>
-                                <p class="text-gray-400 font-medium mb-3"><a href="https://www.ht241.com/" target="_blank" class="text-cyan-400 hover:text-cyan-300 hover:underline inline-flex items-center gap-1 transition-all">HIGH-TECH 241 <i class="fas fa-external-link-alt text-xs"></i></a> – Libreville, Gabon</p>
-                                <div class="flex flex-wrap gap-2 mb-3">
-                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded border border-cyan-400/30">IT Support</span>
-                                    <span class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs rounded border border-purple-400/30">SysAdmin</span>
-                                    <span class="px-2 py-1 bg-fortinet/20 text-fortinet text-xs rounded border border-fortinet/30">Fortinet</span>
+                    <!-- Points de timeline -->
+                    <div class="relative z-10 flex justify-between w-full">
+                        <!-- HT241 -->
+                        <div class="timeline-point group cursor-pointer" onclick="showExperience('ht241')">
+                            <div class="w-4 h-4 rounded-full bg-cyan-400 border-4 border-dark shadow-lg shadow-cyan-400/50 group-hover:scale-150 transition-transform"></div>
+                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors">HT241</span>
+                        </div>
+
+                        <!-- ANAVEA -->
+                        <div class="timeline-point group cursor-pointer" onclick="showExperience('anavea')">
+                            <div class="w-4 h-4 rounded-full bg-purple-400 border-4 border-dark shadow-lg shadow-purple-400/50 group-hover:scale-150 transition-transform"></div>
+                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-purple-400 transition-colors">ANAVEA</span>
+                        </div>
+
+                        <!-- SAFRIMAT -->
+                        <div class="timeline-point group cursor-pointer" onclick="showExperience('safrimat')">
+                            <div class="w-4 h-4 rounded-full bg-cyan-400 border-4 border-dark shadow-lg shadow-cyan-400/50 group-hover:scale-150 transition-transform"></div>
+                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors">SAFRIMAT</span>
+                        </div>
+
+                        <!-- Centre Dialyse -->
+                        <div class="timeline-point group cursor-pointer" onclick="showExperience('centre-dialyse')">
+                            <div class="w-4 h-4 rounded-full bg-cyan-400 border-4 border-dark shadow-lg shadow-cyan-400/50 group-hover:scale-150 transition-transform"></div>
+                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors">Centre Dialyse</span>
+                        </div>
+
+                        <!-- SYSTEMESCOMS -->
+                        <div class="timeline-point group cursor-pointer" onclick="showExperience('systemescoms')">
+                            <div class="w-4 h-4 rounded-full bg-cyan-400 border-4 border-dark shadow-lg shadow-cyan-400/50 group-hover:scale-150 transition-transform"></div>
+                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors">SYSTEMESCOMS</span>
+                        </div>
+
+                        <!-- DAVUM -->
+                        <div class="timeline-point group cursor-pointer" onclick="showExperience('davum')">
+                            <div class="w-4 h-4 rounded-full bg-cyan-400 border-4 border-dark shadow-lg shadow-cyan-400/50 group-hover:scale-150 transition-transform"></div>
+                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors">DAVUM</span>
+                        </div>
+
+                        <!-- Integral Tech -->
+                        <div class="timeline-point group cursor-pointer" onclick="showExperience('integral-tech')">
+                            <div class="w-4 h-4 rounded-full bg-gray-600 border-4 border-dark shadow-lg group-hover:scale-150 transition-transform"></div>
+                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-500 whitespace-nowrap">Integral Tech</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Barre de progression décorative -->
+            <div class="w-full h-3 bg-gradient-to-r from-cyan-500 via-purple-500 to-fortinet rounded-full mb-12 shadow-lg shadow-cyan-500/20"></div>
+
+            <!-- Cartes d'expérience -->
+            <div class="space-y-8" id="experience-cards">
+
+                <!-- HT241 -->
+                <div id="card-ht241" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-3xl font-bold text-cyan-400 mb-2"><a href="https://www.ht241.com/" target="_blank" class="hover:underline inline-flex items-center gap-2">HT241 <i class="fas fa-external-link-alt text-sm"></i></a></h3>
+                            <p class="text-gray-400">Entreprise de vente et prestations de services informatiques</p>
+                        </div>
+                        <span class="px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-full text-sm font-medium border border-cyan-400/30 flex items-center gap-2">
+                            <i class="fas fa-briefcase"></i> Poste actuel
+                        </span>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
+                                <i class="fas fa-tasks"></i> Responsabilités clés
+                            </h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Support informatique & maintenance réseaux</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Déploiement ~100 caméras de surveillance</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Systèmes de contrôle d'accès et temps de présence</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Interconnexion réseaux entre entreprises</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Téléphonie IP Cisco Call Manager</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Déploiement PaperCut (gestion ressources)</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
+                                <i class="fas fa-users"></i> Clients majeurs
+                            </h4>
+                            <div class="grid grid-cols-2 gap-3 mb-6">
+                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
+                                    <i class="fas fa-hospital text-red-400 mb-1"></i>
+                                    <p class="text-sm text-gray-300">Hôpital militaire</p>
                                 </div>
-                                <ul class="text-gray-400 text-sm space-y-2">
-                                    <li>• <span data-fr="Support avancé 65+ utilisateurs, mentorat technique" data-en="Advanced support 65+ users, technical mentoring">Support avancé 65+ utilisateurs, mentorat technique</span></li>
-                                    <li>• <span data-fr="Administration FortiGate : firewall, VPN, NAT" data-en="FortiGate administration: firewall, VPN, NAT">Administration FortiGate : firewall, VPN, NAT</span></li>
-                                    <li>• <span data-fr="Windows Server, AD, DFS, réplication des données" data-en="Windows Server, AD, DFS, data replication">Windows Server, AD, DFS, réplication des données</span></li>
-                                    <li>• <span data-fr="Déploiement PaperCut MF (réduction 30% impressions)" data-en="PaperCut MF deployment (30% print reduction)">Déploiement PaperCut MF (réduction 30% impressions)</span></li>
-                                    <li>• <span data-fr="Projets CCTV IP de conception à production" data-en="CCTV IP projects from design to production">Projets CCTV IP de conception à production</span></li>
-                                </ul>
+                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
+                                    <i class="fas fa-university text-blue-400 mb-1"></i>
+                                    <p class="text-sm text-gray-300">Orabank Gabon</p>
+                                </div>
+                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
+                                    <i class="fas fa-landmark text-green-400 mb-1"></i>
+                                    <p class="text-sm text-gray-300">COSUMAF</p>
+                                </div>
+                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
+                                    <i class="fas fa-building text-yellow-400 mb-1"></i>
+                                    <p class="text-sm text-gray-300">ICG Gabon</p>
+                                </div>
+                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
+                                    <i class="fas fa-theater-masks text-purple-400 mb-1"></i>
+                                    <p class="text-sm text-gray-300">Min. Culture</p>
+                                </div>
+                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
+                                    <i class="fas fa-oil-can text-gray-400 mb-1"></i>
+                                    <p class="text-sm text-gray-300">Min. Pétrole</p>
+                                </div>
+                            </div>
+
+                            <div class="glass p-4 rounded-xl border border-cyan-400/30 bg-cyan-400/10">
+                                <div class="text-3xl font-bold text-cyan-400">65</div>
+                                <p class="text-gray-400 text-sm">Utilisateurs accompagnés</p>
                             </div>
                         </div>
-                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-cyan-400 rounded-full border-4 border-dark shadow-lg shadow-cyan-400/50 z-10"></div>
-                        <div class="md:w-5/12 md:pl-8 hidden md:block"></div>
                     </div>
                 </div>
 
                 <!-- ANAVEA -->
-                <div class="relative mb-12 md:mb-0 md:mt-12">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 hidden md:block"></div>
-                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-purple-400 rounded-full border-4 border-dark shadow-lg shadow-purple-400/50 z-10"></div>
-                        <div class="md:w-5/12 md:pl-8 mb-4 md:mb-0">
-                            <div class="experience-card glass p-6 rounded-2xl border border-white/10 hover-card">
-                                <span class="text-purple-400 font-semibold text-sm">Mai 2021 – Sept. 2023</span>
-                                <h3 class="font-display text-xl font-bold text-white mt-2">Senior IT Support & SI</h3>
-                                <p class="text-gray-400 font-medium mb-3">ANAVEA (Autorité Nationale de Vérification d'Audit) – Gabon</p>
-                                <div class="flex flex-wrap gap-2 mb-3">
-                                    <span class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs rounded border border-purple-400/30">SysAdmin</span>
-                                    <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded border border-blue-400/30">Team Lead</span>
-                                </div>
-                                <ul class="text-gray-400 text-sm space-y-2">
-                                    <li>• <span data-fr="Coordination équipe IT 3 personnes" data-en="Coordination of 3-person IT team">Coordination équipe IT 3 personnes</span></li>
-                                    <li>• <span data-fr="Gestion 70 postes, 5 imprimantes, 3 serveurs" data-en="Management of 70 workstations, 5 printers, 3 servers">Gestion 70 postes, 5 imprimantes, 3 serveurs</span></li>
-                                    <li>• <span data-fr="Administration Google Workspace, messagerie" data-en="Google Workspace administration, messaging">Administration Google Workspace, messagerie</span></li>
-                                    <li>• <span data-fr="Mise en place DFS réplication des données" data-en="Implementation of DFS data replication">Mise en place DFS réplication des données</span></li>
-                                </ul>
+                <div id="card-anavea" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-3xl font-bold text-cyan-400 mb-2">ANAVEA</h3>
+                            <p class="text-gray-400">Autorité Nationale de Vérification et d'Audit (Gouvernement)</p>
+                        </div>
+                        <span class="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-sm font-medium border border-purple-400/30 flex items-center gap-2">
+                            <i class="fas fa-shield-alt"></i> Secteur public
+                        </span>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
+                                <i class="fas fa-tasks"></i> Responsabilités clés
+                            </h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Support IT avancé pour vérificateurs</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Gestion des licences et conformité</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Sauvegarde et protection des données</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Administration serveurs d'applications</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Gestion ADDS et contrôle d'accès</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Supervision infrastructure réseau</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <div class="glass p-4 rounded-xl border border-purple-400/30 bg-purple-400/10 mb-6">
+                                <div class="text-3xl font-bold text-purple-400">70</div>
+                                <p class="text-gray-400 text-sm">Utilisateurs professionnels</p>
                             </div>
+
+                            <h4 class="text-purple-400 font-semibold mb-3 flex items-center gap-2">
+                                <i class="fas fa-exclamation-triangle"></i> Environnement critique
+                            </h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Infrastructure sensible nécessitant haute disponibilité et sécurité renforcée pour les opérations d'audit financier.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Stack technique -->
+                    <div class="mt-6 pt-6 border-t border-white/10">
+                        <h4 class="text-purple-400 font-semibold mb-3">Stack technique</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">HP ProLiant</span>
+                            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs border border-purple-400/30">Virtualisation</span>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs border border-green-400/30">DFS Replication</span>
+                            <span class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs border border-orange-400/30">Cisco Call Manager</span>
+                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs border border-cyan-400/30">UniFi</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs border border-blue-400/30">Active Directory</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- SAFRIMAT -->
-                <div class="relative mb-12 md:mb-0 md:mt-12">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
-                            <div class="experience-card glass p-6 rounded-2xl border border-white/10 hover-card">
-                                <span class="text-green-400 font-semibold text-sm">Sept. 2020 – Mars 2021</span>
-                                <h3 class="font-display text-xl font-bold text-white mt-2">Senior IT Support & Maintenance</h3>
-                                <p class="text-gray-400 font-medium mb-3"><a href="https://safrimat.com/?page=home" target="_blank" class="text-cyan-400 hover:text-cyan-300 hover:underline inline-flex items-center gap-1 transition-all">SAFRIMAT <i class="fas fa-external-link-alt text-xs"></i></a> – Libreville, Gabon</p>
-                                <div class="flex flex-wrap gap-2 mb-3">
-                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded border border-cyan-400/30">IT Support</span>
-                                    <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded border border-green-400/30">Réseaux</span>
-                                </div>
-                                <ul class="text-gray-400 text-sm space-y-2">
-                                    <li>• <span data-fr="Support utilisateurs avancé et incidents complexes" data-en="Advanced user support and complex incidents">Support utilisateurs avancé et incidents complexes</span></li>
-                                    <li>• <span data-fr="Déploiement infrastructures réseaux et VoIP" data-en="Deployment of network and VoIP infrastructures">Déploiement infrastructures réseaux et VoIP</span></li>
-                                    <li>• <span data-fr="Vidéosurveillance 32 caméras IP" data-en="32 IP camera video surveillance">Vidéosurveillance 32 caméras IP</span></li>
-                                </ul>
+                <div id="card-safrimat" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-3xl font-bold text-cyan-400 mb-2"><a href="https://safrimat.com/?page=home" target="_blank" class="hover:underline inline-flex items-center gap-2">SAFRIMAT <i class="fas fa-external-link-alt text-sm"></i></a></h3>
+                            <p class="text-gray-400">Prestation et vente informatique</p>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Support informatique & maintenance réseau</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>~100 caméras de surveillance</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Contrôle d'accès et temps de présence</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Téléphonie IP Cisco</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Déploiement PaperCut</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                                    <span>Service après-vente</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="text-purple-400 font-semibold mb-4 flex items-center gap-2">
+                                <i class="fas fa-handshake"></i> Clients
+                            </h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10">Taskforce</span>
+                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10">SAMADI-BTP</span>
+                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10">Hôpital Cancérologie</span>
+                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10">Le Patrimoine</span>
                             </div>
                         </div>
-                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-400 rounded-full border-4 border-dark shadow-lg shadow-green-400/50 z-10"></div>
-                        <div class="md:w-5/12 md:pl-8 hidden md:block"></div>
                     </div>
                 </div>
 
-                <!-- Autres expériences condensées -->
-                <div class="relative mb-12 md:mb-0 md:mt-12">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 hidden md:block"></div>
-                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-fortinet rounded-full border-4 border-dark shadow-lg shadow-fortinet/50 z-10"></div>
-                        <div class="md:w-5/12 md:pl-8 mb-4 md:mb-0">
-                            <div class="experience-card glass p-6 rounded-2xl border border-white/10 hover-card">
-                                <span class="text-fortinet font-semibold text-sm">Avr. 2019 – Mars 2020</span>
-                                <h3 class="font-display text-xl font-bold text-white mt-2">Technicien Support Informatique</h3>
-                                <p class="text-gray-400 font-medium mb-3"><a href="https://www.facebook.com/CDL.SMEDI.GABON.SANTE/?locale=fr_FR" target="_blank" class="text-cyan-400 hover:text-cyan-300 hover:underline inline-flex items-center gap-1 transition-all">Centre de Dialyse de Libreville <i class="fab fa-facebook text-xs"></i></a> – Gabon</p>
-                                <div class="flex flex-wrap gap-2 mb-3">
-                                    <span class="px-2 py-1 bg-fortinet/20 text-fortinet text-xs rounded border border-fortinet/30">Sécurité</span>
-                                    <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded border border-blue-400/30">SysAdmin</span>
-                                </div>
-                                <ul class="text-gray-400 text-sm space-y-2">
-                                    <li>• <span data-fr="Sécurisation infrastructures IT données patients" data-en="Securing IT infrastructures patient data">Sécurisation infrastructures IT données patients</span></li>
-                                    <li>• <span data-fr="Administration systèmes et réseaux" data-en="Systems and networks administration">Administration systèmes et réseaux</span></li>
-                                </ul>
+                <!-- Centre de Dialyse de Libreville -->
+                <div id="card-centre-dialyse" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-3xl font-bold text-cyan-400 mb-2"><a href="https://www.facebook.com/CDL.SMEDI.GABON.SANTE/?locale=fr_FR" target="_blank" class="hover:underline inline-flex items-center gap-2">Centre de Dialyse de Libreville <i class="fab fa-facebook text-sm"></i></a></h3>
+                            <p class="text-gray-400">Centre hospitalier - Administration réseaux et systèmes</p>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3 text-gray-300">
+                                <i class="fas fa-network-wired text-cyan-400"></i>
+                                <span>Administration réseaux et systèmes</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-gray-300">
+                                <i class="fas fa-clock text-cyan-400"></i>
+                                <span>Contrôle de présence</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-gray-300">
+                                <i class="fas fa-cloud text-cyan-400"></i>
+                                <span>Collaboration Dropbox</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-gray-300">
+                                <i class="fas fa-save text-cyan-400"></i>
+                                <span>Sauvegarde données</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3 text-gray-300">
+                                <i class="fas fa-video text-cyan-400"></i>
+                                <span>Caméras de surveillance</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-gray-300">
+                                <i class="fas fa-users text-cyan-400"></i>
+                                <span>Support administratif et laboratoire</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-gray-300">
+                                <i class="fas fa-file-invoice text-cyan-400"></i>
+                                <span>Gestion factures et stock (Sage)</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="relative md:mt-12">
-                    <div class="md:flex items-center justify-between">
-                        <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
-                            <div class="experience-card glass p-6 rounded-2xl border border-white/10 hover-card">
-                                <span class="text-indigo-400 font-semibold text-sm">2016 – 2019</span>
-                                <h3 class="font-display text-xl font-bold text-white mt-2">Consultant IT & Technicien</h3>
-                                <p class="text-gray-400 font-medium mb-3"><a href="https://teznxadbmkxsc.ok.kimi.link/" target="_blank" class="text-cyan-400 hover:text-cyan-300 hover:underline inline-flex items-center gap-1 transition-all">SYSTEMESCOMS <i class="fas fa-external-link-alt text-xs"></i></a> – Libreville, Gabon</p>
-                                <div class="flex flex-wrap gap-2 mb-3">
-                                    <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded border border-cyan-400/30">Consultant</span>
-                                    <span class="px-2 py-1 bg-indigo-500/20 text-indigo-400 text-xs rounded border border-indigo-400/30">Freelance</span>
-                                </div>
-                                <ul class="text-gray-400 text-sm space-y-2">
-                                    <li>• <span data-fr="Prestations IT pour ONG, hôpitaux, cabinets" data-en="IT services for NGOs, hospitals, firms">Prestations IT pour ONG, hôpitaux, cabinets</span></li>
-                                    <li>• <span data-fr="Conseil transformation numérique" data-en="Digital transformation consulting">Conseil transformation numérique</span></li>
-                                </ul>
+                <!-- SYSTEMESCOMS -->
+                <div id="card-systemescoms" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-3xl font-bold text-cyan-400 mb-2"><a href="https://teznxadbmkxsc.ok.kimi.link/" target="_blank" class="hover:underline inline-flex items-center gap-2">SYSTEMESCOMS <i class="fas fa-external-link-alt text-sm"></i></a></h3>
+                            <p class="text-gray-400">Entreprise personnelle créée en 2016</p>
+                        </div>
+                        <span class="px-4 py-2 bg-green-500/20 text-green-400 rounded-full text-sm font-medium border border-green-400/30 flex items-center gap-2">
+                            <i class="fas fa-rocket"></i> Entrepreneuriat
+                        </span>
+                    </div>
+
+                    <div class="mb-6">
+                        <p class="text-gray-300 mb-4">Services IT pour divers clients :</p>
+                        <div class="flex flex-wrap gap-3">
+                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
+                                <i class="fas fa-hospital text-red-400"></i>
+                                <span class="text-gray-300 text-sm">Centre hospitalier cancérologie</span>
+                            </div>
+                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
+                                <i class="fas fa-paw text-green-400"></i>
+                                <span class="text-gray-300 text-sm">WWF</span>
+                            </div>
+                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
+                                <i class="fas fa-tooth text-white"></i>
+                                <span class="text-gray-300 text-sm">Cabinet dentaire</span>
+                            </div>
+                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
+                                <i class="fas fa-print text-blue-400"></i>
+                                <span class="text-gray-300 text-sm">Entreprise d'imprimerie</span>
+                            </div>
+                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
+                                <i class="fas fa-calculator text-yellow-400"></i>
+                                <span class="text-gray-300 text-sm">Entreprise comptable</span>
                             </div>
                         </div>
-                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-indigo-400 rounded-full border-4 border-dark shadow-lg shadow-indigo-400/50 z-10"></div>
-                        <div class="md:w-5/12 md:pl-8 hidden md:block"></div>
                     </div>
                 </div>
+
+                <!-- DAVUM GABON -->
+                <div id="card-davum" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-3xl font-bold text-cyan-400 mb-2">DAVUM GABON</h3>
+                            <p class="text-gray-400">Matériaux de construction</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 text-gray-300">
+                            <i class="fas fa-server text-cyan-400"></i>
+                            <span>Administration systèmes et réseaux</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-300">
+                            <i class="fas fa-headset text-cyan-400"></i>
+                            <span>Support utilisateurs internes</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-300">
+                            <i class="fas fa-eye text-cyan-400"></i>
+                            <span>Supervision infrastructure IT</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
+
 
     <!-- Certifications Section -->
     <section id="certifications" class="py-24 relative">
@@ -3323,5 +3623,35 @@
             }
         });
     </script>
+<script>
+        // Timeline navigation
+        function showExperience(companyId) {
+            // Retirer la classe active de toutes les cartes
+            document.querySelectorAll('.experience-card').forEach(card => {
+                card.classList.remove('active');
+            });
+
+            // Ajouter la classe active à la carte ciblée
+            const targetCard = document.getElementById('card-' + companyId);
+            if (targetCard) {
+                targetCard.classList.add('active');
+                targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            // Mettre à jour les points de timeline
+            document.querySelectorAll('.timeline-point').forEach(point => {
+                point.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+        }
+
+        // Activer la première carte par défaut au chargement
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstCard = document.getElementById('card-ht241');
+            if (firstCard) {
+                firstCard.classList.add('active');
+            }
+        });
+</script>
 </body>
 </html>
