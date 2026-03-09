@@ -16,12 +16,13 @@
     <meta name="description" content="Expert en infrastructure IT, administration systèmes Windows/Linux et cybersécurité Fortinet. 7+ ans d'expérience multi-sites.">
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -30,12 +31,14 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
                         dark: '#0A0E27',
                         cyan: '#00D4FF',
                         purple: '#7000FF',
                         fortinet: '#EE4C24',
+                        magenta: '#FF006E',
                     },
                     animation: {
                         'gradient': 'gradient 8s linear infinite',
@@ -46,6 +49,8 @@
                         'bounce-slight': 'bounceSlight 2s infinite',
                         'typing': 'typing 1.5s infinite',
                         'pulse-ring': 'pulseRing 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite',
+                        'shimmer': 'shimmer 2s infinite',
+                        'counter': 'counter 2s ease-out forwards',
                     },
                     keyframes: {
                         gradient: {
@@ -75,6 +80,10 @@
                         pulseRing: {
                             '0%': { transform: 'scale(0.8)', opacity: 1 },
                             '100%': { transform: 'scale(1.3)', opacity: 0 },
+                        },
+                        shimmer: {
+                            '0%': { left: '-100%' },
+                            '100%': { left: '100%' },
                         }
                     }
                 }
@@ -90,12 +99,50 @@
             --cyan: #00D4FF;
             --purple: #7000FF;
             --fortinet: #EE4C24;
+            --magenta: #FF006E;
         }
         
         body {
             background: var(--dark);
             color: #fff;
             overflow-x: hidden;
+            cursor: none;
+        }
+        
+        /* Custom Cursor Effects from autr noi.txt */
+        .cursor-glow {
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.8) 0%, rgba(0, 212, 255, 0) 70%);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: screen;
+            transition: transform 0.1s ease;
+        }
+        
+        .cursor-trail {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.15s ease;
+            mix-blend-mode: screen;
+        }
+        
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--cyan);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            box-shadow: 0 0 10px var(--cyan), 0 0 20px var(--cyan);
         }
         
         .glass {
@@ -103,6 +150,23 @@
             backdrop-filter: blur(20px) saturate(180%);
             border: 1px solid var(--glass-border);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glass::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .glass:hover::before {
+            left: 100%;
         }
         
         .glass-fortinet {
@@ -117,6 +181,13 @@
             backdrop-filter: blur(20px) saturate(180%);
             border: 1px solid rgba(0, 212, 255, 0.3);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .glass-strong {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(30px) saturate(200%);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.3), 0 0 20px rgba(0, 212, 255, 0.1);
         }
         
         .text-gradient {
@@ -135,6 +206,21 @@
             background-size: 50px 50px, 50px 50px, 100px 100px, 100px 100px;
         }
         
+        .bg-grid::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(112, 0, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255, 0, 110, 0.03) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
         .hover-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -142,6 +228,16 @@
         .hover-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 40px -15px rgba(0, 212, 255, 0.2);
+        }
+        
+        .hover-glow {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-glow:hover {
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: translateY(-2px);
         }
         
         .profile-image {
@@ -182,8 +278,77 @@
             box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
         }
         
+        /* Animated Skill Bars from autr noi.txt */
+        .skill-bar {
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--cyan), var(--purple), var(--magenta));
+            border-radius: 4px;
+            transition: width 1.5s ease-out;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+        
+        .skill-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            100% { left: 100%; }
+        }
+        
         .timeline-line {
             background: linear-gradient(to bottom, var(--cyan), var(--purple), var(--fortinet));
+        }
+        
+        /* Timeline horizontal from autr noi.txt */
+        .timeline-horizontal {
+            background: linear-gradient(90deg, var(--cyan), var(--purple), var(--magenta));
+            height: 2px;
+            position: relative;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+        
+        .timeline-node {
+            width: 20px;
+            height: 20px;
+            background: var(--dark);
+            border: 3px solid var(--cyan);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+        
+        .timeline-node:hover {
+            transform: translateY(-50%) scale(1.3);
+            box-shadow: 0 0 30px var(--cyan), 0 0 50px var(--cyan);
+            background: var(--cyan);
+        }
+        
+        .timeline-node.active {
+            background: var(--cyan);
+            box-shadow: 0 0 30px var(--cyan), 0 0 50px var(--cyan);
+            animation: pulseGlow 2s infinite;
         }
         
         .linkedin-btn {
@@ -1153,11 +1318,83 @@
             scroll-behavior: smooth;
         }
 
+        /* Terminal Effect from autr noi.txt */
+        .terminal-window {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .typing-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid var(--cyan);
+            animation: typing 0.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--cyan); }
+        }
+
+        /* Network Map from autr noi.txt */
+        .network-map-container {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+        
+        .network-node-map {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 212, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+            z-index: 10;
+        }
+        
+        .network-node-map:hover {
+            transform: scale(1.2);
+            background: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 40px var(--cyan), 0 0 60px rgba(0, 212, 255, 0.4);
+        }
+        
+        .network-node-map.central {
+            width: 80px;
+            height: 80px;
+            border-width: 3px;
+            background: rgba(0, 212, 255, 0.2);
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        /* Impact Stats Counter Animation */
+        .counter-animated {
+            display: inline-block;
+            font-variant-numeric: tabular-nums;
+        }
+
+        @media (max-width: 768px) {
+            body { cursor: auto; }
+            .cursor-glow, .cursor-trail, .cursor-dot { display: none; }
+            .timeline-horizontal { flex-direction: column; }
+            .network-map-container { height: 400px !important; }
+        }
     </style>
 <base target="_blank">
 <base target="_blank">
 </head>
 <body class="font-sans bg-grid antialiased overflow-x-hidden">
+
+    <!-- Custom Cursor Elements -->
+    <div class="cursor-glow" id="cursor-glow"></div>
+    <div class="cursor-trail" id="cursor-trail"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
 
     <!-- NOUVEAU: Indicateur d'ouverture auto Teams -->
     <div id="autoTeamsIndicator" class="auto-teams-indicator">
@@ -1330,7 +1567,7 @@
     <nav class="fixed w-full z-50 glass border-b border-white/10 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center gap-3">
+                <div class="flex-shrink-0 flex items-center gap-3 hover-glow rounded-lg p-2 cursor-pointer">
                     <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-cyan-500/30">
                         AB
                     </div>
@@ -1342,8 +1579,10 @@
                 
                 <div class="hidden md:flex space-x-4 items-center">
                     <a href="#accueil" class="nav-link text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Accueil" data-en="Home">Accueil</a>
+                    <a href="#impact" class="nav-link text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Impact" data-en="Impact">Impact</a>
                     <a href="#competences" class="nav-link text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Compétences" data-en="Skills">Compétences</a>
                     <a href="#experience" class="nav-link text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Expérience" data-en="Experience">Expérience</a>
+                    <a href="#infrastructure" class="nav-link text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Infrastructure" data-en="Infrastructure">Infrastructure</a>
                     <a href="#certifications" class="nav-link text-gray-300 hover:text-fortinet font-medium transition-colors" data-fr="Certifications" data-en="Certifications">Certifications</a>
                     <a href="#analytics" class="nav-link text-cyan-400 hover:text-cyan-300 font-medium transition-colors flex items-center gap-2">
                         <i class="fas fa-chart-line"></i>
@@ -1371,8 +1610,10 @@
         <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#accueil" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium" data-fr="Accueil" data-en="Home">Accueil</a>
+                <a href="#impact" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium" data-fr="Impact" data-en="Impact">Impact</a>
                 <a href="#competences" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium" data-fr="Compétences" data-en="Skills">Compétences</a>
                 <a href="#experience" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium" data-fr="Expérience" data-en="Experience">Expérience</a>
+                <a href="#infrastructure" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium" data-fr="Infrastructure" data-en="Infrastructure">Infrastructure</a>
                 <a href="#certifications" class="block px-3 py-2 text-gray-300 hover:text-fortinet font-medium" data-fr="Certifications" data-en="Certifications">Certifications</a>
                 <a href="#analytics" class="block px-3 py-2 text-cyan-400 font-medium flex items-center gap-2">
                     <i class="fas fa-chart-line"></i> <span data-fr="Statistiques en direct" data-en="Live Statistics">Statistiques en direct</span>
@@ -1392,7 +1633,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Terminal Effect -->
     <section id="accueil" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <div class="absolute inset-0 z-0">
             <div class="absolute top-20 left-10 w-72 h-72 bg-cyan-500/20 rounded-full blur-3xl animate-float"></div>
@@ -1403,7 +1644,7 @@
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="space-y-8 animate-slide-up">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-cyan-400 font-medium text-sm border border-cyan-400/30">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-cyan-400 font-medium text-sm border border-cyan-400/30 hover-glow cursor-pointer">
                         <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
                         <span data-fr="Disponible pour de nouvelles opportunités" data-en="Available for new opportunities">Disponible pour de nouvelles opportunités</span>
                     </div>
@@ -1420,22 +1661,22 @@
                     </p>
 
                     <div class="flex flex-wrap gap-4 text-sm">
-                        <div class="flex items-center gap-2 px-4 py-2 glass rounded-full border border-white/10">
+                        <div class="flex items-center gap-2 px-4 py-2 glass rounded-full border border-white/10 hover-glow cursor-pointer">
                             <i class="fas fa-check-circle text-cyan-400"></i>
                             <span data-fr="7+ ans d'expérience" data-en="7+ years experience">7+ ans d'expérience</span>
                         </div>
-                        <div class="flex items-center gap-2 px-4 py-2 glass rounded-full border border-white/10">
+                        <div class="flex items-center gap-2 px-4 py-2 glass rounded-full border border-white/10 hover-glow cursor-pointer">
                             <i class="fas fa-certificate text-fortinet"></i>
                             <span data-fr="15+ Certifications" data-en="15+ Certifications">15+ Certifications</span>
                         </div>
-                        <div class="flex items-center gap-2 px-4 py-2 glass rounded-full border border-white/10">
+                        <div class="flex items-center gap-2 px-4 py-2 glass rounded-full border border-white/10 hover-glow cursor-pointer">
                             <i class="fas fa-globe text-purple-400"></i>
                             <span data-fr="Bilingue FR/EN" data-en="Bilingual FR/EN">Bilingue FR/EN</span>
                         </div>
                     </div>
 
                     <div class="flex flex-wrap gap-4">
-                        <button onclick="openContactForm()" class="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-full font-semibold hover:scale-105 transition-all shadow-lg shadow-cyan-500/30 flex items-center gap-2">
+                        <button onclick="openContactForm()" class="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-full font-semibold hover:scale-105 transition-all shadow-lg shadow-cyan-500/30 flex items-center gap-2 hover-glow">
                             <i class="fas fa-paper-plane"></i>
                             <span data-fr="Me contacter" data-en="Contact me">Me contacter</span>
                         </button>
@@ -1448,7 +1689,7 @@
                     <div class="flex items-center gap-6 pt-4 text-gray-400">
                         <div class="flex items-center gap-2">
                             <i class="fas fa-map-marker-alt text-cyan-400"></i>
-                            <span>Montréal et Périphériques, Québec</span>
+                            <span>open to work in all cities</span>
                         </div>
                         <div class="flex items-center gap-2">
                             <i class="fas fa-language text-purple-400"></i>
@@ -1458,69 +1699,20 @@
                 </div>
 
                 <div class="relative flex justify-center lg:justify-end">
-                    <div class="glass rounded-3xl p-8 w-full max-w-md text-center relative overflow-hidden border border-white/20">
-                        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-br from-cyan-500/20 to-purple-600/20"></div>
-                        
-                        <div class="relative z-10 mb-6">
-                            <div class="avatar-badge">
-                                <img src="photo.jpg" 
-                                     alt="Ange-Marie Boussougou Ahouansou" 
-                                     class="profile-image mx-auto"
-                                     id="profile-photo"
-                                     onerror="this.src='https://via.placeholder.com/220x220/0A0E27/00D4FF?text=AB'">
-                            </div>
+                    <!-- Terminal Widget from autr noi.txt -->
+                    <div class="glass-strong rounded-2xl p-6 font-mono text-sm w-full max-w-md animate-float hover-glow terminal-window">
+                        <div class="flex items-center gap-2 mb-4 text-gray-400">
+                            <div class="w-3 h-3 rounded-full bg-red-500 shadow-lg shadow-red-500/50"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500 shadow-lg shadow-yellow-500/50"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500 shadow-lg shadow-green-500/50"></div>
+                            <span class="ml-2">ange-marie@portfolio:~</span>
                         </div>
-                        
-                        <h2 class="font-display text-2xl font-bold text-white mb-1">Ange-Marie Boussougou</h2>
-                        <p class="text-cyan-400 font-medium mb-6" id="profile-subtitle" data-fr="Technicien IT | Administrateur Systèmes | Cybersécurité Fortinet" data-en="IT Technician | Systems Administrator | Fortinet Cybersecurity">Technicien IT | Administrateur Systèmes | Cybersécurité Fortinet</p>
-                        
-                        <div class="grid grid-cols-2 gap-4 mb-6">
-                            <div class="glass rounded-xl p-4 border border-white/10">
-                                <div class="text-3xl font-bold text-cyan-400 glow-text">7+</div>
-                                <div class="text-sm text-gray-400 font-medium" data-fr="Années d'exp." data-en="Years exp.">Années d'exp.</div>
-                            </div>
-                            <div class="glass rounded-xl p-4 border border-white/10">
-                                <div class="text-3xl font-bold text-fortinet glow-text-fortinet">15+</div>
-                                <div class="text-sm text-gray-400 font-medium" data-fr="Certifications" data-en="Certifications">Certifications</div>
-                            </div>
-                        </div>
-
-                        <div class="space-y-3">
-                            <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank" class="microsoft-btn w-full px-4 py-3 text-white rounded-xl font-semibold flex items-center justify-center gap-3 text-sm">
-                                <i class="fab fa-microsoft text-xl"></i>
-                                <div class="text-left">
-                                    <div class="text-xs opacity-80" data-fr="Voir mon profil" data-en="View my profile">Voir mon profil</div>
-                                    <div class="font-bold">Microsoft Learn</div>
-                                </div>
-                                <i class="fas fa-external-link-alt ml-auto"></i>
-                            </a>
-                            
-                            <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank" class="credly-btn w-full px-4 py-3 text-white rounded-xl font-semibold flex items-center justify-center gap-3 text-sm">
-                                <i class="fas fa-certificate text-xl"></i>
-                                <div class="text-left">
-                                    <div class="text-xs opacity-80" data-fr="Voir mes badges" data-en="View my badges">Voir mes badges</div>
-                                    <div class="font-bold">Credly</div>
-                                </div>
-                                <i class="fas fa-external-link-alt ml-auto"></i>
-                            </a>
-                        </div>
-
-                        <div class="mt-6 pt-6 border-t border-white/10">
-                            <div class="flex justify-center gap-4">
-                                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="w-12 h-12 rounded-full glass flex items-center justify-center text-gray-300 hover:bg-[#0077b5] hover:text-white transition-all border border-white/10">
-                                    <i class="fab fa-linkedin text-xl"></i>
-                                </a>
-                                <a href="mailto:ahouansouange@live.fr" class="w-12 h-12 rounded-full glass flex items-center justify-center text-gray-300 hover:bg-red-500 hover:text-white transition-all border border-white/10">
-                                    <i class="fas fa-envelope text-xl"></i>
-                                </a>
-                                <button onclick="openContactForm()" class="w-12 h-12 rounded-full glass flex items-center justify-center text-gray-300 hover:bg-green-500 hover:text-white transition-all border border-white/10">
-                                    <i class="fas fa-phone text-xl"></i>
-                                </button>
-                            </div>
+                        <div id="terminal-text" class="space-y-2 text-green-400 text-sm">
+                            <div class="typing-text">> Initialisation du profil...</div>
                         </div>
                     </div>
 
-                    <div class="absolute -bottom-4 -left-4 glass p-4 rounded-2xl border border-white/20 hidden lg:block animate-float">
+                    <div class="absolute -bottom-4 -left-4 glass p-4 rounded-2xl border border-white/20 hidden lg:block animate-float hover-glow">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
                                 <i class="fas fa-check"></i>
@@ -1537,12 +1729,153 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- NEW: Impact Dashboard Section from autr noi.txt -->
+    <section id="impact" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl font-bold text-white mb-4 glow-text" data-fr="Impact Global" data-en="Global Impact">Impact Global</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto" data-fr="Métriques clés de mon parcours professionnel" data-en="Key metrics from my professional journey">Métriques clés de mon parcours professionnel</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Stat 1 -->
+                <div class="glass rounded-2xl p-6 text-center hover:glow-cyan transition duration-300 group hover-glow cursor-pointer">
+                    <div class="text-4xl font-bold text-cyan-400 mb-2 counter-animated text-glow" data-target="200">0</div>
+                    <div class="text-gray-400 text-sm group-hover:text-white transition" data-fr="Caméras installées" data-en="Cameras installed">Caméras installées</div>
+                    <i class="fas fa-video text-2xl mt-4 text-gray-600 group-hover:text-cyan-400 transition"></i>
+                </div>
+                
+                <!-- Stat 2 -->
+                <div class="glass rounded-2xl p-6 text-center hover:glow-purple transition duration-300 group hover-glow cursor-pointer">
+                    <div class="text-4xl font-bold text-purple-400 mb-2 counter-animated text-glow" data-target="135">0</div>
+                    <div class="text-gray-400 text-sm group-hover:text-white transition" data-fr="Utilisateurs supportés" data-en="Users supported">Utilisateurs supportés</div>
+                    <i class="fas fa-users text-2xl mt-4 text-gray-600 group-hover:text-purple-400 transition"></i>
+                </div>
+                
+                <!-- Stat 3 -->
+                <div class="glass rounded-2xl p-6 text-center hover:glow-cyan transition duration-300 group hover-glow cursor-pointer">
+                    <div class="text-4xl font-bold text-cyan-400 mb-2 counter-animated text-glow" data-target="7">0</div>
+                    <div class="text-gray-400 text-sm group-hover:text-white transition" data-fr="Années d'expérience" data-en="Years of experience">Années d'expérience</div>
+                    <i class="fas fa-calendar-alt text-2xl mt-4 text-gray-600 group-hover:text-cyan-400 transition"></i>
+                </div>
+                
+                <!-- Stat 4 -->
+                <div class="glass rounded-2xl p-6 text-center hover:glow-purple transition duration-300 group hover-glow cursor-pointer">
+                    <div class="text-4xl font-bold text-purple-400 mb-2 text-glow">∞</div>
+                    <div class="text-gray-400 text-sm group-hover:text-white transition" data-fr="Passion IT" data-en="IT Passion">Passion IT</div>
+                    <i class="fas fa-heart text-2xl mt-4 text-gray-600 group-hover:text-purple-400 transition animate-pulse"></i>
+                </div>
+            </div>
+            
+            <!-- Sectors -->
+            <div class="mt-12 glass rounded-2xl p-8 hover-glow">
+                <h3 class="text-xl font-semibold mb-6 text-center" data-fr="Secteurs d'intervention" data-en="Sectors of intervention">Secteurs d'intervention</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="px-6 py-3 rounded-full bg-blue-500/20 border border-blue-500/50 text-blue-300 hover-glow cursor-pointer transition">
+                        <i class="fas fa-landmark mr-2"></i><span data-fr="Gouvernement" data-en="Government">Gouvernement</span>
+                    </span>
+                    <span class="px-6 py-3 rounded-full bg-green-500/20 border border-green-500/50 text-green-300 hover-glow cursor-pointer transition">
+                        <i class="fas fa-university mr-2"></i><span data-fr="Banque" data-en="Banking">Banque</span>
+                    </span>
+                    <span class="px-6 py-3 rounded-full bg-red-500/20 border border-red-500/50 text-red-300 hover-glow cursor-pointer transition">
+                        <i class="fas fa-hospital mr-2"></i><span data-fr="Santé" data-en="Healthcare">Santé</span>
+                    </span>
+                    <span class="px-6 py-3 rounded-full bg-purple-500/20 border border-purple-500/50 text-purple-300 hover-glow cursor-pointer transition">
+                        <i class="fas fa-building mr-2"></i><span data-fr="Entreprise" data-en="Enterprise">Entreprise</span>
+                    </span>
+                    <span class="px-6 py-3 rounded-full bg-yellow-500/20 border border-yellow-500/50 text-yellow-300 hover-glow cursor-pointer transition">
+                        <i class="fas fa-hard-hat mr-2"></i><span data-fr="BTP" data-en="Construction">BTP</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section with Animated Bars and Radar Chart -->
     <section id="competences" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="font-display text-4xl font-bold text-white mb-4 glow-text" data-fr="Compétences Clés" data-en="Key Skills">Compétences Clés</h2>
                 <p class="text-gray-400 max-w-2xl mx-auto" data-fr="Expertise technique confirmée en support utilisateurs, administration systèmes et cybersécurité." data-en="Confirmed technical expertise in user support, systems administration and cybersecurity.">Expertise technique confirmée en support utilisateurs, administration systèmes et cybersécurité.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <!-- Animated Skill Bars from autr noi.txt -->
+                <div class="glass rounded-2xl p-8 hover-glow">
+                    <h3 class="text-xl font-semibold mb-6 text-purple-400" data-fr="Niveau d'expertise" data-en="Expertise Level">Niveau d'expertise</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="flex items-center gap-2">
+                                    <i class="fas fa-network-wired text-cyan-400"></i>
+                                    <span data-fr="Réseaux (Cisco, UniFi, Fortinet)" data-en="Networking (Cisco, UniFi, Fortinet)">Réseaux (Cisco, UniFi, Fortinet)</span>
+                                </span>
+                                <span class="text-cyan-400 font-mono text-glow">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="width: 0%" data-width="95"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="flex items-center gap-2">
+                                    <i class="fas fa-server text-purple-400"></i>
+                                    <span data-fr="Administration Systèmes" data-en="System Administration">Administration Systèmes</span>
+                                </span>
+                                <span class="text-purple-400 font-mono text-glow">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="width: 0%" data-width="90"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="flex items-center gap-2">
+                                    <i class="fas fa-video text-green-400"></i>
+                                    <span data-fr="Surveillance & Contrôle d'accès" data-en="Surveillance & Access Control">Surveillance & Contrôle d'accès</span>
+                                </span>
+                                <span class="text-green-400 font-mono text-glow">92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="width: 0%" data-width="92"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="flex items-center gap-2">
+                                    <i class="fas fa-cloud text-blue-400"></i>
+                                    <span data-fr="Virtualisation & Backup" data-en="Virtualization & Backup">Virtualisation & Backup</span>
+                                </span>
+                                <span class="text-blue-400 font-mono text-glow">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="width: 0%" data-width="85"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="flex items-center gap-2">
+                                    <i class="fas fa-headset text-yellow-400"></i>
+                                    <span data-fr="Support IT & Optimisation" data-en="IT Support & Optimization">Support IT & Optimisation</span>
+                                </span>
+                                <span class="text-yellow-400 font-mono text-glow">98%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="width: 0%" data-width="98"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Radar Chart from autr noi.txt -->
+                <div class="glass rounded-2xl p-8 flex items-center justify-center hover-glow">
+                    <canvas id="skillsChart" width="400" height="400"></canvas>
+                </div>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -1647,8 +1980,6 @@
         </div>
     </section>
 
-    
-    
     <!-- Experience Section - Nouveau Design -->
     <section id="experience" class="py-24 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent"></div>
@@ -1662,58 +1993,27 @@
             </div>
 
             <!-- Timeline Horizontale -->
-            <div class="relative mb-12">
-                <div class="flex justify-between items-center relative">
-                    <!-- Ligne de timeline -->
-                    <div class="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-fortinet rounded-full transform -translate-y-1/2"></div>
-
-                    <!-- Points de timeline -->
-                    <div class="relative z-10 flex justify-between w-full">
-                        <!-- HT241 -->
-                        <div class="timeline-point group cursor-pointer" onclick="showExperience('ht241')">
-                            <div class="w-4 h-4 rounded-full bg-cyan-400 border-4 border-dark shadow-lg shadow-cyan-400/50 group-hover:scale-150 transition-transform"></div>
-                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors">HT241</span>
-                        </div>
-
-                        <!-- ANAVEA -->
-                        <div class="timeline-point group cursor-pointer" onclick="showExperience('anavea')">
-                            <div class="w-4 h-4 rounded-full bg-purple-400 border-4 border-dark shadow-lg shadow-purple-400/50 group-hover:scale-150 transition-transform"></div>
-                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-purple-400 transition-colors">ANAVEA</span>
-                        </div>
-
-                        <!-- SAFRIMAT -->
-                        <div class="timeline-point group cursor-pointer" onclick="showExperience('safrimat')">
-                            <div class="w-4 h-4 rounded-full bg-cyan-400 border-4 border-dark shadow-lg shadow-cyan-400/50 group-hover:scale-150 transition-transform"></div>
-                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors">SAFRIMAT</span>
-                        </div>
-
-                        <!-- Centre Dialyse -->
-                        <div class="timeline-point group cursor-pointer" onclick="showExperience('centre-dialyse')">
-                            <div class="w-4 h-4 rounded-full bg-cyan-400 border-4 border-dark shadow-lg shadow-cyan-400/50 group-hover:scale-150 transition-transform"></div>
-                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors" data-fr="Centre Dialyse" data-en="Dialysis Center">Centre Dialyse</span>
-                        </div>
-
-                        <!-- SYSTEMESCOMS -->
-                        <div class="timeline-point group cursor-pointer" onclick="showExperience('systemescoms')">
-                            <div class="w-4 h-4 rounded-full bg-cyan-400 border-4 border-dark shadow-lg shadow-cyan-400/50 group-hover:scale-150 transition-transform"></div>
-                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors">SYSTEMESCOMS</span>
-                        </div>
-
-                        <!-- DAVUM -->
-                        <div class="timeline-point group cursor-pointer" onclick="showExperience('davum')">
-                            <div class="w-4 h-4 rounded-full bg-cyan-400 border-4 border-dark shadow-lg shadow-cyan-400/50 group-hover:scale-150 transition-transform"></div>
-                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap group-hover:text-cyan-400 transition-colors">DAVUM</span>
-                        </div>
-
-                        <!-- Integral Tech -->
-                        <div class="timeline-point group cursor-pointer" onclick="showExperience('integral-tech')">
-                            <div class="w-4 h-4 rounded-full bg-gray-600 border-4 border-dark shadow-lg group-hover:scale-150 transition-transform"></div>
-                            <span class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-500 whitespace-nowrap">Integral Tech</span>
-                        </div>
-                    </div>
+            <div class="relative mb-12 overflow-x-auto pb-4">
+                <div class="timeline-horizontal min-w-[800px]" style="top: 30px;">
+                    <div class="timeline-node active" style="left: 0%" onclick="showExperience('ht241')"></div>
+                    <div class="timeline-node" style="left: 16%" onclick="showExperience('anavea')"></div>
+                    <div class="timeline-node" style="left: 32%" onclick="showExperience('safrimat')"></div>
+                    <div class="timeline-node" style="left: 48%" onclick="showExperience('centre-dialyse')"></div>
+                    <div class="timeline-node" style="left: 64%" onclick="showExperience('systemescoms')"></div>
+                    <div class="timeline-node" style="left: 80%" onclick="showExperience('davum')"></div>
+                    <div class="timeline-node" style="left: 100%" onclick="showExperience('integral-tech')"></div>
+                </div>
+                <div class="flex justify-between min-w-[800px] mt-8 text-sm text-gray-400 font-mono">
+                    <span>HT241</span>
+                    <span>ANAVEA</span>
+                    <span>SAFRIMAT</span>
+                    <span data-fr="Centre Dialyse" data-en="Dialysis Center">Centre Dialyse</span>
+                    <span>SYSTEMESCOMS</span>
+                    <span>DAVUM</span>
+                    <span>Integral Tech</span>
                 </div>
             </div>
-
+            
             <!-- Barre de progression décorative -->
             <div class="w-full h-3 bg-gradient-to-r from-cyan-500 via-purple-500 to-fortinet rounded-full mb-12 shadow-lg shadow-cyan-500/20"></div>
 
@@ -1721,7 +2021,7 @@
             <div class="space-y-8" id="experience-cards">
 
                 <!-- HT241 -->
-                <div id="card-ht241" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
+                <div id="card-ht241" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card active">
                     <div class="flex justify-between items-start mb-6">
                         <div>
                             <h3 class="text-3xl font-bold text-cyan-400 mb-2"><a href="https://www.ht241.com/" target="_blank" class="hover:underline inline-flex items-center gap-2">HT241 <i class="fas fa-external-link-alt text-sm"></i></a></h3>
@@ -1775,27 +2075,27 @@
                                 <i class="fas fa-users"></i> <span data-fr="Clients majeurs" data-en="Major Clients">Clients majeurs</span>
                             </h4>
                             <div class="grid grid-cols-2 gap-3 mb-6">
-                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
+                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors hover-glow cursor-pointer">
                                     <i class="fas fa-hospital text-red-400 mb-1"></i>
                                     <p class="text-sm text-gray-300" data-fr="Hôpital militaire" data-en="Military Hospital">Hôpital militaire</p>
                                 </div>
-                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
+                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors hover-glow cursor-pointer">
                                     <i class="fas fa-university text-blue-400 mb-1"></i>
                                     <p class="text-sm text-gray-300">Orabank Gabon</p>
                                 </div>
-                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
+                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors hover-glow cursor-pointer">
                                     <i class="fas fa-landmark text-green-400 mb-1"></i>
                                     <p class="text-sm text-gray-300">COSUMAF</p>
                                 </div>
-                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
+                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors hover-glow cursor-pointer">
                                     <i class="fas fa-building text-yellow-400 mb-1"></i>
                                     <p class="text-sm text-gray-300">ICG Gabon</p>
                                 </div>
-                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
+                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors hover-glow cursor-pointer">
                                     <i class="fas fa-theater-masks text-purple-400 mb-1"></i>
                                     <p class="text-sm text-gray-300" data-fr="Min. Culture" data-en="Min. Culture">Min. Culture</p>
                                 </div>
-                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors">
+                                <div class="glass p-3 rounded-xl border border-white/10 text-center hover:border-cyan-400/50 transition-colors hover-glow cursor-pointer">
                                     <i class="fas fa-oil-can text-gray-400 mb-1"></i>
                                     <p class="text-sm text-gray-300" data-fr="Min. Pétrole" data-en="Min. Petroleum">Min. Pétrole</p>
                                 </div>
@@ -1825,7 +2125,7 @@
                 </div>
 
                 <!-- ANAVEA -->
-                <div id="card-anavea" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
+                <div id="card-anavea" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card hidden">
                     <div class="flex justify-between items-start mb-6">
                         <div>
                             <h3 class="text-3xl font-bold text-cyan-400 mb-2">ANAVEA</h3>
@@ -1903,7 +2203,7 @@
                 </div>
 
                 <!-- SAFRIMAT -->
-                <div id="card-safrimat" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
+                <div id="card-safrimat" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card hidden">
                     <div class="flex justify-between items-start mb-6">
                         <div>
                             <h3 class="text-3xl font-bold text-cyan-400 mb-2"><a href="https://safrimat.com/?page=home" target="_blank" class="hover:underline inline-flex items-center gap-2">SAFRIMAT <i class="fas fa-external-link-alt text-sm"></i></a></h3>
@@ -1958,10 +2258,10 @@
                                 <i class="fas fa-handshake"></i> <span data-fr="Clients" data-en="Clients">Clients</span>
                             </h4>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10">Taskforce</span>
-                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10">SAMADI-BTP</span>
-                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10" data-fr="Hôpital Cancérologie" data-en="Cancer Hospital">Hôpital Cancérologie</span>
-                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10">Le Patrimoine</span>
+                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10 hover-glow cursor-pointer">Taskforce</span>
+                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10 hover-glow cursor-pointer">SAMADI-BTP</span>
+                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10 hover-glow cursor-pointer" data-fr="Hôpital Cancérologie" data-en="Cancer Hospital">Hôpital Cancérologie</span>
+                                <span class="px-3 py-2 glass rounded-lg text-gray-300 text-sm border border-white/10 hover-glow cursor-pointer">Le Patrimoine</span>
                             </div>
                         </div>
                     </div>
@@ -1981,7 +2281,7 @@
                 </div>
 
                 <!-- Centre de Dialyse de Libreville -->
-                <div id="card-centre-dialyse" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
+                <div id="card-centre-dialyse" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card hidden">
                     <div class="flex justify-between items-start mb-6">
                         <div>
                             <h3 class="text-3xl font-bold text-cyan-400 mb-2"><a href="https://www.facebook.com/CDL.SMEDI.GABON.SANTE/?locale=fr_FR" target="_blank" class="hover:underline inline-flex items-center gap-2">Centre de Dialyse de Libreville <i class="fab fa-facebook text-sm"></i></a></h3>
@@ -2061,7 +2361,7 @@
                 </div>
 
                 <!-- SYSTEMESCOMS -->
-                <div id="card-systemescoms" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
+                <div id="card-systemescoms" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card hidden">
                     <div class="flex justify-between items-start mb-6">
                         <div>
                             <h3 class="text-3xl font-bold text-cyan-400 mb-2"><a href="https://teznxadbmkxsc.ok.kimi.link/" target="_blank" class="hover:underline inline-flex items-center gap-2">SYSTEMESCOMS <i class="fas fa-external-link-alt text-sm"></i></a></h3>
@@ -2093,23 +2393,23 @@
 
                         <p class="text-gray-300 mb-4" data-fr="Services IT pour divers clients :" data-en="IT services for various clients:">Services IT pour divers clients :</p>
                         <div class="flex flex-wrap gap-3">
-                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
+                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2 hover-glow cursor-pointer">
                                 <i class="fas fa-hospital text-red-400"></i>
                                 <span class="text-gray-300 text-sm" data-fr="Centre hospitalier cancérologie" data-en="Cancer hospital center">Centre hospitalier cancérologie</span>
                             </div>
-                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
+                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2 hover-glow cursor-pointer">
                                 <i class="fas fa-paw text-green-400"></i>
                                 <span class="text-gray-300 text-sm">WWF</span>
                             </div>
-                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
+                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2 hover-glow cursor-pointer">
                                 <i class="fas fa-tooth text-white"></i>
                                 <span class="text-gray-300-sm" data-fr="Cabinet dentaire" data-en="Dental office">Cabinet dentaire</span>
                             </div>
-                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
+                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2 hover-glow cursor-pointer">
                                 <i class="fas fa-print text-blue-400"></i>
                                 <span class="text-gray-300 text-sm" data-fr="Entreprise d'imprimerie" data-en="Printing company">Entreprise d'imprimerie</span>
                             </div>
-                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2">
+                            <div class="glass px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2 hover-glow cursor-pointer">
                                 <i class="fas fa-calculator text-yellow-400"></i>
                                 <span class="text-gray-300 text-sm" data-fr="Entreprise comptable" data-en="Accounting firm">Entreprise comptable</span>
                             </div>
@@ -2131,7 +2431,7 @@
                 </div>
 
                 <!-- DAVUM GABON -->
-                <div id="card-davum" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card">
+                <div id="card-davum" class="experience-card glass rounded-3xl p-8 border border-white/10 hover-card hidden">
                     <div class="flex justify-between items-start mb-6">
                         <div>
                             <h3 class="text-3xl font-bold text-cyan-400 mb-2">DAVUM GABON</h3>
@@ -2189,6 +2489,87 @@
         </div>
     </section>
 
+    <!-- NEW: Infrastructure Map Section from autr noi.txt -->
+    <section id="infrastructure" class="py-24 relative bg-black/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-4xl font-bold text-white mb-4 glow-text" data-fr="Infrastructure IT" data-en="IT Infrastructure">Infrastructure IT</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto" data-fr="Architecture réseau et systèmes que je maîtrise" data-en="Network and systems architecture I master">Architecture réseau et systèmes que je maîtrise</p>
+            </div>
+
+            <div class="glass-strong rounded-2xl p-8 relative overflow-hidden hover-glow network-map-container" id="network-map">
+                <!-- Central Node -->
+                <div class="network-node-map central absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+                    <i class="fas fa-server text-3xl text-cyan-400"></i>
+                    <div class="absolute -bottom-8 w-max text-sm font-semibold text-glow">Core Infrastructure</div>
+                </div>
+                
+                <!-- Satellite Nodes -->
+                <div class="network-node-map top-10 left-1/4 hover-glow" style="animation-delay: 0s;">
+                    <i class="fas fa-network-wired text-cyan-400 text-xl"></i>
+                    <div class="absolute -bottom-6 w-max text-xs" data-fr="Réseaux" data-en="Networks">Réseaux</div>
+                </div>
+                
+                <div class="network-node-map top-10 right-1/4 hover-glow" style="animation-delay: 0.5s;">
+                    <i class="fas fa-shield-alt text-purple-400 text-xl"></i>
+                    <div class="absolute -bottom-6 w-max text-xs" data-fr="Sécurité" data-en="Security">Sécurité</div>
+                </div>
+                
+                <div class="network-node-map bottom-20 left-1/4 hover-glow" style="animation-delay: 1s;">
+                    <i class="fas fa-video text-green-400 text-xl"></i>
+                    <div class="absolute -bottom-6 w-max text-xs" data-fr="Surveillance" data-en="Surveillance">Surveillance</div>
+                </div>
+                
+                <div class="network-node-map bottom-20 right-1/4 hover-glow" style="animation-delay: 1.5s;">
+                    <i class="fas fa-phone text-yellow-400 text-xl"></i>
+                    <div class="absolute -bottom-6 w-max text-xs">VoIP</div>
+                </div>
+                
+                <div class="network-node-map top-1/3 right-10 hover-glow" style="animation-delay: 2s;">
+                    <i class="fas fa-cloud text-blue-400 text-xl"></i>
+                    <div class="absolute -bottom-6 w-max text-xs" data-fr="Cloud/Backup" data-en="Cloud/Backup">Cloud/Backup</div>
+                </div>
+                
+                <div class="network-node-map bottom-1/3 left-10 hover-glow" style="animation-delay: 2.5s;">
+                    <i class="fas fa-users text-pink-400 text-xl"></i>
+                    <div class="absolute -bottom-6 w-max text-xs" data-fr="Support" data-en="Support">Support</div>
+                </div>
+                
+                <!-- Connection Lines (SVG) -->
+                <svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 1;">
+                    <line x1="50%" y1="50%" x2="25%" y2="15%" stroke="rgba(0,212,255,0.3)" stroke-width="2" stroke-dasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
+                    </line>
+                    <line x1="50%" y1="50%" x2="75%" y2="15%" stroke="rgba(112,0,255,0.3)" stroke-width="2" stroke-dasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
+                    </line>
+                    <line x1="50%" y1="50%" x2="25%" y2="85%" stroke="rgba(0,212,255,0.3)" stroke-width="2" stroke-dasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
+                    </line>
+                    <line x1="50%" y1="50%" x2="75%" y2="85%" stroke="rgba(112,0,255,0.3)" stroke-width="2" stroke-dasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
+                    </line>
+                    <line x1="50%" y1="50%" x2="90%" y2="33%" stroke="rgba(0,212,255,0.3)" stroke-width="2" stroke-dasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
+                    </line>
+                    <line x1="50%" y1="50%" x2="10%" y2="66%" stroke="rgba(112,0,255,0.3)" stroke-width="2" stroke-dasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
+                    </line>
+                </svg>
+                
+                <!-- Info Panel -->
+                <div class="absolute bottom-4 right-4 glass p-4 rounded-lg max-w-xs text-sm hover-glow">
+                    <div class="font-semibold text-cyan-400 mb-2 text-glow" data-fr="Architecture IT" data-en="IT Architecture">Architecture IT</div>
+                    <div class="text-gray-300 space-y-1">
+                        <div>• <span data-fr="Haute disponibilité" data-en="High availability">Haute disponibilité</span></div>
+                        <div>• <span data-fr="Sécurisée (FortiGate)" data-en="Secured (FortiGate)">Sécurisée (FortiGate)</span></div>
+                        <div>• <span data-fr="Scalable (Cisco/UniFi)" data-en="Scalable (Cisco/UniFi)">Scalable (Cisco/UniFi)</span></div>
+                        <div>• <span data-fr="Monitorée 24/7" data-en="Monitored 24/7">Monitorée 24/7</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Certifications Section -->
     <section id="certifications" class="py-24 relative">
@@ -2220,7 +2601,7 @@
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Coursera Microsoft 365 -->
-                <div class="cert-badge coursera-badge text-white p-6 rounded-2xl border border-blue-400/50 shadow-lg shadow-blue-500/20">
+                <div class="cert-badge coursera-badge text-white p-6 rounded-2xl border border-blue-400/50 shadow-lg shadow-blue-500/20 hover-glow cursor-pointer">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center text-white text-2xl backdrop-blur">
                             <i class="fas fa-graduation-cap"></i>
@@ -2239,7 +2620,7 @@
                 </div>
 
                 <!-- Microsoft -->
-                <div class="cert-badge glass p-6 rounded-2xl border border-blue-400/30 hover:border-blue-400/60">
+                <div class="cert-badge glass p-6 rounded-2xl border border-blue-400/30 hover:border-blue-400/60 hover-glow cursor-pointer">
                     <div class="flex items-center gap-3 mb-4">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" class="cert-logo">
                         <div class="flex-1">
@@ -2273,7 +2654,7 @@
                 </div>
 
                 <!-- LinkedIn Learning -->
-                <div class="cert-badge glass p-6 rounded-2xl border border-[#0077b5]/30 hover:border-[#0077b5]/60">
+                <div class="cert-badge glass p-6 rounded-2xl border border-[#0077b5]/30 hover:border-[#0077b5]/60 hover-glow cursor-pointer">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="cert-icon-box bg-[#0077b5]">
                             <i class="fab fa-linkedin"></i>
@@ -2291,7 +2672,7 @@
                 </div>
 
                 <!-- Fortinet -->
-                <div class="cert-badge glass-fortinet p-6 rounded-2xl border border-fortinet/50 hover:border-fortinet">
+                <div class="cert-badge glass-fortinet p-6 rounded-2xl border border-fortinet/50 hover:border-fortinet hover-glow cursor-pointer">
                     <div class="flex items-center gap-3 mb-4">
                         <img src="https://boussougouange1.github.io/ange-marie-portfolio/images/fortinet.png" class="cert-logo bg-white">
                         <div class="flex-1">
@@ -2329,7 +2710,7 @@
                 </div>
 
                 <!-- Cisco -->
-                <div class="cert-badge glass p-6 rounded-2xl border border-orange-500/30 hover:border-orange-500/60">
+                <div class="cert-badge glass p-6 rounded-2xl border border-orange-500/30 hover:border-orange-500/60 hover-glow cursor-pointer">
                     <div class="flex items-center gap-3 mb-4">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Cisco_logo.svg" alt="Cisco" class="cert-logo">
                         <div class="flex-1">
@@ -2345,7 +2726,7 @@
                 </div>
 
                 <!-- PaperCut -->
-                <div class="cert-badge glass p-6 rounded-2xl border border-green-500/30 hover:border-green-500/60">
+                <div class="cert-badge glass p-6 rounded-2xl border border-green-500/30 hover:border-green-500/60 hover-glow cursor-pointer">
                     <div class="flex items-center gap-3 mb-4">
                         <img src="https://boussougouange1.github.io/ange-marie-portfolio/images/papercut.png" alt="PaperCut" class="cert-logo">
                         <div class="flex-1">
@@ -2359,7 +2740,7 @@
                 </div>
             </div>
 
-            <div class="mt-12 glass rounded-2xl p-8 border border-white/10">
+            <div class="mt-12 glass rounded-2xl p-8 border border-white/10 hover-glow">
                 <h3 class="font-display text-2xl font-bold text-white mb-6 text-center" data-fr="Formation Académique" data-en="Academic Background">Formation Académique</h3>
                 <div class="flex flex-col md:flex-row items-center justify-center gap-6">
                     <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl shadow-lg shadow-cyan-500/30">
@@ -2391,7 +2772,7 @@
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-                <div class="analytics-card rounded-2xl p-6 text-center glass border border-white/10">
+                <div class="analytics-card rounded-2xl p-6 text-center glass border border-white/10 hover-glow cursor-pointer">
                     <div class="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 text-2xl mx-auto mb-3 border border-cyan-400/30">
                         <i class="fas fa-users"></i>
                     </div>
@@ -2399,7 +2780,7 @@
                     <div class="text-gray-400 text-sm" data-fr="Visiteurs Totaux" data-en="Total Visitors">Visiteurs Totaux</div>
                 </div>
 
-                <div class="analytics-card rounded-2xl p-6 text-center glass border border-white/10">
+                <div class="analytics-card rounded-2xl p-6 text-center glass border border-white/10 hover-glow cursor-pointer">
                     <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 text-2xl mx-auto mb-3 border border-purple-400/30">
                         <i class="fas fa-eye"></i>
                     </div>
@@ -2407,7 +2788,7 @@
                     <div class="text-gray-400 text-sm" data-fr="Pages Vues" data-en="Page Views">Pages Vues</div>
                 </div>
 
-                <div class="analytics-card rounded-2xl p-6 text-center glass border border-white/10">
+                <div class="analytics-card rounded-2xl p-6 text-center glass border border-white/10 hover-glow cursor-pointer">
                     <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 text-2xl mx-auto mb-3 border border-blue-400/30">
                         <i class="fas fa-clock"></i>
                     </div>
@@ -2415,7 +2796,7 @@
                     <div class="text-gray-400 text-sm" data-fr="Temps Moyen" data-en="Avg. Time">Temps Moyen</div>
                 </div>
 
-                <div class="analytics-card rounded-2xl p-6 text-center glass border border-white/10">
+                <div class="analytics-card rounded-2xl p-6 text-center glass border border-white/10 hover-glow cursor-pointer">
                     <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 text-2xl mx-auto mb-3 border border-green-400/30">
                         <i class="fas fa-user-clock"></i>
                     </div>
@@ -2424,8 +2805,20 @@
                 </div>
             </div>
 
+            <!-- Real-time Chart from autr noi.txt -->
+            <div class="glass rounded-2xl p-6 mb-8 hover-glow">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-semibold" data-fr="Visites en temps réel (dernières 24h)" data-en="Real-time visits (last 24h)">Visites en temps réel (dernières 24h)</h3>
+                    <span class="flex items-center gap-2 text-sm text-green-400">
+                        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                        Live
+                    </span>
+                </div>
+                <canvas id="trafficChart" height="100"></canvas>
+            </div>
+
             <div class="grid md:grid-cols-3 gap-6 mb-12">
-                <div class="analytics-card rounded-2xl p-6 glass border border-white/10">
+                <div class="analytics-card rounded-2xl p-6 glass border border-white/10 hover-glow">
                     <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
                         <i class="fas fa-mobile-alt text-cyan-400"></i>
                         <span data-fr="Appareils" data-en="Devices">Appareils</span>
@@ -2480,7 +2873,7 @@
                     </div>
                 </div>
 
-                <div class="analytics-card rounded-2xl p-6 glass border border-white/10">
+                <div class="analytics-card rounded-2xl p-6 glass border border-white/10 hover-glow">
                     <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
                         <i class="fas fa-globe-americas text-green-400"></i>
                         <span data-fr="Top Localisations" data-en="Top Locations">Top Localisations</span>
@@ -2489,7 +2882,7 @@
                     </div>
                 </div>
 
-                <div class="analytics-card rounded-2xl p-6 glass border border-white/10">
+                <div class="analytics-card rounded-2xl p-6 glass border border-white/10 hover-glow">
                     <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
                         <i class="fas fa-fire text-orange-400"></i>
                         <span data-fr="Pages Populaires" data-en="Popular Pages">Pages Populaires</span>
@@ -2499,7 +2892,7 @@
                 </div>
             </div>
 
-            <div class="analytics-card rounded-2xl p-6 glass border border-white/10">
+            <div class="analytics-card rounded-2xl p-6 glass border border-white/10 hover-glow">
                 <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
                     <i class="fas fa-history text-purple-400"></i>
                     <span data-fr="Visiteurs Récents" data-en="Recent Visitors">Visiteurs Récents</span>
@@ -2531,7 +2924,7 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <button onclick="openContactForm()" class="group glass p-6 rounded-2xl border border-white/10 hover:border-cyan-400/50 transition-all text-center hover-card">
+                <button onclick="openContactForm()" class="group glass p-6 rounded-2xl border border-white/10 hover:border-cyan-400/50 transition-all text-center hover-card hover-glow">
                     <div class="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center text-cyan-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform border border-cyan-400/30">
                         <i class="fas fa-envelope"></i>
                     </div>
@@ -2539,7 +2932,7 @@
                     <p class="text-gray-400 text-sm">ahouansouange@live.fr</p>
                 </button>
 
-                <button onclick="openContactForm()" class="group glass p-6 rounded-2xl border border-white/10 hover:border-green-400/50 transition-all text-center hover-card">
+                <button onclick="openContactForm()" class="group glass p-6 rounded-2xl border border-white/10 hover:border-green-400/50 transition-all text-center hover-card hover-glow">
                     <div class="w-14 h-14 bg-green-500/20 rounded-full flex items-center justify-center text-green-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform border border-green-400/30">
                         <i class="fas fa-phone"></i>
                     </div>
@@ -2547,12 +2940,12 @@
                     <p class="text-gray-400 text-sm" data-fr="Cliquez pour voir" data-en="Click to view">Cliquez pour voir</p>
                 </button>
 
-                <div class="group glass p-6 rounded-2xl border border-white/10 hover:border-purple-400/50 transition-all text-center hover-card">
+                <div class="group glass p-6 rounded-2xl border border-white/10 hover:border-purple-400/50 transition-all text-center hover-card hover-glow">
                     <div class="w-14 h-14 bg-purple-500/20 rounded-full flex items-center justify-center text-purple-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform border border-purple-400/30">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2 text-white" data-fr="Localisation" data-en="Location">Localisation</h3>
-                    <p class="text-gray-400 text-sm">Montréal et Périphériques<br>Québec, Canada</p>
+                    <p class="text-gray-400 text-sm">open to work in all cities</p>
                 </div>
             </div>
 
@@ -2577,7 +2970,7 @@
             </div>
 
             <div class="text-center mb-12">
-                <a href="https://teams.microsoft.com/l/chat/0/0?users=ahouansouange@live.fr" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/30">
+                <a href="https://teams.microsoft.com/l/chat/0/0?users=ahouansouange@live.fr" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/30 hover-glow">
                     <i class="fab fa-microsoft text-2xl"></i>
                     <span data-fr="Discuter sur Microsoft Teams" data-en="Chat on Microsoft Teams">Discuter sur Microsoft Teams</span>
                     <i class="fas fa-external-link-alt text-sm"></i>
@@ -2586,22 +2979,22 @@
             </div>
 
             <div class="flex justify-center gap-6 mb-12">
-                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="w-14 h-14 bg-[#0077b5] rounded-full flex items-center justify-center text-white hover:bg-[#005885] transition-all transform hover:scale-110 shadow-lg shadow-blue-500/30">
+                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="w-14 h-14 bg-[#0077b5] rounded-full flex items-center justify-center text-white hover:bg-[#005885] transition-all transform hover:scale-110 shadow-lg shadow-blue-500/30 hover-glow">
                     <i class="fab fa-linkedin-in text-2xl"></i>
                 </a>
-                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank" class="w-14 h-14 bg-[#00a4ef] rounded-full flex items-center justify-center text-white hover:bg-[#0078d4] transition-all transform hover:scale-110 shadow-lg shadow-blue-400/30">
+                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank" class="w-14 h-14 bg-[#00a4ef] rounded-full flex items-center justify-center text-white hover:bg-[#0078d4] transition-all transform hover:scale-110 shadow-lg shadow-blue-400/30 hover-glow">
                     <i class="fab fa-microsoft text-xl"></i>
                 </a>
-                <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank" class="w-14 h-14 bg-[#ff6b00] rounded-full flex items-center justify-center text-white hover:bg-[#e65100] transition-all transform hover:scale-110 shadow-lg shadow-orange-500/30">
+                <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank" class="w-14 h-14 bg-[#ff6b00] rounded-full flex items-center justify-center text-white hover:bg-[#e65100] transition-all transform hover:scale-110 shadow-lg shadow-orange-500/30 hover-glow">
                     <i class="fas fa-award text-xl"></i>
                 </a>
-                <button onclick="openContactForm()" class="w-14 h-14 glass rounded-full flex items-center justify-center text-gray-300 hover:bg-red-500 hover:text-white transition-all transform hover:scale-110 border border-white/20">
+                <button onclick="openContactForm()" class="w-14 h-14 glass rounded-full flex items-center justify-center text-gray-300 hover:bg-red-500 hover:text-white transition-all transform hover:scale-110 border border-white/20 hover-glow">
                     <i class="fas fa-envelope text-xl"></i>
                 </button>
             </div>
 
             <div class="text-center">
-                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 linkedin-btn text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30">
+                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 linkedin-btn text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30 hover-glow">
                     <i class="fab fa-linkedin text-2xl"></i>
                     <span data-fr="Connectons-nous sur LinkedIn" data-en="Let's connect on LinkedIn">Connectons-nous sur LinkedIn</span>
                     <i class="fas fa-external-link-alt text-sm"></i>
@@ -2629,6 +3022,286 @@
     </footer>
 
     <script>
+        // ============================================
+        // CUSTOM CURSOR EFFECTS from autr noi.txt
+        // ============================================
+        const cursorGlow = document.getElementById('cursor-glow');
+        const cursorTrail = document.getElementById('cursor-trail');
+        const cursorDot = document.getElementById('cursor-dot');
+        
+        let mouseX = 0, mouseY = 0;
+        let trailX = 0, trailY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            cursorGlow.style.left = mouseX - 10 + 'px';
+            cursorGlow.style.top = mouseY - 10 + 'px';
+            
+            cursorDot.style.left = mouseX - 4 + 'px';
+            cursorDot.style.top = mouseY - 4 + 'px';
+        });
+        
+        // Smooth trail animation
+        function animateTrail() {
+            trailX += (mouseX - trailX) * 0.1;
+            trailY += (mouseY - trailY) * 0.1;
+            
+            cursorTrail.style.left = trailX - 20 + 'px';
+            cursorTrail.style.top = trailY - 20 + 'px';
+            
+            requestAnimationFrame(animateTrail);
+        }
+        animateTrail();
+        
+        // Add hover effect to interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, .hover-glow, .timeline-node, .network-node-map');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorGlow.style.transform = 'scale(2)';
+                cursorTrail.style.transform = 'scale(1.5)';
+                cursorTrail.style.borderColor = 'rgba(0, 212, 255, 0.8)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorGlow.style.transform = 'scale(1)';
+                cursorTrail.style.transform = 'scale(1)';
+                cursorTrail.style.borderColor = 'rgba(0, 212, 255, 0.3)';
+            });
+        });
+
+        // ============================================
+        // TERMINAL TYPEWRITER EFFECT from autr noi.txt
+        // ============================================
+        const terminalTexts = [
+            "Initialisation du profil...",
+            "Chargement des compétences réseau... [OK]",
+            "Connexion aux serveurs... [ÉTABLIE]",
+            "Déploiement caméras... [200+ INSTALLÉES]",
+            "Systèmes sécurisés... [FORTIGATE ACTIF]",
+            "Support utilisateurs... [135+ GÉRÉS]",
+            "Statut: Disponible pour missions"
+        ];
+        
+        let textIndex = 0;
+        const terminalElement = document.getElementById('terminal-text');
+        
+        function typeText() {
+            if (textIndex < terminalTexts.length) {
+                const line = document.createElement('div');
+                line.className = 'typing-text';
+                line.style.marginTop = '4px';
+                line.textContent = '> ' + terminalTexts[textIndex];
+                terminalElement.appendChild(line);
+                textIndex++;
+                setTimeout(typeText, 800);
+            }
+        }
+        
+        setTimeout(typeText, 1000);
+
+        // ============================================
+        // COUNTER ANIMATION from autr noi.txt
+        // ============================================
+        const counters = document.querySelectorAll('.counter-animated');
+        const speed = 200;
+        
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                if (!target) return;
+                const count = +counter.innerText;
+                const inc = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(animateCounters, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        };
+        
+        // Intersection Observer for counters
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        document.querySelector('#impact').querySelectorAll('.counter-animated').forEach(counter => {
+            counterObserver.observe(counter.parentElement);
+        });
+
+        // ============================================
+        // SKILL BARS ANIMATION from autr noi.txt
+        // ============================================
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.skill-fill');
+                    fills.forEach(fill => {
+                        const width = fill.getAttribute('data-width');
+                        setTimeout(() => {
+                            fill.style.width = width + '%';
+                        }, 200);
+                    });
+                    skillObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        skillObserver.observe(document.querySelector('#competences'));
+
+        // ============================================
+        // RADAR CHART from autr noi.txt
+        // ============================================
+        let skillsChart;
+        function initRadarChart() {
+            const ctx = document.getElementById('skillsChart');
+            if (!ctx) return;
+            
+            skillsChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: currentLang === 'fr' ? 
+                        ['Réseaux', 'Admin Systèmes', 'Sécurité', 'Surveillance', 'Support', 'Cloud/Backup'] :
+                        ['Networking', 'SysAdmin', 'Security', 'Surveillance', 'Support', 'Cloud/Backup'],
+                    datasets: [{
+                        label: currentLang === 'fr' ? 'Niveau de compétence' : 'Skill Level',
+                        data: [95, 90, 85, 92, 98, 85],
+                        backgroundColor: 'rgba(0, 212, 255, 0.2)',
+                        borderColor: '#00D4FF',
+                        pointBackgroundColor: '#00D4FF',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#00D4FF',
+                        borderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            pointLabels: {
+                                color: '#fff',
+                                font: {
+                                    size: 11,
+                                    family: 'Inter'
+                                }
+                            },
+                            ticks: {
+                                backdropColor: 'transparent',
+                                color: '#fff',
+                                stepSize: 20
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 100
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        // ============================================
+        // TRAFFIC CHART from autr noi.txt
+        // ============================================
+        let trafficChart;
+        function initTrafficChart() {
+            const ctx = document.getElementById('trafficChart');
+            if (!ctx) return;
+            
+            trafficChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '23:59'],
+                    datasets: [{
+                        label: currentLang === 'fr' ? 'Visiteurs' : 'Visitors',
+                        data: [12, 8, 45, 89, 67, 34, 23],
+                        borderColor: '#00D4FF',
+                        backgroundColor: (context) => {
+                            const ctx = context.chart.ctx;
+                            const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+                            gradient.addColorStop(0, 'rgba(0, 212, 255, 0.3)');
+                            gradient.addColorStop(1, 'rgba(0, 212, 255, 0)');
+                            return gradient;
+                        },
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 3,
+                        pointBackgroundColor: '#00D4FF',
+                        pointBorderColor: '#fff',
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: '#fff'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: '#fff'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        // ============================================
+        // INFRASTRUCTURE MAP PARALLAX from autr noi.txt
+        // ============================================
+        const networkMap = document.getElementById('network-map');
+        if (networkMap) {
+            networkMap.addEventListener('mousemove', (e) => {
+                const nodes = document.querySelectorAll('.network-node-map');
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                nodes.forEach((node, index) => {
+                    const speed = (index + 1) * 0.02;
+                    const xOffset = (x - rect.width / 2) * speed;
+                    const yOffset = (y - rect.height / 2) * speed;
+                    node.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+                });
+            });
+        }
+
         // ============================================
         // CONFIGURATION EMAILJS
         // ============================================
@@ -2874,6 +3547,20 @@
                 document.title = "Technicien IT | Administrateur Systèmes | Cybersécurité Fortinet - Ange-Marie Boussougou";
             }
             
+            // Update charts if they exist
+            if (skillsChart) {
+                skillsChart.data.labels = lang === 'fr' ? 
+                    ['Réseaux', 'Admin Systèmes', 'Sécurité', 'Surveillance', 'Support', 'Cloud/Backup'] :
+                    ['Networking', 'SysAdmin', 'Security', 'Surveillance', 'Support', 'Cloud/Backup'];
+                skillsChart.data.datasets[0].label = lang === 'fr' ? 'Niveau de compétence' : 'Skill Level';
+                skillsChart.update();
+            }
+            
+            if (trafficChart) {
+                trafficChart.data.datasets[0].label = lang === 'fr' ? 'Visiteurs' : 'Visitors';
+                trafficChart.update();
+            }
+            
             updateAnalyticsLanguage();
             updateChatLanguage();
             document.documentElement.lang = lang;
@@ -2983,7 +3670,7 @@
                 const defaultData = {
                     totalVisitors: 0, pageViews: 0, visits: [],
                     devices: { desktop: 0, mobile: 0, tablet: 0 },
-                    pages: { home: 0, skills: 0, experience: 0, certifications: 0, contact: 0, analytics: 0 },
+                    pages: { home: 0, skills: 0, experience: 0, certifications: 0, contact: 0, analytics: 0, impact: 0, infrastructure: 0 },
                     locations: {}, lastUpdated: new Date().toISOString()
                 };
                 if (!data) return defaultData;
@@ -2991,6 +3678,8 @@
                     const parsed = JSON.parse(data);
                     if (!parsed.devices) parsed.devices = defaultData.devices;
                     if (!parsed.pages.analytics) parsed.pages.analytics = 0;
+                    if (!parsed.pages.impact) parsed.pages.impact = 0;
+                    if (!parsed.pages.infrastructure) parsed.pages.infrastructure = 0;
                     return parsed;
                 } catch (e) { return defaultData; }
             }
@@ -3043,8 +3732,10 @@
 
             getCurrentPage() {
                 const hash = window.location.hash;
+                if (hash.includes('impact')) return 'impact';
                 if (hash.includes('competences')) return 'skills';
                 if (hash.includes('experience')) return 'experience';
+                if (hash.includes('infrastructure')) return 'infrastructure';
                 if (hash.includes('certifications')) return 'certifications';
                 if (hash.includes('contact')) return 'contact';
                 if (hash.includes('analytics')) return 'analytics';
@@ -3140,7 +3831,7 @@
                 const container = document.getElementById('pages-list');
                 if (!container) return;
                 const total = Object.values(pages).reduce((a, b) => a + b, 0) || 1;
-                const pageNames = { home: t.home, skills: t.skills, experience: t.experience, certifications: t.certifications, contact: t.contact, analytics: 'Stats' };
+                const pageNames = { home: t.home, skills: t.skills, experience: t.experience, certifications: t.certifications, contact: t.contact, analytics: 'Stats', impact: 'Impact', infrastructure: 'Infrastructure' };
                 const sortedPages = Object.entries(pages).sort((a, b) => b[1] - a[1]).slice(0, 5);
                 
                 container.innerHTML = sortedPages.map(([page, count]) => {
@@ -3190,7 +3881,7 @@
                 const container = document.getElementById('visitor-log');
                 if (!container || !visits.length) return;
                 
-                const pageNames = { home: t.home, skills: t.skills, experience: t.experience, certifications: t.certifications, contact: t.contact, analytics: 'Stats' };
+                const pageNames = { home: t.home, skills: t.skills, experience: t.experience, certifications: t.certifications, contact: t.contact, analytics: 'Stats', impact: 'Impact', infrastructure: 'Infrastructure' };
                 
                 container.innerHTML = visits.slice(0, 10).map(visit => {
                     const date = new Date(visit.timestamp);
@@ -3745,12 +4436,44 @@
             initEmailJS();
             chat = new ChatSystem();
             window.portfolioAnalytics = new PortfolioAnalytics();
+            
+            // Initialize charts after DOM is ready
+            setTimeout(() => {
+                initRadarChart();
+                initTrafficChart();
+            }, 500);
         });
 
         function toggleChat() { if (chat) chat.toggle(); }
         function sendChatMessage() { if (chat) chat.sendMessage(); }
         function sendQuickMessage(text) { if (chat) chat.sendQuickMessage(text); }
         function handleChatKeyPress(event) { if (event.key === 'Enter') sendChatMessage(); }
+
+        // Timeline navigation
+        function showExperience(companyId) {
+            // Update timeline nodes
+            document.querySelectorAll('.timeline-node').forEach((node, index) => {
+                const companies = ['ht241', 'anavea', 'safrimat', 'centre-dialyse', 'systemescoms', 'davum', 'integral-tech'];
+                if (companies[index] === companyId) {
+                    node.classList.add('active');
+                } else {
+                    node.classList.remove('active');
+                }
+            });
+
+            // Show corresponding card
+            document.querySelectorAll('.experience-card').forEach(card => {
+                card.classList.add('hidden');
+                card.classList.remove('active');
+            });
+            
+            const targetCard = document.getElementById('card-' + companyId);
+            if (targetCard) {
+                targetCard.classList.remove('hidden');
+                targetCard.classList.add('active');
+                targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
 
         // Hash change tracking
         window.addEventListener('hashchange', () => {
@@ -3768,36 +4491,5 @@
             }
         });
     </script>
-<script>
-        // Timeline navigation
-        function showExperience(companyId) {
-            // Retirer la classe active de toutes les cartes
-            document.querySelectorAll('.experience-card').forEach(card => {
-                card.classList.remove('active');
-            });
-
-            // Ajouter la classe active à la carte ciblée
-            const targetCard = document.getElementById('card-' + companyId);
-            if (targetCard) {
-                targetCard.classList.add('active');
-                targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-
-            // Mettre à jour les points de timeline
-            document.querySelectorAll('.timeline-point').forEach(point => {
-                point.classList.remove('active');
-            });
-            event.currentTarget.classList.add('active');
-        }
-
-        // Activer la première carte par défaut au chargement
-        document.addEventListener('DOMContentLoaded', () => {
-            const firstCard = document.getElementById('card-ht241');
-            if (firstCard) {
-                firstCard.classList.add('active');
-            }
-        });
-</script>
 </body>
 </html>
-
