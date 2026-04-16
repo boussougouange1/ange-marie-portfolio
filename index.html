@@ -1153,94 +1153,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Projects Section Styles */
-        .project-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(112, 0, 255, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 25px 50px -12px rgba(0, 212, 255, 0.25);
-            border-color: rgba(0, 212, 255, 0.5);
-        }
-
-        .project-icon {
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover .project-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .project-tag {
-            transition: all 0.2s ease;
-        }
-
-        .project-tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
-        }
-
-        .project-link {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--cyan), var(--purple));
-            transition: width 0.3s;
-        }
-
-        .project-link:hover::after {
-            width: 100%;
-        }
-
-        .lab-badge {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .project-badge {
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
     </style>
 <base target="_blank">
 <base target="_blank">
@@ -1431,7 +1343,6 @@
                 <div class="hidden md:flex space-x-4 items-center">
                     <a href="#accueil" class="nav-link text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Accueil" data-en="Home">Accueil</a>
                     <a href="#competences" class="nav-link text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Compétences" data-en="Skills">Compétences</a>
-                    <a href="#projets" class="nav-link text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Projets" data-en="Projects">Projets</a>
                     <a href="#experience" class="nav-link text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Expérience" data-en="Experience">Expérience</a>
                     <a href="#certifications" class="nav-link text-gray-300 hover:text-fortinet font-medium transition-colors" data-fr="Certifications" data-en="Certifications">Certifications</a>
                     <a href="#analytics" class="nav-link text-cyan-400 hover:text-cyan-300 font-medium transition-colors flex items-center gap-2">
@@ -1461,7 +1372,6 @@
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#accueil" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium" data-fr="Accueil" data-en="Home">Accueil</a>
                 <a href="#competences" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium" data-fr="Compétences" data-en="Skills">Compétences</a>
-                <a href="#projets" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium" data-fr="Projets" data-en="Projects">Projets</a>
                 <a href="#experience" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium" data-fr="Expérience" data-en="Experience">Expérience</a>
                 <a href="#certifications" class="block px-3 py-2 text-gray-300 hover:text-fortinet font-medium" data-fr="Certifications" data-en="Certifications">Certifications</a>
                 <a href="#analytics" class="block px-3 py-2 text-cyan-400 font-medium flex items-center gap-2">
@@ -1737,259 +1647,8 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projets" class="py-24 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/5 to-transparent"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
-                <div class="inline-flex items-center gap-2 mb-4">
-                    <i class="fas fa-project-diagram text-cyan-400 text-3xl"></i>
-                    <h2 class="font-display text-4xl font-bold text-white glow-text" data-fr="Projets Réalisés" data-en="Completed Projects">Projets Réalisés</h2>
-                </div>
-                <p class="text-gray-400 max-w-2xl mx-auto" data-fr="Portfolio de projets techniques démontrant mon expertise en infrastructure IT, cloud et cybersécurité." data-en="Technical project portfolio demonstrating my expertise in IT infrastructure, cloud and cybersecurity.">Portfolio de projets techniques démontrant mon expertise en infrastructure IT, cloud et cybersécurité.</p>
-            </div>
-
-            <!-- Microsoft / Azure Projects -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                    <i class="fab fa-microsoft text-blue-400"></i>
-                    <span data-fr="Microsoft Azure & Identity" data-en="Microsoft Azure & Identity">Microsoft Azure & Identity</span>
-                </h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Projet 1 -->
-                    <div class="project-card glass rounded-2xl p-6 border border-white/10 hover:border-cyan-400/50">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 text-2xl project-icon border border-blue-400/30">
-                                <i class="fas fa-id-card"></i>
-                            </div>
-                            <span class="project-badge">Projet</span>
-                        </div>
-                        <h4 class="font-bold text-lg text-white mb-2" data-fr="Infrastructure Identity & Authentication" data-en="Identity & Authentication Infrastructure">Infrastructure Identity & Authentication</h4>
-                        <p class="text-gray-400 text-sm mb-4" data-fr="Déploiement complet d'une infrastructure Microsoft Entra ID avec gestion des identités et authentification sécurisée." data-en="Complete deployment of Microsoft Entra ID infrastructure with identity management and secure authentication.">Déploiement complet d'une infrastructure Microsoft Entra ID avec gestion des identités et authentification sécurisée.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="project-tag px-2 py-1 bg-blue-500/20 text-blue-400 rounded text-xs border border-blue-400/30">Entra ID</span>
-                            <span class="project-tag px-2 py-1 bg-purple-500/20 text-purple-400 rounded text-xs border border-purple-400/30">Azure AD</span>
-                            <span class="project-tag px-2 py-1 bg-cyan-500/20 text-cyan-400 rounded text-xs border border-cyan-400/30">IAM</span>
-                        </div>
-                        <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_microsoftentraid-azuread-cybersaezcuritaez-activity-7440152022789619712-dZbs?utm_source=share&utm_medium=member_desktop&rcm=ACoAABucWxkBZCKL5pfUCcOTSsbmZQIRT9z00zI" target="_blank" class="project-link inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-medium">
-                            <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-
-                    <!-- Projet 2 -->
-                    <div class="project-card glass rounded-2xl p-6 border border-white/10 hover:border-cyan-400/50">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center text-green-400 text-2xl project-icon border border-green-400/30">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <span class="lab-badge">Lab</span>
-                        </div>
-                        <h4 class="font-bold text-lg text-white mb-2" data-fr="Entra ID & Authentification Multifacteur (MFA)" data-en="Entra ID & Multi-Factor Authentication (MFA)">Entra ID & Authentification Multifacteur (MFA)</h4>
-                        <p class="text-gray-400 text-sm mb-4" data-fr="Mise en place de l'authentification multifacteur avec Microsoft Entra ID pour sécuriser l'accès aux ressources." data-en="Implementation of multi-factor authentication with Microsoft Entra ID to secure access to resources.">Mise en place de l'authentification multifacteur avec Microsoft Entra ID pour sécuriser l'accès aux ressources.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="project-tag px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs border border-green-400/30">MFA</span>
-                            <span class="project-tag px-2 py-1 bg-blue-500/20 text-blue-400 rounded text-xs border border-blue-400/30">Entra ID</span>
-                            <span class="project-tag px-2 py-1 bg-orange-500/20 text-orange-400 rounded text-xs border border-orange-400/30">Sécurité</span>
-                        </div>
-                        <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_microsoftentraid-azuread-mfa-activity-7419077441002045442-raf1?utm_source=share&utm_medium=member_desktop&rcm=ACoAABucWxkBZCKL5pfUCcOTSsbmZQIRT9z00zI" target="_blank" class="project-link inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-medium">
-                            <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-
-                    <!-- Projet 3 -->
-                    <div class="project-card glass rounded-2xl p-6 border border-white/10 hover:border-cyan-400/50">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 text-2xl project-icon border border-purple-400/30">
-                                <i class="fas fa-cloud"></i>
-                            </div>
-                            <span class="lab-badge">Lab</span>
-                        </div>
-                        <h4 class="font-bold text-lg text-white mb-2" data-fr="Infrastructure Hybride AD + Entra ID" data-en="Hybrid Infrastructure AD + Entra ID">Infrastructure Hybride AD + Entra ID</h4>
-                        <p class="text-gray-400 text-sm mb-4" data-fr="Configuration d'une infrastructure hybride reliant Active Directory on-premise avec Microsoft Entra ID cloud." data-en="Configuration of hybrid infrastructure connecting on-premise Active Directory with cloud Microsoft Entra ID.">Configuration d'une infrastructure hybride reliant Active Directory on-premise avec Microsoft Entra ID cloud.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="project-tag px-2 py-1 bg-purple-500/20 text-purple-400 rounded text-xs border border-purple-400/30">Hybrid</span>
-                            <span class="project-tag px-2 py-1 bg-blue-500/20 text-blue-400 rounded text-xs border border-blue-400/30">AD</span>
-                            <span class="project-tag px-2 py-1 bg-cyan-500/20 text-cyan-400 rounded text-xs border border-cyan-400/30">Entra ID</span>
-                        </div>
-                        <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_microsoftentraid-azuread-cybersaezcuritaez-activity-7449257438349950976-jYs0?utm_source=share&utm_medium=member_desktop&rcm=ACoAABucWxkBZCKL5pfUCcOTSsbmZQIRT9z00zI" target="_blank" class="project-link inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-medium">
-                            <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-
-                    <!-- Projet 4 -->
-                    <div class="project-card glass rounded-2xl p-6 border border-white/10 hover:border-cyan-400/50">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-2xl project-icon border border-indigo-400/30">
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
-                            <span class="lab-badge">Lab</span>
-                        </div>
-                        <h4 class="font-bold text-lg text-white mb-2">Microsoft Intune</h4>
-                        <p class="text-gray-400 text-sm mb-4" data-fr="Déploiement et configuration de Microsoft Intune pour la gestion des appareils mobiles (MDM) et la sécurité." data-en="Deployment and configuration of Microsoft Intune for mobile device management (MDM) and security.">Déploiement et configuration de Microsoft Intune pour la gestion des appareils mobiles (MDM) et la sécurité.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="project-tag px-2 py-1 bg-indigo-500/20 text-indigo-400 rounded text-xs border border-indigo-400/30">Intune</span>
-                            <span class="project-tag px-2 py-1 bg-pink-500/20 text-pink-400 rounded text-xs border border-pink-400/30">MDM</span>
-                            <span class="project-tag px-2 py-1 bg-blue-500/20 text-blue-400 rounded text-xs border border-blue-400/30">MAM</span>
-                        </div>
-                        <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_microsoftentraid-azuread-cybersaezcuritaez-activity-7449886531562913792-Bg_-?utm_source=share&utm_medium=member_desktop&rcm=ACoAABucWxkBZCKL5pfUCcOTSsbmZQIRT9z00zI" target="_blank" class="project-link inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-medium">
-                            <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Security & Network Projects -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                    <i class="fas fa-shield-alt text-fortinet"></i>
-                    <span data-fr="Sécurité & Réseaux" data-en="Security & Networks">Sécurité & Réseaux</span>
-                </h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Projet Fortinet -->
-                    <div class="project-card glass-fortinet rounded-2xl p-6 border border-fortinet/30 hover:border-fortinet">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-fortinet/20 flex items-center justify-center text-fortinet text-2xl project-icon border border-fortinet/30">
-                                <i class="fas fa-fire-alt"></i>
-                            </div>
-                            <span class="lab-badge">Lab</span>
-                        </div>
-                        <h4 class="font-bold text-lg text-white mb-2">Fortinet Firewall Configuration</h4>
-                        <p class="text-gray-400 text-sm mb-4" data-fr="Configuration avancée de pare-feu FortiGate en environnement virtuel avec règles de sécurité, VPN et politiques d'accès." data-en="Advanced FortiGate firewall configuration in virtual environment with security rules, VPN and access policies.">Configuration avancée de pare-feu FortiGate en environnement virtuel avec règles de sécurité, VPN et politiques d'accès.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="project-tag px-2 py-1 bg-fortinet/20 text-fortinet rounded text-xs border border-fortinet/30">FortiGate</span>
-                            <span class="project-tag px-2 py-1 bg-red-500/20 text-red-400 rounded text-xs border border-red-400/30">Firewall</span>
-                            <span class="project-tag px-2 py-1 bg-orange-500/20 text-orange-400 rounded text-xs border border-orange-400/30">VPN</span>
-                        </div>
-                        <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_fortinet-networksecurity-cybersecurity-activity-7431012138216755201-pmC2?utm_source=share&utm_medium=member_desktop&rcm=ACoAABucWxkBZCKL5pfUCcOTSsbmZQIRT9z00zI" target="_blank" class="project-link inline-flex items-center gap-2 text-fortinet hover:text-orange-400 text-sm font-medium">
-                            <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-
-                    <!-- PaperCut -->
-                    <div class="project-card glass rounded-2xl p-6 border border-white/10 hover:border-cyan-400/50">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center text-green-400 text-2xl project-icon border border-green-400/30">
-                                <i class="fas fa-print"></i>
-                            </div>
-                            <span class="project-badge">Projet</span>
-                        </div>
-                        <h4 class="font-bold text-lg text-white mb-2" data-fr="Solution de Gestion d'Impression PaperCut" data-en="PaperCut Print Management Solution">Solution de Gestion d'Impression PaperCut</h4>
-                        <p class="text-gray-400 text-sm mb-4" data-fr="Déploiement de PaperCut MF pour la gestion sécurisée des impressions, réduction des coûts et suivi des ressources." data-en="Deployment of PaperCut MF for secure print management, cost reduction and resource tracking.">Déploiement de PaperCut MF pour la gestion sécurisée des impressions, réduction des coûts et suivi des ressources.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="project-tag px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs border border-green-400/30">PaperCut</span>
-                            <span class="project-tag px-2 py-1 bg-blue-500/20 text-blue-400 rounded text-xs border border-blue-400/30">Print Management</span>
-                            <span class="project-tag px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded text-xs border border-yellow-400/30">MPS</span>
-                        </div>
-                        <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_papercut-networking-networkengineering-activity-7395189212695654400-R7nT?utm_source=share&utm_medium=member_desktop&rcm=ACoAABucWxkBZCKL5pfUCcOTSsbmZQIRT9z00zI" target="_blank" class="project-link inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-medium">
-                            <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cisco Projects -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                    <i class="fas fa-network-wired text-green-400"></i>
-                    <span data-fr="Architecture Réseau Cisco" data-en="Cisco Network Architecture">Architecture Réseau Cisco</span>
-                </h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Cisco Part 1 -->
-                    <div class="project-card glass rounded-2xl p-6 border border-white/10 hover:border-cyan-400/50">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-blue-600/20 flex items-center justify-center text-blue-400 text-2xl project-icon border border-blue-400/30">
-                                <i class="fas fa-sitemap"></i>
-                            </div>
-                            <span class="lab-badge">Lab Part 1</span>
-                        </div>
-                        <h4 class="font-bold text-lg text-white mb-2" data-fr="Enterprise Network Architecture avec VLAN et VoIP" data-en="Enterprise Network Architecture with VLAN and VoIP">Enterprise Network Architecture avec VLAN et VoIP</h4>
-                        <p class="text-gray-400 text-sm mb-4" data-fr="Conception d'une architecture réseau d'entreprise avec segmentation VLAN, routage inter-VLAN et intégration VoIP sur Cisco Packet Tracer." data-en="Design of enterprise network architecture with VLAN segmentation, inter-VLAN routing and VoIP integration on Cisco Packet Tracer.">Conception d'une architecture réseau d'entreprise avec segmentation VLAN, routage inter-VLAN et intégration VoIP sur Cisco Packet Tracer.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="project-tag px-2 py-1 bg-blue-600/20 text-blue-400 rounded text-xs border border-blue-400/30">Cisco</span>
-                            <span class="project-tag px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs border border-green-400/30">VLAN</span>
-                            <span class="project-tag px-2 py-1 bg-purple-500/20 text-purple-400 rounded text-xs border border-purple-400/30">VoIP</span>
-                        </div>
-                        <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_cisco-networking-packettracer-activity-7435144710958190592-RcF0?utm_source=share&utm_medium=member_desktop&rcm=ACoAABucWxkBZCKL5pfUCcOTSsbmZQIRT9z00zI" target="_blank" class="project-link inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-medium">
-                            <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-
-                    <!-- Cisco Part 2 -->
-                    <div class="project-card glass rounded-2xl p-6 border border-white/10 hover:border-cyan-400/50">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-2xl project-icon border border-indigo-400/30">
-                                <i class="fas fa-laptop"></i>
-                            </div>
-                            <span class="lab-badge">Lab Part 2</span>
-                        </div>
-                        <h4 class="font-bold text-lg text-white mb-2" data-fr="Update - PCs, Access Points & Tablets" data-en="Update - PCs, Access Points & Tablets">Update - PCs, Access Points & Tablets</h4>
-                        <p class="text-gray-400 text-sm mb-4" data-fr="Extension du réseau avec ajout de postes de travail, points d'accès sans fil et tablettes pour une infrastructure complète." data-en="Network extension with addition of workstations, wireless access points and tablets for complete infrastructure.">Extension du réseau avec ajout de postes de travail, points d'accès sans fil et tablettes pour une infrastructure complète.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="project-tag px-2 py-1 bg-indigo-500/20 text-indigo-400 rounded text-xs border border-indigo-400/30">Wireless</span>
-                            <span class="project-tag px-2 py-1 bg-cyan-500/20 text-cyan-400 rounded text-xs border border-cyan-400/30">Access Points</span>
-                            <span class="project-tag px-2 py-1 bg-pink-500/20 text-pink-400 rounded text-xs border border-pink-400/30">Tablets</span>
-                        </div>
-                        <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_cisco-networking-ccna-activity-7436841728680235008-D9I2?utm_source=share&utm_medium=member_desktop&rcm=ACoAABucWxkBZCKL5pfUCcOTSsbmZQIRT9z00zI" target="_blank" class="project-link inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-medium">
-                            <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-
-                    <!-- Cisco Part 3 -->
-                    <div class="project-card glass rounded-2xl p-6 border border-white/10 hover:border-cyan-400/50">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 text-2xl project-icon border border-purple-400/30">
-                                <i class="fas fa-wifi"></i>
-                            </div>
-                            <span class="lab-badge">Lab Part 3</span>
-                        </div>
-                        <h4 class="font-bold text-lg text-white mb-2" data-fr="Connectivity & Wireless Deployment" data-en="Connectivity & Wireless Deployment">Connectivity & Wireless Deployment</h4>
-                        <p class="text-gray-400 text-sm mb-4" data-fr="Finalisation du déploiement avec configuration complète de la connectivité sans fil, sécurité WPA2/3 et roaming entre APs." data-en="Finalization of deployment with complete wireless connectivity configuration, WPA2/3 security and AP roaming.">Finalisation du déploiement avec configuration complète de la connectivité sans fil, sécurité WPA2/3 et roaming entre APs.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="project-tag px-2 py-1 bg-purple-500/20 text-purple-400 rounded text-xs border border-purple-400/30">Wireless</span>
-                            <span class="project-tag px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs border border-green-400/30">WPA3</span>
-                            <span class="project-tag px-2 py-1 bg-blue-500/20 text-blue-400 rounded text-xs border border-blue-400/30">Roaming</span>
-                        </div>
-                        <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_cisco-networking-ccna-activity-7437321469711286272-g_XG?utm_source=share&utm_medium=member_desktop&rcm=ACoAABucWxkBZCKL5pfUCcOTSsbmZQIRT9z00zI" target="_blank" class="project-link inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-medium">
-                            <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Stats Summary -->
-            <div class="glass rounded-2xl p-8 border border-white/10 mt-12">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                    <div>
-                        <div class="text-3xl font-bold text-cyan-400 glow-text">9+</div>
-                        <div class="text-gray-400 text-sm mt-1" data-fr="Projets Réalisés" data-en="Completed Projects">Projets Réalisés</div>
-                    </div>
-                    <div>
-                        <div class="text-3xl font-bold text-purple-400">6</div>
-                        <div class="text-gray-400 text-sm mt-1" data-fr="Labs Techniques" data-en="Technical Labs">Labs Techniques</div>
-                    </div>
-                    <div>
-                        <div class="text-3xl font-bold text-fortinet">3</div>
-                        <div class="text-gray-400 text-sm mt-1" data-fr="Domaines d'Expertise" data-en="Expertise Areas">Domaines d'Expertise</div>
-                    </div>
-                    <div>
-                        <div class="text-3xl font-bold text-green-400">100%</div>
-                        <div class="text-gray-400 text-sm mt-1" data-fr="Documentation LinkedIn" data-en="LinkedIn Documentation">Documentation LinkedIn</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    
+    
     <!-- Experience Section - Nouveau Design -->
     <section id="experience" class="py-24 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent"></div>
@@ -3148,7 +2807,7 @@
                 popularPages: 'Pages Populaires', recentVisitors: 'Visiteurs Récents',
                 anonymousStats: 'Ces statistiques sont collectées de manière anonyme. ',
                 viewDashboard: 'Voir le tableau de bord complet',
-                home: 'Accueil', skills: 'Compétences', projects: 'Projets', experience: 'Expérience',
+                home: 'Accueil', skills: 'Compétences', experience: 'Expérience',
                 certifications: 'Certifications', contact: 'Contact', direct: 'Direct', justNow: 'À l\'instant'
             },
             en: {
@@ -3159,7 +2818,7 @@
                 popularPages: 'Popular Pages', recentVisitors: 'Recent Visitors',
                 anonymousStats: 'These statistics are collected anonymously. ',
                 viewDashboard: 'View full dashboard',
-                home: 'Home', skills: 'Skills', projects: 'Projects', experience: 'Experience',
+                home: 'Home', skills: 'Skills', experience: 'Experience',
                 certifications: 'Certifications', contact: 'Contact', direct: 'Direct', justNow: 'Just now'
             }
         };
@@ -3324,14 +2983,13 @@
                 const defaultData = {
                     totalVisitors: 0, pageViews: 0, visits: [],
                     devices: { desktop: 0, mobile: 0, tablet: 0 },
-                    pages: { home: 0, skills: 0, projects: 0, experience: 0, certifications: 0, contact: 0, analytics: 0 },
+                    pages: { home: 0, skills: 0, experience: 0, certifications: 0, contact: 0, analytics: 0 },
                     locations: {}, lastUpdated: new Date().toISOString()
                 };
                 if (!data) return defaultData;
                 try {
                     const parsed = JSON.parse(data);
                     if (!parsed.devices) parsed.devices = defaultData.devices;
-                    if (!parsed.pages.projects) parsed.pages.projects = 0;
                     if (!parsed.pages.analytics) parsed.pages.analytics = 0;
                     return parsed;
                 } catch (e) { return defaultData; }
@@ -3386,7 +3044,6 @@
             getCurrentPage() {
                 const hash = window.location.hash;
                 if (hash.includes('competences')) return 'skills';
-                if (hash.includes('projets')) return 'projects';
                 if (hash.includes('experience')) return 'experience';
                 if (hash.includes('certifications')) return 'certifications';
                 if (hash.includes('contact')) return 'contact';
@@ -3483,7 +3140,7 @@
                 const container = document.getElementById('pages-list');
                 if (!container) return;
                 const total = Object.values(pages).reduce((a, b) => a + b, 0) || 1;
-                const pageNames = { home: t.home, skills: t.skills, projects: t.projects, experience: t.experience, certifications: t.certifications, contact: t.contact, analytics: 'Stats' };
+                const pageNames = { home: t.home, skills: t.skills, experience: t.experience, certifications: t.certifications, contact: t.contact, analytics: 'Stats' };
                 const sortedPages = Object.entries(pages).sort((a, b) => b[1] - a[1]).slice(0, 5);
                 
                 container.innerHTML = sortedPages.map(([page, count]) => {
@@ -3533,7 +3190,7 @@
                 const container = document.getElementById('visitor-log');
                 if (!container || !visits.length) return;
                 
-                const pageNames = { home: t.home, skills: t.skills, projects: t.projects, experience: t.experience, certifications: t.certifications, contact: t.contact, analytics: 'Stats' };
+                const pageNames = { home: t.home, skills: t.skills, experience: t.experience, certifications: t.certifications, contact: t.contact, analytics: 'Stats' };
                 
                 container.innerHTML = visits.slice(0, 10).map(visit => {
                     const date = new Date(visit.timestamp);
@@ -4143,3 +3800,4 @@
 </script>
 </body>
 </html>
+
