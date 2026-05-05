@@ -332,6 +332,18 @@
             text-shadow: 0 0 20px rgba(238, 76, 36, 0.5);
         }
         
+        .lab-filter-btn.active {
+            border-color: rgba(0, 212, 255, 0.5) !important;
+            background: rgba(0, 212, 255, 0.1) !important;
+            color: #00D4FF !important;
+        }
+        .lab-card {
+            transition: all 0.3s ease;
+        }
+        .lab-card.hidden {
+            display: none;
+        }
+
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -1345,6 +1357,7 @@
                     <a href="#competences" class="nav-link text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Compétences" data-en="Skills">Compétences</a>
                     <a href="#experience" class="nav-link text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Expérience" data-en="Experience">Expérience</a>
                     <a href="#certifications" class="nav-link text-gray-300 hover:text-fortinet font-medium transition-colors" data-fr="Certifications" data-en="Certifications">Certifications</a>
+                    <a href="#lab" class="nav-link text-gray-300 hover:text-cyan-400 font-medium transition-colors flex items-center gap-1" data-fr="Lab" data-en="Lab"><i class="fas fa-flask text-xs"></i> Lab</a>
                     <a href="#analytics" class="nav-link text-cyan-400 hover:text-cyan-300 font-medium transition-colors flex items-center gap-2">
                         <i class="fas fa-chart-line"></i>
                         <span data-fr="Stats" data-en="Stats">Stats</span>
@@ -1374,6 +1387,7 @@
                 <a href="#competences" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium" data-fr="Compétences" data-en="Skills">Compétences</a>
                 <a href="#experience" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium" data-fr="Expérience" data-en="Experience">Expérience</a>
                 <a href="#certifications" class="block px-3 py-2 text-gray-300 hover:text-fortinet font-medium" data-fr="Certifications" data-en="Certifications">Certifications</a>
+                <a href="#lab" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium flex items-center gap-2"><i class="fas fa-flask"></i> Lab</a>
                 <a href="#analytics" class="block px-3 py-2 text-cyan-400 font-medium flex items-center gap-2">
                     <i class="fas fa-chart-line"></i> <span data-fr="Statistiques en direct" data-en="Live Statistics">Statistiques en direct</span>
                     <span class="w-2 h-2 bg-green-500 rounded-full live-indicator"></span>
@@ -2266,6 +2280,16 @@
                             </div>
                         </li>
                         <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-blue-400 mt-1 text-xs"></i>
+                            <div>
+                                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials/ea292d2435e25712" target="_blank" class="text-cyan-400 hover:underline flex items-center gap-1">
+                                    <span>Compétences appliquées : Prise en main des tâches de gestion Azure</span>
+                                    <i class="fas fa-external-link-alt text-xs"></i>
+                                </a>
+                                <span class="text-xs text-green-400 font-medium">✓ Applied Skills</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
                             <i class="fas fa-clock text-blue-400 mt-1 text-xs"></i>
                             <span class="text-gray-400" data-fr="Azure Fundamentals (AZ-900) - en préparation" data-en="Azure Fundamentals (AZ-900) - in preparation">Azure Fundamentals (AZ-900) - en préparation</span>
                         </li>
@@ -2369,6 +2393,435 @@
                         <h4 class="font-bold text-xl text-white" data-fr="Bachelor en Télécommunications & Réseaux" data-en="Bachelor in Telecommunications & Networks">Bachelor en Télécommunications & Réseaux</h4>
                         <p class="text-gray-400">Institut CERCO, Cotonou-Bénin (2014)</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LAB SECTION -->
+    <section id="lab" class="py-24 relative overflow-hidden">
+        <!-- Animated background -->
+        <div class="absolute inset-0 bg-grid opacity-40"></div>
+        <div class="absolute top-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-fortinet/5 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Section header -->
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-cyan-400 font-medium text-sm mb-4 border border-cyan-400/30">
+                    <i class="fas fa-flask text-xs"></i>
+                    <span data-fr="Projets pratiques réalisés" data-en="Hands-on lab projects">Projets pratiques réalisés</span>
+                </div>
+                <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mb-4" style="text-shadow: 0 0 20px rgba(0,212,255,0.3)">
+                    <span class="text-gradient">Lab Projects</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto" data-fr="Environnements hybrides, cloud Azure, cybersécurité et réseaux — construits, testés et documentés." data-en="Hybrid environments, Azure cloud, cybersecurity and networks — built, tested and documented.">
+                    Environnements hybrides, cloud Azure, cybersécurité et réseaux — construits, testés et documentés.
+                </p>
+            </div>
+
+            <!-- Category filters -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12" id="lab-filters">
+                <button onclick="filterLab('all')" class="lab-filter-btn active px-5 py-2 rounded-full text-sm font-semibold transition-all border border-cyan-400/50 bg-cyan-400/10 text-cyan-400" data-category="all">
+                    <i class="fas fa-th-large mr-1"></i> <span data-fr="Tous" data-en="All">Tous</span>
+                </button>
+                <button onclick="filterLab('azure')" class="lab-filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all border border-white/20 text-gray-400 hover:text-white hover:border-blue-400/50 hover:bg-blue-400/10" data-category="azure">
+                    <i class="fab fa-microsoft mr-1"></i> Azure / Microsoft
+                </button>
+                <button onclick="filterLab('network')" class="lab-filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all border border-white/20 text-gray-400 hover:text-white hover:border-orange-400/50 hover:bg-orange-400/10" data-category="network">
+                    <i class="fas fa-network-wired mr-1"></i> <span data-fr="Réseau" data-en="Network">Réseau</span>
+                </button>
+                <button onclick="filterLab('security')" class="lab-filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all border border-white/20 text-gray-400 hover:text-white hover:border-red-400/50 hover:bg-red-400/10" data-category="security">
+                    <i class="fas fa-shield-alt mr-1"></i> <span data-fr="Sécurité" data-en="Security">Sécurité</span>
+                </button>
+            </div>
+
+            <!-- Lab grid -->
+            <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6" id="lab-grid">
+
+                <!-- Lab 1: Azure Governance -->
+                <div class="lab-card group" data-category="azure">
+                    <div class="glass rounded-2xl border border-white/10 hover:border-blue-400/40 transition-all duration-300 overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10">
+                        <div class="h-2 bg-gradient-to-r from-blue-400 to-cyan-400"></div>
+                        <div class="p-6">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-11 h-11 rounded-xl bg-blue-500/20 flex items-center justify-center border border-blue-400/30 text-blue-400 text-lg">
+                                        <i class="fab fa-microsoft"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-semibold text-blue-400 uppercase tracking-wider">Azure</span>
+                                        <div class="text-xs text-gray-500">Lab #01</div>
+                                    </div>
+                                </div>
+                                <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-medium border border-green-400/30">✓ Réalisé</span>
+                            </div>
+                            <h3 class="font-display font-bold text-white text-lg mb-2 leading-snug">Gouvernance et sécurité des ressources Azure</h3>
+                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">Prise en main des tâches de gestion Azure : policies, RBAC, resource groups, blueprints.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="px-2 py-0.5 bg-blue-500/15 text-blue-400 rounded text-xs border border-blue-400/20">Azure Policy</span>
+                                <span class="px-2 py-0.5 bg-cyan-500/15 text-cyan-400 rounded text-xs border border-cyan-400/20">RBAC</span>
+                                <span class="px-2 py-0.5 bg-purple-500/15 text-purple-400 rounded text-xs border border-purple-400/20">Resource Groups</span>
+                            </div>
+                            <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_azure-microsoftazure-cloudcomputing-activity-7457244314100776960-1yTc" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors group-hover:gap-3">
+                                <i class="fab fa-linkedin"></i>
+                                <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
+                                <i class="fas fa-arrow-right text-xs transition-all"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lab 2: Hybrid Entra ID -->
+                <div class="lab-card group" data-category="azure">
+                    <div class="glass rounded-2xl border border-white/10 hover:border-indigo-400/40 transition-all duration-300 overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-500/10">
+                        <div class="h-2 bg-gradient-to-r from-indigo-400 to-purple-400"></div>
+                        <div class="p-6">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-11 h-11 rounded-xl bg-indigo-500/20 flex items-center justify-center border border-indigo-400/30 text-indigo-400 text-lg">
+                                        <i class="fas fa-id-card"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-semibold text-indigo-400 uppercase tracking-wider">Hybrid AD</span>
+                                        <div class="text-xs text-gray-500">Lab #02</div>
+                                    </div>
+                                </div>
+                                <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-medium border border-green-400/30">✓ Réalisé</span>
+                            </div>
+                            <h3 class="font-display font-bold text-white text-lg mb-2 leading-snug">Jonction hybride Microsoft Entra ID + AD on-premises</h3>
+                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">Configuration Hybrid Azure AD Join, synchronisation Azure AD Connect, SSO hybride.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="px-2 py-0.5 bg-indigo-500/15 text-indigo-400 rounded text-xs border border-indigo-400/20">Entra ID</span>
+                                <span class="px-2 py-0.5 bg-blue-500/15 text-blue-400 rounded text-xs border border-blue-400/20">AD Connect</span>
+                                <span class="px-2 py-0.5 bg-purple-500/15 text-purple-400 rounded text-xs border border-purple-400/20">Hybrid Join</span>
+                            </div>
+                            <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_microsoftentraid-azuread-activedirectory-activity-7451151486836813824-iKfx" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors group-hover:gap-3">
+                                <i class="fab fa-linkedin"></i>
+                                <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
+                                <i class="fas fa-arrow-right text-xs transition-all"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lab 3: Incident sync AD DS -->
+                <div class="lab-card group" data-category="azure security">
+                    <div class="glass rounded-2xl border border-white/10 hover:border-red-400/40 transition-all duration-300 overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-red-500/10">
+                        <div class="h-2 bg-gradient-to-r from-red-400 to-orange-400"></div>
+                        <div class="p-6">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-11 h-11 rounded-xl bg-red-500/20 flex items-center justify-center border border-red-400/30 text-red-400 text-lg">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-semibold text-red-400 uppercase tracking-wider">Incident</span>
+                                        <div class="text-xs text-gray-500">Lab #03</div>
+                                    </div>
+                                </div>
+                                <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-medium border border-green-400/30">✓ Réalisé</span>
+                            </div>
+                            <h3 class="font-display font-bold text-white text-lg mb-2 leading-snug">Incident réel : panne sync AD DS → Entra ID</h3>
+                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">Diagnostic et résolution d'une panne de synchronisation en environnement hybride. Root cause analysis.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="px-2 py-0.5 bg-red-500/15 text-red-400 rounded text-xs border border-red-400/20">Troubleshooting</span>
+                                <span class="px-2 py-0.5 bg-orange-500/15 text-orange-400 rounded text-xs border border-orange-400/20">AD DS</span>
+                                <span class="px-2 py-0.5 bg-yellow-500/15 text-yellow-400 rounded text-xs border border-yellow-400/20">Sync Errors</span>
+                            </div>
+                            <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_sysadmin-azuread-entraid-activity-7455638595798859776-21t" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-red-400 hover:text-red-300 transition-colors group-hover:gap-3">
+                                <i class="fab fa-linkedin"></i>
+                                <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
+                                <i class="fas fa-arrow-right text-xs transition-all"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lab 4: Microsoft Intune -->
+                <div class="lab-card group" data-category="azure security">
+                    <div class="glass rounded-2xl border border-white/10 hover:border-cyan-400/40 transition-all duration-300 overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/10">
+                        <div class="h-2 bg-gradient-to-r from-cyan-400 to-blue-400"></div>
+                        <div class="p-6">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-11 h-11 rounded-xl bg-cyan-500/20 flex items-center justify-center border border-cyan-400/30 text-cyan-400 text-lg">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-semibold text-cyan-400 uppercase tracking-wider">MDM/Intune</span>
+                                        <div class="text-xs text-gray-500">Lab #04</div>
+                                    </div>
+                                </div>
+                                <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-medium border border-green-400/30">✓ Réalisé</span>
+                            </div>
+                            <h3 class="font-display font-bold text-white text-lg mb-2 leading-snug">Microsoft Intune – Gestion des appareils</h3>
+                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">Déploiement MDM, politiques de conformité, enrollment automatique, conditional access.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="px-2 py-0.5 bg-cyan-500/15 text-cyan-400 rounded text-xs border border-cyan-400/20">Intune</span>
+                                <span class="px-2 py-0.5 bg-blue-500/15 text-blue-400 rounded text-xs border border-blue-400/20">MDM</span>
+                                <span class="px-2 py-0.5 bg-indigo-500/15 text-indigo-400 rounded text-xs border border-indigo-400/20">Conditional Access</span>
+                            </div>
+                            <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_microsoftentraid-azuread-cybersaezcuritaez-activity-7449886531562913792-Bg-" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors group-hover:gap-3">
+                                <i class="fab fa-linkedin"></i>
+                                <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
+                                <i class="fas fa-arrow-right text-xs transition-all"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lab 5: Infrastructure Identity -->
+                <div class="lab-card group" data-category="azure security">
+                    <div class="glass rounded-2xl border border-white/10 hover:border-purple-400/40 transition-all duration-300 overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/10">
+                        <div class="h-2 bg-gradient-to-r from-purple-400 to-pink-400"></div>
+                        <div class="p-6">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-11 h-11 rounded-xl bg-purple-500/20 flex items-center justify-center border border-purple-400/30 text-purple-400 text-lg">
+                                        <i class="fas fa-user-shield"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-semibold text-purple-400 uppercase tracking-wider">Identity</span>
+                                        <div class="text-xs text-gray-500">Lab #05</div>
+                                    </div>
+                                </div>
+                                <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-medium border border-green-400/30">✓ Réalisé</span>
+                            </div>
+                            <h3 class="font-display font-bold text-white text-lg mb-2 leading-snug">Infrastructure Identity & Authentication avec Entra ID</h3>
+                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">Déploiement complet : users, groupes, rôles, PIM, accès conditionnel, SSPR.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="px-2 py-0.5 bg-purple-500/15 text-purple-400 rounded text-xs border border-purple-400/20">PIM</span>
+                                <span class="px-2 py-0.5 bg-pink-500/15 text-pink-400 rounded text-xs border border-pink-400/20">SSPR</span>
+                                <span class="px-2 py-0.5 bg-indigo-500/15 text-indigo-400 rounded text-xs border border-indigo-400/20">Entra ID</span>
+                            </div>
+                            <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_microsoftentraid-azuread-cybersaezcuritaez-ugcPost-7440152021749522432--M21" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-purple-400 hover:text-purple-300 transition-colors group-hover:gap-3">
+                                <i class="fab fa-linkedin"></i>
+                                <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
+                                <i class="fas fa-arrow-right text-xs transition-all"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lab 6: MFA -->
+                <div class="lab-card group" data-category="azure security">
+                    <div class="glass rounded-2xl border border-white/10 hover:border-green-400/40 transition-all duration-300 overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-green-500/10">
+                        <div class="h-2 bg-gradient-to-r from-green-400 to-cyan-400"></div>
+                        <div class="p-6">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-11 h-11 rounded-xl bg-green-500/20 flex items-center justify-center border border-green-400/30 text-green-400 text-lg">
+                                        <i class="fas fa-lock"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-semibold text-green-400 uppercase tracking-wider">MFA / Auth</span>
+                                        <div class="text-xs text-gray-500">Lab #06</div>
+                                    </div>
+                                </div>
+                                <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-medium border border-green-400/30">✓ Réalisé</span>
+                            </div>
+                            <h3 class="font-display font-bold text-white text-lg mb-2 leading-snug">Microsoft Entra ID & Authentification Multifacteur (MFA)</h3>
+                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">Configuration MFA, politiques d'accès conditionnel, méthodes d'authentification sans mot de passe.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="px-2 py-0.5 bg-green-500/15 text-green-400 rounded text-xs border border-green-400/20">MFA</span>
+                                <span class="px-2 py-0.5 bg-cyan-500/15 text-cyan-400 rounded text-xs border border-cyan-400/20">Passwordless</span>
+                                <span class="px-2 py-0.5 bg-blue-500/15 text-blue-400 rounded text-xs border border-blue-400/20">Authenticator</span>
+                            </div>
+                            <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_microsoftentraid-azuread-mfa-ugcPost-7419077439873511425-V0lX" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-green-400 hover:text-green-300 transition-colors group-hover:gap-3">
+                                <i class="fab fa-linkedin"></i>
+                                <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
+                                <i class="fas fa-arrow-right text-xs transition-all"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lab 7: Secure IT Infrastructure -->
+                <div class="lab-card group" data-category="security">
+                    <div class="glass rounded-2xl border border-white/10 hover:border-yellow-400/40 transition-all duration-300 overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-yellow-500/10">
+                        <div class="h-2 bg-gradient-to-r from-yellow-400 to-orange-400"></div>
+                        <div class="p-6">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-11 h-11 rounded-xl bg-yellow-500/20 flex items-center justify-center border border-yellow-400/30 text-yellow-400 text-lg">
+                                        <i class="fas fa-server"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-semibold text-yellow-400 uppercase tracking-wider">Infrastructure</span>
+                                        <div class="text-xs text-gray-500">Lab #07</div>
+                                    </div>
+                                </div>
+                                <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-medium border border-green-400/30">✓ Réalisé</span>
+                            </div>
+                            <h3 class="font-display font-bold text-white text-lg mb-2 leading-snug">Infrastructure IT sécurisée – Lab personnel</h3>
+                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">Mise en place d'une infra IT sécurisée : AD DS, GPO, segmentation réseau, hardening.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="px-2 py-0.5 bg-yellow-500/15 text-yellow-400 rounded text-xs border border-yellow-400/20">AD DS</span>
+                                <span class="px-2 py-0.5 bg-orange-500/15 text-orange-400 rounded text-xs border border-orange-400/20">GPO</span>
+                                <span class="px-2 py-0.5 bg-red-500/15 text-red-400 rounded text-xs border border-red-400/20">Hardening</span>
+                            </div>
+                            <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_it-cybersecurity-activedirectory-activity-7454745934258778112-7-Ia" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-yellow-400 hover:text-yellow-300 transition-colors group-hover:gap-3">
+                                <i class="fab fa-linkedin"></i>
+                                <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
+                                <i class="fas fa-arrow-right text-xs transition-all"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lab 8: VPN FortiGate -->
+                <div class="lab-card group" data-category="network security">
+                    <div class="glass rounded-2xl border border-white/10 hover:border-fortinet/40 transition-all duration-300 overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/10">
+                        <div class="h-2 bg-gradient-to-r from-fortinet to-red-400"></div>
+                        <div class="p-6">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-11 h-11 rounded-xl bg-fortinet/20 flex items-center justify-center border border-fortinet/30 text-fortinet text-lg">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-semibold text-fortinet uppercase tracking-wider">Fortinet VPN</span>
+                                        <div class="text-xs text-gray-500">Lab #08</div>
+                                    </div>
+                                </div>
+                                <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-medium border border-green-400/30">✓ Réalisé</span>
+                            </div>
+                            <h3 class="font-display font-bold text-white text-lg mb-2 leading-snug">VPN Site-to-Site IPsec avec 2 FortiGates</h3>
+                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">Lab professionnel : tunnel IPsec inter-sites, IKEv2, politiques de sécurité FortiGate.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="px-2 py-0.5 rounded text-xs border" style="background:rgba(238,76,36,0.15);color:#EE4C24;border-color:rgba(238,76,36,0.3)">FortiGate</span>
+                                <span class="px-2 py-0.5 rounded text-xs border" style="background:rgba(238,76,36,0.15);color:#EE4C24;border-color:rgba(238,76,36,0.3)">IPsec</span>
+                                <span class="px-2 py-0.5 rounded text-xs border" style="background:rgba(238,76,36,0.15);color:#EE4C24;border-color:rgba(238,76,36,0.3)">Site-to-Site</span>
+                            </div>
+                            <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_networking-cybersecurity-fortinet-activity-7456159216907583488-EoFA" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold transition-colors group-hover:gap-3" style="color:#EE4C24">
+                                <i class="fab fa-linkedin"></i>
+                                <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
+                                <i class="fas fa-arrow-right text-xs transition-all"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lab 9: VoIP Cisco -->
+                <div class="lab-card group" data-category="network">
+                    <div class="glass rounded-2xl border border-white/10 hover:border-blue-500/40 transition-all duration-300 overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10">
+                        <div class="h-2 bg-gradient-to-r from-blue-500 to-sky-400"></div>
+                        <div class="p-6">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-11 h-11 rounded-xl bg-blue-600/20 flex items-center justify-center border border-blue-500/30 text-blue-400 text-lg">
+                                        <i class="fas fa-phone-volume"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-semibold text-blue-400 uppercase tracking-wider">Cisco VoIP</span>
+                                        <div class="text-xs text-gray-500">Lab #09</div>
+                                    </div>
+                                </div>
+                                <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-medium border border-green-400/30">✓ Réalisé</span>
+                            </div>
+                            <h3 class="font-display font-bold text-white text-lg mb-2 leading-snug">VoIP Cisco – Interconnexion 2 sites + QoS + SIP Trunk</h3>
+                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">Déploiement Call Manager, interconnexion multi-sites, configuration QoS et trunk SIP externe.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="px-2 py-0.5 bg-blue-500/15 text-blue-400 rounded text-xs border border-blue-400/20">Call Manager</span>
+                                <span class="px-2 py-0.5 bg-sky-500/15 text-sky-400 rounded text-xs border border-sky-400/20">QoS</span>
+                                <span class="px-2 py-0.5 bg-cyan-500/15 text-cyan-400 rounded text-xs border border-cyan-400/20">SIP Trunk</span>
+                            </div>
+                            <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_cisco-voip-networking-activity-7453668596473491457-g_bA" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors group-hover:gap-3">
+                                <i class="fab fa-linkedin"></i>
+                                <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
+                                <i class="fas fa-arrow-right text-xs transition-all"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lab 10: Cisco Network Lab Part 2 -->
+                <div class="lab-card group" data-category="network">
+                    <div class="glass rounded-2xl border border-white/10 hover:border-teal-400/40 transition-all duration-300 overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-teal-500/10">
+                        <div class="h-2 bg-gradient-to-r from-teal-400 to-green-400"></div>
+                        <div class="p-6">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-11 h-11 rounded-xl bg-teal-500/20 flex items-center justify-center border border-teal-400/30 text-teal-400 text-lg">
+                                        <i class="fas fa-network-wired"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-semibold text-teal-400 uppercase tracking-wider">Cisco CCNA</span>
+                                        <div class="text-xs text-gray-500">Lab #10</div>
+                                    </div>
+                                </div>
+                                <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-medium border border-green-400/30">✓ Réalisé</span>
+                            </div>
+                            <h3 class="font-display font-bold text-white text-lg mb-2 leading-snug">Cisco Network Lab – Update (Part 2)</h3>
+                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">Infrastructure réseau Cisco avancée : routage OSPF, VLAN, spanning-tree, ACL.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="px-2 py-0.5 bg-teal-500/15 text-teal-400 rounded text-xs border border-teal-400/20">OSPF</span>
+                                <span class="px-2 py-0.5 bg-green-500/15 text-green-400 rounded text-xs border border-green-400/20">VLAN</span>
+                                <span class="px-2 py-0.5 bg-emerald-500/15 text-emerald-400 rounded text-xs border border-emerald-400/20">ACL</span>
+                            </div>
+                            <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_cisco-networking-ccna-ugcPost-7436841727740698625-k4dm" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-teal-400 hover:text-teal-300 transition-colors group-hover:gap-3">
+                                <i class="fab fa-linkedin"></i>
+                                <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
+                                <i class="fas fa-arrow-right text-xs transition-all"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lab 11: Enterprise Network Part 3 -->
+                <div class="lab-card group" data-category="network">
+                    <div class="glass rounded-2xl border border-white/10 hover:border-violet-400/40 transition-all duration-300 overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-violet-500/10">
+                        <div class="h-2 bg-gradient-to-r from-violet-400 to-fuchsia-400"></div>
+                        <div class="p-6">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-11 h-11 rounded-xl bg-violet-500/20 flex items-center justify-center border border-violet-400/30 text-violet-400 text-lg">
+                                        <i class="fas fa-wifi"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-semibold text-violet-400 uppercase tracking-wider">Enterprise Net.</span>
+                                        <div class="text-xs text-gray-500">Lab #11</div>
+                                    </div>
+                                </div>
+                                <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-medium border border-green-400/30">✓ Réalisé</span>
+                            </div>
+                            <h3 class="font-display font-bold text-white text-lg mb-2 leading-snug">Enterprise Network – Part 3: Connectivity & Wireless</h3>
+                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">Déploiement réseau entreprise complet : connectivité inter-sites et infrastructure Wi-Fi.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="px-2 py-0.5 bg-violet-500/15 text-violet-400 rounded text-xs border border-violet-400/20">Wireless</span>
+                                <span class="px-2 py-0.5 bg-fuchsia-500/15 text-fuchsia-400 rounded text-xs border border-fuchsia-400/20">WAN</span>
+                                <span class="px-2 py-0.5 bg-purple-500/15 text-purple-400 rounded text-xs border border-purple-400/20">Enterprise</span>
+                            </div>
+                            <a href="https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_cisco-networking-ccna-ugcPost-7437321468796973057-MKlK" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-violet-400 hover:text-violet-300 transition-colors group-hover:gap-3">
+                                <i class="fab fa-linkedin"></i>
+                                <span data-fr="Voir sur LinkedIn" data-en="View on LinkedIn">Voir sur LinkedIn</span>
+                                <i class="fas fa-arrow-right text-xs transition-all"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Lab summary stats -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="glass rounded-2xl p-5 text-center border border-white/10">
+                    <div class="text-3xl font-bold text-cyan-400 mb-1">11</div>
+                    <div class="text-gray-400 text-sm" data-fr="Labs réalisés" data-en="Labs completed">Labs réalisés</div>
+                </div>
+                <div class="glass rounded-2xl p-5 text-center border border-white/10">
+                    <div class="text-3xl font-bold text-purple-400 mb-1">6</div>
+                    <div class="text-gray-400 text-sm">Azure / Microsoft</div>
+                </div>
+                <div class="glass rounded-2xl p-5 text-center border border-white/10">
+                    <div class="text-3xl font-bold text-fortinet mb-1">3</div>
+                    <div class="text-gray-400 text-sm" data-fr="Réseau" data-en="Network">Réseau Cisco</div>
+                </div>
+                <div class="glass rounded-2xl p-5 text-center border border-white/10">
+                    <div class="text-3xl font-bold text-green-400 mb-1">100%</div>
+                    <div class="text-gray-400 text-sm" data-fr="Documentés LinkedIn" data-en="Documented">Documentés LinkedIn</div>
                 </div>
             </div>
         </div>
@@ -3752,6 +4205,24 @@
         function sendQuickMessage(text) { if (chat) chat.sendQuickMessage(text); }
         function handleChatKeyPress(event) { if (event.key === 'Enter') sendChatMessage(); }
 
+        // Lab filtering
+        function filterLab(category) {
+            document.querySelectorAll('.lab-filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.borderColor = '';
+                btn.style.background = '';
+                btn.style.color = '';
+            });
+            event.currentTarget.classList.add('active');
+            document.querySelectorAll('.lab-card').forEach(card => {
+                if (category === 'all' || card.dataset.category.includes(category)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
         // Hash change tracking
         window.addEventListener('hashchange', () => {
             if (window.portfolioAnalytics) window.portfolioAnalytics.trackVisit();
@@ -3800,4 +4271,3 @@
 </script>
 </body>
 </html>
-
