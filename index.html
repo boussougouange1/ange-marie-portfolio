@@ -1165,6 +1165,92 @@
             scroll-behavior: smooth;
         }
 
+        /* SPA Tab System */
+        .spa-tab {
+            color: rgba(255,255,255,0.5);
+            background: transparent;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+        .spa-tab:hover {
+            color: rgba(255,255,255,0.85);
+            background: rgba(255,255,255,0.06);
+        }
+        .spa-tab.active {
+            color: var(--cyan);
+            background: rgba(0,212,255,0.12);
+            border-color: rgba(0,212,255,0.35);
+            box-shadow: 0 0 12px rgba(0,212,255,0.15);
+        }
+
+        .spa-nav-btn {
+            color: rgba(255,255,255,0.6);
+            background: transparent;
+            border: 1px solid transparent;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        .spa-nav-btn:hover { color: rgba(255,255,255,0.9); }
+        .spa-nav-btn.active {
+            color: var(--cyan);
+            background: rgba(0,212,255,0.1);
+            border-color: rgba(0,212,255,0.3);
+        }
+
+        .mob-spa-btn {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+        }
+        .mob-spa-btn:active { background: rgba(0,212,255,0.1); }
+
+        /* Panel system */
+        .spa-panel-section {
+            animation: panelIn 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        @keyframes panelIn {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .spa-panel-exit {
+            animation: panelOut 0.22s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        @keyframes panelOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-10px); }
+        }
+
+        /* Hide scrollbar on tab bar */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Hero compact mode when tab != accueil */
+        #accueil.hero-compact {
+            min-height: unset;
+            padding-top: 5rem;
+            padding-bottom: 1.5rem;
+        }
+        #accueil.hero-compact .hero-full-content { display: none; }
+        #accueil.hero-compact .hero-compact-bar { display: flex !important; }
+
+        /* Section panels hidden by default (except first) */
+        .managed-section { display: none; }
+        .managed-section.spa-active { display: block; }
+
+        /* Smooth scrollbar-hide for sections with overflow */
+        #spa-panels { min-height: calc(100vh - 200px); }
+
+        /* Experience card always visible when in panel */
+        .managed-section.spa-active .experience-card {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Analytics dashboard inside panel */
+        .managed-section.spa-active .analytics-dashboard { border-radius: 0; }
+
+        /* Remove individual section padding top when inside panel (tabbar handles spacing) */
+
     </style>
 <base target="_blank">
 <base target="_blank">
@@ -1352,17 +1438,17 @@
                     </div>
                 </div>
                 
-                <div class="hidden md:flex space-x-4 items-center">
-                    <a href="#accueil" class="nav-link text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Accueil" data-en="Home">Accueil</a>
-                    <a href="#competences" class="nav-link text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Compétences" data-en="Skills">Compétences</a>
-                    <a href="#experience" class="nav-link text-gray-300 hover:text-cyan-400 font-medium transition-colors" data-fr="Expérience" data-en="Experience">Expérience</a>
-                    <a href="#certifications" class="nav-link text-gray-300 hover:text-fortinet font-medium transition-colors" data-fr="Certifications" data-en="Certifications">Certifications</a>
-                    <a href="#lab" class="nav-link text-gray-300 hover:text-cyan-400 font-medium transition-colors flex items-center gap-1" data-fr="Lab" data-en="Lab"><i class="fas fa-flask text-xs"></i> Lab</a>
-                    <a href="#analytics" class="nav-link text-cyan-400 hover:text-cyan-300 font-medium transition-colors flex items-center gap-2">
-                        <i class="fas fa-chart-line"></i>
-                        <span data-fr="Stats" data-en="Stats">Stats</span>
+                <div class="hidden md:flex space-x-1 items-center">
+                    <button onclick="showTab('accueil')" id="nav-accueil" class="spa-nav-btn active px-3 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5" data-fr="Accueil" data-en="Home"><i class="fas fa-home text-xs"></i> Accueil</button>
+                    <button onclick="showTab('competences')" id="nav-competences" class="spa-nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-all" data-fr="Compétences" data-en="Skills">Compétences</button>
+                    <button onclick="showTab('experience')" id="nav-experience" class="spa-nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-all" data-fr="Expérience" data-en="Experience">Expérience</button>
+                    <button onclick="showTab('certifications')" id="nav-certifications" class="spa-nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-all" data-fr="Certifications" data-en="Certifications">Certifications</button>
+                    <button onclick="showTab('lab')" id="nav-lab" class="spa-nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-1"><i class="fas fa-flask text-xs"></i> Lab</button>
+                    <button onclick="showTab('analytics')" id="nav-analytics" class="spa-nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5">
+                        <i class="fas fa-chart-line text-xs"></i><span data-fr="Stats" data-en="Stats">Stats</span>
                         <span class="w-2 h-2 bg-green-500 rounded-full live-indicator"></span>
-                    </a>
+                    </button>
+                    <button onclick="showTab('contact')" id="nav-contact" class="spa-nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-all" data-fr="Contact" data-en="Contact">Contact</button>
                     
                     <div class="flex items-center gap-1 bg-white/10 rounded-full p-1 ml-2">
                         <button onclick="switchLang('fr')" id="btn-fr" class="lang-btn active px-3 py-1 rounded-full text-sm font-medium">FR</button>
@@ -1370,8 +1456,7 @@
                     </div>
 
                     <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="linkedin-btn px-4 py-2 text-white rounded-full font-medium flex items-center gap-2 text-sm">
-                        <i class="fab fa-linkedin"></i>
-                        LinkedIn
+                        <i class="fab fa-linkedin"></i> LinkedIn
                     </a>
                 </div>
 
@@ -1382,26 +1467,18 @@
         </div>
         
         <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#accueil" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium" data-fr="Accueil" data-en="Home">Accueil</a>
-                <a href="#competences" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium" data-fr="Compétences" data-en="Skills">Compétences</a>
-                <a href="#experience" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium" data-fr="Expérience" data-en="Experience">Expérience</a>
-                <a href="#certifications" class="block px-3 py-2 text-gray-300 hover:text-fortinet font-medium" data-fr="Certifications" data-en="Certifications">Certifications</a>
-                <a href="#lab" class="block px-3 py-2 text-gray-300 hover:text-cyan-400 font-medium flex items-center gap-2"><i class="fas fa-flask"></i> Lab</a>
-                <a href="#analytics" class="block px-3 py-2 text-cyan-400 font-medium flex items-center gap-2">
-                    <i class="fas fa-chart-line"></i> <span data-fr="Statistiques en direct" data-en="Live Statistics">Statistiques en direct</span>
-                    <span class="w-2 h-2 bg-green-500 rounded-full live-indicator"></span>
-                </a>
-                
-                <div class="flex items-center gap-2 px-3 py-2">
-                    <span class="text-sm text-gray-500" data-fr="Langue:" data-en="Language:">Langue:</span>
+            <div class="px-4 pt-2 pb-4 grid grid-cols-3 gap-2">
+                <button onclick="showTab('accueil');toggleMobileMenu()" class="mob-spa-btn text-center px-2 py-2 rounded-lg text-gray-300 text-sm font-medium" data-fr="Accueil" data-en="Home">Accueil</button>
+                <button onclick="showTab('competences');toggleMobileMenu()" class="mob-spa-btn text-center px-2 py-2 rounded-lg text-gray-300 text-sm font-medium" data-fr="Compétences" data-en="Skills">Compétences</button>
+                <button onclick="showTab('experience');toggleMobileMenu()" class="mob-spa-btn text-center px-2 py-2 rounded-lg text-gray-300 text-sm font-medium" data-fr="Expérience" data-en="Experience">Expérience</button>
+                <button onclick="showTab('certifications');toggleMobileMenu()" class="mob-spa-btn text-center px-2 py-2 rounded-lg text-gray-300 text-sm font-medium" data-fr="Certifications" data-en="Certifications">Certif.</button>
+                <button onclick="showTab('lab');toggleMobileMenu()" class="mob-spa-btn text-center px-2 py-2 rounded-lg text-gray-300 text-sm font-medium flex items-center justify-center gap-1"><i class="fas fa-flask text-xs"></i>Lab</button>
+                <button onclick="showTab('analytics');toggleMobileMenu()" class="mob-spa-btn text-center px-2 py-2 rounded-lg text-cyan-400 text-sm font-medium flex items-center justify-center gap-1"><i class="fas fa-chart-line text-xs"></i>Stats</button>
+                <button onclick="showTab('contact');toggleMobileMenu()" class="mob-spa-btn col-span-3 text-center px-2 py-2 rounded-lg text-gray-300 text-sm font-medium" data-fr="Contact" data-en="Contact">Contact</button>
+                <div class="col-span-3 flex items-center gap-2 px-1 py-1 justify-center">
                     <button onclick="switchLang('fr')" class="lang-btn active px-3 py-1 rounded-full text-sm font-medium">FR</button>
                     <button onclick="switchLang('en')" class="lang-btn px-3 py-1 rounded-full text-sm font-medium">EN</button>
                 </div>
-
-                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="block px-3 py-2 text-cyan-400 font-medium flex items-center gap-2">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
             </div>
         </div>
     </nav>
@@ -1468,6 +1545,15 @@
                             <i class="fas fa-language text-purple-400"></i>
                             <span data-fr="FR Professionnel / EN Technique" data-en="FR Professional / EN Technical">FR Professionnel / EN Technique</span>
                         </div>
+                    </div>
+
+                    <!-- Quick Jump Buttons -->
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="text-xs text-gray-500 self-center" data-fr="Explorer →" data-en="Explore →">Explorer →</span>
+                        <button onclick="showTab('competences')" class="px-3 py-1.5 glass rounded-full text-xs font-medium text-cyan-400 border border-cyan-400/30 hover:bg-cyan-400/10 transition-all flex items-center gap-1"><i class="fas fa-cogs text-xs"></i> <span data-fr="Compétences" data-en="Skills">Compétences</span></button>
+                        <button onclick="showTab('experience')" class="px-3 py-1.5 glass rounded-full text-xs font-medium text-purple-400 border border-purple-400/30 hover:bg-purple-400/10 transition-all flex items-center gap-1"><i class="fas fa-briefcase text-xs"></i> <span data-fr="Expérience" data-en="Experience">Expérience</span></button>
+                        <button onclick="showTab('lab')" class="px-3 py-1.5 glass rounded-full text-xs font-medium text-green-400 border border-green-400/30 hover:bg-green-400/10 transition-all flex items-center gap-1"><i class="fas fa-flask text-xs"></i> Lab</button>
+                        <button onclick="showTab('certifications')" class="px-3 py-1.5 glass rounded-full text-xs font-medium text-fortinet border border-fortinet/30 hover:bg-fortinet/10 transition-all flex items-center gap-1"><i class="fas fa-certificate text-xs"></i> <span data-fr="Certifications" data-en="Certifications">Certifications</span></button>
                     </div>
                 </div>
 
@@ -1546,13 +1632,46 @@
             </div>
         </div>
 
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
-            <i class="fas fa-chevron-down text-gray-400 text-2xl"></i>
-        </div>
     </section>
 
+    <!-- SPA TAB BAR -->
+    <div id="spa-tabbar" class="sticky top-20 z-40 glass border-b border-white/10 shadow-lg shadow-black/20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex overflow-x-auto scrollbar-hide gap-1 py-2">
+                <button onclick="showTab('accueil')" id="tab-accueil" class="spa-tab active whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-all shrink-0">
+                    <i class="fas fa-home text-xs"></i><span data-fr="Accueil" data-en="Home">Accueil</span>
+                </button>
+                <button onclick="showTab('competences')" id="tab-competences" class="spa-tab whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-all shrink-0">
+                    <i class="fas fa-cogs text-xs"></i><span data-fr="Compétences" data-en="Skills">Compétences</span>
+                </button>
+                <button onclick="showTab('experience')" id="tab-experience" class="spa-tab whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-all shrink-0">
+                    <i class="fas fa-briefcase text-xs"></i><span data-fr="Expérience" data-en="Experience">Expérience</span>
+                </button>
+                <button onclick="showTab('certifications')" id="tab-certifications" class="spa-tab whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-all shrink-0">
+                    <i class="fas fa-certificate text-xs"></i><span data-fr="Certifications" data-en="Certifications">Certifications</span>
+                </button>
+                <button onclick="showTab('lab')" id="tab-lab" class="spa-tab whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-all shrink-0">
+                    <i class="fas fa-flask text-xs"></i>Lab
+                </button>
+                <button onclick="showTab('analytics')" id="tab-analytics" class="spa-tab whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-all shrink-0">
+                    <i class="fas fa-chart-line text-xs"></i><span data-fr="Stats" data-en="Stats">Stats</span>
+                    <span class="w-2 h-2 bg-green-500 rounded-full live-indicator"></span>
+                </button>
+                <button onclick="showTab('contact')" id="tab-contact" class="spa-tab whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-all shrink-0">
+                    <i class="fas fa-envelope text-xs"></i><span data-fr="Contact" data-en="Contact">Contact</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SPA PANELS CONTAINER -->
+    <div id="spa-panels" class="relative overflow-hidden">
+
+    <!-- PANEL: accueil placeholder (hero already shown above) -->
+    <div id="panel-accueil" class="spa-panel" style="display:none;"></div>
+
     <!-- Skills Section -->
-    <section id="competences" class="py-24 relative">
+    <section id="competences" class="py-24 relative managed-section spa-active">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="font-display text-4xl font-bold text-white mb-4 glow-text" data-fr="Compétences Clés" data-en="Key Skills">Compétences Clés</h2>
@@ -1664,7 +1783,7 @@
     
     
     <!-- Experience Section - Nouveau Design -->
-    <section id="experience" class="py-24 relative overflow-hidden">
+    <section id="experience" class="py-24 relative overflow-hidden managed-section">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -2205,7 +2324,7 @@
 
 
     <!-- Certifications Section -->
-    <section id="certifications" class="py-24 relative">
+    <section id="certifications" class="py-24 relative managed-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="font-display text-4xl font-bold text-white mb-4 glow-text" data-fr="Certifications & Badges" data-en="Certifications & Badges">Certifications & Badges</h2>
@@ -2399,7 +2518,7 @@
     </section>
 
     <!-- LAB SECTION -->
-    <section id="lab" class="py-24 relative overflow-hidden">
+    <section id="lab" class="py-24 relative overflow-hidden managed-section">
         <!-- Animated background -->
         <div class="absolute inset-0 bg-grid opacity-40"></div>
         <div class="absolute top-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
@@ -2828,7 +2947,7 @@
     </section>
 
     <!-- SECTION STATISTIQUES ANALYTICS -->
-    <section id="analytics" class="py-24 analytics-dashboard relative overflow-hidden">
+    <section id="analytics" class="py-24 analytics-dashboard relative overflow-hidden managed-section">
         <div class="absolute inset-0 opacity-10">
             <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%2300D4FF\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
         </div>
@@ -2974,7 +3093,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 relative overflow-hidden">
+    <section id="contact" class="py-24 relative overflow-hidden managed-section">
         <div class="absolute inset-0 bg-gradient-to-b from-fortinet/10 via-transparent to-cyan-500/10"></div>
         
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -3062,6 +3181,8 @@
             </div>
         </div>
     </section>
+
+    </div><!-- end #spa-panels -->
 
     <!-- Footer -->
     <footer class="bg-dark border-t border-white/10 text-gray-400 py-8">
@@ -4238,6 +4359,94 @@
                 }
             }
         });
+
+        // ============================================
+        // SPA TAB SYSTEM
+        // ============================================
+        const TABS = ['accueil', 'competences', 'experience', 'certifications', 'lab', 'analytics', 'contact'];
+        let currentTab = 'competences';
+        let heroSection = null;
+        let analyticsInitialized = false;
+
+        function showTab(tabId) {
+            // Hide all panels
+            TABS.forEach(id => {
+                if (id === 'accueil') return;
+                const el = document.getElementById(id);
+                if (el) {
+                    el.classList.remove('spa-active', 'spa-panel-section');
+                }
+            });
+
+            // Update tab indicators
+            TABS.forEach(id => {
+                const tabBtn = document.getElementById('tab-' + id);
+                const navBtn = document.getElementById('nav-' + id);
+                if (tabBtn) tabBtn.classList.remove('active');
+                if (navBtn) navBtn.classList.remove('active');
+            });
+
+            const tabBtn = document.getElementById('tab-' + tabId);
+            const navBtn = document.getElementById('nav-' + tabId);
+            if (tabBtn) tabBtn.classList.add('active');
+            if (navBtn) navBtn.classList.add('active');
+
+            if (tabId === 'accueil') {
+                // Scroll to top / show hero
+                document.getElementById('accueil').scrollIntoView({ behavior: 'smooth' });
+                // Show competences as default after hero
+                const comp = document.getElementById('competences');
+                if (comp) { comp.classList.add('spa-active'); setTimeout(() => comp.classList.add('spa-panel-section'), 10); }
+                currentTab = 'competences';
+                return;
+            }
+
+            const panel = document.getElementById(tabId);
+            if (panel) {
+                panel.classList.add('spa-active');
+                setTimeout(() => panel.classList.add('spa-panel-section'), 10);
+                // Scroll to tab bar
+                const tabbar = document.getElementById('spa-tabbar');
+                if (tabbar) {
+                    const offset = tabbar.getBoundingClientRect().top + window.scrollY - 80;
+                    window.scrollTo({ top: offset, behavior: 'smooth' });
+                }
+                // Scroll tab button into view
+                if (tabBtn) tabBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+
+            // Init analytics when first shown
+            if (tabId === 'analytics' && !analyticsInitialized && window.portfolioAnalytics) {
+                analyticsInitialized = true;
+                window.portfolioAnalytics.init && window.portfolioAnalytics.init();
+            }
+
+            currentTab = tabId;
+
+            // Update URL hash without page jump
+            history.replaceState(null, '', '#' + tabId);
+
+            // Track in GA
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'tab_view', { event_category: 'navigation', event_label: tabId });
+            }
+        }
+
+        // Hero section quick-nav buttons inside hero
+        document.addEventListener('DOMContentLoaded', () => {
+            // Read hash on load
+            const hash = window.location.hash.replace('#', '');
+            if (hash && TABS.includes(hash) && hash !== 'accueil') {
+                showTab(hash);
+            }
+            // Make hero scroll-down button trigger first tab
+            const scrollInd = document.querySelector('.scroll-indicator');
+            if (scrollInd) {
+                scrollInd.style.cursor = 'pointer';
+                scrollInd.onclick = () => showTab('competences');
+            }
+        });
+
     </script>
 <script>
         // Timeline navigation
