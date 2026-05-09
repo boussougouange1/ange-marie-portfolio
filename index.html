@@ -2323,198 +2323,801 @@
     </section>
 
 
-    <!-- Certifications Section -->
-    <section id="certifications" class="py-24 relative managed-section">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-4xl font-bold text-white mb-4 glow-text" data-fr="Certifications & Badges" data-en="Certifications & Badges">Certifications & Badges</h2>
-                <p class="text-gray-400" data-fr="Formations continues et certifications professionnelles vérifiées" data-en="Continuous training and verified professional certifications">Formations continues et certifications professionnelles vérifiées</p>
-                
-                <div class="flex flex-wrap justify-center gap-4 mt-8">
-                    <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank" class="microsoft-btn px-6 py-3 text-white rounded-full font-semibold flex items-center gap-3 transform hover:scale-105 shadow-lg">
-                        <i class="fab fa-microsoft text-2xl"></i>
-                        <div class="text-left">
-                            <div class="text-xs opacity-80" data-fr="Voir toutes mes certifications" data-en="View all my certifications">Voir toutes mes certifications</div>
-                            <div class="font-bold">Microsoft Learn</div>
-                        </div>
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
+    <!-- Certifications Section — REDESIGNED -->
+    <style>
+        /* ===== CERT SECTION STYLES ===== */
+        #certifications {
+            background: radial-gradient(ellipse 120% 60% at 50% 0%, rgba(0,212,255,0.07) 0%, transparent 70%),
+                        radial-gradient(ellipse 80% 50% at 80% 100%, rgba(112,0,255,0.07) 0%, transparent 60%),
+                        radial-gradient(ellipse 60% 40% at 10% 60%, rgba(238,76,36,0.05) 0%, transparent 50%);
+        }
 
-                    <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank" class="credly-btn px-6 py-3 text-white rounded-full font-semibold flex items-center gap-3 transform hover:scale-105 shadow-lg">
-                        <i class="fas fa-certificate text-2xl"></i>
-                        <div class="text-left">
-                            <div class="text-xs opacity-80" data-fr="Voir mes badges digitaux" data-en="View my digital badges">Voir mes badges digitaux</div>
-                            <div class="font-bold">Credly</div>
-                        </div>
-                        <i class="fas fa-external-link-alt"></i>
+        .cert-orbit-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4rem;
+        }
+
+        .cert-counter-ring {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cert-count-bubble {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.03);
+            border: 1.5px solid rgba(255,255,255,0.12);
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: default;
+        }
+
+        .cert-count-bubble:hover {
+            transform: scale(1.12) translateY(-4px);
+            border-color: var(--bubble-color, rgba(0,212,255,0.6));
+            box-shadow: 0 0 30px var(--bubble-glow, rgba(0,212,255,0.25));
+        }
+
+        .cert-count-bubble::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, var(--bubble-color, #00D4FF) var(--bubble-deg, 0deg), transparent var(--bubble-deg, 0deg));
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        .cert-count-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(135deg, var(--bubble-color, #00D4FF), white);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cert-count-label {
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            margin-top: 2px;
+            max-width: 80px;
+        }
+
+        /* ===== CATEGORY PANELS ===== */
+        .cert-category-panel {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cert-category-panel:hover {
+            transform: translateY(-6px);
+        }
+
+        .cert-category-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--panel-gradient);
+            z-index: 2;
+        }
+
+        .cert-panel-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 1.5rem 1.75rem 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cert-panel-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-panel-icon::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.07);
+            border-radius: inherit;
+        }
+
+        .cert-panel-body {
+            padding: 0 1.75rem 1.75rem;
+        }
+
+        /* Individual cert items */
+        .cert-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            transition: all 0.25s ease;
+            margin-bottom: 4px;
+            position: relative;
+        }
+
+        .cert-item:hover {
+            background: rgba(255,255,255,0.04);
+            padding-left: 14px;
+        }
+
+        .cert-item-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            margin-top: 6px;
+            flex-shrink: 0;
+            box-shadow: 0 0 6px currentColor;
+        }
+
+        .cert-item-text {
+            font-size: 0.83rem;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.5;
+        }
+
+        .cert-item-text a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(255,255,255,0.2);
+            transition: all 0.2s;
+        }
+        .cert-item-text a:hover {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.6);
+        }
+
+        .cert-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 20px;
+            vertical-align: middle;
+            margin-left: 6px;
+        }
+
+        /* ===== FORTINET PANEL — SPECIAL HERO CARD ===== */
+        .cert-fortinet-hero {
+            background: linear-gradient(135deg, rgba(238,76,36,0.12) 0%, rgba(10,14,39,0.95) 60%);
+            border: 1px solid rgba(238,76,36,0.35);
+            box-shadow: 0 0 40px rgba(238,76,36,0.08), inset 0 1px 0 rgba(255,255,255,0.06);
+        }
+        .cert-fortinet-hero::before { --panel-gradient: linear-gradient(90deg, #EE4C24, #ff8c42, #EE4C24); }
+
+        .cert-fortinet-hero .cert-panel-icon {
+            background: linear-gradient(135deg, #EE4C24 0%, #c73b1c 100%);
+            box-shadow: 0 8px 20px rgba(238,76,36,0.4);
+        }
+
+        /* Fortinet NSE badges row */
+        .nse-badges-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .nse-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            background: rgba(238,76,36,0.1);
+            border: 1px solid rgba(238,76,36,0.3);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #ff6b42;
+            transition: all 0.25s;
+        }
+
+        .nse-badge:hover {
+            background: rgba(238,76,36,0.2);
+            border-color: rgba(238,76,36,0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(238,76,36,0.2);
+        }
+
+        /* ===== MICROSOFT PANEL ===== */
+        .cert-ms-panel {
+            background: linear-gradient(135deg, rgba(0,120,212,0.1) 0%, rgba(10,14,39,0.95) 60%);
+            border: 1px solid rgba(0,120,212,0.3);
+            box-shadow: 0 0 40px rgba(0,120,212,0.07), inset 0 1px 0 rgba(255,255,255,0.06);
+        }
+        .cert-ms-panel::before { --panel-gradient: linear-gradient(90deg, #0078d4, #00bcf2, #0078d4); }
+        .cert-ms-panel .cert-panel-icon {
+            background: linear-gradient(135deg, #0078d4 0%, #004e9a 100%);
+            box-shadow: 0 8px 20px rgba(0,120,212,0.35);
+        }
+
+        /* Applied Skill tag */
+        .applied-skill-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            padding: 2px 7px;
+            border-radius: 4px;
+            background: rgba(0,212,255,0.15);
+            border: 1px solid rgba(0,212,255,0.35);
+            color: #00D4FF;
+            text-transform: uppercase;
+        }
+
+        /* ===== LINKEDIN PANEL ===== */
+        .cert-li-panel {
+            background: linear-gradient(135deg, rgba(0,119,181,0.1) 0%, rgba(10,14,39,0.95) 60%);
+            border: 1px solid rgba(0,119,181,0.3);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+        }
+        .cert-li-panel::before { --panel-gradient: linear-gradient(90deg, #0077b5, #00a0dc, #0077b5); }
+        .cert-li-panel .cert-panel-icon {
+            background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
+            box-shadow: 0 8px 20px rgba(0,119,181,0.35);
+        }
+
+        /* ===== CISCO PANEL ===== */
+        .cert-cisco-panel {
+            background: linear-gradient(135deg, rgba(28,152,210,0.1) 0%, rgba(10,14,39,0.95) 60%);
+            border: 1px solid rgba(28,152,210,0.3);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+        }
+        .cert-cisco-panel::before { --panel-gradient: linear-gradient(90deg, #1c98d2, #66ccff, #1c98d2); }
+        .cert-cisco-panel .cert-panel-icon {
+            background: linear-gradient(135deg, #1c98d2 0%, #0d6ea1 100%);
+            box-shadow: 0 8px 20px rgba(28,152,210,0.35);
+        }
+
+        /* ===== PAPERCUT PANEL ===== */
+        .cert-papercut-panel {
+            background: linear-gradient(135deg, rgba(0,180,120,0.1) 0%, rgba(10,14,39,0.95) 60%);
+            border: 1px solid rgba(0,180,120,0.3);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+        }
+        .cert-papercut-panel::before { --panel-gradient: linear-gradient(90deg, #00b478, #3cde9c, #00b478); }
+        .cert-papercut-panel .cert-panel-icon {
+            background: linear-gradient(135deg, #00b478 0%, #007a50 100%);
+            box-shadow: 0 8px 20px rgba(0,180,120,0.35);
+        }
+
+        /* ===== COURSERA PANEL ===== */
+        .cert-coursera-panel {
+            background: linear-gradient(135deg, rgba(0,86,210,0.12) 0%, rgba(10,14,39,0.95) 60%);
+            border: 1px solid rgba(0,86,210,0.35);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+        }
+        .cert-coursera-panel::before { --panel-gradient: linear-gradient(90deg, #0056d2, #4a90e2, #0056d2); }
+        .cert-coursera-panel .cert-panel-icon {
+            background: linear-gradient(135deg, #0056d2 0%, #003d91 100%);
+            box-shadow: 0 8px 20px rgba(0,86,210,0.35);
+        }
+
+        /* ===== TOTAL CERT COUNT BANNER ===== */
+        .cert-total-banner {
+            background: linear-gradient(90deg, rgba(0,212,255,0.06) 0%, rgba(112,0,255,0.06) 50%, rgba(238,76,36,0.06) 100%);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .cert-total-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00D4FF 0%, #7000FF 50%, #EE4C24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        /* Floating particles for fortinet card */
+        .fortinet-particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .fp {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: rgba(238,76,36,0.6);
+            animation: fpFloat linear infinite;
+        }
+        @keyframes fpFloat {
+            0% { transform: translateY(100%) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 0.5; }
+            100% { transform: translateY(-20px) translateX(var(--fp-x, 10px)); opacity: 0; }
+        }
+
+        /* Verify link style */
+        .cert-verify-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            padding: 5px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.25s;
+            border: 1px solid;
+            margin-top: 12px;
+        }
+
+        .cert-verify-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+
+        /* ===== ACADEMIC SECTION ===== */
+        .cert-academic-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(0,212,255,0.04) 100%);
+            border: 1px dashed rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .cert-academic-card:hover {
+            border-color: rgba(0,212,255,0.3);
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(0,212,255,0.08) 100%);
+            transform: translateY(-2px);
+        }
+
+        /* Scan line effect for hero */
+        .cert-scan-overlay {
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0,0,0,0.03) 2px,
+                rgba(0,0,0,0.03) 4px
+            );
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        /* Animated border gradient */
+        @keyframes borderSpin {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .cert-section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.12);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1rem;
+        }
+
+        .cert-count-animate {
+            animation: certCountUp 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes certFadeIn {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cert-panel-anim {
+            animation: certFadeIn 0.6s ease-out both;
+        }
+        .cert-panel-anim:nth-child(1) { animation-delay: 0.05s; }
+        .cert-panel-anim:nth-child(2) { animation-delay: 0.12s; }
+        .cert-panel-anim:nth-child(3) { animation-delay: 0.19s; }
+        .cert-panel-anim:nth-child(4) { animation-delay: 0.26s; }
+        .cert-panel-anim:nth-child(5) { animation-delay: 0.33s; }
+        .cert-panel-anim:nth-child(6) { animation-delay: 0.40s; }
+
+        /* In-preparation badge */
+        .cert-wip {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(234,179,8,0.12);
+            border: 1px solid rgba(234,179,8,0.3);
+            color: #fbbf24;
+            animation: wipPulse 2s infinite;
+        }
+        @keyframes wipPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+    </style>
+
+    <section id="certifications" class="py-24 relative managed-section">
+        <!-- Background depth layers -->
+        <div class="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
+        <div class="absolute top-20 right-0 w-[500px] h-[500px] rounded-full blur-[120px] pointer-events-none" style="background:rgba(238,76,36,0.05)"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-[100px] pointer-events-none" style="background:rgba(0,212,255,0.04)"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            <!-- Section Header -->
+            <div class="text-center mb-14">
+                <div class="cert-section-tag mx-auto w-fit">
+                    <i class="fas fa-medal text-yellow-400"></i>
+                    <span data-fr="Formations & Certifications vérifiées" data-en="Verified Trainings & Certifications">Formations & Certifications vérifiées</span>
+                </div>
+                <h2 class="font-display text-5xl lg:text-6xl font-black text-white mb-3" style="text-shadow: 0 0 30px rgba(0,212,255,0.2)">
+                    <span class="text-gradient" data-fr="Mes Certifications" data-en="My Certifications">Mes Certifications</span>
+                </h2>
+                <p class="text-gray-400 max-w-xl mx-auto text-sm" data-fr="Un parcours de montée en compétences continu — cybersécurité, cloud, réseau et solutions d'impression." data-en="A continuous upskilling journey — cybersecurity, cloud, network and print solutions.">
+                    Un parcours de montée en compétences continu — cybersécurité, cloud, réseau et solutions d'impression.
+                </p>
+            </div>
+
+            <!-- Stats Banner -->
+            <div class="cert-total-banner">
+                <div class="flex items-baseline gap-4">
+                    <div class="cert-total-number" id="cert-total-count">26</div>
+                    <div>
+                        <div class="text-white font-bold text-lg" data-fr="Certifications & Badges" data-en="Certifications & Badges">Certifications & Badges</div>
+                        <div class="text-gray-400 text-sm" data-fr="6 organismes · 5 domaines" data-en="6 bodies · 5 domains">6 organismes · 5 domaines</div>
+                    </div>
+                </div>
+                <div class="cert-counter-ring">
+                    <div class="cert-count-bubble" style="--bubble-color:#EE4C24;--bubble-glow:rgba(238,76,36,0.3);--bubble-deg:252deg" title="Fortinet">
+                        <div class="cert-count-num" style="--bubble-color:#EE4C24">7</div>
+                        <div class="cert-count-label">Fortinet</div>
+                    </div>
+                    <div class="cert-count-bubble" style="--bubble-color:#0078d4;--bubble-glow:rgba(0,120,212,0.3);--bubble-deg:144deg" title="Microsoft">
+                        <div class="cert-count-num" style="--bubble-color:#0078d4">4</div>
+                        <div class="cert-count-label">Microsoft</div>
+                    </div>
+                    <div class="cert-count-bubble" style="--bubble-color:#0077b5;--bubble-glow:rgba(0,119,181,0.3);--bubble-deg:108deg" title="LinkedIn">
+                        <div class="cert-count-num" style="--bubble-color:#0077b5">3</div>
+                        <div class="cert-count-label">LinkedIn</div>
+                    </div>
+                    <div class="cert-count-bubble" style="--bubble-color:#1c98d2;--bubble-glow:rgba(28,152,210,0.3);--bubble-deg:144deg" title="Cisco">
+                        <div class="cert-count-num" style="--bubble-color:#1c98d2">4</div>
+                        <div class="cert-count-label">Cisco</div>
+                    </div>
+                    <div class="cert-count-bubble" style="--bubble-color:#00b478;--bubble-glow:rgba(0,180,120,0.3);--bubble-deg:72deg" title="PaperCut">
+                        <div class="cert-count-num" style="--bubble-color:#00b478">2</div>
+                        <div class="cert-count-label">PaperCut</div>
+                    </div>
+                    <div class="cert-count-bubble" style="--bubble-color:#0056d2;--bubble-glow:rgba(0,86,210,0.3);--bubble-deg:36deg" title="Coursera">
+                        <div class="cert-count-num" style="--bubble-color:#0056d2">1</div>
+                        <div class="cert-count-label">Coursera</div>
+                    </div>
+                </div>
+                <!-- Verify links -->
+                <div class="flex gap-3 flex-wrap">
+                    <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank"
+                       class="cert-verify-link border-[rgba(0,120,212,0.4)] text-blue-400 hover:bg-[rgba(0,120,212,0.12)]">
+                        <i class="fab fa-microsoft text-xs"></i> Microsoft Learn
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                    <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank"
+                       class="cert-verify-link border-[rgba(255,107,0,0.4)] text-orange-400 hover:bg-[rgba(255,107,0,0.1)]">
+                        <i class="fas fa-certificate text-xs"></i> Credly
+                        <i class="fas fa-arrow-right text-xs"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Coursera Microsoft 365 -->
-                <div class="cert-badge coursera-badge text-white p-6 rounded-2xl border border-blue-400/50 shadow-lg shadow-blue-500/20">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center text-white text-2xl backdrop-blur">
-                            <i class="fas fa-graduation-cap"></i>
+            <!-- === CERTIFICATION PANELS GRID === -->
+            <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-10">
+
+                <!-- ██ FORTINET — HERO PANEL (spans 2 cols on xl) ██ -->
+                <div class="cert-category-panel cert-fortinet-hero cert-panel-anim xl:col-span-2">
+                    <div class="fortinet-particles" id="fp-container"></div>
+                    <div class="cert-scan-overlay"></div>
+                    <div class="cert-panel-header">
+                        <div class="cert-panel-icon">
+                            <i class="fas fa-shield-alt text-white"></i>
                         </div>
                         <div class="flex-1">
-                            <h3 class="font-bold text-lg">Coursera & Microsoft</h3>
-                            <p class="text-blue-200 text-sm">Février 2026</p>
+                            <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(238,76,36,0.8);margin-bottom:2px">Cybersécurité</div>
+                            <h3 class="font-display font-black text-white text-xl">Fortinet</h3>
+                        </div>
+                        <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank"
+                           class="cert-verify-link border-[rgba(238,76,36,0.4)] text-[#ff6b42] hover:bg-[rgba(238,76,36,0.12)]" style="margin-top:0">
+                            <i class="fas fa-certificate text-xs"></i> Credly
+                        </a>
+                    </div>
+                    <div class="cert-panel-body">
+                        <!-- NSE Level badges -->
+                        <div class="nse-badges-row mb-4">
+                            <div class="nse-badge"><i class="fas fa-layer-group text-xs"></i> FCA — Certified Associate</div>
+                            <div class="nse-badge"><i class="fas fa-layer-group text-xs"></i> FCF — Certified Fundamentals</div>
+                            <div class="nse-badge"><i class="fas fa-layer-group text-xs"></i> NSE 3 — FortiGate 7.6 Operator</div>
+                            <div class="nse-badge"><i class="fas fa-layer-group text-xs"></i> NSE 1 v3.0</div>
+                        </div>
+                        <div class="grid sm:grid-cols-2 gap-1">
+                            <div class="cert-item">
+                                <div class="cert-item-dot" style="color:#EE4C24;background:#EE4C24"></div>
+                                <div class="cert-item-text">Fortinet Certified Associate Cybersecurity <span class="cert-badge-pill" style="background:rgba(238,76,36,0.15);border:1px solid rgba(238,76,36,0.35);color:#ff6b42">FCA</span></div>
+                            </div>
+                            <div class="cert-item">
+                                <div class="cert-item-dot" style="color:#EE4C24;background:#EE4C24"></div>
+                                <div class="cert-item-text">Fortinet Certified Fundamentals Cybersecurity <span class="cert-badge-pill" style="background:rgba(238,76,36,0.15);border:1px solid rgba(238,76,36,0.35);color:#ff6b42">FCF</span></div>
+                            </div>
+                            <div class="cert-item">
+                                <div class="cert-item-dot" style="color:#EE4C24;background:#EE4C24"></div>
+                                <div class="cert-item-text">FortiGate 7.6 Operator <span class="cert-badge-pill" style="background:rgba(238,76,36,0.15);border:1px solid rgba(238,76,36,0.35);color:#ff6b42">NSE 3</span></div>
+                            </div>
+                            <div class="cert-item">
+                                <div class="cert-item-dot" style="color:#ff9980;background:#ff9980"></div>
+                                <div class="cert-item-text">FortiOS 7.6 Administrator – Lessons <span class="cert-badge-pill" style="background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.25);color:#00D4FF">ISC² CPE</span></div>
+                            </div>
+                            <div class="cert-item">
+                                <div class="cert-item-dot" style="color:#ff9980;background:#ff9980"></div>
+                                <div class="cert-item-text">FortiAnalyzer 7.4 Analyst Self-Paced <span class="cert-badge-pill" style="background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.25);color:#00D4FF">ISC² CPE</span></div>
+                            </div>
+                            <div class="cert-item">
+                                <div class="cert-item-dot" style="color:#EE4C24;background:#EE4C24"></div>
+                                <div class="cert-item-text">NSE 1 – Getting Started in Cybersecurity 3.0</div>
+                            </div>
+                            <div class="cert-item">
+                                <div class="cert-item-dot" style="color:#EE4C24;background:#EE4C24"></div>
+                                <div class="cert-item-text">NSE 1 – Introduction to the Threat Landscape 3.0</div>
+                            </div>
                         </div>
                     </div>
-                    <h4 class="font-semibold text-lg mb-2">The Microsoft 365 Ecosystem</h4>
-                    <p class="text-blue-200 text-sm mb-3" data-fr="Cours en ligne autorisé par Microsoft" data-en="Microsoft authorized online course">Cours en ligne autorisé par Microsoft</p>
-                    <a href="https://coursera.org/verify/82E6416UE9O6" target="_blank" class="inline-flex items-center gap-2 text-sm font-medium hover:underline text-white">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span data-fr="Vérifier le certificat" data-en="Verify certificate">Vérifier le certificat</span>
-                    </a>
                 </div>
 
-                <!-- Microsoft -->
-                <div class="cert-badge glass p-6 rounded-2xl border border-blue-400/30 hover:border-blue-400/60">
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" class="cert-logo">
+                <!-- ██ MICROSOFT APPLIED SKILLS ██ -->
+                <div class="cert-category-panel cert-ms-panel cert-panel-anim">
+                    <div class="cert-panel-header">
+                        <div class="cert-panel-icon">
+                            <i class="fab fa-microsoft text-white"></i>
+                        </div>
                         <div class="flex-1">
-                            <h3 class="font-bold text-white">Microsoft</h3>
+                            <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,120,212,0.8);margin-bottom:2px">Infrastructure / Cloud / Hybrid</div>
+                            <h3 class="font-display font-black text-white text-xl">Microsoft</h3>
                         </div>
                     </div>
-                    <ul class="text-sm text-gray-300 space-y-2">
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-check text-blue-400 mt-1 text-xs"></i>
-                            <div>
-                                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials/c929434037b4e87" target="_blank" class="text-cyan-400 hover:underline flex items-center gap-1">
-                                    <span data-fr="Microsoft Entra ID" data-en="Microsoft Entra ID">Microsoft Entra ID</span>
-                                    <i class="fas fa-external-link-alt text-xs"></i>
-                                </a>
+                    <div class="cert-panel-body">
+                        <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(0,212,255,0.6);margin-bottom:8px">Applied Skills</div>
+                        <div class="cert-item">
+                            <div class="cert-item-dot" style="color:#0078d4;background:#0078d4"></div>
+                            <div class="cert-item-text">
+                                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials/ea292d2435e25712" target="_blank">Prise en main des tâches de gestion Azure</a>
+                                <span class="applied-skill-tag">✓ Applied</span>
                             </div>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-check text-blue-400 mt-1 text-xs"></i>
-                            <div>
-                                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials/9916e2bb6d34eab6" target="_blank" class="text-cyan-400 hover:underline flex items-center gap-1">
-                                    <span data-fr="Active Directory Domain Services" data-en="Active Directory Domain Services">Active Directory Domain Services</span>
-                                    <i class="fas fa-external-link-alt text-xs"></i>
-                                </a>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-item-dot" style="color:#0078d4;background:#0078d4"></div>
+                            <div class="cert-item-text">
+                                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials/9916e2bb6d34eab6" target="_blank">Administrer Active Directory Domain Services</a>
+                                <span class="applied-skill-tag">✓ Applied</span>
                             </div>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-check text-blue-400 mt-1 text-xs"></i>
-                            <div>
-                                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials/ea292d2435e25712" target="_blank" class="text-cyan-400 hover:underline flex items-center gap-1">
-                                    <span>Compétences appliquées : Prise en main des tâches de gestion Azure</span>
-                                    <i class="fas fa-external-link-alt text-xs"></i>
-                                </a>
-                                <span class="text-xs text-green-400 font-medium">✓ Applied Skills</span>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-item-dot" style="color:#0078d4;background:#0078d4"></div>
+                            <div class="cert-item-text">
+                                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials/c929434037b4e87" target="_blank">Prise en main des identités et de l'accès — Microsoft Entra</a>
+                                <span class="applied-skill-tag">✓ Applied</span>
                             </div>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-clock text-blue-400 mt-1 text-xs"></i>
-                            <span class="text-gray-400" data-fr="Azure Fundamentals (AZ-900) - en préparation" data-en="Azure Fundamentals (AZ-900) - in preparation">Azure Fundamentals (AZ-900) - en préparation</span>
-                        </li>
-                    </ul>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-item-dot" style="color:#0078d4;background:#0078d4"></div>
+                            <div class="cert-item-text">Sécuriser les charges de travail Azure avec Microsoft Defender pour le cloud <span class="applied-skill-tag">✓ Applied</span></div>
+                        </div>
+                        <div class="cert-item" style="margin-top:6px">
+                            <div class="cert-item-dot" style="color:#fbbf24;background:#fbbf24"></div>
+                            <div class="cert-item-text" style="color:rgba(255,255,255,0.45)">Azure Fundamentals AZ-900 <span class="cert-wip">⚡ En cours</span></div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- LinkedIn Learning -->
-                <div class="cert-badge glass p-6 rounded-2xl border border-[#0077b5]/30 hover:border-[#0077b5]/60">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="cert-icon-box bg-[#0077b5]">
-                            <i class="fab fa-linkedin"></i>
+                <!-- ██ LINKEDIN SECURITY ██ -->
+                <div class="cert-category-panel cert-li-panel cert-panel-anim">
+                    <div class="cert-panel-header">
+                        <div class="cert-panel-icon">
+                            <i class="fab fa-linkedin text-white"></i>
                         </div>
                         <div class="flex-1">
-                            <h3 class="font-bold text-white">LinkedIn Learning</h3>
+                            <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,119,181,0.8);margin-bottom:2px">Sécurité / Microsoft Security</div>
+                            <h3 class="font-display font-black text-white text-xl">LinkedIn Learning</h3>
                         </div>
                     </div>
-                    <ul class="text-sm text-gray-300 space-y-1">
-                        <li>• <span data-fr="Azure : Configurer et gérer Microsoft Entra ID" data-en="Azure: Configure and manage Microsoft Entra ID">Azure : Configurer et gérer Microsoft Entra ID</span></li>
-                        <li>• Enterprise Mobility Suite</li>
-                        <li>• <span data-fr="Essentiels de Microsoft Security" data-en="Microsoft Security Essentials">Essentiels de Microsoft Security</span></li>
-                        <li>• <span data-fr="Collaborer grâce à Microsoft 365" data-en="Collaborate with Microsoft 365">Collaborer grâce à Microsoft 365</span></li>
-                    </ul>
+                    <div class="cert-panel-body">
+                        <div class="cert-item">
+                            <div class="cert-item-dot" style="color:#0077b5;background:#0077b5"></div>
+                            <div class="cert-item-text">Débutez avec la sécurité cloud et les tâches de surveillance</div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-item-dot" style="color:#0077b5;background:#0077b5"></div>
+                            <div class="cert-item-text">Défendre contre les cybermenaces avec Microsoft Defender XDR</div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-item-dot" style="color:#0077b5;background:#0077b5"></div>
+                            <div class="cert-item-text">Mettre en œuvre la protection de l'information et la prévention des pertes de données</div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Fortinet -->
-                <div class="cert-badge glass-fortinet p-6 rounded-2xl border border-fortinet/50 hover:border-fortinet">
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="https://boussougouange1.github.io/ange-marie-portfolio/images/fortinet.png" class="cert-logo bg-white">
+                <!-- ██ CISCO ██ -->
+                <div class="cert-category-panel cert-cisco-panel cert-panel-anim">
+                    <div class="cert-panel-header">
+                        <div class="cert-panel-icon">
+                            <i class="fas fa-network-wired text-white"></i>
+                        </div>
                         <div class="flex-1">
-                            <h3 class="font-bold text-white">Fortinet</h3>
+                            <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(28,152,210,0.8);margin-bottom:2px">Réseau & IT</div>
+                            <h3 class="font-display font-black text-white text-xl">Cisco Networking Academy</h3>
                         </div>
                     </div>
-                    <ul class="text-sm text-gray-300 space-y-1">
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-shield-alt text-fortinet"></i>
-                            Certified Associate in Cybersecurity
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-shield-alt text-fortinet"></i>
-                            Certified Fundamentals in Cybersecurity
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-shield-alt text-fortinet"></i>
-                            Introduction to the Threat Landscape 3.0
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-shield-alt text-fortinet"></i>
-                            Getting Started in Cybersecurity 3.0
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-shield-alt text-fortinet"></i>
-                            FortiGate 7.6 Operator Self-Paced
-                        </li>
-                    </ul>
-                    <div class="mt-3 pt-3 border-t border-fortinet/30">
-                        <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank" class="text-fortinet text-sm hover:underline flex items-center gap-1">
-                            <span data-fr="Voir sur Credly" data-en="View on Credly">Voir sur Credly</span>
+                    <div class="cert-panel-body">
+                        <div class="cert-item">
+                            <div class="cert-item-dot" style="color:#1c98d2;background:#1c98d2"></div>
+                            <div class="cert-item-text">Introduction to Cybersecurity</div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-item-dot" style="color:#1c98d2;background:#1c98d2"></div>
+                            <div class="cert-item-text">IT Customer Support Basics</div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-item-dot" style="color:#1c98d2;background:#1c98d2"></div>
+                            <div class="cert-item-text">Operating Systems Basics</div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-item-dot" style="color:#1c98d2;background:#1c98d2"></div>
+                            <div class="cert-item-text">Computer Hardware Basics</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ██ PAPERCUT ██ -->
+                <div class="cert-category-panel cert-papercut-panel cert-panel-anim">
+                    <div class="cert-panel-header">
+                        <div class="cert-panel-icon">
+                            <i class="fas fa-print text-white"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,180,120,0.8);margin-bottom:2px">Solutions d'impression</div>
+                            <h3 class="font-display font-black text-white text-xl">PaperCut</h3>
+                        </div>
+                    </div>
+                    <div class="cert-panel-body">
+                        <div class="cert-item">
+                            <div class="cert-item-dot" style="color:#00b478;background:#00b478"></div>
+                            <div class="cert-item-text">
+                                PaperCut MF
+                                <span class="cert-badge-pill" style="background:rgba(0,180,120,0.12);border:1px solid rgba(0,180,120,0.3);color:#3cde9c">Certifié</span>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-item-dot" style="color:#00b478;background:#00b478"></div>
+                            <div class="cert-item-text">
+                                PaperCut Hive
+                                <span class="cert-badge-pill" style="background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.25);color:#00D4FF">Cloud</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ██ COURSERA ██ -->
+                <div class="cert-category-panel cert-coursera-panel cert-panel-anim">
+                    <div class="cert-panel-header">
+                        <div class="cert-panel-icon">
+                            <i class="fas fa-graduation-cap text-white"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,86,210,0.8);margin-bottom:2px">Coursera × Microsoft · Fév. 2026</div>
+                            <h3 class="font-display font-black text-white text-xl">The Microsoft 365 Ecosystem</h3>
+                        </div>
+                    </div>
+                    <div class="cert-panel-body">
+                        <div class="cert-item">
+                            <div class="cert-item-dot" style="color:#4a90e2;background:#4a90e2"></div>
+                            <div class="cert-item-text">Cours en ligne autorisé par Microsoft — Coursera</div>
+                        </div>
+                        <a href="https://coursera.org/verify/82E6416UE9O6" target="_blank"
+                           class="cert-verify-link border-[rgba(0,86,210,0.4)] text-blue-400 hover:bg-[rgba(0,86,210,0.1)]">
                             <i class="fas fa-external-link-alt text-xs"></i>
+                            <span data-fr="Vérifier le certificat" data-en="Verify certificate">Vérifier le certificat</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Cisco -->
-                <div class="cert-badge glass p-6 rounded-2xl border border-orange-500/30 hover:border-orange-500/60">
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Cisco_logo.svg" alt="Cisco" class="cert-logo">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-white">Cisco Networking Academy</h3>
-                        </div>
-                    </div>
-                    <ul class="text-sm text-gray-300 space-y-1">
-                        <li>• Operating Systems</li>
-                        <li>• Computer Hardware Basics</li>
-                        <li>• IT Customer Support Basics</li>
-                        <li>• Introduction to Cybersecurity</li>
-                    </ul>
-                </div>
+            </div>
 
-                <!-- PaperCut -->
-                <div class="cert-badge glass p-6 rounded-2xl border border-green-500/30 hover:border-green-500/60">
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="https://boussougouange1.github.io/ange-marie-portfolio/images/papercut.png" alt="PaperCut" class="cert-logo">
-                        <div class="flex-1">
-                            <h3 class="font-bold text-white">PaperCut</h3>
-                        </div>
-                    </div>
-                    <ul class="text-sm text-gray-300 space-y-1">
-                        <li>• <span data-fr="Certification PaperCut MF" data-en="PaperCut MF Certification">Certification PaperCut MF</span></li>
-                        <li>• PaperCut Hive (Cloud)</li>
-                    </ul>
+            <!-- Academic Banner -->
+            <div class="cert-academic-card mt-4">
+                <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0"
+                     style="background:linear-gradient(135deg,rgba(0,212,255,0.2),rgba(112,0,255,0.2));border:1px solid rgba(0,212,255,0.2)">
+                    🎓
+                </div>
+                <div>
+                    <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(0,212,255,0.6);margin-bottom:4px" data-fr="Formation Académique" data-en="Academic Background">Formation Académique</div>
+                    <h4 class="font-bold text-white text-lg" data-fr="Bachelor en Télécommunications & Réseaux" data-en="Bachelor in Telecommunications & Networks">Bachelor en Télécommunications & Réseaux</h4>
+                    <p class="text-gray-400 text-sm">Institut CERCO · Cotonou, Bénin · 2014</p>
                 </div>
             </div>
 
-            <div class="mt-12 glass rounded-2xl p-8 border border-white/10">
-                <h3 class="font-display text-2xl font-bold text-white mb-6 text-center" data-fr="Formation Académique" data-en="Academic Background">Formation Académique</h3>
-                <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl shadow-lg shadow-cyan-500/30">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <div class="text-center md:text-left">
-                        <h4 class="font-bold text-xl text-white" data-fr="Bachelor en Télécommunications & Réseaux" data-en="Bachelor in Telecommunications & Networks">Bachelor en Télécommunications & Réseaux</h4>
-                        <p class="text-gray-400">Institut CERCO, Cotonou-Bénin (2014)</p>
-                    </div>
-                </div>
-            </div>
         </div>
+
+        <script>
+        // Fortinet floating particles
+        (function() {
+            const container = document.getElementById('fp-container');
+            if (!container) return;
+            for (let i = 0; i < 12; i++) {
+                const p = document.createElement('div');
+                p.className = 'fp';
+                const left = Math.random() * 100;
+                const delay = Math.random() * 8;
+                const dur = 5 + Math.random() * 6;
+                const x = (Math.random() - 0.5) * 60;
+                p.style.cssText = `left:${left}%;bottom:0;animation-duration:${dur}s;animation-delay:${delay}s;--fp-x:${x}px;opacity:0`;
+                container.appendChild(p);
+            }
+        })();
+        </script>
     </section>
 
     <!-- LAB SECTION -->
