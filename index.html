@@ -344,171 +344,8 @@
             display: none;
         }
 
-        /* ========== HERO ENHANCEMENTS ========== */
-        .hero-typewriter {
-            display: inline-block;
-            min-width: 2px;
-        }
-
-        .typewriter-cursor {
-            display: inline-block;
-            width: 3px;
-            height: 1em;
-            background: var(--cyan);
-            vertical-align: text-bottom;
-            margin-left: 2px;
-            animation: cursorBlink 0.8s step-end infinite;
-            border-radius: 1px;
-        }
-
-        @keyframes cursorBlink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .hero-stat-card {
-            position: relative;
-            overflow: hidden;
-        }
-        .hero-stat-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--cyan);
-            transition: width 0.4s ease;
-        }
-        .hero-stat-card:hover::after { width: 100%; }
-
-        /* ========== SKILLS LEVEL BARS ========== */
-        .skill-level-bar {
-            height: 3px;
-            border-radius: 2px;
-            background: rgba(255,255,255,0.08);
-            margin-top: 16px;
-            overflow: hidden;
-        }
-        .skill-level-fill {
-            height: 100%;
-            border-radius: 2px;
-            background: linear-gradient(90deg, var(--skill-color-a), var(--skill-color-b));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .spa-active .skill-level-fill, .skill-level-fill.revealed {
-            transform: scaleX(1);
-        }
-        .skill-level-label {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 6px;
-        }
-        .skill-dot-row {
-            display: flex;
-            gap: 4px;
-            margin-top: 14px;
-        }
-        .skill-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            transition: background 0.3s ease;
-        }
-        .skill-dot.filled {
-            background: var(--dot-color, var(--cyan));
-            box-shadow: 0 0 6px var(--dot-color, var(--cyan));
-        }
-
-        /* ========== FOOTER REDESIGN ========== */
-        .footer-new {
-            background: linear-gradient(180deg, rgba(10,14,39,0) 0%, rgba(5,7,20,1) 100%);
-            border-top: 1px solid rgba(255,255,255,0.06);
-            position: relative;
-            overflow: hidden;
-        }
-        .footer-new::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, rgba(0,212,255,0.4) 30%, rgba(112,0,255,0.4) 70%, transparent 100%);
-        }
-        .footer-tech-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            color: rgba(255,255,255,0.45);
-            transition: all 0.2s;
-        }
-        .footer-tech-badge:hover {
-            border-color: rgba(0,212,255,0.3);
-            color: rgba(255,255,255,0.7);
-        }
-
-        /* ========== CONTACT SECTION REDESIGN ========== */
-        .contact-channel-card {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .contact-channel-card:hover {
-            transform: translateY(-6px);
-        }
-        .contact-channel-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 0.3s;
-            background: var(--card-glow);
-        }
-        .contact-channel-card:hover::before { opacity: 1; }
-
-        .contact-cta-primary {
-            background: linear-gradient(135deg, rgba(0,212,255,0.15) 0%, rgba(112,0,255,0.15) 100%);
-            border: 1px solid rgba(0,212,255,0.25);
-            border-radius: 24px;
-            padding: 2.5rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .contact-cta-primary::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(0,212,255,0.05) 0%, transparent 60%);
-            animation: rotateSlow 20s linear infinite;
-        }
-        @keyframes rotateSlow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* ========== SCROLL REVEAL ========== */
-        .reveal-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        .reveal-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
@@ -1664,7 +1501,7 @@
                     
                     <h1 class="font-display text-4xl lg:text-6xl font-bold leading-tight text-white" id="hero-title">
                         Technicien IT <br>
-                        <span class="text-gradient" id="hero-typewriter">Administrateur Systèmes</span><span class="typewriter-cursor" id="hero-cursor"></span><br>
+                        <span class="text-gradient">Administrateur Systèmes</span><br>
                         <span class="text-3xl lg:text-5xl text-gray-300">Cybersécurité Fortinet</span>
                     </h1>
                     
@@ -1680,7 +1517,7 @@
                         </div>
                         <div class="flex items-center gap-2 px-4 py-2 glass rounded-full border border-white/10">
                             <i class="fas fa-certificate text-fortinet"></i>
-                            <span data-fr="26+ Certifications" data-en="26+ Certifications">26+ Certifications</span>
+                            <span data-fr="15+ Certifications" data-en="15+ Certifications">15+ Certifications</span>
                         </div>
                         <div class="flex items-center gap-2 px-4 py-2 glass rounded-full border border-white/10">
                             <i class="fas fa-globe text-purple-400"></i>
@@ -1702,7 +1539,7 @@
                     <div class="flex items-center gap-6 pt-4 text-gray-400">
                         <div class="flex items-center gap-2">
                             <i class="fas fa-map-marker-alt text-cyan-400"></i>
-                            <span data-fr="Montréal · Ouvert à toutes villes" data-en="Montreal · Open to all cities">Montréal · Ouvert à toutes villes</span>
+                            <span>open to work in all cities</span>
                         </div>
                         <div class="flex items-center gap-2">
                             <i class="fas fa-language text-purple-400"></i>
@@ -1743,7 +1580,7 @@
                                 <div class="text-sm text-gray-400 font-medium" data-fr="Années d'exp." data-en="Years exp.">Années d'exp.</div>
                             </div>
                             <div class="glass rounded-xl p-4 border border-white/10">
-                                <div class="text-3xl font-bold text-fortinet glow-text-fortinet">26+</div>
+                                <div class="text-3xl font-bold text-fortinet glow-text-fortinet">15+</div>
                                 <div class="text-sm text-gray-400 font-medium" data-fr="Certifications" data-en="Certifications">Certifications</div>
                             </div>
                         </div>
@@ -1854,17 +1691,6 @@
                         <li class="flex items-start gap-2"><i class="fas fa-check text-cyan-400 mt-1"></i> <span data-fr="Support sur site et à distance" data-en="On-site and remote support">Support sur site et à distance</span></li>
                         <li class="flex items-start gap-2"><i class="fas fa-check text-cyan-400 mt-1"></i> <span data-fr="135+ utilisateurs supportés" data-en="135+ users supported">135+ utilisateurs supportés</span></li>
                     </ul>
-                    <div class="skill-dot-row">
-                        <div class="skill-dot filled" style="--dot-color:#00D4FF"></div>
-                        <div class="skill-dot filled" style="--dot-color:#00D4FF"></div>
-                        <div class="skill-dot filled" style="--dot-color:#00D4FF"></div>
-                        <div class="skill-dot filled" style="--dot-color:#00D4FF"></div>
-                        <div class="skill-dot filled" style="--dot-color:#00D4FF"></div>
-                    </div>
-                    <div class="skill-level-label">
-                        <span style="font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3)">Niveau</span>
-                        <span style="font-size:0.7rem;font-weight:700;color:#00D4FF">Expert</span>
-                    </div>
                 </div>
 
                 <!-- Microsoft 365 -->
@@ -1879,17 +1705,6 @@
                         <li class="flex items-start gap-2"><i class="fas fa-check text-purple-400 mt-1"></i> Microsoft Intune & MDM</li>
                         <li class="flex items-start gap-2"><i class="fas fa-check text-purple-400 mt-1"></i> <span data-fr="Azure Fundamentals (en cours)" data-en="Azure Fundamentals (in progress)">Azure Fundamentals (en cours)</span></li>
                     </ul>
-                    <div class="skill-dot-row">
-                        <div class="skill-dot filled" style="--dot-color:#a855f7"></div>
-                        <div class="skill-dot filled" style="--dot-color:#a855f7"></div>
-                        <div class="skill-dot filled" style="--dot-color:#a855f7"></div>
-                        <div class="skill-dot filled" style="--dot-color:#a855f7"></div>
-                        <div class="skill-dot" style="--dot-color:#a855f7"></div>
-                    </div>
-                    <div class="skill-level-label">
-                        <span style="font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3)">Niveau</span>
-                        <span style="font-size:0.7rem;font-weight:700;color:#a855f7">Avancé</span>
-                    </div>
                 </div>
 
                 <!-- Systèmes & Serveur -->
@@ -1904,17 +1719,6 @@
                         <li class="flex items-start gap-2"><i class="fas fa-check text-blue-400 mt-1"></i> DNS, DHCP, DFS</li>
                         <li class="flex items-start gap-2"><i class="fas fa-check text-blue-400 mt-1"></i> Hyper-V & Virtualisation</li>
                     </ul>
-                    <div class="skill-dot-row">
-                        <div class="skill-dot filled" style="--dot-color:#60a5fa"></div>
-                        <div class="skill-dot filled" style="--dot-color:#60a5fa"></div>
-                        <div class="skill-dot filled" style="--dot-color:#60a5fa"></div>
-                        <div class="skill-dot filled" style="--dot-color:#60a5fa"></div>
-                        <div class="skill-dot filled" style="--dot-color:#60a5fa"></div>
-                    </div>
-                    <div class="skill-level-label">
-                        <span style="font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3)">Niveau</span>
-                        <span style="font-size:0.7rem;font-weight:700;color:#60a5fa">Expert</span>
-                    </div>
                 </div>
 
                 <!-- Réseaux -->
@@ -1929,17 +1733,6 @@
                         <li class="flex items-start gap-2"><i class="fas fa-check text-green-400 mt-1"></i> <span data-fr="Câblage structuré Cat6/Cat6a" data-en="Structured cabling Cat6/Cat6a">Câblage structuré Cat6/Cat6a</span></li>
                         <li class="flex items-start gap-2"><i class="fas fa-check text-green-400 mt-1"></i> VoIP & Téléphonie IP</li>
                     </ul>
-                    <div class="skill-dot-row">
-                        <div class="skill-dot filled" style="--dot-color:#4ade80"></div>
-                        <div class="skill-dot filled" style="--dot-color:#4ade80"></div>
-                        <div class="skill-dot filled" style="--dot-color:#4ade80"></div>
-                        <div class="skill-dot filled" style="--dot-color:#4ade80"></div>
-                        <div class="skill-dot" style="--dot-color:#4ade80"></div>
-                    </div>
-                    <div class="skill-level-label">
-                        <span style="font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3)">Niveau</span>
-                        <span style="font-size:0.7rem;font-weight:700;color:#4ade80">Avancé</span>
-                    </div>
                 </div>
 
                 <!-- Cybersécurité Fortinet -->
@@ -1954,17 +1747,6 @@
                         <li class="flex items-start gap-2"><i class="fas fa-check text-fortinet mt-1"></i> <span data-fr="Threat Management & IPS" data-en="Threat Management & IPS">Threat Management & IPS</span></li>
                         <li class="flex items-start gap-2"><i class="fas fa-check text-fortinet mt-1"></i> <span data-fr="Certified Associate Cybersecurity" data-en="Certified Associate Cybersecurity">Certified Associate Cybersecurity</span></li>
                     </ul>
-                    <div class="skill-dot-row">
-                        <div class="skill-dot filled" style="--dot-color:#EE4C24"></div>
-                        <div class="skill-dot filled" style="--dot-color:#EE4C24"></div>
-                        <div class="skill-dot filled" style="--dot-color:#EE4C24"></div>
-                        <div class="skill-dot filled" style="--dot-color:#EE4C24"></div>
-                        <div class="skill-dot" style="--dot-color:#EE4C24"></div>
-                    </div>
-                    <div class="skill-level-label">
-                        <span style="font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3)">Niveau</span>
-                        <span style="font-size:0.7rem;font-weight:700;color:#EE4C24">Avancé+</span>
-                    </div>
                 </div>
 
                 <!-- PaperCut -->
@@ -1978,17 +1760,6 @@
                         <li class="flex items-start gap-2"><i class="fas fa-check text-orange-400 mt-1"></i> <span data-fr="Réduction des coûts d'impression" data-en="Printing cost reduction">Réduction des coûts d'impression</span></li>
                         <li class="flex items-start gap-2"><i class="fas fa-check text-orange-400 mt-1"></i> <span data-fr="Sécurité des flux documentaires" data-en="Document flow security">Sécurité des flux documentaires</span></li>
                     </ul>
-                    <div class="skill-dot-row">
-                        <div class="skill-dot filled" style="--dot-color:#fb923c"></div>
-                        <div class="skill-dot filled" style="--dot-color:#fb923c"></div>
-                        <div class="skill-dot filled" style="--dot-color:#fb923c"></div>
-                        <div class="skill-dot filled" style="--dot-color:#fb923c"></div>
-                        <div class="skill-dot filled" style="--dot-color:#fb923c"></div>
-                    </div>
-                    <div class="skill-level-label">
-                        <span style="font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3)">Niveau</span>
-                        <span style="font-size:0.7rem;font-weight:700;color:#fb923c">Certifié</span>
-                    </div>
                 </div>
             </div>
 
@@ -3926,108 +3697,89 @@
 
     <!-- Contact Section -->
     <section id="contact" class="py-24 relative overflow-hidden managed-section">
-        <div class="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
-        <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[120px] pointer-events-none" style="background:rgba(0,212,255,0.05)"></div>
-        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-[100px] pointer-events-none" style="background:rgba(112,0,255,0.05)"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-fortinet/10 via-transparent to-cyan-500/10"></div>
         
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-14">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-cyan-400 font-medium text-sm mb-4 border border-cyan-400/30">
-                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                    <span data-fr="Disponible immédiatement" data-en="Available immediately">Disponible immédiatement</span>
-                </div>
-                <h2 class="font-display text-5xl font-black text-white mb-3">
-                    <span class="text-gradient" data-fr="Travaillons ensemble" data-en="Let's work together">Travaillons ensemble</span>
-                </h2>
-                <p class="text-gray-400 max-w-xl mx-auto" data-fr="Basé à Montréal, ouvert à toutes villes. Opportunités en présentiel, hybride ou full remote." data-en="Based in Montreal, open to all cities. On-site, hybrid or fully remote opportunities.">
-                    Basé à Montréal, ouvert à toutes villes. Opportunités en présentiel, hybride ou full remote.
-                </p>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl font-bold text-white mb-4 glow-text" data-fr="Contact" data-en="Contact">Contact</h2>
+                <p class="text-gray-400" data-fr="Basé à Montréal, disponible pour des postes sur site ou à distance." data-en="Based in Montreal, available for on-site or remote positions.">Basé à Montréal, disponible pour des postes sur site ou à distance.</p>
             </div>
 
-            <!-- Big CTA Block -->
-            <div class="contact-cta-primary mb-10">
-                <div class="relative z-10">
-                    <div class="text-4xl mb-4">👋</div>
-                    <h3 class="font-display text-2xl font-bold text-white mb-2" data-fr="Ouvrir une conversation sur Teams" data-en="Open a Teams conversation">Ouvrir une conversation sur Teams</h3>
-                    <p class="text-gray-400 text-sm mb-6" data-fr="La façon la plus rapide de me joindre — répond généralement dans la journée." data-en="The fastest way to reach me — usually responds same day.">La façon la plus rapide de me joindre — répond généralement dans la journée.</p>
-                    <a href="https://teams.microsoft.com/l/chat/0/0?users=ahouansouange@live.fr" target="_blank"
-                       class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-2xl shadow-cyan-500/30">
-                        <i class="fab fa-microsoft text-xl"></i>
-                        <span data-fr="Me contacter sur Teams" data-en="Contact me on Teams">Me contacter sur Teams</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <p class="text-gray-600 text-xs mt-3">ahouansouange@live.fr</p>
-                </div>
-            </div>
-
-            <!-- Contact channels -->
-            <div class="grid md:grid-cols-3 gap-5 mb-10">
-                <button onclick="openContactForm()"
-                   class="contact-channel-card glass border border-white/10 hover:border-cyan-400/40 p-6 text-left w-full"
-                   style="--card-glow: linear-gradient(135deg, rgba(0,212,255,0.04), transparent)">
-                    <div class="w-12 h-12 rounded-xl bg-cyan-500/15 border border-cyan-400/25 flex items-center justify-center text-cyan-400 text-xl mb-4">
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <button onclick="openContactForm()" class="group glass p-6 rounded-2xl border border-white/10 hover:border-cyan-400/50 transition-all text-center hover-card">
+                    <div class="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center text-cyan-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform border border-cyan-400/30">
                         <i class="fas fa-envelope"></i>
                     </div>
-                    <h3 class="font-bold text-white mb-1">Email</h3>
+                    <h3 class="font-bold text-lg mb-2 text-white">Email</h3>
                     <p class="text-gray-400 text-sm">ahouansouange@live.fr</p>
-                    <div class="mt-3 text-xs text-cyan-400 font-semibold flex items-center gap-1">
-                        <span data-fr="Envoyer un message" data-en="Send a message">Envoyer un message</span>
-                        <i class="fas fa-arrow-right text-xs"></i>
-                    </div>
                 </button>
 
-                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank"
-                   class="contact-channel-card glass border border-white/10 hover:border-[#0077b5]/50 p-6 block"
-                   style="--card-glow: linear-gradient(135deg, rgba(0,119,181,0.04), transparent)">
-                    <div class="w-12 h-12 rounded-xl bg-[#0077b5]/15 border border-[#0077b5]/25 flex items-center justify-center text-[#0077b5] text-xl mb-4">
-                        <i class="fab fa-linkedin"></i>
+                <button onclick="openContactForm()" class="group glass p-6 rounded-2xl border border-white/10 hover:border-green-400/50 transition-all text-center hover-card">
+                    <div class="w-14 h-14 bg-green-500/20 rounded-full flex items-center justify-center text-green-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform border border-green-400/30">
+                        <i class="fas fa-phone"></i>
                     </div>
-                    <h3 class="font-bold text-white mb-1">LinkedIn</h3>
-                    <p class="text-gray-400 text-sm">Ange-Marie Boussougou</p>
-                    <div class="mt-3 text-xs text-[#0077b5] font-semibold flex items-center gap-1">
-                        <span data-fr="Voir le profil" data-en="View profile">Voir le profil</span>
-                        <i class="fas fa-external-link-alt text-xs"></i>
-                    </div>
-                </a>
+                    <h3 class="font-bold text-lg mb-2 text-white" data-fr="Téléphone" data-en="Phone">Téléphone</h3>
+                    <p class="text-gray-400 text-sm" data-fr="Cliquez pour voir" data-en="Click to view">Cliquez pour voir</p>
+                </button>
 
-                <div class="contact-channel-card glass border border-white/10 hover:border-purple-400/40 p-6"
-                     style="--card-glow: linear-gradient(135deg, rgba(112,0,255,0.04), transparent)">
-                    <div class="w-12 h-12 rounded-xl bg-purple-500/15 border border-purple-400/25 flex items-center justify-center text-purple-400 text-xl mb-4">
+                <div class="group glass p-6 rounded-2xl border border-white/10 hover:border-purple-400/50 transition-all text-center hover-card">
+                    <div class="w-14 h-14 bg-purple-500/20 rounded-full flex items-center justify-center text-purple-400 text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform border border-purple-400/30">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
-                    <h3 class="font-bold text-white mb-1" data-fr="Localisation" data-en="Location">Localisation</h3>
-                    <p class="text-gray-400 text-sm" data-fr="Montréal, Québec" data-en="Montreal, Quebec">Montréal, Québec</p>
-                    <div class="mt-3 text-xs text-purple-400 font-semibold">
-                        <span data-fr="Présentiel · Hybride · Remote" data-en="On-site · Hybrid · Remote">Présentiel · Hybride · Remote</span>
-                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-white" data-fr="Localisation" data-en="Location">Localisation</h3>
+                    <p class="text-gray-400 text-sm">open to work in all cities</p>
                 </div>
             </div>
 
-            <!-- Profiles row -->
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank"
-                   class="flex items-center gap-3 px-6 py-3 rounded-2xl glass border border-[#0078d4]/30 hover:border-[#0078d4]/60 transition-all hover:-translate-y-1 text-white text-sm font-medium">
-                    <i class="fab fa-microsoft text-[#0078d4] text-lg"></i>
+            <div class="grid md:grid-cols-2 gap-6 mb-12 max-w-2xl mx-auto">
+                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank" class="microsoft-btn px-8 py-4 text-white rounded-full font-semibold flex items-center justify-center gap-3 transform hover:scale-105 shadow-lg">
+                    <i class="fab fa-microsoft text-2xl"></i>
                     <div class="text-left">
-                        <div class="text-xs text-gray-500" data-fr="Mon profil" data-en="My profile">Mon profil</div>
+                        <div class="text-xs opacity-80" data-fr="Voir mon profil" data-en="View my profile">Voir mon profil</div>
                         <div class="font-bold">Microsoft Learn</div>
                     </div>
+                    <i class="fas fa-external-link-alt ml-2"></i>
                 </a>
-                <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank"
-                   class="flex items-center gap-3 px-6 py-3 rounded-2xl glass border border-orange-500/30 hover:border-orange-500/60 transition-all hover:-translate-y-1 text-white text-sm font-medium">
-                    <i class="fas fa-award text-orange-400 text-lg"></i>
+
+                <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank" class="credly-btn px-8 py-4 text-white rounded-full font-semibold flex items-center justify-center gap-3 transform hover:scale-105 shadow-lg">
+                    <i class="fas fa-certificate text-2xl"></i>
                     <div class="text-left">
-                        <div class="text-xs text-gray-500" data-fr="Mes badges" data-en="My badges">Mes badges</div>
+                        <div class="text-xs opacity-80" data-fr="Voir mes badges" data-en="View my badges">Voir mes badges</div>
                         <div class="font-bold">Credly</div>
                     </div>
+                    <i class="fas fa-external-link-alt ml-2"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank"
-                   class="flex items-center gap-3 px-6 py-3 rounded-2xl glass border border-[#0077b5]/30 hover:border-[#0077b5]/60 transition-all hover:-translate-y-1 text-white text-sm font-medium">
-                    <i class="fab fa-linkedin text-[#0077b5] text-lg"></i>
-                    <div class="text-left">
-                        <div class="text-xs text-gray-500" data-fr="Mon réseau" data-en="My network">Mon réseau</div>
-                        <div class="font-bold">LinkedIn</div>
-                    </div>
+            </div>
+
+            <div class="text-center mb-12">
+                <a href="https://teams.microsoft.com/l/chat/0/0?users=ahouansouange@live.fr" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/30">
+                    <i class="fab fa-microsoft text-2xl"></i>
+                    <span data-fr="Discuter sur Microsoft Teams" data-en="Chat on Microsoft Teams">Discuter sur Microsoft Teams</span>
+                    <i class="fas fa-external-link-alt text-sm"></i>
+                </a>
+                <p class="text-gray-500 text-sm mt-3">ahouansouange@live.fr</p>
+            </div>
+
+            <div class="flex justify-center gap-6 mb-12">
+                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="w-14 h-14 bg-[#0077b5] rounded-full flex items-center justify-center text-white hover:bg-[#005885] transition-all transform hover:scale-110 shadow-lg shadow-blue-500/30">
+                    <i class="fab fa-linkedin-in text-2xl"></i>
+                </a>
+                <a href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank" class="w-14 h-14 bg-[#00a4ef] rounded-full flex items-center justify-center text-white hover:bg-[#0078d4] transition-all transform hover:scale-110 shadow-lg shadow-blue-400/30">
+                    <i class="fab fa-microsoft text-xl"></i>
+                </a>
+                <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank" class="w-14 h-14 bg-[#ff6b00] rounded-full flex items-center justify-center text-white hover:bg-[#e65100] transition-all transform hover:scale-110 shadow-lg shadow-orange-500/30">
+                    <i class="fas fa-award text-xl"></i>
+                </a>
+                <button onclick="openContactForm()" class="w-14 h-14 glass rounded-full flex items-center justify-center text-gray-300 hover:bg-red-500 hover:text-white transition-all transform hover:scale-110 border border-white/20">
+                    <i class="fas fa-envelope text-xl"></i>
+                </button>
+            </div>
+
+            <div class="text-center">
+                <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 linkedin-btn text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30">
+                    <i class="fab fa-linkedin text-2xl"></i>
+                    <span data-fr="Connectons-nous sur LinkedIn" data-en="Let's connect on LinkedIn">Connectons-nous sur LinkedIn</span>
+                    <i class="fas fa-external-link-alt text-sm"></i>
                 </a>
             </div>
         </div>
@@ -4036,109 +3788,19 @@
     </div><!-- end #spa-panels -->
 
     <!-- Footer -->
-    <footer class="footer-new text-gray-400 pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Main footer grid -->
-            <div class="grid md:grid-cols-3 gap-12 mb-12">
-                <!-- Brand -->
-                <div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-cyan-500/30">
-                            AB
-                        </div>
-                        <div>
-                            <div class="font-display font-bold text-white text-lg">Ange-Marie BA</div>
-                            <div class="text-xs text-gray-500">Technicien IT · SysAdmin · Fortinet</div>
-                        </div>
-                    </div>
-                    <p class="text-sm text-gray-500 leading-relaxed mb-4" data-fr="7 ans d'expertise en support IT, administration systèmes et cybersécurité. Basé à Montréal, disponible immédiatement." data-en="7 years of expertise in IT support, systems administration and cybersecurity. Based in Montreal, immediately available.">
-                        7 ans d'expertise en support IT, administration systèmes et cybersécurité. Basé à Montréal, disponible immédiatement.
-                    </p>
-                    <div class="flex gap-3">
-                        <a href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank"
-                           class="w-9 h-9 rounded-lg bg-[#0077b5]/20 border border-[#0077b5]/30 flex items-center justify-center text-[#0077b5] hover:bg-[#0077b5] hover:text-white transition-all">
-                            <i class="fab fa-linkedin text-sm"></i>
-                        </a>
-                        <a href="mailto:ahouansouange@live.fr"
-                           class="w-9 h-9 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 hover:bg-red-500 hover:text-white transition-all">
-                            <i class="fas fa-envelope text-sm"></i>
-                        </a>
-                        <a href="https://teams.microsoft.com/l/chat/0/0?users=ahouansouange@live.fr" target="_blank"
-                           class="w-9 h-9 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 hover:bg-purple-500 hover:text-white transition-all">
-                            <i class="fab fa-microsoft text-sm"></i>
-                        </a>
-                        <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank"
-                           class="w-9 h-9 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 hover:bg-orange-500 hover:text-white transition-all">
-                            <i class="fas fa-award text-sm"></i>
-                        </a>
-                    </div>
+    <footer class="bg-dark border-t border-white/10 text-gray-400 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-cyan-500/30">
+                    AB
                 </div>
-
-                <!-- Navigation -->
-                <div>
-                    <h4 class="text-white font-semibold text-sm mb-4 uppercase tracking-widest">Navigation</h4>
-                    <div class="grid grid-cols-2 gap-2">
-                        <button onclick="showTab('competences')" class="text-left text-sm text-gray-500 hover:text-cyan-400 transition-colors flex items-center gap-2">
-                            <i class="fas fa-cogs text-xs text-cyan-400/40"></i>
-                            <span data-fr="Compétences" data-en="Skills">Compétences</span>
-                        </button>
-                        <button onclick="showTab('experience')" class="text-left text-sm text-gray-500 hover:text-purple-400 transition-colors flex items-center gap-2">
-                            <i class="fas fa-briefcase text-xs text-purple-400/40"></i>
-                            <span data-fr="Expérience" data-en="Experience">Expérience</span>
-                        </button>
-                        <button onclick="showTab('certifications')" class="text-left text-sm text-gray-500 hover:text-fortinet transition-colors flex items-center gap-2">
-                            <i class="fas fa-certificate text-xs text-fortinet/40"></i>
-                            <span data-fr="Certifications" data-en="Certifications">Certifications</span>
-                        </button>
-                        <button onclick="showTab('lab')" class="text-left text-sm text-gray-500 hover:text-green-400 transition-colors flex items-center gap-2">
-                            <i class="fas fa-flask text-xs text-green-400/40"></i>
-                            Lab
-                        </button>
-                        <button onclick="showTab('analytics')" class="text-left text-sm text-gray-500 hover:text-cyan-400 transition-colors flex items-center gap-2">
-                            <i class="fas fa-chart-line text-xs text-cyan-400/40"></i>
-                            Stats
-                        </button>
-                        <button onclick="showTab('contact')" class="text-left text-sm text-gray-500 hover:text-blue-400 transition-colors flex items-center gap-2">
-                            <i class="fas fa-envelope text-xs text-blue-400/40"></i>
-                            Contact
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Certifications -->
-                <div>
-                    <h4 class="text-white font-semibold text-sm mb-4 uppercase tracking-widest" data-fr="Certifications clés" data-en="Key Certifications">Certifications clés</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="footer-tech-badge"><i class="fas fa-shield-alt text-[#EE4C24]"></i> FCA Fortinet</span>
-                        <span class="footer-tech-badge"><i class="fas fa-shield-alt text-[#EE4C24]"></i> FCF Fortinet</span>
-                        <span class="footer-tech-badge"><i class="fas fa-shield-alt text-[#EE4C24]"></i> NSE 3</span>
-                        <span class="footer-tech-badge"><i class="fab fa-microsoft text-[#0078d4]"></i> Applied Skills</span>
-                        <span class="footer-tech-badge"><i class="fab fa-microsoft text-[#0078d4]"></i> Entra ID</span>
-                        <span class="footer-tech-badge"><i class="fab fa-microsoft text-[#0078d4]"></i> AD DS</span>
-                        <span class="footer-tech-badge"><i class="fas fa-network-wired text-[#1c98d2]"></i> Cisco NetAcad</span>
-                        <span class="footer-tech-badge"><i class="fas fa-print text-[#00b478]"></i> PaperCut MF</span>
-                    </div>
-                    <div class="mt-4 pt-4 border-t border-white/5">
-                        <a href="https://www.credly.com/users/ange-boussougou/badges" target="_blank"
-                           class="inline-flex items-center gap-2 text-xs text-orange-400/70 hover:text-orange-400 transition-colors">
-                            <i class="fas fa-certificate"></i>
-                            <span data-fr="Voir tous mes badges Credly" data-en="View all my Credly badges">Voir tous mes badges Credly →</span>
-                        </a>
-                    </div>
-                </div>
+                <span class="font-display font-bold text-white">Ange-Marie BA</span>
             </div>
-
-            <!-- Bottom bar -->
-            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-xs text-gray-600">© 2025 Ange-Marie Boussougou Ahouansou · Portfolio professionnel</p>
-                <div class="flex items-center gap-3">
-                    <span class="footer-tech-badge"><i class="fas fa-flag text-blue-300"></i> <span data-fr="Français : Professionnel" data-en="French: Professional">Français : Professionnel</span></span>
-                    <span class="footer-tech-badge"><i class="fas fa-flag text-red-300"></i> <span data-fr="Anglais : Technique" data-en="English: Technical">Anglais : Technique</span></span>
-                </div>
-                <div class="flex items-center gap-2 text-xs text-gray-600">
-                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                    <span data-fr="Disponible immédiatement" data-en="Available immediately">Disponible immédiatement</span>
-                </div>
+            <p class="text-sm">© 2024 - Portfolio professionnel</p>
+            <div class="flex gap-4 text-sm">
+                <span data-fr="Français: Professionnel" data-en="French: Professional">Français: Professionnel</span>
+                <span>•</span>
+                <span data-fr="Anglais: Technique" data-en="English: Technical">Anglais: Technique</span>
             </div>
         </div>
     </footer>
@@ -5418,75 +5080,6 @@
                 firstCard.classList.add('active');
             }
         });
-</script>
-
-<script>
-// ============================================================
-// TYPEWRITER EFFECT — Hero Title
-// ============================================================
-(function() {
-    const phrases = [
-        'Administrateur Systèmes',
-        'Expert Microsoft 365',
-        'Spécialiste Fortinet',
-        'Expert Active Directory',
-        'Administrateur Systèmes'
-    ];
-    let phraseIdx = 0;
-    let charIdx = 0;
-    let isDeleting = false;
-    let isPaused = false;
-
-    const el = document.getElementById('hero-typewriter');
-    const cursor = document.getElementById('hero-cursor');
-    if (!el) return;
-
-    function tick() {
-        const current = phrases[phraseIdx];
-        if (isDeleting) {
-            charIdx--;
-        } else {
-            charIdx++;
-        }
-        el.textContent = current.substring(0, charIdx);
-
-        let delay = isDeleting ? 50 : 100;
-
-        if (!isDeleting && charIdx === current.length) {
-            if (phraseIdx === phrases.length - 1) {
-                // Last phrase — stop and keep
-                if (cursor) cursor.style.display = 'none';
-                return;
-            }
-            delay = 1800;
-            isDeleting = true;
-        } else if (isDeleting && charIdx === 0) {
-            isDeleting = false;
-            phraseIdx = (phraseIdx + 1) % (phrases.length - 1); // exclude last
-            delay = 300;
-        }
-        setTimeout(tick, delay);
-    }
-
-    // Start after a short delay
-    setTimeout(tick, 1200);
-})();
-
-// ============================================================
-// SCROLL REVEAL — generic
-// ============================================================
-(function() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.classList.add('visible');
-                observer.unobserve(e.target);
-            }
-        });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-})();
 </script>
 </body>
 </html>
