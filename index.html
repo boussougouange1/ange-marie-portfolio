@@ -7,6 +7,7 @@
 <meta name="description" content="Portfolio d’Ange-Marie Boussougou Ahouansou : 7+ ans en support IT, administration systèmes, réseaux, Microsoft Entra ID, Microsoft 365 et Fortinet.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 :root{--bg:#0A0F1F;--card:rgba(255,255,255,.04);--line:rgba(255,255,255,.1);--ink:#F4F1E8;--mut:#9AA3BC;--gold:#E6C27A;--gold2:#B98A3E;--r:22px}
 *{box-sizing:border-box;margin:0}
@@ -110,6 +111,33 @@ main{padding:104px 20px 130px}
 .xd{padding:26px}.grp,.ct{grid-template-columns:1fr;gap:18px}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+select{width:100%;padding:16px 18px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--ink);font:inherit}
+select:focus{outline:0;border-color:var(--gold)}select option{background:#10172B}
+.cons{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--mut)}.cons input{width:auto;margin-top:4px;accent-color:#E6C27A}
+.ts{position:fixed;z-index:300;top:84px;right:20px;max-width:340px;padding:14px 18px;border-radius:16px;background:#10172B;border:1px solid var(--gold);font-size:14px;opacity:0;transform:translateY(-10px);pointer-events:none;transition:.3s}
+.ts.on{opacity:1;transform:none}.ts.err{border-color:#FF8F70}
+.ag-fab{position:fixed;z-index:150;right:22px;bottom:22px;width:62px;height:62px;border-radius:50%;background:var(--gold);color:#1a1405;font-size:28px;box-shadow:0 14px 40px -8px rgba(230,194,122,.6);transition:.3s}
+.ag-fab:hover{transform:scale(1.08) rotate(-6deg)}
+.ag-fab i{position:absolute;top:2px;right:2px;width:16px;height:16px;border-radius:50%;background:#FF5A4D;border:2px solid var(--bg)}
+.ag-box{position:fixed;z-index:160;right:22px;bottom:96px;width:380px;height:min(600px,calc(100vh - 130px));display:flex;flex-direction:column;border:1px solid var(--line);border-radius:26px;background:rgba(12,18,36,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 40px 90px -20px rgba(0,0,0,.8);opacity:0;transform:translateY(20px) scale(.97);pointer-events:none;transition:.35s;overflow:hidden}
+.ag-box.on{opacity:1;transform:none;pointer-events:auto}
+.ag-h{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line)}
+.ag-h b{font:500 17px Fraunces,serif;display:block}.ag-h small{color:#86efac;font-size:12px}.ag-h button{color:var(--mut);font-size:18px}
+.ag-p{height:3px;background:var(--line);display:none}.ag-p i{display:block;height:100%;width:0;background:var(--gold);transition:.4s}
+.ag-m{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:10px}
+.ag-b{max-width:86%;padding:11px 15px;border-radius:18px;font-size:14px;line-height:1.5;animation:in .3s}
+.ag-b.bot{background:rgba(255,255,255,.07);border-bottom-left-radius:5px;align-self:flex-start}
+.ag-b.user{background:var(--gold);color:#1a1405;border-bottom-right-radius:5px;align-self:flex-end;font-weight:500}
+.ag-b.sum{align-self:stretch;max-width:100%;border:1px solid rgba(230,194,122,.4);background:rgba(230,194,122,.07);font-size:13px}
+.ag-o{display:grid;gap:8px;align-self:stretch}
+.ag-o button{padding:11px 14px;border-radius:14px;border:1px solid var(--line);text-align:left;font-size:13.5px;transition:.25s}
+.ag-o button:hover,.ag-o button.hl{border-color:var(--gold);background:rgba(230,194,122,.1)}
+.ag-b.badge{max-width:100%;align-self:center;padding:6px 14px;border-radius:99px;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.4);color:#86efac;font-size:12px;font-weight:600}
+.ag-i{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--line)}
+.ag-i input{padding:12px 16px;border-radius:99px}.ag-i button{padding:0 20px;border-radius:99px;background:var(--gold);color:#1a1405;font-weight:600;font-size:13px}
+.ag-n{text-align:center;font-size:11px;color:var(--mut);padding:0 12px 10px}
+@media(max-width:900px){.ag-fab{right:16px;bottom:calc(92px + env(safe-area-inset-bottom));width:56px;height:56px}.ag-box{left:12px;right:12px;width:auto;bottom:calc(158px + env(safe-area-inset-bottom));height:min(66vh,540px)}.ts{left:12px;right:12px;max-width:none}}
 </style>
 </head>
 <body>
@@ -183,13 +211,17 @@ main{padding:104px 20px 130px}
   <p class="lead">Open to work in all cities. Réponse rapide.</p>
   <div class="ct">
     <form id="f">
-      <input name="n" placeholder="Votre nom" required>
-      <input name="e" type="email" placeholder="Votre e-mail" required>
-      <textarea name="m" rows="5" placeholder="Votre message" required></textarea>
+      <input name="from_name" placeholder="Nom complet *" required>
+      <input name="from_email" type="email" placeholder="Email *" required>
+      <select name="subject" required><option value="">Sélectionnez un sujet *</option><option>💼 Opportunité professionnelle</option><option>🚀 Projet / Consultation</option><option>❓ Question technique</option><option>🤝 Partenariat</option><option>📝 Autre</option></select>
+      <input name="phone" type="tel" placeholder="Téléphone (optionnel)">
+      <textarea name="message" rows="5" placeholder="Décrivez votre demande en détail *" required></textarea>
+      <label class="cons"><input type="checkbox" name="consent" required> J’accepte que mes informations soient utilisées pour me recontacter.</label>
       <button class="btn p">Envoyer le message →</button>
     </form>
     <div class="links">
       <a class="btn" href="mailto:ahouansouange@live.fr">ahouansouange@live.fr</a>
+      <a class="btn" href="https://teams.microsoft.com/l/chat/0/0?users=ahouansouange@live.fr" target="_blank" rel="noopener">Microsoft Teams ↗</a>
       <a class="btn" href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a class="btn" href="https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials" target="_blank" rel="noopener">Microsoft Learn ↗</a>
       <a class="btn" href="https://www.credly.com/users/ange-boussougou/badges" target="_blank" rel="noopener">Badges Credly ↗</a>
@@ -199,6 +231,15 @@ main{padding:104px 20px 130px}
 <div class="pager"><button id="prev"></button><button id="next"></button></div>
 </main>
 
+<button class="ag-fab" id="ag-fab" aria-label="Agent IA">🤖<i id="ag-dot"></i></button>
+<div class="ag-box" id="ag-box">
+  <div class="ag-h"><div><b>Agent IA · Ange-Marie</b><small>● Disponible sur Teams</small></div><button id="ag-x" aria-label="Fermer">✕</button></div>
+  <div class="ag-p" id="ag-p"><i id="ag-pb"></i></div>
+  <div class="ag-m" id="ag-m"></div>
+  <div class="ag-i"><input id="ag-in" placeholder="Écrivez votre message…" autocomplete="off"><button id="ag-send">Envoyer</button></div>
+  <div class="ag-n">Chaque message ouvre Teams avec le contexte</div>
+</div>
+<div class="ts" id="ts"></div>
 <script>
 const V=[['home','Accueil'],['xp','Parcours'],['skills','Skills'],['lab','Lab'],['certs','Certifs'],['contact','Contact']];
 const P='https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_';
@@ -257,13 +298,52 @@ function go(k,push=true){if(!V.some(v=>v[0]==k))k='home';cur=k;$$('.view').forEa
  const i=V.findIndex(v=>v[0]==k);$('#prev').innerHTML=i>0?'← '+V[i-1][1]:'';$('#next').innerHTML=i<V.length-1?V[i+1][1]+' →':'';$('#prev').onclick=()=>go(V[i-1][0]);$('#next').onclick=()=>go(V[i+1][0]);
  scrollTo({top:0,behavior:'smooth'});if(push)history.replaceState(null,'','#'+k);if(k=='home')count()}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)go(b.dataset.go)});
-addEventListener('keydown',e=>{if(/INPUT|TEXTAREA/.test(e.target.tagName))return;const i=V.findIndex(v=>v[0]==cur);if(e.key=='ArrowRight'&&i<V.length-1)go(V[i+1][0]);if(e.key=='ArrowLeft'&&i>0)go(V[i-1][0])});
+addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;const i=V.findIndex(v=>v[0]==cur);if(e.key=='ArrowRight'&&i<V.length-1)go(V[i+1][0]);if(e.key=='ArrowLeft'&&i>0)go(V[i-1][0])});
 let sx=0,sy=0;addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
 addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>90&&Math.abs(dx)>Math.abs(dy)*2){const i=V.findIndex(v=>v[0]==cur),j=dx<0?i+1:i-1;if(V[j])go(V[j][0])}},{passive:true});
 function count(){$$('[data-n]').forEach(el=>{const n=+el.dataset.n;let t0;const f=t=>{t0=t0||t;const p=Math.min((t-t0)/1100,1);el.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}
 const T=['Windows Server · Active Directory · GPO','Microsoft Entra ID · Microsoft 365 · Intune','FortiGate · VPN IPsec · Cisco · VoIP'];let ti=0,ci=0,del=false;
 (function ty(){const s=T[ti];ci+=del?-1:1;$('#typed').textContent=s.slice(0,ci);let w=del?24:55;if(!del&&ci==s.length){del=true;w=1600}else if(del&&ci==0){del=false;ti=(ti+1)%T.length;w=300}setTimeout(ty,w)})();
-$('#f').onsubmit=e=>{e.preventDefault();const d=new FormData(e.target);location.href='mailto:ahouansouange@live.fr?subject='+encodeURIComponent('Contact portfolio : '+d.get('n'))+'&body='+encodeURIComponent(d.get('m')+'\n\n'+d.get('n')+' · '+d.get('e'))};
+
+const TEAMS='ahouansouange@live.fr',EJS={k:'cElC1HEUqBTOXYfMW',s:'service_hqg5xqb',t:'template_vbyvnrn'};
+try{emailjs.init(EJS.k)}catch(e){}
+function toast(m,err){const t=$('#ts');t.textContent=m;t.className='ts on'+(err?' err':'');clearTimeout(toast.t);toast.t=setTimeout(()=>t.className='ts',5000)}
+$('#f').onsubmit=async e=>{e.preventDefault();const f=e.target,d=new FormData(f);
+ const p={from_name:d.get('from_name').trim(),from_email:d.get('from_email').trim(),subject:d.get('subject'),phone:(d.get('phone')||'').trim(),message:d.get('message').trim(),consent:f.consent.checked,to_email:TEAMS,language:'fr',page_url:location.href,timestamp:new Date().toLocaleString('fr-FR')};
+ const b=f.querySelector('button');b.disabled=true;b.textContent='Envoi en cours…';
+ try{await emailjs.send(EJS.s,EJS.t,p);toast('Message envoyé ! Je vous réponds rapidement.');f.reset()}
+ catch(x){toast('Envoi impossible : ouverture de votre messagerie.',1);location.href='mailto:'+TEAMS+'?subject='+encodeURIComponent('Contact portfolio : '+p.from_name)+'&body='+encodeURIComponent(p.message+'\n\n'+p.from_name+' · '+p.from_email)}
+ b.disabled=false;b.textContent='Envoyer le message →'};
+
+const QS=[
+['objective','Quel est l’objet de votre message ?',[['job','💼 Opportunité d’emploi'],['project','🚀 Projet / Consultation'],['question','❓ Question technique'],['other','📝 Autre']]],
+['urgency','Quelle est l’urgence de votre demande ?',[['immediate','🔴 Immédiate (cette semaine)'],['short','🟠 Court terme (ce mois)'],['medium','🟡 Moyen terme'],['future','🟢 Futur projet']]],
+['location','Quelle est votre localisation ?',[['montreal','🏢 Montréal / Québec'],['canada','🍁 Autre région du Canada'],['remote','🌐 International / Télétravail'],['other','📍 Autre']]],
+['contact','Comment préférez-vous être contacté ?',[['teams','💬 Microsoft Teams (recommandé)'],['email','📧 Email'],['linkedin','💼 LinkedIn'],['phone','📞 Téléphone']]]];
+const AG={open:false,mode:'',qualified:false,r:{},
+ add(t,c,h){const m=$('#ag-m'),d=document.createElement('div');d.className='ag-b '+c;h?d.innerHTML=t:d.textContent=t;m.appendChild(d);m.scrollTop=m.scrollHeight;return d},
+ opts(list,cb,hl){const m=$('#ag-m'),w=document.createElement('div');w.className='ag-o';list.forEach(([v,l],i)=>{const b=document.createElement('button');b.textContent=l;if(hl&&i==0)b.className='hl';b.onclick=()=>{w.remove();cb(v,l)};w.appendChild(b)});m.appendChild(w);m.scrollTop=m.scrollHeight},
+ toggle(f){AG.open=f===undefined?!AG.open:f;$('#ag-box').classList.toggle('on',AG.open);$('#ag-dot').style.display='none';if(AG.open)setTimeout(()=>$('#ag-in').focus(),300)},
+ greet(){const h=new Date().getHours();AG.add(h<12?'Bonjour ! ☀️ Comment puis-je vous aider ce matin ?':h<18?'Bonjour ! 👋 Comment puis-je vous aider cet après-midi ?':'Bonsoir ! 🌙 Comment puis-je vous aider ce soir ?','bot');
+  setTimeout(()=>AG.opts([['q','💼 Démarrer une qualification complète'],['k','❓ Poser une question rapide'],['c','📄 Demander mon CV']],(v,l)=>{AG.add(l,'user');
+   if(v=='q'){AG.mode='q';setTimeout(()=>AG.step(0),500)}
+   if(v=='k')setTimeout(()=>AG.add('Bien sûr ! ❓ Posez votre question, je la transmets à Ange-Marie sur Teams.','bot'),500);
+   if(v=='c'){AG.mode='cv';setTimeout(()=>AG.add('Je vous envoie mon CV par e-mail ! 📄 Quelle est votre adresse e-mail ?','bot'),500)}},1),700)},
+ prog(i){$('#ag-p').style.display='block';$('#ag-pb').style.width=(i/QS.length*100)+'%'},
+ step(i){AG.prog(i);if(i>=QS.length)return AG.done();const [id,q,o]=QS[i];AG.add(q,'bot');AG.opts(o,(v,l)=>{AG.r[id]=l;AG.add(l,'user');setTimeout(()=>AG.step(i+1),450)})},
+ done(){AG.qualified=true;const L=['Objet','Urgence','Localisation','Contact préféré'];
+  AG.add('<b>📋 Résumé de votre demande</b><br>'+QS.map((q,i)=>L[i]+' : '+AG.r[q[0]]).join('<br>'),'sum',1);
+  setTimeout(()=>{AG.add('✅ Qualification terminée : transfert vers l’agent IA','bot');setTimeout(()=>AG.teams(AG.ctx()),1500)},900)},
+ ctx(){return '🤖 NOUVEAU LEAD QUALIFIÉ - Portfolio\n\n📅 Date: '+new Date().toLocaleString('fr-FR')+'\n🎯 Objet: '+AG.r.objective+'\n⏰ Urgence: '+AG.r.urgency+'\n📍 Localisation: '+AG.r.location+'\n💬 Contact préféré: '+AG.r.contact+'\n\nBonjour Ange-Marie,\n\nJe suis intéressé(e) par votre profil. Voici les détails de ma demande.\n\nMerci de me recontacter sur ce canal.\n\nCordialement,'},
+ teams(m){window.open('https://teams.microsoft.com/l/chat/0/0?users='+encodeURIComponent(TEAMS)+'&message='+encodeURIComponent(m),'_blank');
+  if(!AG.qualified)return;setTimeout(()=>{AG.add('🤖 Agent IA connecté','badge');setTimeout(()=>{AG.add('Bonjour ! Je suis l’agent IA d’Ange-Marie. J’ai analysé votre demande et ouvert une conversation Microsoft Teams avec tout le contexte. Ange-Marie vous répondra personnellement.','bot');AG.opts([['t','Ouvrir / réouvrir Teams']],()=>{AG.teams(AG.ctx())},1)},900)},500)},
+ send(){const i=$('#ag-in'),t=i.value.trim();if(!t)return;i.value='';AG.add(t,'user');
+  if(AG.mode=='cv'&&/\S+@\S+\.\S+/.test(t)){emailjs.send(EJS.s,EJS.t,{from_name:'Demande de CV',from_email:t,subject:'📄 Demande de CV',phone:'',message:'Demande de CV depuis l’agent IA du portfolio.',consent:true,to_email:TEAMS,language:'fr',page_url:location.href,timestamp:new Date().toLocaleString('fr-FR')}).then(()=>AG.add('Merci ! 📄 Ange-Marie vous envoie son CV très vite.','bot'),()=>AG.add('Envoi impossible pour le moment. Écrivez-moi à '+TEAMS,'bot'));AG.mode='';return}
+  if(!AG.qualified){AG.add('Message transmis à Ange-Marie sur Microsoft Teams. 💬','bot');AG.teams('Message depuis le portfolio :\n\n'+t)}}};
+$('#ag-fab').onclick=()=>AG.toggle();$('#ag-x').onclick=()=>AG.toggle(false);$('#ag-send').onclick=()=>AG.send();
+$('#ag-in').onkeydown=e=>{if(e.key=='Enter')AG.send()};
+AG.greet();
+try{if(!localStorage.getItem('chat_visited')){setTimeout(()=>{AG.toggle(true);localStorage.setItem('chat_visited','1')},10000)}else $('#ag-dot').style.display='none'}catch(e){}
 go(location.hash.slice(1)||'home',false);
 </script>
 </body>
