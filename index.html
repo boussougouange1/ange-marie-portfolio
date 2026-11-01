@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -138,12 +138,18 @@ select:focus{outline:0;border-color:var(--gold)}select option{background:#10172B
 .ag-i input{padding:12px 16px;border-radius:99px}.ag-i button{padding:0 20px;border-radius:99px;background:var(--gold);color:#1a1405;font-weight:600;font-size:13px}
 .ag-n{text-align:center;font-size:11px;color:var(--mut);padding:0 12px 10px}
 @media(max-width:900px){.ag-fab{right:16px;bottom:calc(92px + env(safe-area-inset-bottom));width:56px;height:56px}.ag-box{left:12px;right:12px;width:auto;bottom:calc(158px + env(safe-area-inset-bottom));height:min(66vh,540px)}.ts{left:12px;right:12px;max-width:none}}
+
+.lg{display:flex;gap:2px;padding:3px;border:1px solid var(--line);border-radius:99px}
+.lg button{padding:5px 11px;border-radius:99px;font-size:12px;font-weight:600;color:var(--mut)}
+.lg button.on{background:var(--ink);color:var(--bg)}
+.ag-b.typing{opacity:.6;letter-spacing:.2em}
 </style>
 </head>
 <body>
 <header class="top"><div class="top-in">
   <a class="logo" href="#home" data-go="home"><img src="photo.jpg" alt="Ange-Marie Boussougou"><span>Ange-Marie Boussougou</span></a>
   <nav id="nav"></nav>
+  <div class="lg"><button data-l="en">EN</button><button data-l="fr">FR</button></div>
   <a class="in" href="https://www.linkedin.com/in/ange-marie-boussougou-ahouansou-b3517510b" target="_blank" rel="noopener">LinkedIn ↗</a>
 </div></header>
 <main>
@@ -151,7 +157,7 @@ select:focus{outline:0;border-color:var(--gold)}select option{background:#10172B
   <div class="hero">
     <div>
       <div class="mono eyebrow">IT Support &amp; Cybersecurity Analyst</div>
-      <h1>Des infrastructures <em>sécurisées</em>, du poste au cloud.</h1>
+      <h1 data-en="<em>Secure</em> infrastructure, from desktop to cloud.">Des infrastructures <em>sécurisées</em>, du poste au cloud.</h1>
       <p class="d">Plus de 7 ans d’expérience en support utilisateurs, administration systèmes et réseaux : Windows Server, Active Directory, Microsoft Entra ID, Microsoft 365 et Fortinet.</p>
       <p class="spec">Spécialités : <em id="typed"></em></p>
       <div class="cta">
@@ -181,33 +187,33 @@ select:focus{outline:0;border-color:var(--gold)}select option{background:#10172B
 </section>
 
 <section class="view" id="xp">
-  <div class="mono eyebrow">01 · Parcours</div><h2>Neuf expériences,<br>un <em>fil rouge</em> : l’infra.</h2>
+  <div class="mono eyebrow">01 · Parcours</div><h2 data-en="Nine roles,<br>one <em>common thread</em>: infrastructure.">Neuf expériences,<br>un <em>fil rouge</em> : l’infra.</h2>
   <p class="lead">Choisis une entreprise pour voir les missions, l’environnement et la stack.</p>
   <div class="xp"><div class="xl" id="xl"></div><div id="xd"></div></div>
 </section>
 
 <section class="view" id="skills">
-  <div class="mono eyebrow">02 · Compétences</div><h2>Une stack <em>complète</em>.</h2>
+  <div class="mono eyebrow">02 · Compétences</div><h2 data-en="A <em>complete</em> stack.">Une stack <em>complète</em>.</h2>
   <p class="lead">Du poste utilisateur au pare-feu, en passant par le cloud Microsoft.</p>
   <div id="sk"></div>
 </section>
 
 <section class="view" id="lab">
-  <div class="mono eyebrow">03 · Lab</div><h2>Projets <em>pratiques</em> réalisés.</h2>
+  <div class="mono eyebrow">03 · Lab</div><h2 data-en="Completed <em>hands-on</em> projects.">Projets <em>pratiques</em> réalisés.</h2>
   <p class="lead">Environnements hybrides, cloud Azure, cybersécurité et réseaux : construits, testés, documentés.</p>
   <div class="filters" id="lf"></div>
   <div class="cards" id="lg"></div>
 </section>
 
 <section class="view" id="certs">
-  <div class="mono eyebrow">04 · Certifications</div><h2>Preuves <em>vérifiables</em>.</h2>
+  <div class="mono eyebrow">04 · Certifications</div><h2 data-en="<em>Verifiable</em> proof.">Preuves <em>vérifiables</em>.</h2>
   <p class="lead">Chaque badge est vérifiable auprès de l’organisme émetteur.</p>
   <div class="cards" id="cg"></div>
   <p style="margin-top:30px" class="mono">Formation · Diplôme équivalent Bachelor en Télécommunications &amp; Réseaux · Institut CERCO, Bénin</p>
 </section>
 
 <section class="view" id="contact">
-  <div class="mono eyebrow">05 · Contact</div><h2>Parlons de <em>votre infra</em>.</h2>
+  <div class="mono eyebrow">05 · Contact</div><h2 data-en="Let’s talk about <em>your infrastructure</em>.">Parlons de <em>votre infra</em>.</h2>
   <p class="lead">Open to work in all cities. Réponse rapide.</p>
   <div class="ct">
     <form id="f">
@@ -237,11 +243,11 @@ select:focus{outline:0;border-color:var(--gold)}select option{background:#10172B
   <div class="ag-p" id="ag-p"><i id="ag-pb"></i></div>
   <div class="ag-m" id="ag-m"></div>
   <div class="ag-i"><input id="ag-in" placeholder="Écrivez votre message…" autocomplete="off"><button id="ag-send">Envoyer</button></div>
-  <div class="ag-n">Chaque message ouvre Teams avec le contexte</div>
+  <div class="ag-n">Réponses en français ou en anglais · Les questions complexes vont sur Teams</div>
 </div>
 <div class="ts" id="ts"></div>
 <script>
-const V=[['home','Accueil'],['xp','Parcours'],['skills','Skills'],['lab','Lab'],['certs','Certifs'],['contact','Contact']];
+const V=[['home','Accueil'],['xp','Parcours'],['skills','Compétences'],['lab','Lab'],['certs','Certifs'],['contact','Contact']];
 const P='https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const LAB=[
@@ -266,7 +272,7 @@ const XP=[
 ['ANAVEA','Autorité Nationale de Vérification et d’Audit (Gouvernement) · Secteur public','~70','utilisateurs professionnels',['Administration systèmes et réseaux','Support IT avancé pour vérificateurs','Gestion des licences et conformité','Sauvegarde et protection des données','Administration serveurs d’applications','Gestion ADDS et contrôle d’accès','Supervision infrastructure réseau','Environnement critique : haute disponibilité et sécurité renforcée pour les opérations d’audit financier'],['HP ProLiant','Hyper-V','DFS Replication','Cisco Call Manager','UniFi','Active Directory']],
 ['SAFRIMAT','Prestation et vente informatique','~50','utilisateurs accompagnés',['Administration systèmes et réseaux','Support informatique & maintenance réseau','~100 caméras de surveillance','Contrôle d’accès et temps de présence','Téléphonie IP Cisco','Déploiement PaperCut','Service après-vente','Clients : Taskforce, SAMADI-BTP, Hôpital Cancérologie, Le Patrimoine'],['HP ProLiant','Hyper-V','DFS Replication','Cisco Call Manager','UniFi','Active Directory']],
 ['Centre de Dialyse','Centre hospitalier de Libreville · Secteur de la santé','~30','utilisateurs accompagnés',['Administration systèmes et réseaux','Contrôle de présence','Collaboration Dropbox','Sauvegarde données','Caméras de surveillance','Support administratif et laboratoire','Gestion factures et stock (Sage)'],['HP ProLiant','Hyper-V','DFS Replication','Cisco Call Manager','UniFi','Active Directory','Sage','Dropbox']],
-['SYSTEMESCOMS','Entreprise personnelle créée en 2016 · Prestation de services informatique',null,'',['Administration systèmes et réseaux','Prestations IT pour divers clients','Conseil transformation numérique','Clients : centre hospitalier de cancérologie, WWF, cabinet dentaire, entreprise d’imprimerie, entreprise comptable'],['HP ProLiant','Hyper-V','DFS Replication','Cisco Call Manager','UniFi','Active Directory']],
+['SYSTEMESCOMS','Entreprise personnelle · Prestation de services informatique',null,'',['Administration systèmes et réseaux','Prestations IT pour divers clients','Conseil transformation numérique','Clients : centre hospitalier de cancérologie, WWF, cabinet dentaire, entreprise d’imprimerie, entreprise comptable'],['HP ProLiant','Hyper-V','DFS Replication','Cisco Call Manager','UniFi','Active Directory']],
 ['DAVUM Gabon','Matériaux de construction · Secteur industriel','~15','utilisateurs accompagnés',['Administration systèmes et réseaux','Support utilisateurs internes','Supervision infrastructure IT'],['HP ProLiant','Hyper-V','DFS Replication','Cisco Call Manager','UniFi','Active Directory']],
 ['Integral Tech','Expérience en informatique',null,'',['Missions en informatique'],['IT']]];
 const SK=[
@@ -295,7 +301,7 @@ $('#cg').innerHTML=CE.map(([t,c,l,u,ul])=>`<article class="card" style="--c:${c}
 
 let cur='home';
 function go(k,push=true){if(!V.some(v=>v[0]==k))k='home';cur=k;$$('.view').forEach(v=>v.classList.toggle('on',v.id==k));$$('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.go==k));
- const i=V.findIndex(v=>v[0]==k);$('#prev').innerHTML=i>0?'← '+V[i-1][1]:'';$('#next').innerHTML=i<V.length-1?V[i+1][1]+' →':'';$('#prev').onclick=()=>go(V[i-1][0]);$('#next').onclick=()=>go(V[i+1][0]);
+ const i=V.findIndex(v=>v[0]==k);pg(i);
  scrollTo({top:0,behavior:'smooth'});if(push)history.replaceState(null,'','#'+k);if(k=='home')count()}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)go(b.dataset.go)});
 addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;const i=V.findIndex(v=>v[0]==cur);if(e.key=='ArrowRight'&&i<V.length-1)go(V[i+1][0]);if(e.key=='ArrowLeft'&&i>0)go(V[i-1][0])});
@@ -305,45 +311,134 @@ function count(){$$('[data-n]').forEach(el=>{const n=+el.dataset.n;let t0;const 
 const T=['Windows Server · Active Directory · GPO','Microsoft Entra ID · Microsoft 365 · Intune','FortiGate · VPN IPsec · Cisco · VoIP'];let ti=0,ci=0,del=false;
 (function ty(){const s=T[ti];ci+=del?-1:1;$('#typed').textContent=s.slice(0,ci);let w=del?24:55;if(!del&&ci==s.length){del=true;w=1600}else if(del&&ci==0){del=false;ti=(ti+1)%T.length;w=300}setTimeout(ty,w)})();
 
+let LANG='en';try{LANG=localStorage.getItem('lang')||'en'}catch(e){}
+const EN={
+'Accueil':'Home','Parcours':'Experience','Compétences':'Skills','Certifs':'Certs','01 · Parcours':'01 · Experience','02 · Compétences':'02 · Skills',
+'Plus de 7 ans d’expérience en support utilisateurs, administration systèmes et réseaux : Windows Server, Active Directory, Microsoft Entra ID, Microsoft 365 et Fortinet.':'Over 7 years of experience in user support, systems and network administration: Windows Server, Active Directory, Microsoft Entra ID, Microsoft 365 and Fortinet.',
+'Spécialités :':'Specialties: ','Me contacter →':'Contact me →','Découvrir mes 12 labs':'Explore my 12 labs','Années d’expérience':'Years of experience','Utilisateurs supportés':'Users supported','Labs documentés':'Documented labs',
+'9 expériences':'9 roles','Support · Microsoft · Réseaux · Sécurité':'Support · Microsoft · Networking · Security','12 projets pratiques':'12 hands-on projects',
+'Choisis une entreprise pour voir les missions, l’environnement et la stack.':'Pick a company to see its missions, environment and tech stack.',
+'Du poste utilisateur au pare-feu, en passant par le cloud Microsoft.':'From the user desktop to the firewall, through the Microsoft cloud.',
+'Environnements hybrides, cloud Azure, cybersécurité et réseaux : construits, testés, documentés.':'Hybrid environments, Azure cloud, cybersecurity and networks: built, tested, documented.',
+'Chaque badge est vérifiable auprès de l’organisme émetteur.':'Every badge can be verified with the issuing organization.',
+'Formation · Diplôme équivalent Bachelor en Télécommunications & Réseaux · Institut CERCO, Bénin':'Education · Bachelor’s-equivalent degree in Telecommunications & Networks · Institut CERCO, Benin',
+'Open to work in all cities. Réponse rapide.':'Open to work in all cities. Quick reply.',
+'Nom complet *':'Full name *','Sélectionnez un sujet *':'Select a subject *','💼 Opportunité professionnelle':'💼 Job opportunity','🚀 Projet / Consultation':'🚀 Project / Consulting','❓ Question technique':'❓ Technical question','🤝 Partenariat':'🤝 Partnership','📝 Autre':'📝 Other',
+'Téléphone (optionnel)':'Phone (optional)','Décrivez votre demande en détail *':'Describe your request in detail *','J’accepte que mes informations soient utilisées pour me recontacter.':'I agree that my information may be used to contact me back.',
+'Envoyer le message →':'Send message →','Envoi en cours…':'Sending…','Agent IA · Ange-Marie':'AI Agent · Ange-Marie','● Disponible sur Teams':'● Available on Teams','Écrivez votre message…':'Type your message…','Envoyer':'Send',
+'Réponses en français ou en anglais · Les questions complexes vont sur Teams':'Replies in English or French · Complex questions go to Teams',
+'Tous':'All','Cloud & Identité':'Cloud & Identity','Sécurité':'Security','Réseau':'Network','Systèmes & Outils':'Systems & Tools','Voir sur LinkedIn →':'View on LinkedIn →','Visiter le site de l’entreprise ↗':'Visit company website ↗','NOUVEAU':'NEW','Profil Microsoft Learn':'Microsoft Learn profile',
+'Gouvernance et sécurité des ressources Azure':'Azure resource governance and security','Projet Azure pratique : prise en main des tâches de gestion Azure.':'Hands-on Azure project: getting started with Azure management tasks.','Gouvernance':'Governance',
+'Jonction hybride Microsoft Entra ID + AD on-premises':'Hybrid join: Microsoft Entra ID + on-premises AD','Liaison entre l’annuaire local et le cloud Microsoft.':'Linking the on-premises directory with the Microsoft cloud.','Hybride':'Hybrid',
+'Incident réel : panne de synchronisation AD DS → Entra ID':'Real incident: AD DS → Entra ID sync outage','Retour d’expérience sur un incident en environnement hybride.':'Lessons learned from an incident in a hybrid environment.',
+'Microsoft Intune : gestion des appareils':'Microsoft Intune: device management','Gestion et conformité des appareils avec Intune.':'Device management and compliance with Intune.','Cybersécurité':'Cybersecurity',
+'Infrastructure Identity & Authentication avec Entra ID':'Identity & Authentication infrastructure with Entra ID','Déploiement d’une infrastructure d’identité et d’authentification.':'Deploying an identity and authentication infrastructure.','Identité':'Identity',
+'Microsoft Entra ID & Authentification multifacteur (MFA)':'Microsoft Entra ID & Multi-Factor Authentication (MFA)','Mise en place de la MFA sur Entra ID.':'Rolling out MFA on Entra ID.',
+'Infrastructure IT sécurisée : lab personnel':'Secure IT infrastructure: personal lab','Mise en place d’une infrastructure IT sécurisée.':'Building a secure IT infrastructure.',
+'VPN Site-to-Site IPsec avec 2 FortiGates':'Site-to-Site IPsec VPN with 2 FortiGates','Lab professionnel : interconnexion sécurisée de deux sites.':'Professional lab: secure interconnection of two sites.',
+'Projet VoIP Cisco : 2 sites + QoS + SIP Trunk':'Cisco VoIP project: 2 sites + QoS + SIP Trunk','Interconnexion de deux sites, QoS et trunk SIP.':'Two-site interconnection, QoS and SIP trunk.',
+'Cisco Network Lab : update (Part 2)':'Cisco Network Lab: update (Part 2)','Suite du lab réseau d’entreprise.':'Follow-up to the enterprise network lab.',
+'Enterprise Network – Part 3 : Connectivité & Wireless':'Enterprise Network – Part 3: Connectivity & Wireless','Déploiement de la connectivité et du Wi-Fi.':'Deploying connectivity and Wi-Fi.',
+'Déploiement complet d’une solution de gestion d’impression PaperCut MF':'Full deployment of a PaperCut MF print management solution','Mise en place d’une solution de gestion d’impression PaperCut MF.':'Setting up a PaperCut MF print management solution.','Impression':'Printing','Déploiement':'Deployment',
+'Ottawa · Réparation et maintenance informatique':'Ottawa · IT repair and maintenance','Diagnostic, réparation, maintenance et remise à neuf d’ordinateurs fixes et portables':'Diagnosing, repairing, maintaining and refurbishing desktop and laptop computers','Dépannage matériel et système d’exploitation':'Hardware and operating-system troubleshooting','Préparation des appareils pour leur réutilisation':'Preparing devices for reuse','Matériel':'Hardware','Diagnostic':'Diagnostics',
+'Ottawa · Support informatique bénévole':'Ottawa · Volunteer IT support','Soutien aux utilisateurs et aux activités communautaires':'Supporting users and community activities','Aide à l’organisation des services quotidiens':'Helping organize daily community services','Bénévolat':'Volunteering',
+'Prestation de services informatique et vente de matériel':'IT services and hardware sales','utilisateurs accompagnés':'users supported','utilisateurs professionnels':'professional users',
+'Administration systèmes et réseaux':'Systems and network administration','Administration Microsoft Entra ID et Microsoft 365':'Microsoft Entra ID and Microsoft 365 administration','Support informatique & maintenance réseaux':'IT support & network maintenance','Déploiement ~100 caméras de surveillance':'Deployment of ~100 surveillance cameras','Systèmes de contrôle d’accès et temps de présence':'Access control and time-attendance systems','Interconnexion réseaux entre entreprises':'Network interconnection between companies','Téléphonie IP Cisco Call Manager':'Cisco Call Manager IP telephony','Déploiement PaperCut (gestion ressources)':'PaperCut deployment (resource management)',
+'Clients majeurs : Hôpital militaire, Orabank Gabon, COSUMAF, ICG Gabon, Min. Culture, Min. Pétrole':'Major clients: Military hospital, Orabank Gabon, COSUMAF, ICG Gabon, Ministry of Culture, Ministry of Petroleum',
+'Autorité Nationale de Vérification et d’Audit (Gouvernement) · Secteur public':'National Verification and Audit Authority (Government) · Public sector','Support IT avancé pour vérificateurs':'Advanced IT support for auditors','Gestion des licences et conformité':'License and compliance management','Sauvegarde et protection des données':'Backup and data protection','Administration serveurs d’applications':'Application server administration','Gestion ADDS et contrôle d’accès':'AD DS and access control management','Supervision infrastructure réseau':'Network infrastructure monitoring','Environnement critique : haute disponibilité et sécurité renforcée pour les opérations d’audit financier':'Critical environment: high availability and hardened security for financial audit operations',
+'Prestation et vente informatique':'IT services and sales','Support informatique & maintenance réseau':'IT support & network maintenance','~100 caméras de surveillance':'~100 surveillance cameras','Contrôle d’accès et temps de présence':'Access control and time attendance','Téléphonie IP Cisco':'Cisco IP telephony','Déploiement PaperCut':'PaperCut deployment','Service après-vente':'After-sales service','Clients : Taskforce, SAMADI-BTP, Hôpital Cancérologie, Le Patrimoine':'Clients: Taskforce, SAMADI-BTP, Cancer Hospital, Le Patrimoine',
+'Centre hospitalier de Libreville · Secteur de la santé':'Libreville hospital center · Healthcare sector','Contrôle de présence':'Attendance control','Collaboration Dropbox':'Dropbox collaboration','Sauvegarde données':'Data backup','Caméras de surveillance':'Surveillance cameras','Support administratif et laboratoire':'Administrative and laboratory support','Gestion factures et stock (Sage)':'Invoice and stock management (Sage)',
+'Entreprise personnelle · Prestation de services informatique':'Own company · IT services','Prestations IT pour divers clients':'IT services for various clients','Conseil transformation numérique':'Digital transformation consulting','Clients : centre hospitalier de cancérologie, WWF, cabinet dentaire, entreprise d’imprimerie, entreprise comptable':'Clients: cancer hospital center, WWF, dental practice, printing company, accounting firm',
+'Matériaux de construction · Secteur industriel':'Construction materials · Industrial sector','Support utilisateurs internes':'Internal user support','Supervision infrastructure IT':'IT infrastructure monitoring','Expérience en informatique':'IT experience','Missions en informatique':'IT assignments',
+'Support informatique':'IT Support','Support à distance':'Remote support','Matériel & logiciels':'Hardware & software','Documentation d’incidents':'Incident documentation','Identité & Microsoft':'Identity & Microsoft','Utilisateurs & groupes':'Users & groups','MFA & accès conditionnel':'MFA & Conditional Access','Azure (gestion)':'Azure (management)',
+'Systèmes & Réseaux':'Systems & Networking','Cisco · téléphonie IP':'Cisco · IP telephony','Sécurité & Outils':'Security & Tools','FortiGate : pare-feu & VPN':'FortiGate: firewall & VPN','Inventaire & documentation':'Inventory & documentation',
+'Applied Skills : Active Directory Domain Services':'Applied Skills: Active Directory Domain Services','Applied Skills : Microsoft Entra ID, gestion des identités et des accès':'Applied Skills: Microsoft Entra ID, identity and access management','Applied Skills : Prise en main des tâches de gestion Azure':'Applied Skills: Overview of Azure management tasks','Applied Skills : Sécuriser les services et charges de travail Azure avec Microsoft Defender pour le cloud':'Applied Skills: Securing Azure services and workloads with Microsoft Defender for Cloud',
+'Certification PaperCut MF':'PaperCut MF certification','Azure : Configurer et gérer Microsoft Entra ID':'Azure: Configure and manage Microsoft Entra ID','Essentiels de Microsoft Security':'Microsoft Security essentials','Collaborer grâce à Microsoft 365':'Collaborating with Microsoft 365'};
+const t=x=>LANG=='en'&&EN[x]!==undefined?EN[x]:x;
+const SKIP='#ag-m,#typed,script,style,.ts,[data-en]';
+function tr(root){const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;const L=[];while(n=w.nextNode())L.push(n);
+ L.forEach(n=>{if(!n.parentElement||n.parentElement.closest(SKIP))return;if(n._f===undefined)n._f=n.nodeValue;const k=n._f.trim();if(!k)return;n.nodeValue=LANG=='en'&&EN[k]!==undefined?EN[k]:n._f});
+ root.querySelectorAll('[placeholder]').forEach(e=>{if(e._p===undefined)e._p=e.placeholder;e.placeholder=LANG=='en'&&EN[e._p]!==undefined?EN[e._p]:e._p})}
+function pg(i){$('#prev').innerHTML=i>0?'← '+t(V[i-1][1]):'';$('#next').innerHTML=i<V.length-1?t(V[i+1][1])+' →':'';$('#prev').onclick=()=>go(V[i-1][0]);$('#next').onclick=()=>go(V[i+1][0])}
+const _lab=lab;lab=f=>{_lab(f);tr($('#lg'))};const _xp=xp;xp=i=>{_xp(i);tr($('#xd'))};
+function setLang(l){LANG=l;try{localStorage.setItem('lang',l)}catch(e){}document.documentElement.lang=l;
+ $$('[data-en]').forEach(e=>{if(e._h===undefined)e._h=e.innerHTML;e.innerHTML=l=='en'?e.dataset.en:e._h});
+ tr(document.body);$$('.lg button').forEach(b=>b.classList.toggle('on',b.dataset.l==l));
+ pg(V.findIndex(v=>v[0]==cur));AG.lang=l;if(AG.greeted)AG.say(AG.c('Language switched to English. I will still answer in French if you write to me in French.','Langue changée en français. Je répondrai aussi en anglais si vous m’écrivez en anglais.'))}
+$$('.lg button').forEach(b=>b.onclick=()=>{if(b.dataset.l!=LANG)setLang(b.dataset.l)});
+
 const TEAMS='ahouansouange@live.fr',EJS={k:'cElC1HEUqBTOXYfMW',s:'service_hqg5xqb',t:'template_vbyvnrn'};
 try{emailjs.init(EJS.k)}catch(e){}
-function toast(m,err){const t=$('#ts');t.textContent=m;t.className='ts on'+(err?' err':'');clearTimeout(toast.t);toast.t=setTimeout(()=>t.className='ts',5000)}
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+function toast(en,fr,err){const x=$('#ts');x.textContent=LANG=='fr'?fr:en;x.className='ts on'+(err?' err':'');clearTimeout(toast.t);toast.t=setTimeout(()=>x.className='ts',5000)}
 $('#f').onsubmit=async e=>{e.preventDefault();const f=e.target,d=new FormData(f);
- const p={from_name:d.get('from_name').trim(),from_email:d.get('from_email').trim(),subject:d.get('subject'),phone:(d.get('phone')||'').trim(),message:d.get('message').trim(),consent:f.consent.checked,to_email:TEAMS,language:'fr',page_url:location.href,timestamp:new Date().toLocaleString('fr-FR')};
- const b=f.querySelector('button');b.disabled=true;b.textContent='Envoi en cours…';
- try{await emailjs.send(EJS.s,EJS.t,p);toast('Message envoyé ! Je vous réponds rapidement.');f.reset()}
- catch(x){toast('Envoi impossible : ouverture de votre messagerie.',1);location.href='mailto:'+TEAMS+'?subject='+encodeURIComponent('Contact portfolio : '+p.from_name)+'&body='+encodeURIComponent(p.message+'\n\n'+p.from_name+' · '+p.from_email)}
- b.disabled=false;b.textContent='Envoyer le message →'};
+ const p={from_name:d.get('from_name').trim(),from_email:d.get('from_email').trim(),subject:d.get('subject'),phone:(d.get('phone')||'').trim(),message:d.get('message').trim(),consent:f.consent.checked,to_email:TEAMS,language:LANG,page_url:location.href,timestamp:new Date().toLocaleString(LANG=='fr'?'fr-FR':'en-US')};
+ const b=f.querySelector('button');b.disabled=true;b.textContent='Envoi en cours…';tr(b);
+ try{await emailjs.send(EJS.s,EJS.t,p);toast('Message sent! I will reply shortly.','Message envoyé ! Je vous réponds rapidement.');f.reset()}
+ catch(x){toast('Sending failed: opening your email app instead.','Envoi impossible : ouverture de votre messagerie.',1);location.href='mailto:'+TEAMS+'?subject='+encodeURIComponent('Portfolio contact: '+p.from_name)+'&body='+encodeURIComponent(p.message+'\n\n'+p.from_name+' · '+p.from_email)}
+ b.disabled=false;b.textContent='Envoyer le message →';tr(b)};
 
+/* ===== AI AGENT (EN/FR) ===== */
 const QS=[
-['objective','Quel est l’objet de votre message ?',[['job','💼 Opportunité d’emploi'],['project','🚀 Projet / Consultation'],['question','❓ Question technique'],['other','📝 Autre']]],
-['urgency','Quelle est l’urgence de votre demande ?',[['immediate','🔴 Immédiate (cette semaine)'],['short','🟠 Court terme (ce mois)'],['medium','🟡 Moyen terme'],['future','🟢 Futur projet']]],
-['location','Quelle est votre localisation ?',[['montreal','🏢 Montréal / Québec'],['canada','🍁 Autre région du Canada'],['remote','🌐 International / Télétravail'],['other','📍 Autre']]],
-['contact','Comment préférez-vous être contacté ?',[['teams','💬 Microsoft Teams (recommandé)'],['email','📧 Email'],['linkedin','💼 LinkedIn'],['phone','📞 Téléphone']]]];
-const AG={open:false,mode:'',qualified:false,r:{},
- add(t,c,h){const m=$('#ag-m'),d=document.createElement('div');d.className='ag-b '+c;h?d.innerHTML=t:d.textContent=t;m.appendChild(d);m.scrollTop=m.scrollHeight;return d},
+['objective',['What is the purpose of your message?','Quel est l’objet de votre message ?'],[['job','💼 Job opportunity','💼 Opportunité d’emploi'],['project','🚀 Project / Consulting','🚀 Projet / Consultation'],['question','❓ Technical question','❓ Question technique'],['other','📝 Other','📝 Autre']]],
+['urgency',['How urgent is your request?','Quelle est l’urgence de votre demande ?'],[['immediate','🔴 Immediate (this week)','🔴 Immédiate (cette semaine)'],['short','🟠 Short term (this month)','🟠 Court terme (ce mois)'],['medium','🟡 Medium term','🟡 Moyen terme'],['future','🟢 Future project','🟢 Futur projet']]],
+['location',['Where are you located?','Quelle est votre localisation ?'],[['montreal','🏢 Montreal / Quebec','🏢 Montréal / Québec'],['canada','🍁 Elsewhere in Canada','🍁 Ailleurs au Canada'],['remote','🌐 International / Remote','🌐 International / Télétravail'],['other','📍 Other','📍 Autre']]],
+['contact',['How would you prefer to be contacted?','Comment préférez-vous être contacté ?'],[['teams','💬 Microsoft Teams (recommended)','💬 Microsoft Teams (recommandé)'],['email','📧 Email','📧 Email'],['linkedin','💼 LinkedIn','💼 LinkedIn'],['phone','📞 Phone','📞 Téléphone']]]];
+const ACT={q:['💼 Start a qualification','💼 Démarrer une qualification'],teams:['💬 Talk on Teams','💬 Parler sur Teams'],cv:['📄 Get his CV','📄 Recevoir son CV'],xp:['💼 See experience','💼 Voir le parcours'],skills:['🛠️ See skills','🛠️ Voir les compétences'],lab:['🧪 Explore the labs','🧪 Explorer les labs'],certs:['🏅 See certifications','🏅 Voir les certifications'],contact:['✉️ Contact form','✉️ Formulaire de contact']};
+const KB=[
+[/(thanks?|thank you|merci|thx)/i,'You are welcome! Anything else I can help with?','Avec plaisir ! Puis-je vous aider sur autre chose ?',['q','teams']],
+[/(bye|goodbye|au revoir|bient[oô]t|see you)/i,'Goodbye! Feel free to come back or reach Ange-Marie on Teams anytime.','Au revoir ! Revenez quand vous voulez ou écrivez à Ange-Marie sur Teams.',['teams']],
+[/(\bcv\b|resume|résumé|curriculum)/i,'Of course! I can have Ange-Marie send you his CV by email.','Bien sûr ! Je peux demander à Ange-Marie de vous envoyer son CV par e-mail.',['cv','teams']],
+[/(teams|human|real person|talk to|speak (to|with)|parler|humain|vraie personne)/i,'Sure, I can pass you straight to Ange-Marie on Microsoft Teams.','Bien sûr, je peux vous mettre directement en relation avec Ange-Marie sur Microsoft Teams.',['teams','q']],
+[/(contact|e-?mail|\bmail\b|phone|t[ée]l[ée]phone|linkedin|reach|\bcall\b|rendez|meeting|appeler|number|num[ée]ro)/i,'You can reach Ange-Marie by email at ahouansouange@live.fr, on LinkedIn, or on Microsoft Teams (the fastest way).','Vous pouvez joindre Ange-Marie par e-mail à ahouansouange@live.fr, sur LinkedIn ou sur Microsoft Teams (le plus rapide).',['teams','contact','q']],
+[/(available|availability|disponib|open to work|hire|hiring|recruit|embauch|recrut|\bjob|emploi|\bposte|opportunit|where|located|location|localis|city|ville|remote|t[ée]l[ée]travail|relocat)/i,'Ange-Marie is open to work in all cities and available right away. Tell me about your opportunity and I will forward it to him.','Ange-Marie est ouvert aux opportunités dans toutes les villes et disponible immédiatement. Décrivez-moi votre opportunité et je la lui transmets.',['q','teams','cv']],
+[/(certif|badge|diplom|degree|education|formation|[ée]tudes|credential)/i,'He holds 20+ certifications: Microsoft Applied Skills (AD DS, Entra ID, Azure management, Defender for Cloud), Fortinet (FCA, FCF, FortiGate 7.6 Operator, FortiOS 7.6 Administrator, NSE 1-3), Cisco Networking Academy, PaperCut MF & Hive. His degree is in Telecommunications & Networks (Institut CERCO).','Il détient plus de 20 certifications : Microsoft Applied Skills (AD DS, Entra ID, gestion Azure, Defender pour le cloud), Fortinet (FCA, FCF, FortiGate 7.6 Operator, FortiOS 7.6 Administrator, NSE 1-3), Cisco Networking Academy, PaperCut MF & Hive. Son diplôme est en Télécommunications & Réseaux (Institut CERCO).',['certs','q','teams']],
+[/(\blabs?\b|project|projet|homelab|hands-on|pratique)/i,'He documented 12 hands-on labs: Azure governance, hybrid Entra ID + AD, a real sync incident, Intune, MFA, a FortiGate IPsec VPN, Cisco VoIP and enterprise networking, and a PaperCut MF deployment.','Il a documenté 12 labs pratiques : gouvernance Azure, Entra ID hybride + AD, un incident réel de synchronisation, Intune, MFA, un VPN IPsec FortiGate, VoIP Cisco et réseau d’entreprise, et un déploiement PaperCut MF.',['lab','q','teams']],
+[/(skill|comp[ée]tence|stack|technolog|fortinet|fortigate|azure|entra|active directory|intune|microsoft|m365|cisco|voip|network|r[ée]seau|windows|server|serveur|security|s[ée]curit|cyber|firewall|pare-feu)/i,'Ange-Marie works across four areas: user support (Windows 10/11, GLPI, remote tools), Microsoft identity & cloud (Entra ID, Microsoft 365, Intune, Azure management), systems & networks (Windows Server, Active Directory, GPO, Hyper-V, Cisco, VLAN/VPN) and security (FortiGate firewall & VPN, Fortinet FCA).','Ange-Marie travaille sur quatre axes : support utilisateurs (Windows 10/11, GLPI, outils à distance), identité & cloud Microsoft (Entra ID, Microsoft 365, Intune, gestion Azure), systèmes & réseaux (Windows Server, Active Directory, GPO, Hyper-V, Cisco, VLAN/VPN) et sécurité (pare-feu et VPN FortiGate, Fortinet FCA).',['skills','lab','q']],
+[/(experience|exp[ée]rience|parcours|career|carri[èe]re|background|worked|travaill|years|\bans\b|compan|entreprise|employer|r[ôo]le|who is|qui est|about|propos)/i,'Over 7 years across 9 roles: PC Room (Ottawa), HT241, ANAVEA and SAFRIMAT in Libreville, and his own consulting company SYSTEMESCOMS. Highlights: Entra ID & Microsoft 365 administration, a ~100-camera rollout, Cisco IP telephony and a PaperCut MF deployment that cut printing costs by 30%.','Plus de 7 ans sur 9 postes : PC Room (Ottawa), HT241, ANAVEA et SAFRIMAT à Libreville, et sa propre société SYSTEMESCOMS. Points forts : administration Entra ID & Microsoft 365, déploiement d’environ 100 caméras, téléphonie IP Cisco et un déploiement PaperCut MF qui a réduit les coûts d’impression de 30 %.',['xp','skills','q']],
+[/^(hello|hi|hey|bonjour|salut|bonsoir|coucou)/i,'Hello! I can tell you about Ange-Marie’s skills, experience, certifications and labs.','Bonjour ! Je peux vous parler des compétences, du parcours, des certifications et des labs d’Ange-Marie.',['skills','xp','q']]];
+const FRW=/\b(bonjour|salut|bonsoir|merci|je|vous|votre|vos|mon|ma|mes|est|sont|avec|pour|des|les|une|du|cherche|besoin|comment|quel|quelle|quels|quelles|svp|suis|voudrais|souhaite|peux|pouvez|disponible|travail|poste|emploi|parcours|ans)\b|j[’']|s[’']il/gi;
+const ENW=/\b(hello|hi|hey|thanks|thank|the|you|your|are|is|i|my|me|we|with|for|and|looking|need|how|what|which|where|please|can|could|would|want|have|has|do|does|available|work|job|hire|skills|experience|years)\b/gi;
+function det(x){const f=(x.match(FRW)||[]).length+(/[àâçéèêëîïôûùüÿœ]/i.test(x)?2:0),e=(x.match(ENW)||[]).length;return f>e?'fr':e>f?'en':null}
+const AG={open:false,lang:LANG,mode:'',qualified:false,r:{},greeted:false,
+ c(en,fr){return AG.lang=='fr'?fr:en},
+ add(x,c,h){const m=$('#ag-m'),d=document.createElement('div');d.className='ag-b '+c;h?d.innerHTML=x:d.textContent=x;m.appendChild(d);m.scrollTop=m.scrollHeight;return d},
+ async say(x,c){const d=AG.add('•••','bot typing');await sleep(380+Math.min(x.length*6,900));d.className='ag-b '+(c||'bot');d.textContent=x;$('#ag-m').scrollTop=1e9},
  opts(list,cb,hl){const m=$('#ag-m'),w=document.createElement('div');w.className='ag-o';list.forEach(([v,l],i)=>{const b=document.createElement('button');b.textContent=l;if(hl&&i==0)b.className='hl';b.onclick=()=>{w.remove();cb(v,l)};w.appendChild(b)});m.appendChild(w);m.scrollTop=m.scrollHeight},
+ chips(keys){AG.opts(keys.map(k=>[k,ACT[k][AG.lang=='fr'?1:0]]),(k,l)=>{AG.add(l,'user');AG.run(k)})},
  toggle(f){AG.open=f===undefined?!AG.open:f;$('#ag-box').classList.toggle('on',AG.open);$('#ag-dot').style.display='none';if(AG.open)setTimeout(()=>$('#ag-in').focus(),300)},
- greet(){const h=new Date().getHours();AG.add(h<12?'Bonjour ! ☀️ Comment puis-je vous aider ce matin ?':h<18?'Bonjour ! 👋 Comment puis-je vous aider cet après-midi ?':'Bonsoir ! 🌙 Comment puis-je vous aider ce soir ?','bot');
-  setTimeout(()=>AG.opts([['q','💼 Démarrer une qualification complète'],['k','❓ Poser une question rapide'],['c','📄 Demander mon CV']],(v,l)=>{AG.add(l,'user');
-   if(v=='q'){AG.mode='q';setTimeout(()=>AG.step(0),500)}
-   if(v=='k')setTimeout(()=>AG.add('Bien sûr ! ❓ Posez votre question, je la transmets à Ange-Marie sur Teams.','bot'),500);
-   if(v=='c'){AG.mode='cv';setTimeout(()=>AG.add('Je vous envoie mon CV par e-mail ! 📄 Quelle est votre adresse e-mail ?','bot'),500)}},1),700)},
- prog(i){$('#ag-p').style.display='block';$('#ag-pb').style.width=(i/QS.length*100)+'%'},
- step(i){AG.prog(i);if(i>=QS.length)return AG.done();const [id,q,o]=QS[i];AG.add(q,'bot');AG.opts(o,(v,l)=>{AG.r[id]=l;AG.add(l,'user');setTimeout(()=>AG.step(i+1),450)})},
- done(){AG.qualified=true;const L=['Objet','Urgence','Localisation','Contact préféré'];
-  AG.add('<b>📋 Résumé de votre demande</b><br>'+QS.map((q,i)=>L[i]+' : '+AG.r[q[0]]).join('<br>'),'sum',1);
-  setTimeout(()=>{AG.add('✅ Qualification terminée : transfert vers l’agent IA','bot');setTimeout(()=>AG.teams(AG.ctx()),1500)},900)},
- ctx(){return '🤖 NOUVEAU LEAD QUALIFIÉ - Portfolio\n\n📅 Date: '+new Date().toLocaleString('fr-FR')+'\n🎯 Objet: '+AG.r.objective+'\n⏰ Urgence: '+AG.r.urgency+'\n📍 Localisation: '+AG.r.location+'\n💬 Contact préféré: '+AG.r.contact+'\n\nBonjour Ange-Marie,\n\nJe suis intéressé(e) par votre profil. Voici les détails de ma demande.\n\nMerci de me recontacter sur ce canal.\n\nCordialement,'},
- teams(m){window.open('https://teams.microsoft.com/l/chat/0/0?users='+encodeURIComponent(TEAMS)+'&message='+encodeURIComponent(m),'_blank');
-  if(!AG.qualified)return;setTimeout(()=>{AG.add('🤖 Agent IA connecté','badge');setTimeout(()=>{AG.add('Bonjour ! Je suis l’agent IA d’Ange-Marie. J’ai analysé votre demande et ouvert une conversation Microsoft Teams avec tout le contexte. Ange-Marie vous répondra personnellement.','bot');AG.opts([['t','Ouvrir / réouvrir Teams']],()=>{AG.teams(AG.ctx())},1)},900)},500)},
- send(){const i=$('#ag-in'),t=i.value.trim();if(!t)return;i.value='';AG.add(t,'user');
-  if(AG.mode=='cv'&&/\S+@\S+\.\S+/.test(t)){emailjs.send(EJS.s,EJS.t,{from_name:'Demande de CV',from_email:t,subject:'📄 Demande de CV',phone:'',message:'Demande de CV depuis l’agent IA du portfolio.',consent:true,to_email:TEAMS,language:'fr',page_url:location.href,timestamp:new Date().toLocaleString('fr-FR')}).then(()=>AG.add('Merci ! 📄 Ange-Marie vous envoie son CV très vite.','bot'),()=>AG.add('Envoi impossible pour le moment. Écrivez-moi à '+TEAMS,'bot'));AG.mode='';return}
-  if(!AG.qualified){AG.add('Message transmis à Ange-Marie sur Microsoft Teams. 💬','bot');AG.teams('Message depuis le portfolio :\n\n'+t)}}};
+ async greet(){AG.greeted=true;const h=new Date().getHours();
+  await AG.say(AG.c(h<12?'Good morning! ☀️':h<18?'Good afternoon! 👋':'Good evening! 🌙',h<12?'Bonjour ! ☀️':h<18?'Bonjour ! 👋':'Bonsoir ! 🌙'));
+  await AG.say(AG.c('I am Ange-Marie’s AI assistant. I can answer questions about his profile in English or French. How can I help?','Je suis l’assistant IA d’Ange-Marie. Je peux répondre à vos questions sur son profil en français ou en anglais. Comment puis-je vous aider ?'));
+  AG.chips(['q','skills','xp','cv','teams'])},
+ async run(k){if(k=='q'){AG.mode='q';AG.r={};AG.qualified=false;return AG.step(0)}
+  if(k=='teams'){await AG.say(AG.c('Opening Microsoft Teams…','Ouverture de Microsoft Teams…'));return AG.teams(AG.free())}
+  if(k=='cv'){AG.mode='cv';return AG.say(AG.c('Happy to! 📄 What is your email address?','Avec plaisir ! 📄 Quelle est votre adresse e-mail ?'))}
+  go(k);if(innerWidth<900)AG.toggle(false)},
+ async step(i){$('#ag-p').style.display='block';$('#ag-pb').style.width=(i/QS.length*100)+'%';if(i>=QS.length)return AG.done();
+  const [id,q,o]=QS[i];await AG.say(AG.lang=='fr'?q[1]:q[0]);AG.opts(o.map(x=>[x[0],AG.lang=='fr'?x[2]:x[1]]),(v,l)=>{AG.r[id]=v;AG.add(l,'user');AG.step(i+1)})},
+ lab(id){const o=QS.find(q=>q[0]==id)[2].find(x=>x[0]==AG.r[id]);return AG.lang=='fr'?o[2]:o[1]},
+ async done(){AG.qualified=true;const L=AG.c(['Purpose','Urgency','Location','Preferred contact'],['Objet','Urgence','Localisation','Contact préféré']);
+  AG.add('<b>📋 '+AG.c('Summary of your request','Résumé de votre demande')+'</b><br>'+QS.map((q,i)=>L[i]+' : '+AG.lab(q[0])).join('<br>'),'sum',1);
+  await sleep(900);await AG.say(AG.c('✅ Qualification complete: forwarding to Ange-Marie','✅ Qualification terminée : transfert à Ange-Marie'));await sleep(900);AG.teams(AG.ctx());
+  await sleep(500);AG.add(AG.c('🤖 AI agent connected','🤖 Agent IA connecté'),'badge');
+  await AG.say(AG.c('I have opened a Microsoft Teams conversation with the full context of your request. Ange-Marie will reply to you personally.','J’ai ouvert une conversation Microsoft Teams avec tout le contexte de votre demande. Ange-Marie vous répondra personnellement.'));
+  AG.opts([['t',AG.c('Open / reopen Teams','Ouvrir / réouvrir Teams')]],()=>AG.teams(AG.ctx()),1)},
+ ctx(){const f=AG.lang=='fr',d=new Date().toLocaleString(f?'fr-FR':'en-US'),r=id=>AG.lab(id);
+  return (f?'🤖 NOUVEAU LEAD QUALIFIÉ - Portfolio\n\n📅 Date : ':'🤖 NEW QUALIFIED LEAD - Portfolio\n\n📅 Date: ')+d+(f?'\n🎯 Objet : ':'\n🎯 Purpose: ')+r('objective')+(f?'\n⏰ Urgence : ':'\n⏰ Urgency: ')+r('urgency')+(f?'\n📍 Localisation : ':'\n📍 Location: ')+r('location')+(f?'\n💬 Contact préféré : ':'\n💬 Preferred contact: ')+r('contact')+(f?'\n\nBonjour Ange-Marie,\n\nVotre profil m’intéresse. Voici les détails de ma demande. Merci de me recontacter sur ce canal.\n\nCordialement,':'\n\nHello Ange-Marie,\n\nI am interested in your profile. Here are the details of my request. Please contact me back on this channel.\n\nBest regards,')},
+ free(){return AG.c('Hello Ange-Marie, I would like to talk with you (sent from your portfolio).','Bonjour Ange-Marie, j’aimerais échanger avec vous (envoyé depuis votre portfolio).')},
+ teams(m){window.open('https://teams.microsoft.com/l/chat/0/0?users='+encodeURIComponent(TEAMS)+'&message='+encodeURIComponent(m),'_blank')},
+ async reply(x){const l=det(x);if(l)AG.lang=l;
+  if(AG.mode=='cv'){const m=x.match(/\S+@\S+\.\S+/);if(m){AG.mode='';try{await emailjs.send(EJS.s,EJS.t,{from_name:'CV request',from_email:m[0],subject:'📄 CV request',phone:'',message:'CV request from the portfolio AI agent.',consent:true,to_email:TEAMS,language:AG.lang,page_url:location.href,timestamp:new Date().toLocaleString()});await AG.say(AG.c('Thank you! 📄 Ange-Marie will send you his CV shortly.','Merci ! 📄 Ange-Marie vous enverra son CV très bientôt.'))}catch(e){await AG.say(AG.c('I could not send the request. Please write to ahouansouange@live.fr.','Envoi impossible. Merci d’écrire à ahouansouange@live.fr.'))}return}}
+  const k=KB.find(e=>e[0].test(x));
+  if(k){await AG.say(AG.c(k[1],k[2]));return AG.chips(k[3])}
+  await AG.say(AG.c('I am not sure I can answer that precisely. I can pass your question to Ange-Marie on Teams so he answers you personally.','Je ne suis pas sûr de pouvoir répondre précisément. Je peux transmettre votre question à Ange-Marie sur Teams pour qu’il vous réponde personnellement.'));AG.chips(['teams','q','contact'])},
+ send(){const i=$('#ag-in'),x=i.value.trim();if(!x)return;i.value='';AG.add(x,'user');AG.reply(x)}};
 $('#ag-fab').onclick=()=>AG.toggle();$('#ag-x').onclick=()=>AG.toggle(false);$('#ag-send').onclick=()=>AG.send();
 $('#ag-in').onkeydown=e=>{if(e.key=='Enter')AG.send()};
 AG.greet();
 try{if(!localStorage.getItem('chat_visited')){setTimeout(()=>{AG.toggle(true);localStorage.setItem('chat_visited','1')},10000)}else $('#ag-dot').style.display='none'}catch(e){}
+setLang(LANG);
 go(location.hash.slice(1)||'home',false);
 </script>
 </body>
