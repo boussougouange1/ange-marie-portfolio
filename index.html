@@ -128,7 +128,7 @@ main{padding:104px 20px 130px}
       <p class="spec">Spécialités : <em id="typed"></em></p>
       <div class="cta">
         <button class="btn p" data-go="contact">Me contacter →</button>
-        <button class="btn" data-go="lab">Découvrir mes 11 labs</button>
+        <button class="btn" data-go="lab">Découvrir mes 12 labs</button>
       </div>
     </div>
     <div class="portrait">
@@ -141,12 +141,12 @@ main{padding:104px 20px 130px}
     <div class="stat"><div class="num"><span data-n="7">0</span>+</div><div class="mono">Années d’expérience</div></div>
     <div class="stat"><div class="num"><span data-n="20">0</span>+</div><div class="mono">Certifications</div></div>
     <div class="stat"><div class="num"><span data-n="135">0</span>+</div><div class="mono">Utilisateurs supportés</div></div>
-    <div class="stat"><div class="num"><span data-n="11">0</span></div><div class="mono">Labs documentés</div></div>
+    <div class="stat"><div class="num"><span data-n="12">0</span></div><div class="mono">Labs documentés</div></div>
   </div>
   <div class="rows">
     <button class="row" data-go="xp"><b>01</b><h3>Parcours</h3><p>9 expériences</p></button>
     <button class="row" data-go="skills"><b>02</b><h3>Compétences</h3><p>Support · Microsoft · Réseaux · Sécurité</p></button>
-    <button class="row" data-go="lab"><b>03</b><h3>Lab</h3><p>11 projets pratiques</p></button>
+    <button class="row" data-go="lab"><b>03</b><h3>Lab</h3><p>12 projets pratiques</p></button>
     <button class="row" data-go="certs"><b>04</b><h3>Certifications</h3><p>Microsoft · Fortinet · Cisco</p></button>
     <button class="row" data-go="contact"><b>05</b><h3>Contact</h3><p>Open to work in all cities</p></button>
   </div>
@@ -204,19 +204,20 @@ const V=[['home','Accueil'],['xp','Parcours'],['skills','Skills'],['lab','Lab'],
 const P='https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const LAB=[
-['id','Gouvernance et sécurité des ressources Azure','Projet Azure pratique : prise en main des tâches de gestion Azure.',['Azure','Gouvernance','Sécurité'],'azure-microsoftazure-cloudcomputing-activity-7457244314100776960-1yTc'],
-['id','Jonction hybride Microsoft Entra ID + AD on-premises','Liaison entre l’annuaire local et le cloud Microsoft.',['Entra ID','Active Directory','Hybride'],'microsoftentraid-azuread-activedirectory-activity-7451151486836813824-iKfx'],
-['id','Incident réel : panne de synchronisation AD DS → Entra ID','Retour d’expérience sur un incident en environnement hybride.',['AD DS','Entra ID','Troubleshooting'],'sysadmin-azuread-entraid-activity-7455638595798859776-21t'],
-['id','Microsoft Intune : gestion des appareils','Gestion et conformité des appareils avec Intune.',['Intune','Entra ID','Cybersécurité'],'microsoftentraid-azuread-cybersaezcuritaez-activity-7449886531562913792-Bg-'],
+['id','Gouvernance et sécurité des ressources Azure','Projet Azure pratique : prise en main des tâches de gestion Azure.',['Azure','Gouvernance','Sécurité'],'https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_azure-microsoftazure-cloudcomputing-activity-7457244314100776960-1yTc/'],
+['id','Jonction hybride Microsoft Entra ID + AD on-premises','Liaison entre l’annuaire local et le cloud Microsoft.',['Entra ID','Active Directory','Hybride'],'https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_microsoftentraid-azuread-activedirectory-activity-7451151486836813824-iKfx/'],
+['id','Incident réel : panne de synchronisation AD DS → Entra ID','Retour d’expérience sur un incident en environnement hybride.',['AD DS','Entra ID','Troubleshooting'],'https://lnkd.in/p/gAeYG8-t'],
+['id','Microsoft Intune : gestion des appareils','Gestion et conformité des appareils avec Intune.',['Intune','Entra ID','Cybersécurité'],'https://lnkd.in/p/gcVxDFV6'],
 ['id','Infrastructure Identity & Authentication avec Entra ID','Déploiement d’une infrastructure d’identité et d’authentification.',['Entra ID','Identité','Cybersécurité'],'microsoftentraid-azuread-cybersaezcuritaez-ugcPost-7440152021749522432--M21'],
 ['id','Microsoft Entra ID & Authentification multifacteur (MFA)','Mise en place de la MFA sur Entra ID.',['Entra ID','MFA'],'microsoftentraid-azuread-mfa-ugcPost-7419077439873511425-V0lX'],
 ['sec','Infrastructure IT sécurisée : lab personnel','Mise en place d’une infrastructure IT sécurisée.',['Active Directory','Cybersécurité','IT'],'it-cybersecurity-activedirectory-activity-7454745934258778112-7-Ia'],
 ['sec','VPN Site-to-Site IPsec avec 2 FortiGates','Lab professionnel : interconnexion sécurisée de deux sites.',['Fortinet','FortiGate','IPsec'],'networking-cybersecurity-fortinet-activity-7456159216907583488-EoFA'],
 ['net','Projet VoIP Cisco : 2 sites + QoS + SIP Trunk','Interconnexion de deux sites, QoS et trunk SIP.',['Cisco','VoIP','QoS','SIP'],'cisco-voip-networking-activity-7453668596473491457-g_bA'],
 ['net','Cisco Network Lab : update (Part 2)','Suite du lab réseau d’entreprise.',['Cisco','CCNA','Réseau'],'cisco-networking-ccna-ugcPost-7436841727740698625-k4dm'],
-['net','Enterprise Network – Part 3 : Connectivité & Wireless','Déploiement de la connectivité et du Wi-Fi.',['Cisco','Wireless','Réseau'],'cisco-networking-ccna-ugcPost-7437321468796973057-MKlK']];
-const COL={id:'#7FB2FF',sec:'#FF8F70',net:'#E6C27A'};
-const FIL=[['all','Tous'],['id','Cloud & Identité'],['sec','Sécurité'],['net','Réseau']];
+['net','Enterprise Network – Part 3 : Connectivité & Wireless','Déploiement de la connectivité et du Wi-Fi.',['Cisco','Wireless','Réseau'],'cisco-networking-ccna-ugcPost-7437321468796973057-MKlK'],
+['sys','Déploiement complet d’une solution de gestion d’impression PaperCut MF','Mise en place d’une solution de gestion d’impression PaperCut MF.',['PaperCut MF','Impression','Déploiement'],'https://www.linkedin.com/posts/ange-marie-boussougou-ahouansou-b3517510b_bluemega-papercut-papercutmf-activity-7469181020781608960-zWdn']];
+const COL={id:'#7FB2FF',sec:'#FF8F70',net:'#E6C27A',sys:'#6EE7B7'};
+const FIL=[['all','Tous'],['id','Cloud & Identité'],['sec','Sécurité'],['net','Réseau'],['sys','Systèmes & Outils']];
 const XP=[
 ['PC Room','Ottawa · Réparation et maintenance informatique',null,'',['Diagnostic, réparation, maintenance et remise à neuf d’ordinateurs fixes et portables','Dépannage matériel et système d’exploitation','Préparation des appareils pour leur réutilisation'],['Windows','Matériel','Diagnostic']],
 ['Centre 507','Ottawa · Support informatique bénévole',null,'',['Soutien aux utilisateurs et aux activités communautaires','Aide à l’organisation des services quotidiens'],['Support','Bénévolat']],
@@ -233,7 +234,7 @@ const SK=[
 ['Systèmes & Réseaux',['Windows Server 2019/2022','AD DS · GPO','DNS · DHCP · DFS','Hyper-V','TCP/IP · LAN/WAN','Wi-Fi · VLAN · VPN','Cisco · téléphonie IP']],
 ['Sécurité & Outils',['FortiGate : pare-feu & VPN','Fortinet cybersecurity','PaperCut MF','Inventaire & documentation']]];
 const CE=[
-['Microsoft','#7FB2FF',[['Applied Skills : Active Directory Domain Services','https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials/9916e2bb6d34eab6'],['Applied Skills : Microsoft Entra ID, gestion des identités et des accès','https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials/c929434037b4e87'],['Applied Skills : Prise en main des tâches de gestion Azure','https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials/ea292d2435e25712',1],['The Microsoft 365 Ecosystem (Coursera & Microsoft)'],['Azure Fundamentals (AZ-900) : en préparation',0,2]],'https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials','Profil Microsoft Learn'],
+['Microsoft','#7FB2FF',[['Applied Skills : Active Directory Domain Services','https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials/9916e2bb6d34eab6'],['Applied Skills : Microsoft Entra ID, gestion des identités et des accès','https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials/c929434037b4e87'],['Applied Skills : Prise en main des tâches de gestion Azure','https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials/ea292d2435e25712',1],['The Microsoft 365 Ecosystem (Coursera & Microsoft)'],['Applied Skills : Sécuriser les services et charges de travail Azure avec Microsoft Defender pour le cloud','https://learn.microsoft.com/api/credentials/share/fr-fr/BOUSSOUGOUAGOUANSOU-3890/EADA94A06A9FF1F9?sharingId=709110AF51E0EF2C',1]],'https://learn.microsoft.com/fr-fr/users/boussougouagouansou-3890/credentials','Profil Microsoft Learn'],
 ['Fortinet','#FF8F70',[['Certified Associate in Cybersecurity (FCA)'],['Certified Fundamentals in Cybersecurity (FCF)'],['FortiGate 7.6 Operator'],['FortiOS 7.6 Administrator Training',0,1],['NSE 1 · NSE 2 · NSE 3',0,1],['Introduction to the Threat Landscape 3.0'],['Getting Started in Cybersecurity 3.0']],'https://www.credly.com/users/ange-boussougou/badges','Badges Credly'],
 ['Cisco Networking Academy','#E6C27A',[['IT Support'],['Operating Systems'],['Computer Hardware Basics'],['IT Customer Support Basics'],['Introduction to Cybersecurity']]],
 ['PaperCut','#B79CFF',[['Certification PaperCut MF'],['PaperCut Hive (Cloud)']]],
@@ -241,7 +242,7 @@ const CE=[
 
 $('#nav').innerHTML=V.map(([k,l],i)=>`<button data-go="${k}"><span>0${i}</span>${l}</button>`).join('');
 $('#lf').innerHTML=FIL.map(([k,l],i)=>`<button data-f="${k}" class="${i?'':'on'}">${l} <small>${k=='all'?LAB.length:LAB.filter(x=>x[0]==k).length}</small></button>`).join('');
-function lab(f){$('#lg').innerHTML=LAB.map((l,i)=>[l,i]).filter(([l])=>f=='all'||l[0]==f).map(([l,i])=>`<article class="card" style="--c:${COL[l[0]]}"><div class="mono">Lab #${String(i+1).padStart(2,'0')}</div><h3>${l[1]}</h3><p style="color:var(--mut);font-size:14px">${l[2]}</p><div class="chips">${l[3].map(t=>`<span class="chip">${t}</span>`).join('')}</div><a class="go" href="${P+l[4]}" target="_blank" rel="noopener">Voir sur LinkedIn →</a></article>`).join('')}
+function lab(f){$('#lg').innerHTML=LAB.map((l,i)=>[l,i]).filter(([l])=>f=='all'||l[0]==f).map(([l,i])=>`<article class="card" style="--c:${COL[l[0]]}"><div class="mono">Lab #${String(i+1).padStart(2,'0')}</div><h3>${l[1]}</h3><p style="color:var(--mut);font-size:14px">${l[2]}</p><div class="chips">${l[3].map(t=>`<span class="chip">${t}</span>`).join('')}</div><a class="go" href="${/^http/.test(l[4])?l[4]:P+l[4]}" target="_blank" rel="noopener">Voir sur LinkedIn →</a></article>`).join('')}
 lab('all');
 $('#lf').onclick=e=>{const b=e.target.closest('button');if(!b)return;$$('#lf button').forEach(x=>x.classList.toggle('on',x==b));lab(b.dataset.f)};
 $('#xl').innerHTML=XP.map((x,i)=>`<button data-x="${i}">${x[0]}</button>`).join('');
