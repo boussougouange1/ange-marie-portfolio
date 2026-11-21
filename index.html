@@ -20,7 +20,7 @@
 <meta name="twitter:image" content="https://boussougouange1.github.io/ange-marie-portfolio/photo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 :root{--bg:#0A0F1F;--card:rgba(255,255,255,.04);--line:rgba(255,255,255,.1);--ink:#F4F1E8;--mut:#9AA3BC;--gold:#E6C27A;--gold2:#B98A3E;--r:22px}
 *{box-sizing:border-box;margin:0}
@@ -362,10 +362,11 @@ function count(){$$('[data-n]').forEach(el=>{const n=+el.dataset.n;let t0;const 
 const T=['Windows Server · Active Directory · GPO','Microsoft Entra ID · Microsoft 365 · Intune','FortiGate · VPN IPsec · Cisco · VoIP'];let ti=0,ci=0,del=false;
 (function ty(){const s=T[ti];ci+=del?-1:1;$('#typed').textContent=s.slice(0,ci);let w=del?24:55;if(!del&&ci==s.length){del=true;w=1600}else if(del&&ci==0){del=false;ti=(ti+1)%T.length;w=300}setTimeout(ty,w)})();
 
-let LANG='en';try{LANG=localStorage.getItem('lang')=='fr'?'fr':'en'}catch(e){}
+let LANG=/^fr/i.test(navigator.language||'')?'fr':'en';try{const sl=localStorage.getItem('lang');if(sl=='fr'||sl=='en')LANG=sl}catch(e){}
 function pg(i){$('#prev').innerHTML=i>0?'← '+V[i-1][1]:'';$('#next').innerHTML=i<V.length-1?V[i+1][1]+' →':'';$('#prev').onclick=()=>go(V[i-1][0]);$('#next').onclick=()=>go(V[i+1][0])}
 const TEAMS='ahouansouange@live.fr',EJS={k:'cElC1HEUqBTOXYfMW',s:'service_hqg5xqb',t:'template_vbyvnrn'};
-try{emailjs.init(EJS.k)}catch(e){}
+try{emailjs.init({publicKey:EJS.k})}catch(e){}
+function sendMail(p){if(!window.emailjs)return Promise.reject(new Error('emailjs missing'));return emailjs.send(EJS.s,EJS.t,p,{publicKey:EJS.k})}
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 function toast(en,fr,err){const x=$('#ts');x.textContent=LANG=='fr'?fr:en;x.className='ts on'+(err?' err':'');clearTimeout(toast.t);toast.t=setTimeout(()=>x.className='ts',5000)}
 const MAIL_COOLDOWN=90000;
@@ -378,15 +379,15 @@ $('#f').onsubmit=async e=>{e.preventDefault();const f=e.target,d=new FormData(f)
  try{const last=Number(localStorage.getItem('portfolio_mail_ts')||0);if(Date.now()-last<MAIL_COOLDOWN){toast('Please wait before sending another message.','Veuillez patienter avant d’envoyer un autre message.',1);return}}catch(_){}
  const p={from_name:name,from_email:email,subject:String(d.get('subject')||''),phone:String(d.get('phone')||'').trim().slice(0,30),message,consent:true,to_email:TEAMS,language:LANG,page_url:location.href,timestamp:new Date().toLocaleString(LANG=='fr'?'fr-FR':'en-US')};
  const b=f.querySelector('button');b.disabled=true;b.textContent=LANG=='fr'?'Envoi en cours…':'Sending…';
- try{await emailjs.send(EJS.s,EJS.t,p);try{localStorage.setItem('portfolio_mail_ts',String(Date.now()))}catch(_){};toast('Message sent! I will reply shortly.','Message envoyé ! Je vous réponds rapidement.');f.reset()}
- catch(x){toast('Sending failed. Please use email directly.','Envoi impossible. Utilisez l’e-mail direct.',1)}
+ try{await sendMail(p);try{localStorage.setItem('portfolio_mail_ts',String(Date.now()))}catch(_){};toast('Message sent! I will reply shortly.','Message envoyé ! Je vous réponds rapidement.');f.reset()}
+ catch(x){toast('Sending failed: opening your email app instead.','Envoi impossible : ouverture de votre messagerie.',1);location.href='mailto:'+TEAMS+'?subject='+encodeURIComponent('Portfolio contact: '+name)+'&body='+encodeURIComponent(message+'\n\n'+name+' · '+email)}
  b.disabled=false;b.textContent=LANG=='fr'?'Envoyer le message →':'Send message →'};
 
 /* ===== AI AGENT (EN/FR) ===== */
 const QS=[
 ['objective',['What is the purpose of your message?','Quel est l’objet de votre message ?'],[['job','💼 Job opportunity','💼 Opportunité d’emploi'],['project','🚀 Project / Consulting','🚀 Projet / Consultation'],['question','❓ Technical question','❓ Question technique'],['other','📝 Other','📝 Autre']]],
 ['urgency',['How urgent is your request?','Quelle est l’urgence de votre demande ?'],[['immediate','🔴 Immediate (this week)','🔴 Immédiate (cette semaine)'],['short','🟠 Short term (this month)','🟠 Court terme (ce mois)'],['medium','🟡 Medium term','🟡 Moyen terme'],['future','🟢 Future project','🟢 Futur projet']]],
-['location',['Where are you located?','Quelle est votre localisation ?'],[['montreal','🏢 Montreal / Quebec','🏢 Montréal / Québec'],['canada','🍁 Elsewhere in Canada','🍁 Ailleurs au Canada'],['remote','🌐 International / Remote','🌐 International / Télétravail'],['other','📍 Other','📍 Autre']]],
+['location',['Where are you located?','Quelle est votre localisation ?'],[['ottawa','🏢 Ottawa / Gatineau','🏢 Ottawa / Gatineau'],['montreal','🏙️ Montreal / Quebec','🏙️ Montréal / Québec'],['canada','🍁 Elsewhere in Canada','🍁 Ailleurs au Canada'],['remote','🌐 International / Remote','🌐 International / Télétravail']]],
 ['contact',['How would you prefer to be contacted?','Comment préférez-vous être contacté ?'],[['teams','💬 Microsoft Teams (recommended)','💬 Microsoft Teams (recommandé)'],['email','📧 Email','📧 Email'],['linkedin','💼 LinkedIn','💼 LinkedIn'],['phone','📞 Phone','📞 Téléphone']]]];
 const ACT={q:['💼 Start a qualification','💼 Démarrer une qualification'],teams:['💬 Talk on Teams','💬 Parler sur Teams'],cv:['📄 Get his CV','📄 Recevoir son CV'],xp:['💼 See experience','💼 Voir le parcours'],skills:['🛠️ See skills','🛠️ Voir les compétences'],lab:['🧪 Explore the labs','🧪 Explorer les labs'],certs:['🏅 See certifications','🏅 Voir les certifications'],contact:['✉️ Contact form','✉️ Formulaire de contact']};
 const KB=[
@@ -415,7 +416,7 @@ const AG={open:false,lang:LANG,mode:'',qualified:false,r:{},greeted:false,
  toggle(f){AG.open=f===undefined?!AG.open:f;$('#ag-box').classList.toggle('on',AG.open);$('#ag-dot').style.display='none';if(AG.open)setTimeout(()=>$('#ag-in').focus(),300)},
  async greet(){AG.greeted=true;const h=new Date().getHours();
   await AG.say(AG.c(h<12?'Good morning! ☀️':h<18?'Good afternoon! 👋':'Good evening! 🌙',h<12?'Bonjour ! ☀️':h<18?'Bonjour ! 👋':'Bonsoir ! 🌙'));
-  await AG.say(AG.c('I am the portfolio virtual assistant. I can answer common questions about Ange-Marie’s profile in English or French. How can I help?','Je suis l’assistant IA d’Ange-Marie. Je peux répondre à vos questions sur son profil en français ou en anglais. Comment puis-je vous aider ?'));
+  await AG.say(AG.c('I am the portfolio virtual assistant. I can answer common questions about Ange-Marie’s profile in English or French. How can I help?','Je suis l’assistant virtuel du portfolio. Je peux répondre à vos questions sur son profil en français ou en anglais. Comment puis-je vous aider ?'));
   AG.chips(['q','skills','xp','cv','teams'])},
  async run(k){if(k=='q'){AG.mode='q';AG.r={};AG.qualified=false;AG.sumEl=null;return AG.step(0)}
   if(k=='teams'){await AG.say(AG.c('Opening Microsoft Teams…','Ouverture de Microsoft Teams…'));return AG.teams(AG.free())}
@@ -435,9 +436,12 @@ const AG={open:false,lang:LANG,mode:'',qualified:false,r:{},greeted:false,
  ctx(){const f=AG.lang=='fr',d=new Date().toLocaleString(f?'fr-FR':'en-US'),r=id=>AG.lab(id);
   return (f?'🤖 NOUVEAU LEAD QUALIFIÉ - Portfolio\n\n📅 Date : ':'🤖 NEW QUALIFIED LEAD - Portfolio\n\n📅 Date: ')+d+(f?'\n🎯 Objet : ':'\n🎯 Purpose: ')+r('objective')+(f?'\n⏰ Urgence : ':'\n⏰ Urgency: ')+r('urgency')+(f?'\n📍 Localisation : ':'\n📍 Location: ')+r('location')+(f?'\n💬 Contact préféré : ':'\n💬 Preferred contact: ')+r('contact')+(f?'\n\nBonjour Ange-Marie,\n\nVotre profil m’intéresse. Voici les détails de ma demande. Merci de me recontacter sur ce canal.\n\nCordialement,':'\n\nHello Ange-Marie,\n\nI am interested in your profile. Here are the details of my request. Please contact me back on this channel.\n\nBest regards,')},
  free(){return AG.c('Hello Ange-Marie, I would like to talk with you (sent from your portfolio).','Bonjour Ange-Marie, j’aimerais échanger avec vous (envoyé depuis votre portfolio).')},
- teams(m){window.open('https://teams.microsoft.com/l/chat/0/0?users='+encodeURIComponent(TEAMS)+'&message='+encodeURIComponent(m),'_blank')},
+ teams(m){const u='https://teams.microsoft.com/l/chat/0/0?users='+encodeURIComponent(TEAMS)+'&message='+encodeURIComponent(m),mu='mailto:'+TEAMS+'?subject='+encodeURIComponent('Portfolio')+'&body='+encodeURIComponent(m);
+  let w=null;try{w=window.open(u,'_blank','noopener')}catch(_){}
+  const d=document.createElement('div');d.className='ag-b bot';const a=(h,t)=>{const e=document.createElement('a');e.href=h;e.target='_blank';e.rel='noopener';e.style.cssText='text-decoration:underline;display:block;margin-top:4px';e.textContent=t;return e};
+  d.appendChild(document.createTextNode(AG.c('If Teams did not open, use one of these links:','Si Teams ne s’est pas ouvert, utilisez un de ces liens :')));d.appendChild(a(u,'💬 Microsoft Teams'));d.appendChild(a(mu,'📧 '+TEAMS));$('#ag-m').appendChild(d);$('#ag-m').scrollTop=1e9},
  async reply(x){const l=det(x);if(l)AG.lang=l;
-  if(AG.mode=='cv'){const m=x.match(/\S+@\S+\.\S+/);if(m){AG.mode='';try{await emailjs.send(EJS.s,EJS.t,{from_name:'CV request',from_email:m[0],subject:'📄 CV request',phone:'',message:'CV request from the portfolio AI agent.',consent:true,to_email:TEAMS,language:AG.lang,page_url:location.href,timestamp:new Date().toLocaleString()});await AG.say(AG.c('Thank you! 📄 Ange-Marie will send you his CV shortly.','Merci ! 📄 Ange-Marie vous enverra son CV très bientôt.'))}catch(e){await AG.say(AG.c('I could not send the request. Please write to ahouansouange@live.fr.','Envoi impossible. Merci d’écrire à ahouansouange@live.fr.'))}return}}
+  if(AG.mode=='cv'){const m=x.match(/[^\s@]+@[^\s@]+\.[^\s@]{2,}/);if(m){AG.mode='';try{const last=Number(localStorage.getItem('portfolio_cv_ts')||0);if(Date.now()-last<60000){await AG.say(AG.c('Your request was already sent. Please wait a minute.','Votre demande a déjà été envoyée. Patientez une minute.'));return}}catch(_){}try{await sendMail({from_name:'CV request',from_email:m[0],subject:'📄 CV request',phone:'',message:'CV request from the portfolio AI agent.',consent:true,to_email:TEAMS,language:AG.lang,page_url:location.href,timestamp:new Date().toLocaleString()});try{localStorage.setItem('portfolio_cv_ts',String(Date.now()))}catch(_){}await AG.say(AG.c('Thank you! 📄 Ange-Marie will send you his CV shortly.','Merci ! 📄 Ange-Marie vous enverra son CV très bientôt.'))}catch(e){await AG.say(AG.c('I could not send the request. Please write to ahouansouange@live.fr.','Envoi impossible. Merci d’écrire à ahouansouange@live.fr.'))}return}}
   const k=KB.find(e=>e[0].test(x));
   if(k){await AG.say(AG.c(k[1],k[2]));return AG.chips(k[3])}
   await AG.say(AG.c('I am not sure I can answer that precisely. I can pass your question to Ange-Marie on Teams so he answers you personally.','Je ne suis pas sûr de pouvoir répondre précisément. Je peux transmettre votre question à Ange-Marie sur Teams pour qu’il vous réponde personnellement.'));AG.chips(['teams','q','contact'])},
@@ -495,7 +499,7 @@ const EN={
 'Systèmes & Réseaux':'Systems & Networking','Cisco · téléphonie IP':'Cisco · IP telephony','Sécurité & Outils':'Security & Tools','FortiGate : pare-feu & VPN':'FortiGate: firewall & VPN','Inventaire & documentation':'Inventory & documentation',
 'Applied Skills : Active Directory Domain Services':'Applied Skills: Active Directory Domain Services','Applied Skills : Microsoft Entra ID, gestion des identités et des accès':'Applied Skills: Microsoft Entra ID, identity and access management','Applied Skills : Prise en main des tâches de gestion Azure':'Applied Skills: Overview of Azure management tasks','Applied Skills : Sécuriser les services et charges de travail Azure avec Microsoft Defender pour le cloud':'Applied Skills: Securing Azure services and workloads with Microsoft Defender for Cloud',
 'Certification PaperCut MF':'PaperCut MF certification','Azure : Configurer et gérer Microsoft Entra ID':'Azure: Configure and manage Microsoft Entra ID','Essentiels de Microsoft Security':'Microsoft Security essentials','Collaborer grâce à Microsoft 365':'Collaborating with Microsoft 365'};
-let LANG='en';try{LANG=localStorage.getItem('lang')=='fr'?'fr':'en'}catch(e){}
+let LANG=/^fr/i.test(navigator.language||'')?'fr':'en';try{const sl=localStorage.getItem('lang');if(sl=='fr'||sl=='en')LANG=sl}catch(e){}
 const SKIP='#ag-m,#typed,script,style,.ts,[data-en]';
 function one(n){const p=n.parentElement;if(!p||p.closest(SKIP))return;
  if(n._f===undefined||n._o!==n.nodeValue)n._f=n.nodeValue;
